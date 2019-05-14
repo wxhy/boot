@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.study.boot.common.auth.service.UserDetailsServiceImpl

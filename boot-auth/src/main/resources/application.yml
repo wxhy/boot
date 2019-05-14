@@ -1,0 +1,15 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: boot-auth
+
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:9999/eureka/

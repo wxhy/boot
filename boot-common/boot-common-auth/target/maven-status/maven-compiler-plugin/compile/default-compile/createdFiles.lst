@@ -1,0 +1,3 @@
+com\study\boot\common\auth\service\ClientDetailsService.class
+com\study\boot\common\auth\service\UserDetailsServiceImpl.class
+com\study\boot\common\auth\service\CustomUser.class

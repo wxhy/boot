@@ -1,0 +1,13 @@
+com\study\boot\upms\api\feign\fallback\RemoteUserServiceFallbackImpl.class
+com\study\boot\upms\api\entity\SysLog.class
+com\study\boot\upms\api\feign\RemoteUserService.class
+com\study\boot\upms\api\feign\factory\RemoteUserServiceFallFactory.class
+com\study\boot\upms\api\entity\SysRoleMenu.class
+com\study\boot\upms\api\entity\SysRole.class
+com\study\boot\upms\api\entity\SysDept.class
+com\study\boot\upms\api\dto\UserInfo.class
+com\study\boot\upms\api\entity\SysDict.class
+com\study\boot\upms\api\entity\SysUser.class
+com\study\boot\upms\api\entity\SysUserRole.class
+com\study\boot\upms\api\entity\SysMenu.class
+com\study\boot\upms\api\entity\SysRoleDept.class

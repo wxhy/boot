@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.study.boot.common.config.MybatisPlusConfig,\
+  com.study.boot.common.config.RedisConfig

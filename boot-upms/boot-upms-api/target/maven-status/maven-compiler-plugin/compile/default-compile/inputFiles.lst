@@ -1,0 +1,13 @@
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysUser.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysDict.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\feign\fallback\RemoteUserServiceFallbackImpl.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\dto\UserInfo.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysDept.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysUserRole.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\feign\RemoteUserService.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysMenu.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysRole.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\feign\factory\RemoteUserServiceFallFactory.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysRoleDept.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysLog.java
+F:\project\boot\boot-upms\boot-upms-api\src\main\java\com\study\boot\upms\api\entity\SysRoleMenu.java
