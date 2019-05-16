@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.study.boot.upms.api.feign.RemoteUserService,\
-  com.study.boot.upms.api.feign.factory.RemoteUserServiceFallFactory,\
-  com.study.boot.upms.api.feign.fallback.RemoteUserServiceFallbackImpl
