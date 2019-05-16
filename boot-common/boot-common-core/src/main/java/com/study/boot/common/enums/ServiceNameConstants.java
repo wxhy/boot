@@ -9,7 +9,7 @@ public interface ServiceNameConstants {
     /**
      * 认证服务的SERVICEID（zuul 配置的对应）
      */
-    String AUTH_SERVICE = "pig-auth";
+    String AUTH_SERVICE = "boot-auth";
 
     /**
      * UMPS模块

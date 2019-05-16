@@ -1,5 +1,6 @@
 package com.study.boot.auth.config;
 
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -23,7 +24,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.formLogin().and()
                 .authorizeRequests()
                 .antMatchers(
                         "/actuator/**",
@@ -34,15 +35,11 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
+    @SneakyThrows
+    public AuthenticationManager authenticationManagerBean(){
         return super.authenticationManagerBean();
     }
 
-    @Bean
-    @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
 
     /**
      * https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-updated

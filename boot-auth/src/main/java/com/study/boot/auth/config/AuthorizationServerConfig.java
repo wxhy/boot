@@ -1,10 +1,12 @@
 package com.study.boot.auth.config;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.study.boot.common.auth.component.CustomWebResponseExceptionTranslator;
 import com.study.boot.common.auth.service.ClientDetailsService;
 import com.study.boot.common.enums.SecurityConstants;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -42,12 +44,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.allowFormAuthenticationForClients().checkTokenAccess("permitAll()");
+    @SneakyThrows
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
+        oauthServer.allowFormAuthenticationForClients()
+                // 开启/oauth/token_key验证端口无权限访问
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
     }
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+    @SneakyThrows
+    public void configure(ClientDetailsServiceConfigurer clients) {
         ClientDetailsService clientDetailsService = new ClientDetailsService(dataSource);
         clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
         clientDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
@@ -55,10 +62,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    @SneakyThrows
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints){
         endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET,HttpMethod.POST)
                 .tokenStore(tokenStore())
-                .tokenEnhancer(tokenEnhancer())
                 .userDetailsService(userDetailsService)
                 .authenticationManager(authenticationManager)
                 .reuseRefreshTokens(false)
@@ -72,13 +79,4 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return tokenStore;
     }
 
-    @Bean
-    public TokenEnhancer tokenEnhancer(){
-        return (accessToken, authentication) -> {
-            final Map<String, Object> additionalInfo = new HashMap<>(1);
-            additionalInfo.put("license", SecurityConstants.PROJECT_LICENSE);
-            ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
-            return accessToken;
-        };
-    }
 }

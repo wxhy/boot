@@ -36,6 +36,6 @@ public class UserController {
         if(user == null) {
             return new WebResponse<>(CommonConstants.FAIL,String.format("用户名%s不存在",username));
         }
-        return new WebResponse<>(CommonConstants.SUCCESS, user);
+        return new WebResponse<>(CommonConstants.SUCCESS, sysUserService.getUserInfo(user));
     }
 }
