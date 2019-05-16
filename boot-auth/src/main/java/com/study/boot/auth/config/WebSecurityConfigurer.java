@@ -24,7 +24,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().and()
+        http
                 .authorizeRequests()
                 .antMatchers(
                         "/actuator/**",

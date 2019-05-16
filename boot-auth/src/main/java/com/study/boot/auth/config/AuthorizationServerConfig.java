@@ -42,14 +42,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private final AuthenticationManager authenticationManager;
     private final RedisConnectionFactory redisConnectionFactory;
 
-
+    /**
+     *
+     * https://blog.csdn.net/u012040869/article/details/80140515
+     * 解决Spring Security OAuth在访问/oauth/token时候报401 authentication is required
+     * @param oauthServer
+     */
     @Override
     @SneakyThrows
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
         oauthServer.allowFormAuthenticationForClients()
                 // 开启/oauth/token_key验证端口无权限访问
-                .tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
+//                .tokenKeyAccess("permitAll()")
+                // 开启/oauth/check_token验证端口无权限访问
+                .checkTokenAccess("permitAll()");
     }
 
     @Override
