@@ -14,15 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  *  用户详细信息
@@ -55,17 +53,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         UserInfo info = result.getData();
-        Set<String> dbAuthsSet = new HashSet<>();
+        Set<String> dbAuthSet = new HashSet<>();
 
-        //获取权限
-        if(ArrayUtil.isNotEmpty(info.getPermissions())) {
-            dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
+
+        if(ArrayUtil.isNotEmpty(info.getRoles())) {
+            //获取角色
+            Arrays.stream(info.getRoles()).forEach(role-> dbAuthSet.add(SecurityConstants.ROLE + role));
+            //获取权限
+            dbAuthSet.addAll(Arrays.asList(info.getPermissions()));
         }
-
-        Collection<? extends GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-
+        List<GrantedAuthority> authorities = new ArrayList<>(dbAuthSet.size());
+        dbAuthSet.forEach(role->{
+            authorities.add(new SimpleGrantedAuthority(role));
+        });
         SysUser user = info.getSysUser();
-
 
         //构建security用户
         return new CustomUser(user.getUserId(),user.getDeptId(),user.getUsername(),SecurityConstants.BCRYPT + user.getPassword(),

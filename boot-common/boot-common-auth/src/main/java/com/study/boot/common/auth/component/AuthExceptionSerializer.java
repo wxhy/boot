@@ -12,8 +12,8 @@ import lombok.SneakyThrows;
  */
 public class AuthExceptionSerializer extends StdSerializer<PigAuth2Exception> {
 
-    protected AuthExceptionSerializer(Class<PigAuth2Exception> t) {
-        super(t);
+    protected AuthExceptionSerializer() {
+        super(PigAuth2Exception.class);
     }
 
     @Override

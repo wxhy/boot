@@ -51,11 +51,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     @SneakyThrows
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-        oauthServer.allowFormAuthenticationForClients()
+
+        oauthServer
                 // 开启/oauth/token_key验证端口无权限访问
-//                .tokenKeyAccess("permitAll()")
+                .tokenKeyAccess("permitAll()")
                 // 开启/oauth/check_token验证端口无权限访问
-                .checkTokenAccess("permitAll()");
+                .checkTokenAccess("permitAll()")
+                //主要是让/oauth/token支持client_id以及client_secret作登录认证
+                .allowFormAuthenticationForClients();
     }
 
     @Override
