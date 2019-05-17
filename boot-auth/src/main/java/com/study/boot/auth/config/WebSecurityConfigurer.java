@@ -16,8 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author Administrator
  */
 @Primary
-@Order(90)
 @Configuration
+@Order(90)
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 
@@ -25,6 +25,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .formLogin()
+                .and()
                 .authorizeRequests()
                 .antMatchers(
                         "/actuator/**",

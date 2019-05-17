@@ -27,6 +27,7 @@
         <module>boot-eureka</module>
         <module>boot-upms</module>
         <module>boot-common</module>
+        <module>boot-config</module>
     </modules>
 
     <dependencies>

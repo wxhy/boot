@@ -1,6 +1,7 @@
 package com.study.boot.upms.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysRole;
@@ -48,8 +49,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         Set<String> permissions = new HashSet<>();
         roleIds.parallelStream().forEach(roleId->{
             List<String> permissionList = sysMenuService.getMenuByRoleId(roleId)
-                    .parallelStream()
+                    .stream()
                     .map(MenuVO::getPermission)
+                    .filter(StrUtil::isNotEmpty)
                     .collect(Collectors.toList());
             permissions.addAll(permissionList);
         });

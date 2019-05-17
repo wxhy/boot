@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+
+spring:
+  application:
+    name: boot-config
+  profiles:
+    active: native
+
+  #配置中心
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/
+
+
+#注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:123456@/localhost:9999/eureka/
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

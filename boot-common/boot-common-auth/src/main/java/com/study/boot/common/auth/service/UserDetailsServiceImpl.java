@@ -1,17 +1,8 @@
 package com.study.boot.common.auth.service;
 
-import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
-import com.study.boot.common.enums.CommonConstants;
-import com.study.boot.common.enums.SecurityConstants;
-import com.study.boot.common.util.WebResponse;
-import com.study.boot.upms.api.dto.UserInfo;
-import com.study.boot.upms.api.entity.SysUser;
-import com.study.boot.upms.api.feign.RemoteUserService;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +11,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.util.WebResponse;
+import com.study.boot.upms.api.dto.UserInfo;
+import com.study.boot.upms.api.entity.SysUser;
+import com.study.boot.upms.api.feign.RemoteUserService;
+
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  *  用户详细信息
@@ -62,10 +63,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             //获取权限
             dbAuthSet.addAll(Arrays.asList(info.getPermissions()));
         }
-        List<GrantedAuthority> authorities = new ArrayList<>(dbAuthSet.size());
-        dbAuthSet.forEach(role->{
-            authorities.add(new SimpleGrantedAuthority(role));
-        });
+        Collection<?extends GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(dbAuthSet.toArray(new String[0]));
+
         SysUser user = info.getSysUser();
 
         //构建security用户

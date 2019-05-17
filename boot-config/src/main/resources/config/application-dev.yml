@@ -1,0 +1,36 @@
+
+
+#redis相关
+spring:
+  redis:
+    host: localhost
+    password:
+    timeout: 10000
+    database: 0
+    lettuce:
+      pool:
+        max-active: 40
+        max-wait: 500
+        max-idle: 20
+        min-idle: 8
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# mybaits-plus配置
+mybatis-plus:
+  
+  global-config:
+    banner: false
+    db-config:
+      id-type: 0
+      field-strategy: 1
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
