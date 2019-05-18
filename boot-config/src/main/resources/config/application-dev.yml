@@ -14,23 +14,50 @@ spring:
         max-idle: 20
         min-idle: 8
 
-# 暴露监控端点
+## 暴露监控端点
 management:
   endpoints:
     web:
       exposure:
         include: '*'
 
-# mybaits-plus配置
+
+## mybatis-plus配置
 mybatis-plus:
-  
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
   global-config:
     banner: false
     db-config:
-      id-type: 0
-      field-strategy: 1
+      id-type: AUTO
+      field-strategy: NOT_NULL
       table-underline: true
       logic-delete-value: 1
       logic-not-delete-value: 0
-  configuration:
-    map-underscore-to-camel-case: true
+
+
+# feign 配置
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+## security配置
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://boot-auth/oauth/check_token

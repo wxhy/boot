@@ -4,100 +4,16 @@ server:
 spring:
   application:
     name: boot-upms
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      auto-commit: false
-      connection-timeout: 30000
-      idle-timeout: 25000
-      login-timeout: 5
-      max-lifetime: 30000
-      read-only: false
-      validation-timeout: 3000
-      maximum-pool-size: 15
-      minimum-idle: 10
-      data-source-properties:
-        cachePrepStmts: true
-        prepStmtCacheSize: 250
-        prepStmtCacheSqlLimit: 2048
-        useServerPrepStmts: true
-        useLocalSessionState: true
-        rewriteBatchedStatements: true
-        cacheResultSetMetadata: true
-        cacheServerConfiguration: true
-        elideSetAutoCommits: true
-        maintainTimeStats: false
-  redis:
-    host: localhost
-    password:
-    timeout: 10000
-    database: 0
-    lettuce:
-      pool:
-        max-active: 40
-        max-wait: 500
-        max-idle: 20
-        min-idle: 8
-
-
-# feign 配置
-feign:
-  hystrix:
-    enabled: true
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
-  client:
+  profiles:
+    active: dev
+  cloud:
     config:
-      default:
-        connectTimeout: 10000
-        readTimeout: 10000
-  compression:
-    request:
-      enabled: true
-    response:
-      enabled: true
-# hystrix If you need to use ThreadLocal bound variables in your RequestInterceptor`s
-# you will need to either set the thread isolation strategy for Hystrix to `SEMAPHORE or disable Hystrix in Feign.
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: SEMAPHORE
-          thread:
-            timeoutInMilliseconds: 60000
-  shareSecurityContext: true
-
-#请求处理的超时时间
-ribbon:
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
-
-
-## mybatis-plus配置
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.study.boot.upms.entity
-  type-enums-package: com.study.boot.enums
-  configuration:
-    map-underscore-to-camel-case: true
-    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
-  global-config:
-    banner: false
-    db-config:
-      id-type: AUTO
-      field-strategy: NOT_NULL
-      table-underline: true
-      logic-delete-value: 1
-      logic-not-delete-value: 0
-
-
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: boot-config
 
 # 注册中心配置
 eureka:
@@ -106,21 +22,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:123456@localhost:9999/eureka/
-
-
-#Security配置
-security:
-  oauth2:
-    client:
-      client-id: test
-      client-secret: test
-      scope: server
-    resource:
-      loadBalanced: true
-      token-info-uri: http://boot-auth/oauth/check_token
-
-
-
-
 
 

@@ -1,64 +1,23 @@
 server:
   port: 3000
 
+
 spring:
   application:
     name: boot-auth
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
-
-# feign 配置
-feign:
-  hystrix:
-    enabled: true
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
-  client:
+  profiles:
+    active: dev
+  cloud:
     config:
-      default:
-        connectTimeout: 10000
-        readTimeout: 10000
-  compression:
-    request:
-      enabled: true
-    response:
-      enabled: true
-# hystrix If you need to use ThreadLocal bound variables in your RequestInterceptor`s
-# you will need to either set the thread isolation strategy for Hystrix to `SEMAPHORE or disable Hystrix in Feign.
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: SEMAPHORE
-          thread:
-            timeoutInMilliseconds: 60000
-  shareSecurityContext: true
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: boot-config
+  main:
+    allow-bean-definition-overriding: true
 
-#请求处理的超时时间
-ribbon:
-  eureka:
-    enabled: true
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
-
-## spring security 配置
-security:
-  oauth2:
-    client:
-      # 默认放行url,如果子模块重写这里的配置就会被覆盖
-      ignore-urls:
-        - /actuator/**
-        - /v2/api-docs
-    resource:
-      loadBalanced: true
-      token-info-uri: http://boot-auth/oauth/check_token
 
 # 注册中心配置
 eureka:
@@ -67,12 +26,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:123456@localhost:9999/eureka/
-
-
-## 暴露监控端点
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
 

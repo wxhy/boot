@@ -22,7 +22,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://admin:123456@/localhost:9999/eureka/
+      defaultZone: http://admin:123456@localhost:9999/eureka/
 
 # 暴露监控端点
 management:
