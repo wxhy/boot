@@ -11,6 +11,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author 32045
+ */
 @ApiModel(value = "com.study.boot.upms.entity.SysUser")
 @Data
 @TableName(value = "sys_user")

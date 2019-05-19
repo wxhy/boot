@@ -29,6 +29,7 @@
         <module>boot-upms</module>
         <module>boot-common</module>
         <module>boot-config</module>
+        <module>boot-gateway</module>
     </modules>
 
     <dependencies>

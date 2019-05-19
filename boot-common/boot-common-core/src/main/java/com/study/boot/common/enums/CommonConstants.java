@@ -2,6 +2,7 @@ package com.study.boot.common.enums;
 
 /**
  * 通用的常量标识
+ * @author
  */
 public interface CommonConstants {
 

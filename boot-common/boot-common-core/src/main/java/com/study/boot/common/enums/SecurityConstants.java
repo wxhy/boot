@@ -1,5 +1,8 @@
 package com.study.boot.common.enums;
 
+/**
+ * @author 32045
+ */
 public interface SecurityConstants {
 
     /**
