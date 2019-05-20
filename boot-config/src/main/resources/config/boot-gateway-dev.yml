@@ -1,0 +1,23 @@
+spring:
+  gateway:
+    routes:
+      - id: boot-auth
+        uri: lb://boot-auth
+        predicates:
+          - Path = /auth/**
+      - id: boot-upms
+        uri: lb://boot-upms
+        predicates:
+          - Path = /upms/**
+        filters:
+          ##限流配置
+          - name: RequestRateLimiter
+            args:
+              key-resolver: '#{@remoteAddressKeyResolver}'
+              redis-rate-limiter.replenishRate: 10
+              redis-rate-limiter.burstCapacity: 20
+          ## 降级处理
+          - name: Hystrix
+            args:
+              name: default
+              fallbackUri: 'forward:/fallback'
