@@ -1,14 +1,17 @@
 spring:
   gateway:
+    discovery:
+      locator:
+        enabled: true
     routes:
       - id: boot-auth
         uri: lb://boot-auth
         predicates:
-          - Path = /auth/**
+          - Path=/auth/**
       - id: boot-upms
         uri: lb://boot-upms
         predicates:
-          - Path = /upms/**
+          - Path=/upms/**
         filters:
           ##限流配置
           - name: RequestRateLimiter
