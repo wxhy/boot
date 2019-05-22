@@ -30,6 +30,7 @@ public class CustomWebResponseExceptionTranslator implements WebResponseExceptio
     @SneakyThrows
     public ResponseEntity translate(Exception e) {
         // Try to extract a SpringSecurityException from the stacktrace
+        log.error("认证发生异常",e);
         Throwable[] causeChain = throwableAnalyzer.determineCauseChain(e);
 
         Exception ase = (AuthenticationException) throwableAnalyzer.getFirstThrowableOfType(AuthenticationException.class,

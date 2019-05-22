@@ -2,6 +2,7 @@ package com.study.boot.upms.web;
 
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysUser;
@@ -22,6 +23,21 @@ public class UserController {
 
     @Autowired
     private SysUserService sysUserService;
+
+    /**
+     * 获取当前会员信息
+     * @return
+     */
+    @GetMapping("/info")
+    public WebResponse info(){
+        String username = SecurityUtils.getUserName();
+        SysUser user = sysUserService.getOne(Wrappers.<SysUser>query().
+                lambda().eq(SysUser::getUsername, username));
+        if(user == null) {
+            return new WebResponse<>(CommonConstants.FAIL,"获取当前用户信息失败");
+        }
+        return new WebResponse<>(sysUserService.getUserInfo(user));
+    }
 
     /**
      *  获取指定用户全部信息
