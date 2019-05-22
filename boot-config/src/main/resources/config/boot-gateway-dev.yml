@@ -1,16 +1,17 @@
 spring:
-  gateway:
-    discovery:
-      locator:
-        enabled: true
-    routes:
-      # 认证中心
-      - id: boot-auth
-        uri: lb://boot-auth
-        predicates:
-          - Path=/auth/**
-      #UPMS 模块
-      - id: boot-upms
-        uri: lb://boot-upms
-        predicates:
-          - Path=/admin/**
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        # 认证中心
+        - id: boot-auth
+          uri: lb://boot-auth
+          predicates:
+           - Path=/auth/**
+        #UPMS 模块
+        - id: boot-upms
+          uri: lb://boot-upms
+          predicates:
+           - Path=/admin/**

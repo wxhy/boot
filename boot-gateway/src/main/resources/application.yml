@@ -5,32 +5,17 @@ server:
 spring:
   application:
     name: boot-gateway
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: boot-config
   profiles:
     active: dev
-  cloud:
-#    config:
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
-#      discovery:
-#        enabled: true
-#        service-id: boot-config
 
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        # 认证中心
-        - id: boot-auth
-          uri: lb://boot-auth
-          predicates:
-            - Path=/auth/**
-        #UPMS 模块
-        - id: boot-upms
-          uri: lb://boot-upms
-          predicates:
-            - Path=/admin/**
 
 ## 注冊中心配置
 eureka:
