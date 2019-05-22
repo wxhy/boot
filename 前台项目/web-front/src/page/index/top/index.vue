@@ -63,7 +63,7 @@
       <el-tooltip v-if="this.userInfo.avatar" effect="dark"
                   content="用户头像"
                   placement="bottom">
-        <img id="thumbnail" class="top-bar__img">
+        <img id="thumbnail" class="top-bar__img" :src="userInfo.avatar">
       </el-tooltip>
       <el-dropdown>
         <span class="el-dropdown-link">
@@ -111,7 +111,7 @@ export default {
   },
   filters: {},
   created() {
-    handleImg(this.userInfo.avatar, 'thumbnail');
+    // handleImg(this.userInfo.avatar, 'thumbnail');
   },
   mounted() {
     listenfullscreen(this.setScreen);

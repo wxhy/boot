@@ -58,10 +58,6 @@ public class MenuVO implements Serializable {
      */
     private String path;
     /**
-     * VUE页面
-     */
-    private String component;
-    /**
      * 排序值
      */
     private Integer sort;

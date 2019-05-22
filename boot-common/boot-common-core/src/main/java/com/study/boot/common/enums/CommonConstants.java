@@ -35,4 +35,10 @@ public interface CommonConstants {
      * 权限不足
      */
     Integer FORBIDDEN_OPERATION = 2;
+
+
+    /**
+     * 菜单
+     */
+    String MENU = "0";
 }
