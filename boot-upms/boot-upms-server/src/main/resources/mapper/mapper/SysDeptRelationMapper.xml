@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.boot.upms.api.mapper.SysDeptRelationMapper">
+  <resultMap id="BaseResultMap" type="com.study.boot.upms.api.entity.SysDeptRelation">
+    <!--@mbg.generated generated on Thu May 23 10:54:51 CST 2019.-->
+    <id column="ancestor" jdbcType="INTEGER" property="ancestor" />
+    <id column="descendant" jdbcType="INTEGER" property="descendant" />
+  </resultMap>
+</mapper>

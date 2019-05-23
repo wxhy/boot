@@ -6,4 +6,9 @@
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <id column="role_id" jdbcType="INTEGER" property="roleId" />
   </resultMap>
+
+  <!--根据用户Id删除该用户的角色关系-->
+  <delete id="deleteByUserId">
+    delete from sys_user_role where  user_id = #{userId,jdbcType=INTEGER}
+  </delete>
 </mapper>

@@ -50,6 +50,10 @@ public class MenuVO implements Serializable {
      */
     private Integer parentId;
     /**
+     * 前台vue页面
+     */
+    private String component;
+    /**
      * 图标
      */
     private String icon;

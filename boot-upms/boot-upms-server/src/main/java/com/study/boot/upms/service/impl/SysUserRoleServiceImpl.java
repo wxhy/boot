@@ -11,4 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements SysUserRoleService{
 
+    @Override
+    public Boolean removeRoleByUserId(Integer userId) {
+        return baseMapper.deleteByUserId(userId);
+    }
 }

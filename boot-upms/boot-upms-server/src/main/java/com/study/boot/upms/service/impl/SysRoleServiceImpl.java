@@ -20,4 +20,5 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     public List<SysRole> listRolesByUserId(Integer userId) {
         return baseMapper.listRolesByUserId(userId);
     }
+
 }

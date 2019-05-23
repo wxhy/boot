@@ -1,19 +1,31 @@
 package com.study.boot.upms.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysRole;
 import com.study.boot.upms.api.entity.SysUser;
+import com.study.boot.upms.api.entity.SysUserRole;
 import com.study.boot.upms.api.vo.MenuVO;
 import com.study.boot.upms.mapper.SysUserMapper;
 import com.study.boot.upms.service.SysMenuService;
 import com.study.boot.upms.service.SysRoleService;
+import com.study.boot.upms.service.SysUserRoleService;
 import com.study.boot.upms.service.SysUserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -24,15 +36,19 @@ import java.util.stream.Collectors;
  * @author Administrator
  */
 @Service
+@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
-    @Autowired
-    private SysMenuService sysMenuService;
+    private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
+    private final SysMenuService sysMenuService;
+    private final SysRoleService sysRoleService;
+    private final SysUserRoleService sysUserRoleService;
 
-
-    @Autowired
-    private SysRoleService sysRoleService;
-
+    /**
+     * 获取用户全部信息（角色、权限）
+     * @param sysUser 用户
+     * @return
+     */
     @Override
     public UserInfo getUserInfo(SysUser sysUser) {
         UserInfo userInfo = new UserInfo();
@@ -58,6 +74,70 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
         userInfo.setPermissions(ArrayUtil.toArray(permissions,String.class));
         return userInfo;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean saveUser(UserDTO userDTO) {
+        SysUser user = new SysUser();
+        BeanUtil.copyProperties(userDTO,user);
+        user.setDelFlag(CommonConstants.STATUS_NORMAL);
+        user.setPassword(ENCODER.encode(userDTO.getPassword()));
+        baseMapper.insert(user);
+        List<SysUserRole> userRoles = userDTO.getRole().stream()
+                .map(roleId -> {
+                    SysUserRole userRole = new SysUserRole();
+                    userRole.setRoleId(roleId);
+                    userRole.setUserId(user.getUserId());
+                    return userRole;
+                }).collect(Collectors.toList());
+        return sysUserRoleService.saveBatch(userRoles);
+    }
+
+    /**
+     * 修改用户信息
+     * @param userDTO
+     * @return
+     */
+    @Override
+    public Boolean updateUser(UserDTO userDTO) {
+        SysUser sysUser = new SysUser();
+        BeanUtil.copyProperties(userDTO,sysUser);
+        sysUser.setUpdateTime(LocalDateTime.now());
+        if(StrUtil.isNotBlank(userDTO.getPassword())) {
+            sysUser.setPassword(ENCODER.encode(userDTO.getPassword()));
+        }
+        this.updateById(sysUser);
+
+        //重置角色
+        sysUserRoleService.removeRoleByUserId(sysUser.getUserId());
+        List<SysUserRole> userRoles = userDTO.getRole().stream().map(roleId -> {
+            SysUserRole userRole = new SysUserRole();
+            userRole.setUserId(sysUser.getUserId());
+            userRole.setRoleId(roleId);
+            return userRole;
+        }).collect(Collectors.toList());
+
+        return sysUserRoleService.saveBatch(userRoles);
+    }
+
+
+    @Override
+    public Boolean removeUserById(SysUser user) {
+        sysUserRoleService.removeRoleByUserId(user.getUserId());
+        this.removeById(user.getUserId());
+        return Boolean.TRUE;
+    }
+
+    /**
+     * 分页查询会员信息（包括角色）
+     * @param page    分页对象
+     * @param userDTO 参数列表
+     * @return
+     */
+    @Override
+    public IPage getUserWithRolePage(Page page, UserDTO userDTO) {
+        return this.baseMapper.getUserVosPage(page,userDTO);
     }
 }
 

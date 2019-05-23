@@ -1,5 +1,6 @@
 package com.study.boot.upms.web;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.util.WebResponse;
@@ -41,14 +42,17 @@ public class MenuController {
         Set<MenuVO> all = new HashSet<>();
         SecurityUtils.getRoleIds()
                 .forEach(roleId-> all.addAll(sysMenuService.getMenuByRoleId(roleId)));
-
         List<MenuTree> menuTreeList = all.stream()
                 .filter(menuVO -> CommonConstants.MENU.equals(menuVO.getType()))
                 .map(MenuTree::new)
                 .sorted(Comparator.comparingInt(MenuTree::getSort))
                 .collect(Collectors.toList());
         return new WebResponse<>(TreeUtils.buildByLoop(menuTreeList, -1));
+    }
 
+    @GetMapping("/tree")
+    public WebResponse getTree(){
+        return new WebResponse<>(TreeUtils.buildTree(sysMenuService.list(Wrappers.emptyWrapper()),-1));
     }
 
 }

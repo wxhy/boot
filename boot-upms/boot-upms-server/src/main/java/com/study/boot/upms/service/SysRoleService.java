@@ -20,5 +20,4 @@ public interface SysRoleService extends IService<SysRole>{
     List<SysRole> listRolesByUserId(Integer userId);
 
 
-
 }

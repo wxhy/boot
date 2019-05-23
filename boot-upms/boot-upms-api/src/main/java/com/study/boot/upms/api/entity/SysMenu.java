@@ -48,6 +48,12 @@ public class SysMenu extends Model<SysMenu> {
     private String path;
 
     /**
+     * VUE页面
+     */
+    private String component;
+
+
+    /**
      * 父菜单ID
      */
     @TableField(value = "parent_id")
