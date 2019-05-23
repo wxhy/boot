@@ -1,17 +1,17 @@
 package com.study.boot.upms.web;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.MenuTree;
+import com.study.boot.upms.api.entity.SysMenu;
 import com.study.boot.upms.api.util.TreeUtils;
 import com.study.boot.upms.api.vo.MenuVO;
 import com.study.boot.upms.service.SysMenuService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -50,9 +50,70 @@ public class MenuController {
         return new WebResponse<>(TreeUtils.buildByLoop(menuTreeList, -1));
     }
 
+    /**
+     * 返回树形菜单集合
+     * @return
+     */
     @GetMapping("/tree")
     public WebResponse getTree(){
         return new WebResponse<>(TreeUtils.buildTree(sysMenuService.list(Wrappers.emptyWrapper()),-1));
+    }
+
+    /**
+     *  获取角色的菜单集合
+     * @param roleId
+     * @return 属性集合
+     */
+    @GetMapping("/tree/{roleId}")
+    public List getRoleTree(@PathVariable Integer roleId){
+        return sysMenuService.getMenuByRoleId(roleId)
+                .stream()
+                .map(MenuVO::getMenuId)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 菜单详情
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public WebResponse getMenuDetail(@PathVariable Integer id){
+        return new WebResponse<>(sysMenuService.getById(id));
+    }
+
+    /**
+     * 保存菜单信息
+     * @param sysMenu
+     * @return
+     */
+    @PostMapping
+    public WebResponse saveMenu(@RequestBody SysMenu sysMenu) {
+        return new WebResponse<>(sysMenuService.save(sysMenu));
+    }
+
+    /**
+     * 删除菜单
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public WebResponse deleteMenu(@PathVariable Integer id) {
+        List<SysMenu> menus = sysMenuService.list(Wrappers.<SysMenu>query().lambda().eq(SysMenu::getParentId, id));
+        if(CollectionUtil.isNotEmpty(menus)){
+            return new WebResponse<>(CommonConstants.FAIL, "菜单含有下级菜单，不能删除");
+        }
+        return new WebResponse(sysMenuService.removeMenuById(id));
+    }
+
+    /**
+     * 修改菜单信息
+     * @param sysMenu
+     * @return
+     */
+    @PutMapping
+    public WebResponse updateMenu(@RequestBody SysMenu sysMenu) {
+        return new WebResponse<>(sysMenuService.updateById(sysMenu));
     }
 
 }

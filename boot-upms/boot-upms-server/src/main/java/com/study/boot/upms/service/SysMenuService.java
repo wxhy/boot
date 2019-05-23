@@ -18,4 +18,12 @@ public interface SysMenuService extends IService<SysMenu>{
      * @return 菜单列表
      */
     List<MenuVO> getMenuByRoleId(Integer roleId);
+
+    /**
+     * 删除菜单
+     * @param id
+     * @return
+     */
+    Boolean removeMenuById(Integer id);
+
 }
