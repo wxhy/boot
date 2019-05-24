@@ -64,7 +64,7 @@ public class UserController {
      */
     @PostMapping
     @SysLog("添加会员")
-    public WebResponse add(@RequestBody  UserDTO userDTO){
+    public WebResponse add(@RequestBody UserDTO userDTO){
         return new WebResponse<>(sysUserService.saveUser(userDTO));
     }
 

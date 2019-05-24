@@ -8,6 +8,8 @@ import com.study.boot.upms.service.SysLogService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/log")
 @AllArgsConstructor
@@ -42,7 +44,7 @@ public class LogController {
      * @return
      */
     @PostMapping
-    public WebResponse saveLog(@RequestBody SysLog sysLog) {
+    public WebResponse saveLog(@Valid @RequestBody SysLog sysLog) {
         return new WebResponse<>(sysLogService.save(sysLog));
     }
 }

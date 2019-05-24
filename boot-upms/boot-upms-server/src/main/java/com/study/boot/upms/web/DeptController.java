@@ -7,6 +7,8 @@ import com.study.boot.upms.service.SysDeptService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * @author Administrator
  */
@@ -53,7 +55,7 @@ public class DeptController {
      */
     @PostMapping
     @SysLog("添加部门")
-    public WebResponse saveDept(@RequestBody SysDept sysDept) {
+    public WebResponse saveDept(@Valid @RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.save(sysDept));
     }
 
@@ -64,7 +66,7 @@ public class DeptController {
      */
     @PutMapping
     @SysLog("修改部门")
-    public WebResponse updateDept(@RequestBody SysDept sysDept) {
+    public WebResponse updateDept(@Valid @RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.updateDeptById(sysDept));
     }
 

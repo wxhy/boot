@@ -10,6 +10,7 @@ import com.study.boot.upms.service.SysRoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -62,7 +63,7 @@ public class RoleController {
      */
     @PostMapping
     @SysLog("添加角色")
-    public WebResponse saveRole(@RequestBody SysRole sysRole){
+    public WebResponse saveRole(@Valid @RequestBody SysRole sysRole){
         return new WebResponse<>(sysRoleService.save(sysRole));
     }
 
@@ -73,7 +74,7 @@ public class RoleController {
      */
     @PutMapping
     @SysLog("修改角色")
-    public WebResponse updateRole(@RequestBody SysRole sysRole) {
+    public WebResponse updateRole(@Valid @RequestBody SysRole sysRole) {
         return new WebResponse<>(sysRoleService.updateById(sysRole));
     }
 

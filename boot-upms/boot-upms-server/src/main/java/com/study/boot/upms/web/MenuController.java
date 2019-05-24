@@ -14,6 +14,7 @@ import com.study.boot.upms.service.SysMenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -90,7 +91,7 @@ public class MenuController {
      */
     @PostMapping
     @SysLog("添加菜单")
-    public WebResponse saveMenu(@RequestBody SysMenu sysMenu) {
+    public WebResponse saveMenu(@Valid @RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.save(sysMenu));
     }
 
@@ -116,7 +117,7 @@ public class MenuController {
      */
     @PutMapping
     @SysLog("修改菜单")
-    public WebResponse updateMenu(@RequestBody SysMenu sysMenu) {
+    public WebResponse updateMenu(@Valid @RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.updateById(sysMenu));
     }
 
