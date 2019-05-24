@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class UserDTO extends SysUser {

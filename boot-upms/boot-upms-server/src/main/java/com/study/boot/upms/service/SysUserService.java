@@ -51,6 +51,13 @@ public interface SysUserService extends IService<SysUser> {
      */
     IPage getUserWithRolePage(Page page, UserDTO userDTO);
 
+    /**
+     * 根据会员名查询会员
+     * @param username
+     * @return
+     */
+    SysUser findByUsername(String username);
+
 }
 
 

@@ -18,5 +18,36 @@ public interface SysDeptService extends IService<SysDept> {
      */
     List<DeptTree> listDeptTrees();
 
+    /**
+     * 查询用户部门树
+     *
+     * @return
+     */
+    List<DeptTree> listCurrentUserDeptTrees();
+
+    /**
+     * 根据部门ID删除部门
+     * @param id
+     * @return
+     */
+    Boolean removeDeptById(Integer id);
+
+    /**
+     * 添加信息部门
+     *
+     * @param sysDept
+     * @return
+     */
+    Boolean saveDept(SysDept sysDept);
+
+
+    /**
+     * 更新部门
+     *
+     * @param sysDept 部门信息
+     * @return 成功、失败
+     */
+    Boolean updateDeptById(SysDept sysDept);
+
 }
 

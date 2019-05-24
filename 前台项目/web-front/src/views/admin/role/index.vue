@@ -289,10 +289,11 @@
           this.dialogPermissionVisible = false
           fetchMenuTree()
             .then(response => {
-              this.form = response.data.data
+              // this.form = response.data.data
               return fetchRoleTree(roleId)
             })
             .then(response => {
+               console.log(response)
               this.checkedKeys = response.data
               this.$notify({
                 title: '成功',

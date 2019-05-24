@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.enums.CommonConstants;
@@ -19,14 +20,12 @@ import com.study.boot.upms.service.SysRoleService;
 import com.study.boot.upms.service.SysUserRoleService;
 import com.study.boot.upms.service.SysUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -138,6 +137,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public IPage getUserWithRolePage(Page page, UserDTO userDTO) {
         return this.baseMapper.getUserVosPage(page,userDTO);
+    }
+
+    /**
+     * 根据会员名查询会员
+     * @param username
+     * @return
+     */
+    @Override
+    public SysUser findByUsername(String username) {
+        return baseMapper.selectOne(Wrappers.<SysUser>query()
+                .lambda().eq(SysUser::getUsername, username));
     }
 }
 
