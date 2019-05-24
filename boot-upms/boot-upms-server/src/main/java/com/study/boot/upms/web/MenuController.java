@@ -2,6 +2,7 @@ package com.study.boot.upms.web;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.util.WebResponse;
@@ -88,6 +89,7 @@ public class MenuController {
      * @return
      */
     @PostMapping
+    @SysLog("添加菜单")
     public WebResponse saveMenu(@RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.save(sysMenu));
     }
@@ -98,6 +100,7 @@ public class MenuController {
      * @return
      */
     @DeleteMapping("/{id}")
+    @SysLog("删除菜单")
     public WebResponse deleteMenu(@PathVariable Integer id) {
         List<SysMenu> menus = sysMenuService.list(Wrappers.<SysMenu>query().lambda().eq(SysMenu::getParentId, id));
         if(CollectionUtil.isNotEmpty(menus)){
@@ -112,6 +115,7 @@ public class MenuController {
      * @return
      */
     @PutMapping
+    @SysLog("修改菜单")
     public WebResponse updateMenu(@RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.updateById(sysMenu));
     }

@@ -14,6 +14,7 @@
     <modules>
         <module>boot-common-core</module>
         <module>boot-common-auth</module>
+        <module>boot-common-log</module>
     </modules>
 
 

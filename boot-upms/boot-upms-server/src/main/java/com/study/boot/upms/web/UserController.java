@@ -4,6 +4,7 @@ package com.study.boot.upms.web;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.util.WebResponse;
@@ -62,6 +63,7 @@ public class UserController {
      * @return
      */
     @PostMapping
+    @SysLog("添加会员")
     public WebResponse add(@RequestBody  UserDTO userDTO){
         return new WebResponse<>(sysUserService.saveUser(userDTO));
     }
@@ -72,11 +74,13 @@ public class UserController {
      * @return
      */
     @PutMapping
+    @SysLog("修改会员")
     public WebResponse updateUser(@RequestBody UserDTO userDTO){
         return new WebResponse<>(sysUserService.updateUser(userDTO));
     }
 
     @DeleteMapping("/{id}")
+    @SysLog("删除会员")
     public WebResponse userDel(@PathVariable Integer id) {
         SysUser user = sysUserService.getById(id);
         return new WebResponse<>(sysUserService.removeUserById(user));

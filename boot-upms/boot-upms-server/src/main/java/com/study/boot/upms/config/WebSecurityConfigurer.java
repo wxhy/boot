@@ -14,7 +14,9 @@ public class WebSecurityConfigurer extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/actuator/**","/user/info/*").permitAll()
+                .antMatchers("/actuator/**",
+                        "/user/info/*",
+                        "/log/**").permitAll()
                 .anyRequest().authenticated();
     }
 }

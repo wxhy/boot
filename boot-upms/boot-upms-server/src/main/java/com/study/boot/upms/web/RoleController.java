@@ -2,6 +2,7 @@ package com.study.boot.upms.web;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysRole;
 import com.study.boot.upms.service.SysRoleMenuService;
@@ -60,6 +61,7 @@ public class RoleController {
      * @return
      */
     @PostMapping
+    @SysLog("添加角色")
     public WebResponse saveRole(@RequestBody SysRole sysRole){
         return new WebResponse<>(sysRoleService.save(sysRole));
     }
@@ -70,6 +72,7 @@ public class RoleController {
      * @return
      */
     @PutMapping
+    @SysLog("修改角色")
     public WebResponse updateRole(@RequestBody SysRole sysRole) {
         return new WebResponse<>(sysRoleService.updateById(sysRole));
     }
@@ -80,6 +83,7 @@ public class RoleController {
      * @return
      */
     @DeleteMapping("/{id}")
+    @SysLog("删除角色")
     public WebResponse removeById(@PathVariable Integer id) {
         return new WebResponse<>(sysRoleService.removeRoleById(id));
     }
@@ -91,6 +95,7 @@ public class RoleController {
      * @return
      */
     @PutMapping("/menu")
+    @SysLog("更新角色菜单")
     public WebResponse saveRoleMenus(Integer roleId,@RequestParam(value = "menuIds",required = false)String menuIds) {
         return new WebResponse<>(sysRoleMenuService.saveRoleMenus(roleId,menuIds));
     }

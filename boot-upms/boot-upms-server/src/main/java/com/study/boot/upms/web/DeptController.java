@@ -1,5 +1,6 @@
 package com.study.boot.upms.web;
 
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysDept;
 import com.study.boot.upms.service.SysDeptService;
@@ -51,6 +52,7 @@ public class DeptController {
      * @return
      */
     @PostMapping
+    @SysLog("添加部门")
     public WebResponse saveDept(@RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.save(sysDept));
     }
@@ -61,6 +63,7 @@ public class DeptController {
      * @return
      */
     @PutMapping
+    @SysLog("修改部门")
     public WebResponse updateDept(@RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.updateDeptById(sysDept));
     }
@@ -71,6 +74,7 @@ public class DeptController {
      * @return
      */
     @DeleteMapping("/{id}")
+    @SysLog("删除部门")
     public WebResponse removeDept(@PathVariable Integer id) {
         return new WebResponse<>(sysDeptService.removeDeptById(id));
     }
