@@ -22,6 +22,7 @@
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <commons-pool.version>2.6.2</commons-pool.version>
         <security.oauth.version>2.3.3.RELEASE</security.oauth.version>
+        <flowable.version>6.4.1</flowable.version>
     </properties>
 
     <modules>
@@ -31,6 +32,7 @@
         <module>boot-common</module>
         <module>boot-config</module>
         <module>boot-gateway</module>
+        <module>boot-modules</module>
     </modules>
 
     <dependencies>

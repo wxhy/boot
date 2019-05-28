@@ -29,16 +29,6 @@ public class SysRole extends Model<SysRole> {
     @NotBlank(message = "角色描述 不能为空")
     private String roleDesc;
 
-    /**
-     * 数据权限类型
-     */
-    private String dsType;
-
-    /**
-     * 数据权限范围
-     */
-    private String dsScope;
-
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;

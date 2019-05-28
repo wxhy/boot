@@ -82,7 +82,7 @@ public class SysLog extends Model<SysLog> {
     /**
      * 执行时间
      */
-    private String time;
+    private Long time;
 
     /**
      * 删除标记
