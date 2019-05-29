@@ -29,7 +29,7 @@
            class="icon-mima"></i>
       </el-input>
     </el-form-item>
-    <!-- <el-form-item prop="code">
+    <el-form-item prop="code">
       <el-row :span="24">
         <el-col :span="16">
           <el-input size="small"
@@ -54,7 +54,7 @@
           </div>
         </el-col>
       </el-row>
-    </el-form-item> -->
+    </el-form-item>
 
     <el-form-item>
       <el-button type="primary"

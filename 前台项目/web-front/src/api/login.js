@@ -17,7 +17,7 @@
 import request from '@/router/axios'
 const scope = 'server'
 
-export const loginByUsername = (username, password) => {
+export const loginByUsername = (username, password,code,randomStr) => {
   const grant_type = 'password'
 
   return request({
@@ -26,7 +26,7 @@ export const loginByUsername = (username, password) => {
       'Authorization': 'Basic dGVzdDp0ZXN0'
     },
     method: 'post',
-    params: { username, password, grant_type, scope }
+    params: { username, password, grant_type, scope,code,randomStr }
   })
 }
 

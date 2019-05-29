@@ -10,6 +10,9 @@ spring:
           uri: lb://boot-auth
           predicates:
            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeGatewayFilter
         #UPMS 模块
         - id: boot-upms
           uri: lb://boot-upms

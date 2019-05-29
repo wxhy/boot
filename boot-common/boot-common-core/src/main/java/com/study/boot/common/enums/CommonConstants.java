@@ -41,4 +41,14 @@ public interface CommonConstants {
      * 菜单
      */
     String MENU = "0";
+
+    /**
+     * 验证码前缀
+     */
+    String DEFAULT_CODE_KEY = "DEFAULT_CODE_KEY_";
+
+    /**
+     * 验证码有效期
+     */
+    int CODE_TIME = 60;
 }

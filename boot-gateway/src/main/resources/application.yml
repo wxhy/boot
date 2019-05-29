@@ -15,7 +15,8 @@ spring:
         service-id: boot-config
   profiles:
     active: dev
-
+  main:
+    allow-bean-definition-overriding: true
 
 ## 注冊中心配置
 eureka:
@@ -24,6 +25,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:123456@localhost:9999/eureka/
-    fetch-registry: true
 
 

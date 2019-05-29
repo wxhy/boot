@@ -1,6 +1,7 @@
 package com.study.boot.gateway.config;
 
 import com.study.boot.gateway.handler.HystrixFallbackHandler;
+import com.study.boot.gateway.handler.ImageCodeHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +19,14 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 public class RouterFunctionConfiguration {
 
     private final HystrixFallbackHandler hystrixFallbackHandler;
+    private final ImageCodeHandler imageCodeHandler;
     @Bean
     public RouterFunction  routerFunction(){
         return RouterFunctions.route(
                 RequestPredicates.path("/fallback")
-                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),hystrixFallbackHandler);
+                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),hystrixFallbackHandler)
+                .andRoute(RequestPredicates.GET("/code")
+                                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN))
+                        ,imageCodeHandler);
     }
 }

@@ -18,6 +18,12 @@ public interface SecurityConstants {
      * oauth 相关前缀
      */
     String OAUTH_PREFIX = "oauth:";
+
+    /**
+     * 验证码长度
+     */
+    String CODE_SIZE = "4";
+
     /**
      * 项目的license
      */

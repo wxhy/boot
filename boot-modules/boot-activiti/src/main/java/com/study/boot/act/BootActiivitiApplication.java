@@ -1,16 +1,16 @@
-package com.study.boot.activiti;
+package com.study.boot.act;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author Qiu Hong Yun
  * @version 1.0
  * @date 2019/5/28 19:32
  */
-@SpringBootApplication
-@EnableDiscoveryClient
+@SpringCloudApplication
+@EnableFeignClients(basePackages ={"com.study.boot"})
 public class BootActiivitiApplication {
 
     public static void main(String[] args) {

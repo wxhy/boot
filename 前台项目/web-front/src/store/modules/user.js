@@ -54,8 +54,9 @@ const user = {
         param: ['password']
       })
       return new Promise((resolve, reject) => {
-        loginByUsername(userInfo.username, userInfo.password).then(response => {
-          console.log(response)
+        console.log(userInfo)
+        loginByUsername(userInfo.username, userInfo.password,userInfo.code,userInfo.randomStr).then(response => {
+          
           const data = response.data
           commit('SET_ACCESS_TOKEN', data.access_token)
           commit('SET_REFRESH_TOKEN', data.refresh_token)
