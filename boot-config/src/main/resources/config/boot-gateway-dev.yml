@@ -18,3 +18,8 @@ spring:
           uri: lb://boot-upms
           predicates:
            - Path=/admin/**
+        # 工作流模块
+        - id: boot-activiti
+          uri: lb://boot-activiti
+          predicates:
+            - Path=/act/**

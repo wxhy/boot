@@ -2,13 +2,19 @@ package com.study.boot.act;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.study.boot.common.util.SpringContextHolder;
 import org.flowable.editor.constants.ModelDataJsonConstants;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.repository.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.user.SimpUser;
+import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
 
 /**
  * @author Qiu Hong Yun
@@ -23,7 +29,9 @@ public class DemoController {
     @Autowired
     private RepositoryService repositoryService;
 
-    @GetMapping
+    @Autowired
+    private SimpUserRegistry simpUserRegistry;
+
     public void createModel()throws Exception{
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -54,5 +62,16 @@ public class DemoController {
         repositoryService.saveModel(model);
         repositoryService.addModelEditorSource(model.getId(), editorNode.toString().getBytes("utf-8"));
 
+    }
+
+
+    @GetMapping
+    public void greeting() {
+        SimpMessagingTemplate messagingTemplate = SpringContextHolder.getBean(SimpMessagingTemplate.class);
+        Set<SimpUser> users = simpUserRegistry.getUsers();
+        users.forEach(simpUser -> {
+            System.out.println(simpUser.getName());
+        });
+        messagingTemplate.convertAndSendToUser("admin","/remind","收到了没有啊");
     }
 }

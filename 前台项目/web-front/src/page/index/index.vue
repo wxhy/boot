@@ -127,7 +127,6 @@
       },
       connection() {
         let token = store.getters.access_token
-        let TENANT_ID = getStore({name: 'tenantId'})
         let headers = {
           'Authorization': 'Bearer ' + token
         }
@@ -138,7 +137,9 @@
 
         // 向服务器发起websocket连接
         this.stompClient.connect(headers, () => {
-          this.stompClient.subscribe('/task/' + this.userInfo.username + "-" + TENANT_ID + '/remind', (msg) => { // 订阅服务端提供的某个topic;
+           console.log('链接成功')
+          this.stompClient.subscribe('/user/' + this.userInfo.username + '/remind', (msg) => { // 订阅服务端提供的某个topic;
+            console.log(msg)
             this.$notify({
               title: "协同提醒",
               type: 'warning',
@@ -148,7 +149,7 @@
             });
           });
         }, (err) => {
-
+            console.log(err)
         });
       },
       disconnect() {
