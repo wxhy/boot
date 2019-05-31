@@ -50,12 +50,12 @@ const user = {
     LoginByUsername({commit}, userInfo) {
       const user = encryption({
         data: userInfo,
-        key: 'pigxpigxpigxpigx',
+        key: 'thanks1234567890',
         param: ['password']
       })
       return new Promise((resolve, reject) => {
         console.log(userInfo)
-        loginByUsername(userInfo.username, userInfo.password,userInfo.code,userInfo.randomStr).then(response => {
+        loginByUsername(user.username, user.password,user.code,user.randomStr).then(response => {
           
           const data = response.data
           commit('SET_ACCESS_TOKEN', data.access_token)

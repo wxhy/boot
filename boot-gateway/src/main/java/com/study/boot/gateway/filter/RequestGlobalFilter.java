@@ -33,7 +33,6 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.info("开始过滤");
         // 1. 清洗请求头中from 参数
         ServerHttpRequest request = exchange.getRequest().mutate()
                 .headers(httpHeaders -> httpHeaders.remove(FROM))
@@ -44,16 +43,12 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
         ServerWebExchangeUtils.addOriginalRequestUrl(exchange,request.getURI());
 
         String rawPath = request.getURI().getRawPath();
-        log.info(rawPath);
         String newPath = "/" + Arrays.stream(StringUtils.tokenizeToStringArray(rawPath,"/"))
                 .skip(1L).collect(Collectors.joining("/"));
-        log.info(newPath);
         ServerHttpRequest newRequest = request.mutate()
                 .path(newPath)
                 .build();
         exchange.getAttributes().put(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR,newRequest.getURI());
-
-        log.info("结束过滤");
         return chain.filter(exchange.mutate().request(newRequest.mutate().build()).build());
     }
 

@@ -13,6 +13,8 @@ spring:
           filters:
             # 验证码处理
             - ValidateCodeGatewayFilter
+            #密码解密处理
+            - PasswordDecoderFilter
         #UPMS 模块
         - id: boot-upms
           uri: lb://boot-upms
@@ -23,3 +25,8 @@ spring:
           uri: lb://boot-activiti
           predicates:
             - Path=/act/**
+
+securty:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'thanks1234567890'
