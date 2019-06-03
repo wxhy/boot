@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/log")
 @AllArgsConstructor

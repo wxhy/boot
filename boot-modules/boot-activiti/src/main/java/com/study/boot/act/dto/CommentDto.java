@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @author Administrator
+ */
 @Data
 public class CommentDto {
     /**
