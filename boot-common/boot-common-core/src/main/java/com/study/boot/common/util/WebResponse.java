@@ -16,6 +16,7 @@ public class WebResponse<T> implements Serializable {
 
     @Getter
     @Setter
+    @Builder.Default
     private Integer code  = CommonConstants.SUCCESS;
 
     @Getter

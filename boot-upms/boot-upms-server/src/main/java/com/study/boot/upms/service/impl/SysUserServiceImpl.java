@@ -14,12 +14,14 @@ import com.study.boot.upms.api.entity.SysRole;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.api.entity.SysUserRole;
 import com.study.boot.upms.api.vo.MenuVO;
+import com.study.boot.upms.api.vo.UserVO;
 import com.study.boot.upms.mapper.SysUserMapper;
 import com.study.boot.upms.service.SysMenuService;
 import com.study.boot.upms.service.SysRoleService;
 import com.study.boot.upms.service.SysUserRoleService;
 import com.study.boot.upms.service.SysUserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,7 @@ import java.util.stream.Collectors;
  * @author Administrator
  */
 @Service
+@Slf4j
 @AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
@@ -91,6 +94,30 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                     return userRole;
                 }).collect(Collectors.toList());
         return sysUserRoleService.saveBatch(userRoles);
+    }
+
+    /**
+     * 修改会员个人信息
+     * @param userDto
+     * @return
+     */
+    @Override
+    public Boolean updateUserInfo(UserDTO userDto) {
+        UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
+        SysUser sysUser = new SysUser();
+        if (StrUtil.isNotBlank(userDto.getPassword())
+                && StrUtil.isNotBlank(userDto.getNewpassword())) {
+            if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
+                sysUser.setPassword(ENCODER.encode(userDto.getNewpassword()));
+            } else {
+                log.warn("原密码错误，修改密码失败:{}", userDto.getUsername());
+                return Boolean.FALSE;
+            }
+        }
+        sysUser.setPhone(userDto.getPhone());
+        sysUser.setUserId(userVO.getUserId());
+        sysUser.setAvatar(userDto.getAvatar());
+        return Boolean.TRUE;
     }
 
     /**

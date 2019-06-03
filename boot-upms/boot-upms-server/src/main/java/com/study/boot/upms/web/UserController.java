@@ -14,6 +14,8 @@ import com.study.boot.upms.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  *
  * @author Administrator
@@ -75,8 +77,14 @@ public class UserController {
      */
     @PutMapping
     @SysLog("修改会员")
-    public WebResponse updateUser(@RequestBody UserDTO userDTO){
+    public WebResponse updateUser(@RequestBody @Valid UserDTO userDTO){
         return new WebResponse<>(sysUserService.updateUser(userDTO));
+    }
+
+    @PutMapping("/edit")
+    @SysLog("修改会员个人信息")
+    public WebResponse updateUserInfo(@RequestBody @Valid UserDTO userDTO) {
+        return new WebResponse<>(sysUserService.updateUserInfo(userDTO));
     }
 
     @DeleteMapping("/{id}")

@@ -81,13 +81,13 @@
               <el-form-item label="密码"
                             prop="newpassword1">
                 <el-input type="password"
-                          v-model="ruleForm2.newpassword1"
+                          v-model="ruleForm2.newpassword"
                           auto-complete="off"></el-input>
               </el-form-item>
               <el-form-item label="确认密码"
                             prop="newpassword2">
                 <el-input type="password"
-                          v-model="ruleForm2.newpassword2"
+                          v-model="ruleForm2.newpassword1"
                           auto-complete="off"></el-input>
               </el-form-item>
               <el-form-item>
@@ -135,15 +135,15 @@
         ruleForm2: {
           username: '',
           password: '',
+          newpassword: '',
           newpassword1: '',
-          newpassword2: '',
           avatar: '',
           phone: ''
         },
         rules2: {
           password: [{required: true, min: 6, message: '原密码不能为空且不少于6位', trigger: 'change'}],
-          newpassword1: [{required: false, min: 6, message: '不少于6位', trigger: 'change'}],
-          newpassword2: [{required: false, validator: validatePass, trigger: 'blur'}]
+          newpassword: [{required: false, min: 6, message: '不少于6位', trigger: 'change'}],
+          newpassword1: [{required: false, validator: validatePass, trigger: 'blur'}]
         }
       }
     },

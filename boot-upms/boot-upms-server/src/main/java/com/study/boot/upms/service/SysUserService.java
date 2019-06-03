@@ -28,6 +28,13 @@ public interface SysUserService extends IService<SysUser> {
     Boolean saveUser(UserDTO userDTO);
 
     /**
+     * 修改会员个人信息
+     * @param userDTO
+     * @return
+     */
+    Boolean updateUserInfo(UserDTO userDTO);
+
+    /**
      * 修改用户信息
      * @param userDTO
      * @return

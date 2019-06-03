@@ -25,4 +25,11 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * @return list
      */
     IPage<List<UserVO>> getUserVosPage(Page page, @Param("query") UserDTO userDTO);
+
+    /**
+     * 通过用户名查询用户信息（含有角色信息）
+     * @param username
+     * @return
+     */
+    UserVO getUserVoByUsername(String username);
 }
