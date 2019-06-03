@@ -15,7 +15,7 @@ import java.util.Optional;
 
 /**
  * hystrix服务降级处理
- * @author Qiu Hong Yun
+ * @author Carlos
  * @version 1.0
  * @date 2019/5/19 9:46
  */

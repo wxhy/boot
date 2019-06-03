@@ -5,7 +5,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * @author Qiu Hong Yun
+ * @author Carlos
  * @version 1.0
  * @date 2019/5/18 10:42
  */

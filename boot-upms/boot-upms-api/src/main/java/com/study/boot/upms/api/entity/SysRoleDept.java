@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 角色部门表
- * @author Qiu Hong Yun
+ * @author Carlos
  * @version 1.0
  * @date 2019/5/24 22:15
  */

@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
- * @author Qiu Hong Yun
+ * @author Carlos
  * @version 1.0
  * @date 2019/5/28 19:32
  */
