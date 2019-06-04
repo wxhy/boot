@@ -51,4 +51,9 @@ public interface CommonConstants {
      * 验证码有效期
      */
     int CODE_TIME = 60;
+
+    /**
+     * 编码
+     */
+    String UTF8 = "UTF-8";
 }

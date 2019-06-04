@@ -1,27 +1,26 @@
 package com.study.boot.common.auth.service;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.common.enums.SecurityConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.api.feign.RemoteUserService;
-
-import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *  用户详细信息
@@ -30,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements CustomUserDetailsService {
 
     private final RemoteUserService remoteUserService;
 
@@ -42,10 +41,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @throws UsernameNotFoundException
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    @SneakyThrows
+    public UserDetails loadUserByUsername(String username) {
         WebResponse<UserInfo> info = remoteUserService.info(username, SecurityConstants.FROM_IN);
         UserDetails userDetails = getUserDetails(info);
         return userDetails;
+    }
+
+    /**
+     * 社交账号登陆
+     * @param instr type@code
+     * @return
+     */
+    @Override
+    @SneakyThrows
+    public UserDetails loadUserBySocial(String instr) {
+        return getUserDetails(remoteUserService.social(instr,SecurityConstants.FROM_IN));
     }
 
     private UserDetails getUserDetails( WebResponse<UserInfo> result) {
@@ -72,4 +83,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 StrUtil.equals(user.getLockFlag(), CommonConstants.STATUS_NORMAL),true,true,true,authorities);
 
     }
+
 }

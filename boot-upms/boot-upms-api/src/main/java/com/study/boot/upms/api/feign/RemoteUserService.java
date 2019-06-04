@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
  * @author Administrator
  */
 @FeignClient(value = ServiceNameConstants.UMPS_SERVICE,fallbackFactory = RemoteUserServiceFallFactory.class)
-@FunctionalInterface
 public interface RemoteUserService {
 
 
@@ -31,4 +30,14 @@ public interface RemoteUserService {
     WebResponse<UserInfo> info(@PathVariable("username") String username
             , @RequestHeader(SecurityConstants.FROM) String from);
 
+
+    /**
+     *  通过社交账号或手机号查询用户、角色信息
+     * @param inStr type@code
+     * @param from
+     * @return
+     */
+    @GetMapping("/social/info/{inStr}")
+    WebResponse<UserInfo> social(@PathVariable("inStr") String inStr
+            , @RequestHeader(SecurityConstants.FROM) String from);
 }
