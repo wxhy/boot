@@ -32,7 +32,7 @@ public class MobileSecurityConfigurer extends SecurityConfigurerAdapter<DefaultS
     private CustomUserDetailsService userDetailsService;
 
     @Override
-    public void configure(HttpSecurity http) throws Exception {
+    public void configure(HttpSecurity http) {
         MobileAuthenticationFilter mobileAuthenticationFilter = new MobileAuthenticationFilter();
         mobileAuthenticationFilter.setEventPublisher(defaultAuthenticationEventPublisher);
         mobileAuthenticationFilter.setAuthenticationSuccessHandler(mobileLoginSuccessHandler);
