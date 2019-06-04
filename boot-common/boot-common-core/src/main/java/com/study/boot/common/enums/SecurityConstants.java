@@ -25,6 +25,11 @@ public interface SecurityConstants {
     String CODE_SIZE = "4";
 
     /**
+     * 验证码有效期
+     */
+    int CODE_TIME = 60;
+
+    /**
      * 项目的license
      */
     String PROJECT_LICENSE = "made by pig";
@@ -42,7 +47,12 @@ public interface SecurityConstants {
     /**
      * 手机号登录URL
      */
-    String MOBILE_TOKEN_URL = "/mobile/token";
+    String SMS_TOKEN_URL = "/mobile/token/sms";
+
+    /**
+     * 自定义登录URL
+     */
+    String MOBILE_TOKEN_URL = "/mobile/token/*";
 
     /**
      * 默认登录URL

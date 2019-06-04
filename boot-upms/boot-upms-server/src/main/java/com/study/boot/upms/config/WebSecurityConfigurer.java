@@ -16,6 +16,7 @@ public class WebSecurityConfigurer extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/actuator/**",
                         "/user/info/*",
+                        "/mobile/**",
                         "/log/**").permitAll()
                 .anyRequest().authenticated();
     }
