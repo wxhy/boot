@@ -14,15 +14,10 @@ spring:
       server:
         native:
           search-locations: classpath:/config/
-
-
-#注册中心配置
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:123456@localhost:9999/eureka/
+    #nacos注册中心
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
 # 暴露监控端点
 management:

@@ -13,17 +13,14 @@ spring:
       discovery:
         enabled: true
         service-id: boot-config
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
   profiles:
     active: dev
   main:
     allow-bean-definition-overriding: true
 
 ## 注冊中心配置
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:123456@localhost:9999/eureka/
 
 
