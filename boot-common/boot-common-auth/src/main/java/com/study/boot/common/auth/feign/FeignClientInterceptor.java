@@ -4,10 +4,13 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.study.boot.common.enums.SecurityConstants;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.security.oauth2.client.AccessTokenContextRelay;
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 
 import java.util.Collection;
 
@@ -18,7 +21,6 @@ import java.util.Collection;
 @Slf4j
 public class FeignClientInterceptor extends OAuth2FeignRequestInterceptor {
     private final OAuth2ClientContext oAuth2ClientContext;
-    private final AccessTokenContextRelay accessTokenContextRelay;
 
     /**
      * Default constructor which uses the provided OAuth2ClientContext and Bearer tokens
@@ -26,14 +28,12 @@ public class FeignClientInterceptor extends OAuth2FeignRequestInterceptor {
      *
      * @param oAuth2ClientContext     provided context
      * @param resource                type of resource to be accessed
-     * @param accessTokenContextRelay
+     * @param
      */
     public FeignClientInterceptor(OAuth2ClientContext oAuth2ClientContext,
-                                  OAuth2ProtectedResourceDetails resource,
-                                  AccessTokenContextRelay accessTokenContextRelay) {
+                                  OAuth2ProtectedResourceDetails resource) {
         super(oAuth2ClientContext, resource);
         this.oAuth2ClientContext = oAuth2ClientContext;
-        this.accessTokenContextRelay = accessTokenContextRelay;
     }
 
     /**
@@ -50,10 +50,30 @@ public class FeignClientInterceptor extends OAuth2FeignRequestInterceptor {
         if(CollectionUtil.isNotEmpty(fromHeader) && fromHeader.contains(SecurityConstants.FROM_IN)) {
             return;
         }
-        accessTokenContextRelay.copyToken();
+        copyToken();
         if (oAuth2ClientContext != null
                 && oAuth2ClientContext.getAccessToken() != null) {
             super.apply(template);
+        }
+    }
+
+    private void copyToken(){
+        if(oAuth2ClientContext == null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null) {
+                Object details = authentication.getDetails();
+                if (details instanceof OAuth2AuthenticationDetails) {
+                    OAuth2AuthenticationDetails holder = (OAuth2AuthenticationDetails) details;
+                    String token = holder.getTokenValue();
+                    DefaultOAuth2AccessToken accessToken = new DefaultOAuth2AccessToken(
+                            token);
+                    String tokenType = holder.getTokenType();
+                    if (tokenType != null) {
+                        accessToken.setTokenType(tokenType);
+                    }
+                    oAuth2ClientContext.setAccessToken(accessToken);
+                }
+            }
         }
     }
 }

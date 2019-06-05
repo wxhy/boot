@@ -56,6 +56,16 @@ feign:
     response:
       enabled: true
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+  shareSecurityContext: true
+
 ## security配置
 security:
   oauth2:

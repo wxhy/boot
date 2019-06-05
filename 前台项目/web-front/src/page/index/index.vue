@@ -137,9 +137,7 @@
 
         // 向服务器发起websocket连接
         this.stompClient.connect(headers, () => {
-           console.log('链接成功')
           this.stompClient.subscribe('/user/' + this.userInfo.username + '/remind', (msg) => { // 订阅服务端提供的某个topic;
-            console.log(msg)
             this.$notify({
               title: "协同提醒",
               type: 'warning',
