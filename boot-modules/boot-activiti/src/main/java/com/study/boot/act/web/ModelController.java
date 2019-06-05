@@ -27,7 +27,7 @@ public class ModelController {
      * @return
      */
     @GetMapping
-    public WebResponse getModelPage(Map<String,Object> params){
+    public WebResponse getModelPage(@RequestParam Map<String,Object> params){
         return new WebResponse<>(modelService.getModelPage(params));
     }
 

@@ -31,7 +31,7 @@ public class ProcessController {
     }
 
 
-    @GetMapping(value = "/resource/{proInsId}/{procDefId}/{resType}")
+    @GetMapping(value = "/resource/{proInsId}/{proceDefId}/{resType}")
     public ResponseEntity resourceRead(@PathVariable String proInsId,@PathVariable String proceDefId,@PathVariable String resType){
         InputStream inputStream = processService.readResource(proceDefId, proInsId, resType);
         HttpHeaders headers = new HttpHeaders();

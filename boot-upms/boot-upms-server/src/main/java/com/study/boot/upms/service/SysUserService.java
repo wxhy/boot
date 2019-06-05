@@ -7,6 +7,8 @@ import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysUser;
 
+import java.util.List;
+
 /**
  * @author Administrator
  */
@@ -64,6 +66,15 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      */
     SysUser findByUsername(String username);
+
+
+    /**
+     * 查询上级部门的用户信息
+     *
+     * @param username 用户名
+     * @return R
+     */
+    List<SysUser> listAncestorUsers(String username);
 
 }
 

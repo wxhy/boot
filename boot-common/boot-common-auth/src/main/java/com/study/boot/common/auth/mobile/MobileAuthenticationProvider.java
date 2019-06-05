@@ -45,7 +45,7 @@ public class MobileAuthenticationProvider implements AuthenticationProvider {
         // 检查账号状态
         detailsChecker.check(userDetails);
 
-        MobileAuthenticationToken authenticationToken = new MobileAuthenticationToken(principal, userDetails.getAuthorities());
+        MobileAuthenticationToken authenticationToken = new MobileAuthenticationToken(userDetails.getUsername(), userDetails.getAuthorities());
         mobileAuthenticationToken.setDetails(authenticationToken.getDetails());
         return authenticationToken;
     }

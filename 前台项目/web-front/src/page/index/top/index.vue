@@ -35,6 +35,19 @@
           <top-logs></top-logs>
         </div>
       </el-tooltip>
+
+      <el-tooltip effect="dark"
+                  content="消息"
+                  placement="bottom">
+        <div class="top-bar__item">
+            <el-badge :value="3">
+                <i class="el-icon-bell"></i>
+            </el-badge>
+        </div>
+      </el-tooltip>
+
+     
+
       <el-tooltip v-if="showLock"
                   effect="dark"
                   content="锁屏"

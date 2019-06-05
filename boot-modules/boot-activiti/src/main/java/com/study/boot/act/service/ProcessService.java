@@ -53,5 +53,5 @@ public interface ProcessService {
      * @param leaveId
      * @return
      */
-    Boolean saveStartProcess(Integer leaveId);
+    Boolean saveStartProcess(String leaveId);
 }

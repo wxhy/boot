@@ -4,11 +4,14 @@ import com.study.boot.common.enums.SecurityConstants;
 import com.study.boot.common.enums.ServiceNameConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserInfo;
+import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.api.feign.factory.RemoteUserServiceFallFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
+
+import java.util.List;
 
 /**
  * 远程调用userService
@@ -40,4 +43,13 @@ public interface RemoteUserService {
     @GetMapping("/social/info/{inStr}")
     WebResponse<UserInfo> social(@PathVariable("inStr") String inStr
             , @RequestHeader(SecurityConstants.FROM) String from);
+
+    /**
+     * 查询上级部门的用户信息
+     *
+     * @param username 用户名
+     * @return R
+     */
+    @GetMapping("/user/ancestor/{username}")
+    WebResponse<List<SysUser>> ancestorUsers(@PathVariable("username") String username);
 }

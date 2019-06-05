@@ -10,24 +10,23 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.dto.UserInfo;
+import com.study.boot.upms.api.entity.SysDept;
 import com.study.boot.upms.api.entity.SysRole;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.api.entity.SysUserRole;
 import com.study.boot.upms.api.vo.MenuVO;
 import com.study.boot.upms.api.vo.UserVO;
 import com.study.boot.upms.mapper.SysUserMapper;
-import com.study.boot.upms.service.SysMenuService;
-import com.study.boot.upms.service.SysRoleService;
-import com.study.boot.upms.service.SysUserRoleService;
-import com.study.boot.upms.service.SysUserService;
-import lombok.AllArgsConstructor;
+import com.study.boot.upms.service.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,13 +37,17 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
     private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
-    private final SysMenuService sysMenuService;
-    private final SysRoleService sysRoleService;
-    private final SysUserRoleService sysUserRoleService;
+    @Autowired
+    private SysMenuService sysMenuService;
+    @Autowired
+    private SysRoleService sysRoleService;
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
+    @Autowired
+    private SysDeptService sysDeptService;
 
     /**
      * 获取用户全部信息（角色、权限）
@@ -175,6 +178,27 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     public SysUser findByUsername(String username) {
         return baseMapper.selectOne(Wrappers.<SysUser>query()
                 .lambda().eq(SysUser::getUsername, username));
+    }
+
+    /**
+     * 查询上级部门的用户信息
+     *
+     * @param username 用户名
+     * @return R
+     */
+    @Override
+    public List<SysUser> listAncestorUsers(String username) {
+        SysUser sysUser = this.getOne(Wrappers.<SysUser>query().lambda()
+                .eq(SysUser::getUsername, username));
+
+        SysDept sysDept = sysDeptService.getById(sysUser.getDeptId());
+        if (sysDept == null) {
+            return new ArrayList<>();
+        }
+        Integer parentId = sysDept.getParentId();
+
+        return this.list(Wrappers.<SysUser>query().lambda()
+                .eq(SysUser::getDeptId, parentId));
     }
 }
 

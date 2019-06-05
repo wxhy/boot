@@ -119,5 +119,13 @@ public class UserController {
         return new WebResponse<>( sysUserService.getOne(new QueryWrapper<>(condition)));
     }
 
+    /**
+     * @param username 用户名称
+     * @return 上级部门用户列表
+     */
+    @GetMapping("/ancestor/{username}")
+    public WebResponse listAncestorUsers(@PathVariable String username) {
+        return new WebResponse<>(sysUserService.listAncestorUsers(username));
+    }
 
 }

@@ -139,6 +139,6 @@ public class ActTaskServiceImpl implements ActTaskService {
                 engconf.getAnnotationFontName(),
                 engconf.getClassLoader(),
                 1.0,
-                true);
+                false);
     }
 }

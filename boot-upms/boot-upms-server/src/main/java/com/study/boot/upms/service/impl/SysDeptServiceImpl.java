@@ -12,8 +12,8 @@ import com.study.boot.upms.mapper.SysDeptMapper;
 import com.study.boot.upms.service.SysDeptRelationService;
 import com.study.boot.upms.service.SysDeptService;
 import com.study.boot.upms.service.SysUserService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,12 +24,12 @@ import java.util.stream.Collectors;
  * @author Administrator
  */
 @Service
-@AllArgsConstructor
 public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> implements SysDeptService {
 
-    private final SysDeptRelationService sysDeptRelationService;
-
-    private final SysUserService sysUserService;
+    @Autowired
+    private SysDeptRelationService sysDeptRelationService;
+    @Autowired
+    private SysUserService sysUserService;
 
     /**
      * 查询部门树菜单

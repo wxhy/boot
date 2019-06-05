@@ -4,19 +4,19 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.SysUserService;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
  * @author Administrator
  */
 @Component("SMS")
-@AllArgsConstructor
 @Slf4j
 public class SmsLoginHandler extends AbstractLoginHandler {
 
-    private final SysUserService sysUserService;
+    @Autowired
+    private SysUserService sysUserService;
 
     /**
      * 验证码登录传入为手机号

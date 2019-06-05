@@ -5,10 +5,13 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.act.dto.ProcessDefDTO;
+import com.study.boot.act.entity.LeaveBill;
+import com.study.boot.act.service.LeaveBillService;
 import com.study.boot.act.service.ProcessService;
 import com.study.boot.common.enums.PaginationConstants;
 import com.study.boot.common.enums.ProcessStatusEnum;
 import com.study.boot.common.enums.ResourceTypeEnum;
+import com.study.boot.common.enums.TaskStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.engine.RepositoryService;
@@ -33,7 +36,7 @@ import java.util.stream.Collectors;
 public class ProcessServiceImpl implements ProcessService {
 
     private final RepositoryService repositoryService;
-
+    private final LeaveBillService leaveBillService;
     private final RuntimeService runtimeService;
 
     @Override
@@ -71,7 +74,7 @@ public class ProcessServiceImpl implements ProcessService {
      */
     @Override
     public InputStream readResource(String procDefId, String proInsId, String resType) {
-        if(StrUtil.isNotBlank(procDefId)) {
+        if(StrUtil.isBlank(procDefId)) {
             ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
                     .processInstanceId(proInsId)
                     .singleResult();
@@ -127,7 +130,14 @@ public class ProcessServiceImpl implements ProcessService {
      * @return
      */
     @Override
-    public Boolean saveStartProcess(Integer leaveId) {
-        return null;
+    public Boolean saveStartProcess(String leaveId) {
+        LeaveBill leaveBill = leaveBillService.getById(leaveId);
+        leaveBill.setState(TaskStatusEnum.CHECK.getStatus());
+
+        String key = leaveBill.getClass().getSimpleName();
+        String businessKey = key + "_" + leaveBill.getLeaveId();
+        runtimeService.startProcessInstanceByKey(key,businessKey);
+        leaveBillService.updateById(leaveBill);
+        return Boolean.TRUE;
     }
 }

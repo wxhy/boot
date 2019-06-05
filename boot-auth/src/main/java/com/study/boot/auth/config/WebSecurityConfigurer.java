@@ -52,6 +52,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                         "/token/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
+                .headers().frameOptions().sameOrigin()
+                .and()
                 .apply(mobileSecurityConfigurer());
     }
 
