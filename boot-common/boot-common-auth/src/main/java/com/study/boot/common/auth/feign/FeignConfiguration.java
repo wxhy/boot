@@ -1,6 +1,8 @@
 package com.study.boot.common.auth.feign;
 
+import feign.Feign;
 import feign.RequestInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.security.oauth2.client.AccessTokenContextRelay;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,7 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
  * @author Administrator
  */
 @Configuration
+@ConditionalOnClass(Feign.class)
 public class FeignConfiguration {
 
 
