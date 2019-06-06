@@ -1,6 +1,8 @@
 package com.study.boot.upms.handler;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.study.boot.common.annotation.SysLog;
+import com.study.boot.common.enums.LogTypeEnum;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.SysUserService;
@@ -29,6 +31,7 @@ public class SmsLoginHandler extends AbstractLoginHandler {
     }
 
     @Override
+    @SysLog(value = "手机号登录",type = LogTypeEnum.LOGIN)
     public UserInfo info(String mobile) {
         SysUser user = sysUserService.getOne(Wrappers.<SysUser>query()
                 .lambda()

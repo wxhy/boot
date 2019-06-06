@@ -14,6 +14,18 @@
  * this software without specific prior written permission.
  * Author: lengleng (wangiegie@gmail.com)
  */
+
+const DIC = {
+  logType: [{
+    label: '操作日志',
+    value: "1"
+  },
+  {
+    label: '登录日志',
+    value: "0"
+  }
+  ]
+}
 export const tableOption = {
   border: true,
   index: true,
@@ -29,7 +41,6 @@ export const tableOption = {
   editBtn: false,
   delBtn: false,
   viewBtn: true,
-  dicUrl: '/admin/dict/type/log_type',
   props: {
     label: 'label',
     value: 'value'
@@ -38,7 +49,7 @@ export const tableOption = {
     label: '类型',
     prop: 'type',
     type: 'select',
-    dicData: 'log_type',
+    dicData: DIC.logType,
     search: true
   }, {
     label: '标题',

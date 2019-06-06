@@ -1,29 +1,39 @@
 package com.study.boot.act.service.impl;
 
 import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.act.dto.CommentDto;
+import com.study.boot.act.dto.LeaveBillDto;
 import com.study.boot.act.dto.TaskDTO;
+import com.study.boot.act.entity.LeaveBill;
+import com.study.boot.act.mapper.LeaveBillMapper;
 import com.study.boot.act.service.ActTaskService;
+import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.PaginationConstants;
+import com.study.boot.common.enums.TaskStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.bpmn.model.FlowNode;
+import org.flowable.bpmn.model.SequenceFlow;
+import org.flowable.common.engine.impl.identity.Authentication;
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.engine.history.HistoricProcessInstance;
+import org.flowable.engine.runtime.Execution;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.image.ProcessDiagramGenerator;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.TaskQuery;
+import org.flowable.task.api.history.HistoricTaskInstance;
+import org.flowable.task.api.history.HistoricTaskInstanceQuery;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -39,16 +49,18 @@ public class ActTaskServiceImpl implements ActTaskService {
     private final RuntimeService runtimeService;
     private final ProcessEngine processEngine;
     private final HistoryService historyService;
+    private final LeaveBillMapper leaveBillMapper;
 
     @Override
     public IPage getTaskByName(Map<String, Object> params, String name) {
         int page = MapUtil.getInt(params, PaginationConstants.CURRENT);
         int limit = MapUtil.getInt(params, PaginationConstants.SIZE);
-        TaskQuery taskQuery = taskService.createTaskQuery().taskAssignee(name);
+        TaskQuery taskQuery = taskService.createTaskQuery().taskCandidateOrAssigned(name);
 
         IPage result = new Page(page, limit);
         result.setTotal(taskQuery.count());
-        List<TaskDTO> taskDTOList = taskQuery.listPage((page - 1) * limit, limit)
+        List<TaskDTO> taskDTOList = taskQuery.orderByTaskCreateTime().desc()
+                .listPage((page - 1) * limit, limit)
                 .stream()
                 .map(task -> {
                     TaskDTO dto = new TaskDTO();
@@ -61,6 +73,25 @@ public class ActTaskServiceImpl implements ActTaskService {
                     return dto;
                 }).collect(Collectors.toList());
         result.setRecords(taskDTOList);
+        return result;
+    }
+
+    /**
+     * 任务历史记录
+     * @param params
+     * @return
+     */
+    @Override
+    public IPage getTaskHistory(Map<String, Object> params) {
+        int page = MapUtil.getInt(params, PaginationConstants.CURRENT);
+        int limit = MapUtil.getInt(params, PaginationConstants.SIZE);
+        IPage result = new Page(page, limit);
+        HistoricTaskInstanceQuery taskInstanceQuery = historyService.createHistoricTaskInstanceQuery();
+        result.setTotal(taskInstanceQuery.count());
+
+        List<HistoricTaskInstance> taskInstances = taskInstanceQuery.orderByTaskCreateTime().desc()
+                .listPage((page - 1) * limit, limit);
+        result.setRecords(taskInstances);
         return result;
     }
 
@@ -139,6 +170,96 @@ public class ActTaskServiceImpl implements ActTaskService {
                 engconf.getAnnotationFontName(),
                 engconf.getClassLoader(),
                 1.0,
-                false);
+                true);
     }
+
+    /**
+     * 通过任务ID查询任务信息关联申请单信息
+     *
+     * @param taskId
+     * @return
+     */
+    @Override
+    public LeaveBillDto getTaskById(String taskId) {
+        Task task = taskService.createTaskQuery()
+                .taskId(taskId)
+                .singleResult();
+
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery()
+                .processInstanceId(task.getProcessInstanceId())
+                .singleResult();
+
+        String businessKey = pi.getBusinessKey();
+        if (StrUtil.isNotBlank(businessKey)) {
+            businessKey = businessKey.split("_")[1];
+        }
+
+        List<String> comeList = findOutFlagListByTaskId(task, pi);
+        LeaveBill leaveBill = leaveBillMapper.selectById(businessKey);
+
+        LeaveBillDto leaveBillDto = new LeaveBillDto();
+        BeanUtils.copyProperties(leaveBill, leaveBillDto);
+        leaveBillDto.setTaskId(taskId);
+        leaveBillDto.setTime(task.getCreateTime());
+        leaveBillDto.setFlagList(comeList);
+        return leaveBillDto;
+    }
+
+    /**
+     * 提交任务
+     *
+     * @param leaveBillDto
+     * @return
+     */
+    @Override
+    public Boolean submitTask(LeaveBillDto leaveBillDto) {
+        String taskId = leaveBillDto.getTaskId();
+        String message = leaveBillDto.getComment();
+        Integer id = leaveBillDto.getLeaveId();
+
+        Task task = taskService.createTaskQuery()
+                .taskId(taskId)
+                .singleResult();
+
+        String processInstanceId = task.getProcessInstanceId();
+        Authentication.setAuthenticatedUserId(SecurityUtils.getUserName());
+        taskService.addComment(taskId, processInstanceId, message);
+
+        Map<String, Object> variables = new HashMap<>(1);
+        variables.put("result", leaveBillDto.getTaskFlag());
+        variables.put("days", leaveBillDto.getDays());
+
+        taskService.complete(taskId, variables);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery()
+                .processInstanceId(processInstanceId)
+                .singleResult();
+
+        if (pi == null) {
+            LeaveBill bill = new LeaveBill();
+            bill.setLeaveId(id);
+            bill.setState(StrUtil.equals(TaskStatusEnum.OVERRULE.getDescription()
+                    , leaveBillDto.getTaskFlag()) ? TaskStatusEnum.OVERRULE.getStatus()
+                    : TaskStatusEnum.COMPLETED.getStatus());
+            leaveBillMapper.updateById(bill);
+        }
+        return null;
+    }
+
+    private List<String> findOutFlagListByTaskId(Task task, ProcessInstance pi) {
+        //获取当前活动完成之后连线的名称
+        Execution execution = runtimeService.createExecutionQuery().executionId(task.getExecutionId()).singleResult();
+
+
+        BpmnModel bpmnModel = repositoryService.getBpmnModel(pi.getProcessDefinitionId());
+        FlowNode flowNode =(FlowNode)  bpmnModel.getFlowElement(execution.getActivityId());
+        List<SequenceFlow> outgoingFlows = flowNode.getOutgoingFlows();
+
+
+        List<String> activityIds = outgoingFlows.stream()
+                .map(SequenceFlow::getName).collect(Collectors.toList());
+
+
+        return activityIds;
+    }
+
 }

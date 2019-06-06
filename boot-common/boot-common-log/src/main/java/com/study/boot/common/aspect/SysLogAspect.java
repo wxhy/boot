@@ -26,6 +26,7 @@ public class SysLogAspect {
 
         com.study.boot.upms.api.entity.SysLog log = SysLogUtils.getSysLog();
         log.setTitle(sysLog.value());
+        log.setType(sysLog.type().getType());
 
         //发送异步日志事件
         Long startTime = System.currentTimeMillis();

@@ -1,6 +1,7 @@
 package com.study.boot.act.web;
 
 import cn.hutool.core.io.IoUtil;
+import com.study.boot.act.dto.LeaveBillDto;
 import com.study.boot.act.service.ActTaskService;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.util.WebResponse;
@@ -29,6 +30,16 @@ public class TaskController {
         return new WebResponse<>(actTaskService.getTaskByName(params, SecurityUtils.getUserName()));
     }
 
+    @GetMapping("/{id}")
+    public WebResponse getTaskById(@PathVariable String id) {
+        return new WebResponse(actTaskService.getTaskById(id));
+    }
+
+    @PostMapping
+    public WebResponse submitTask(@RequestBody LeaveBillDto leaveBillDto) {
+        return new WebResponse(actTaskService.submitTask(leaveBillDto));
+    }
+
     @GetMapping("/view/{id}")
     public ResponseEntity viewCurrentImage(@PathVariable String id) {
         InputStream imageStream = actTaskService.viewByTaskId(id);
@@ -42,4 +53,9 @@ public class TaskController {
         return new WebResponse<>(actTaskService.getCommentByTaskId(id));
     }
 
+
+    @GetMapping("/history")
+    public WebResponse getTaskHistory(@RequestParam Map<String,Object> params) {
+        return new WebResponse<>(actTaskService.getTaskHistory(params));
+    }
 }

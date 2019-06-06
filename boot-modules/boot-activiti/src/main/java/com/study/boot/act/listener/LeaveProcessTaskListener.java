@@ -32,7 +32,6 @@ public class LeaveProcessTaskListener implements TaskListener {
     public void notify(DelegateTask delegateTask) {
         RemoteUserService remoteUserService = SpringContextHolder.getBean(RemoteUserService.class);
         SimpMessagingTemplate simpMessagingTemplate = SpringContextHolder.getBean(SimpMessagingTemplate.class);
-
         WebResponse<List<SysUser>> result = remoteUserService.ancestorUsers(SecurityUtils.getUserName());
         List<String> remindUserList = new ArrayList<>();
         if (CollUtil.isEmpty(result.getData())) {

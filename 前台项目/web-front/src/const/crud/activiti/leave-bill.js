@@ -15,6 +15,25 @@
  * Author: lengleng (wangiegie@gmail.com)
  */
 
+const DIC = {
+  leaveStatus: [{
+    label: '未提交',
+    value: "0"
+  },
+  {
+    label: '审核中',
+    value: "1"
+  },
+  {
+    label: '已完成',
+    value: "2"
+  },
+  {
+    label: '驳回',
+    value: "9"
+  }
+  ]
+}
 export const tableOption = {
   border: true,
   index: true,
@@ -67,7 +86,7 @@ export const tableOption = {
       label: '状态',
       prop: 'state',
       type: 'select',
-      dicData: 'leave_status',
+      dicData: DIC.leaveStatus,
       search: true,
       addVisdiplay: false
     },

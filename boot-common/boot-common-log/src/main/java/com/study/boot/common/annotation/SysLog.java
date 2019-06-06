@@ -1,5 +1,7 @@
 package com.study.boot.common.annotation;
 
+import com.study.boot.common.enums.LogTypeEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -16,4 +18,10 @@ public @interface SysLog {
      * @return
      */
     String value();
+
+    /**
+     * 日志类型
+     * @return
+     */
+    LogTypeEnum type() default LogTypeEnum.OPERATION;
 }

@@ -22,6 +22,7 @@ public class WebSercurityConfigure extends ResourceServerConfigurerAdapter {
                         "/service/**",
                         "/editor-app/**",
                         "/ws/**",
+                        "/task/view/*",
                         "/process/resource/**",
                         "/modeler.html").permitAll()
                 .anyRequest().authenticated()

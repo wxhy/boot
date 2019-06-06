@@ -3,7 +3,6 @@ package com.study.boot.common.util;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
-import com.study.boot.common.enums.CommonConstants;
 import com.study.boot.upms.api.entity.SysLog;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +30,6 @@ public class SysLogUtils {
         SysLog sysLog = new SysLog();
         sysLog.setCreateBy(Objects.requireNonNull(getUsername()));
         sysLog.setMethod(request.getMethod());
-        sysLog.setType(CommonConstants.STATUS_NORMAL);
         sysLog.setRemoteAddr(ServletUtil.getClientIP(request));
         sysLog.setRequestUri(URLUtil.getPath(request.getRequestURI()));
         sysLog.setServiceId(getClientId());
