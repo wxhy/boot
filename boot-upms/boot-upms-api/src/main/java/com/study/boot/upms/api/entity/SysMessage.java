@@ -38,7 +38,7 @@ public class SysMessage extends Model<SysMessage> {
     /**
     * 发送范围 0全部 1指定
     */
-    private String range;
+    private String ranger;
 
     /**
     * 新创建账号推送

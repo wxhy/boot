@@ -1,6 +1,7 @@
 package com.study.boot.upms.web;
 
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.service.SysMessageService;
@@ -22,6 +23,6 @@ public class MessageController {
 
     @GetMapping("/page")
     public WebResponse getMessagePage(Page page){
-        return new WebResponse<>(sysMessageService.page(page));
+        return new WebResponse<>(sysMessageService.page(page, Wrappers.emptyWrapper()));
     }
 }

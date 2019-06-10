@@ -7,7 +7,7 @@
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="range" jdbcType="CHAR" property="range" />
+    <result column="ranger" jdbcType="CHAR" property="ranger" />
     <result column="create_send" jdbcType="CHAR" property="createSend" />
     <result column="del_flag" jdbcType="CHAR" property="delFlag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />

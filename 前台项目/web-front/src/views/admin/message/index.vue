@@ -16,7 +16,7 @@
   -->
 
 <template>
-  <div class="log">
+  <div class="message">
     <basic-container>
       <avue-crud ref="crud"
                  :page="page"
@@ -28,23 +28,32 @@
                  @refresh-change="refreshChange"
                  @row-del="rowDel">
         <template slot-scope="scope"
-                  slot="menu">
-          <el-button type="text"
-                     v-if="permissions.sys_log_del"
-                     icon="el-icon-delete"
+                  slot="menuLeft">
+          <el-button type="primary"
+                     icon="el-icon-plus"
                      size="mini"
-                     @click="handleDel(scope.row,scope.index)">删除
+                     @click="handleAdd()">新增
           </el-button>
         </template>
       </avue-crud>
     </basic-container>
+
+    <el-dialog title="发送新消息"
+        :visible.sync="createVisible">
+      <avue-form ref="form" v-model="obj" :option="formOption">
+          <template slot="content" slot-scope="{item,value,label}">
+              <span></span>
+          </template>
+      </avue-form>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import {delObj, fetchList} from '@/api/admin/log'
-  import {tableOption} from '@/const/crud/admin/log'
+  import {fetchList} from '@/api/admin/message'
+  import {tableOption,formOption} from '@/const/crud/admin/message'
   import {mapGetters} from 'vuex'
+import { truncate } from 'fs';
 
   export default {
     name: 'message',
@@ -57,7 +66,10 @@
           pageSize: 20 // 每页显示多少条
         },
         tableLoading: false,
-        tableOption: tableOption
+        tableOption: tableOption,
+        formOption:formOption,
+        createVisible:false,
+        obj:{}
       }
     },
     created() {
@@ -71,7 +83,6 @@
       getList(page, params) {
         this.tableLoading = true
         fetchList(Object.assign({
-          descs: 'create_time',
           current: page.currentPage,
           size: page.pageSize
         }, params)).then(response => {
@@ -80,26 +91,8 @@
           this.tableLoading = false
         })
       },
-      handleDel(row, index) {
-        this.$refs.crud.rowDel(row, index)
-      },
-      rowDel: function (row, index) {
-        var _this = this
-        this.$confirm('是否确认删除ID为"' + row.id + '"的日志?', '警告', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(function () {
-          return delObj(row.id)
-        }).then(data => {
-          this.getList(this.page)
-          _this.$message({
-            showClose: true,
-            message: '删除成功',
-            type: 'success'
-          })
-        }).catch(function (err) {
-        })
+      handleAdd(){
+        this.createVisible = true;
       },
       /**
        * 搜索回调

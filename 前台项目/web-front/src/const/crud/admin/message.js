@@ -14,6 +14,16 @@
  * this software without specific prior written permission.
  * Author: lengleng (wangiegie@gmail.com)
  */
+
+const DIC = {
+  RANGER: [{
+      label: '全体用户',
+      value: 0
+  }, {
+      label: '指定用户成员',
+      value: 1
+  }]
+}
 export const tableOption = {
     border: true,
     index: true,
@@ -21,57 +31,81 @@ export const tableOption = {
     stripe: true,
     menuAlign: 'center',
     align: 'center',
-    refreshBtn: false,
+    refreshBtn: true,
     showClomnuBtn: false,
     searchSize: 'mini',
+    addBtn:false,
     editBtn: false,
     delBtn: false,
-    column: [{
-      width: 150,
-      label: '数据值',
-      prop: 'value',
-      rules: [{
-        required: true,
-        message: '请输入数据值',
-        trigger: 'blur'
-      }]
+    column:  [{
+      fixed: true,
+      label: 'id',
+      prop: 'messageId',
+      span: 24,
+      hide: true,
+      editDisabled: true,
+      addVisdiplay: false
     }, {
-      label: '标签名',
-      prop: 'label',
-      rules: [{
-        required: true,
-        message: '请输入标签名',
-        trigger: 'blur'
-      }]
+      label: '标题',
+      prop: 'title'
+    },  {
+      label: '内容',
+      prop: 'content'
     }, {
       label: '类型',
-      prop: 'type',
-      'search': true,
-      rules: [{
-        required: true,
-        message: '请输入字典类型',
-        trigger: 'blur'
-      }]
+      prop: 'type'
+    },{
+      label: '新创建账号推送',
+      prop: 'sort'
     }, {
-      label: '描述',
-      prop: 'description',
-      rules: [{
-        required: true,
-        message: '请输入字典描述',
-        trigger: 'blur'
-      }]
-    }, {
-      label: '排序',
-      prop: 'sort',
-      type: 'number',
-      rules: [{
-        required: true,
-        message: '请输入排序',
-        trigger: 'blur'
-      }]
-    }, {
-      label: '备注信息',
-      prop: 'remarks'
+      label: '创建时间',
+      prop: 'createTime',
+      format: 'yyyy-MM-dd HH:mm',
+      valueFormat: 'yyyy-MM-dd HH:mm:ss'
     }]
   }
   
+
+  export const formOption = {
+    submitBtn: false,
+    emptytBtn: false,
+    row: true,
+    span: 12,
+    column: [
+      {
+        label: '消息类型',
+        prop: 'type',
+        type: 'select'
+      },
+      {
+        label: '标题',
+        span:24,
+        prop: 'title'
+      },
+      {
+        label: '内容',
+        prop: 'content',
+        span:24,
+        component:'',
+        dataType:'string'
+      },
+      {
+        label: '新创建账号也推送',
+        prop: 'createSend',
+        type: 'switch'
+      },
+      {
+        label: '发送范围',
+        prop: 'ranger',
+        dicData: DIC.RANGER,
+        span:24,
+        type: 'radio'
+      },
+      {
+        label:'选择用户',
+        prop:'userIds',
+        span:24,
+        display:true
+      }
+    ]
+  }
