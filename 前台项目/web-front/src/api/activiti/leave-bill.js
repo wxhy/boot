@@ -61,3 +61,10 @@ export function putObj (obj) {
     data: obj
   })
 }
+
+export function fetchHistory(id) {
+  return request({
+    url:'/act/task/comment/' + id,
+    method:'get'
+  })
+}

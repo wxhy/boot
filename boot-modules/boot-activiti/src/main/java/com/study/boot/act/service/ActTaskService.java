@@ -3,6 +3,7 @@ package com.study.boot.act.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.study.boot.act.dto.CommentDto;
 import com.study.boot.act.dto.LeaveBillDto;
+import org.flowable.task.api.Task;
 
 import java.io.InputStream;
 import java.util.List;
@@ -23,13 +24,12 @@ public interface ActTaskService {
      */
     IPage getTaskByName(Map<String, Object> params, String name);
 
-
     /**
-     * 获取流程审核历史
-     * @param params
+     * 获取任务
+     * @param id
      * @return
      */
-    IPage getTaskHistory(Map<String, Object> params);
+    Task getTask(String id);
 
 
     /**
@@ -50,20 +50,20 @@ public interface ActTaskService {
 
 
     /**
-     * 通过任务ID 查询批注信息
+     * 通过流程实例ID 查询批注信息
      *
-     * @param taskId 任务ID
+     * @param proInstanceId 流程实例ID
      * @return
      */
-    List<CommentDto> getCommentByTaskId(String taskId);
+    List<CommentDto> getCommentByInstanceId(String proInstanceId);
 
     /**
      * 追踪图片节点
      *
-     * @param id
+     * @param  proInstanceId 流程实例ID
      * @return
      */
-    InputStream viewByTaskId(String id);
+    InputStream viewCurrentStep(String proInstanceId);
 
 
 }

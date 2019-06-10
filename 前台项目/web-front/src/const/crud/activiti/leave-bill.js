@@ -65,8 +65,16 @@ export const tableOption = {
       type: 'number'
     },
     {
-      label: '请假时间',
-      prop: 'leaveTime',
+      label: '开始时间',
+      prop: 'leaveStartTime',
+      type: 'datetime',
+      overHidden: true,
+      format: 'yyyy-MM-dd HH:mm',
+      valueFormat: 'yyyy-MM-dd hh:mm:ss'
+    },
+    {
+      label: '结束时间',
+      prop: 'leaveEndTime',
       type: 'datetime',
       overHidden: true,
       format: 'yyyy-MM-dd HH:mm',

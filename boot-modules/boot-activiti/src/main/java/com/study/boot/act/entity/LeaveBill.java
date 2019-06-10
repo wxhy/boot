@@ -45,6 +45,16 @@ public class LeaveBill extends Model<LeaveBill> {
 	 */
 	@TableId(type = IdType.AUTO)
 	private Integer leaveId;
+
+	/**
+	 * 流程实例ID
+	 */
+	private String proInstanceId;
+
+	/**
+	 * 流程定义ID
+	 */
+	private String proDefinitionId;
 	/**
 	 * 申请人
 	 */
@@ -62,9 +72,14 @@ public class LeaveBill extends Model<LeaveBill> {
 	 */
 	private String state;
 	/**
-	 * 提交时间
+	 * 请假开始时间
 	 */
-	private LocalDateTime leaveTime;
+	private LocalDateTime leaveStartTime;
+
+	/**
+	 * 请假结束时间
+	 */
+	private LocalDateTime leaveEndTime;
 	/**
 	 * 提交时间
 	 */

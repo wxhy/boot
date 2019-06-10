@@ -136,7 +136,14 @@ public class ProcessServiceImpl implements ProcessService {
 
         String key = leaveBill.getClass().getSimpleName();
         String businessKey = key + "_" + leaveBill.getLeaveId();
-        runtimeService.startProcessInstanceByKey(key,businessKey);
+        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery()
+                .processDefinitionKey(key)
+                .latestVersion()
+                .singleResult();
+
+        ProcessInstance instance = runtimeService.startProcessInstanceByKey(key, businessKey);
+        leaveBill.setProDefinitionId(definition.getId());
+        leaveBill.setProInstanceId(instance.getId());
         leaveBillService.updateById(leaveBill);
         return Boolean.TRUE;
     }

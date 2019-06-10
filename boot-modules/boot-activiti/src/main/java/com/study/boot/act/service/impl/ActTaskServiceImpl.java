@@ -8,6 +8,7 @@ import com.study.boot.act.dto.CommentDto;
 import com.study.boot.act.dto.LeaveBillDto;
 import com.study.boot.act.dto.TaskDTO;
 import com.study.boot.act.entity.LeaveBill;
+import com.study.boot.act.listener.UpdateHiTaskReasonCommand;
 import com.study.boot.act.mapper.LeaveBillMapper;
 import com.study.boot.act.service.ActTaskService;
 import com.study.boot.common.auth.util.SecurityUtils;
@@ -28,7 +29,6 @@ import org.flowable.image.ProcessDiagramGenerator;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.TaskQuery;
 import org.flowable.task.api.history.HistoricTaskInstance;
-import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +50,7 @@ public class ActTaskServiceImpl implements ActTaskService {
     private final ProcessEngine processEngine;
     private final HistoryService historyService;
     private final LeaveBillMapper leaveBillMapper;
+    private final ManagementService managementService;
 
     @Override
     public IPage getTaskByName(Map<String, Object> params, String name) {
@@ -76,45 +77,32 @@ public class ActTaskServiceImpl implements ActTaskService {
         return result;
     }
 
-    /**
-     * 任务历史记录
-     * @param params
-     * @return
-     */
     @Override
-    public IPage getTaskHistory(Map<String, Object> params) {
-        int page = MapUtil.getInt(params, PaginationConstants.CURRENT);
-        int limit = MapUtil.getInt(params, PaginationConstants.SIZE);
-        IPage result = new Page(page, limit);
-        HistoricTaskInstanceQuery taskInstanceQuery = historyService.createHistoricTaskInstanceQuery();
-        result.setTotal(taskInstanceQuery.count());
-
-        List<HistoricTaskInstance> taskInstances = taskInstanceQuery.orderByTaskCreateTime().desc()
-                .listPage((page - 1) * limit, limit);
-        result.setRecords(taskInstances);
-        return result;
+    public Task getTask(String id) {
+        return taskService.createTaskQuery().taskId(id).singleResult();
     }
 
-    @Override
-    public List<CommentDto> getCommentByTaskId(String taskId) {
-        //使用当前的任务ID，查询当前流程对应的历史任务ID
-        //使用当前任务ID，获取当前任务对象
-        Task task = taskService.createTaskQuery()
-                .taskId(taskId)
-                .singleResult();
 
+    @Override
+    public List<CommentDto> getCommentByInstanceId(String proInstanceId) {
         //获取流程实例ID
-        List<CommentDto> commentDtos = taskService.getProcessInstanceComments(task.getProcessInstanceId())
+        List<CommentDto> commentDtos = taskService.getProcessInstanceComments(proInstanceId)
                 .stream()
                 .map(comment -> {
+                    HistoricTaskInstance taskInstance = historyService.createHistoricTaskInstanceQuery()
+                            .taskId(comment.getTaskId())
+                            .singleResult();
                     CommentDto commentDto = new CommentDto();
                     commentDto.setId(comment.getId());
-                    commentDto.setTime(comment.getTime());
                     commentDto.setType(comment.getType());
                     commentDto.setTaskId(comment.getTaskId());
                     commentDto.setUserId(comment.getUserId());
                     commentDto.setFullMessage(comment.getFullMessage());
                     commentDto.setProcessInstanceId(comment.getProcessInstanceId());
+                    commentDto.setDeleteReason(taskInstance.getDeleteReason());
+                    commentDto.setTaskName(taskInstance.getName());
+                    commentDto.setTime(taskInstance.getTime());
+                    commentDto.setEndTime(taskInstance.getEndTime());
                     return commentDto;
                 }).collect(Collectors.toList());
 
@@ -124,24 +112,17 @@ public class ActTaskServiceImpl implements ActTaskService {
     /**
      * 追踪图片节点
      *
-     * @param id
+     * @param proInstanceId
      */
     @Override
-    public InputStream viewByTaskId(String id) {
-        //使用当前任务ID，获取当前任务对象
-        Task task = taskService.createTaskQuery()
-                .taskId(id)
-                .singleResult();
-
-        String processInstanceId = task.getProcessInstanceId();
-
+    public InputStream viewCurrentStep(String proInstanceId) {
         //获取流程实例
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
-                .processInstanceId(processInstanceId)
+                .processInstanceId(proInstanceId)
                 .singleResult();
         //获取历史流程实例
         HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
-                .processInstanceId(processInstanceId)
+                .processInstanceId(proInstanceId)
                 .singleResult();
 
         String processDefinitionId = null;
@@ -154,7 +135,7 @@ public class ActTaskServiceImpl implements ActTaskService {
             //流程已结束
             processDefinitionId = historicProcessInstance.getProcessDefinitionId();
             executedActivityIdList = historyService.createHistoricActivityInstanceQuery()
-                    .processInstanceId(processInstanceId)
+                    .processInstanceId(proInstanceId)
                     .orderByHistoricActivityInstanceId().asc().list()
                     .stream().map(HistoricActivityInstance::getActivityId)
                     .collect(Collectors.toList());
@@ -230,6 +211,7 @@ public class ActTaskServiceImpl implements ActTaskService {
         variables.put("days", leaveBillDto.getDays());
 
         taskService.complete(taskId, variables);
+        managementService.executeCommand(new UpdateHiTaskReasonCommand(taskId,leaveBillDto.getTaskFlag()));
         ProcessInstance pi = runtimeService.createProcessInstanceQuery()
                 .processInstanceId(processInstanceId)
                 .singleResult();

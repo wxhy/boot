@@ -42,6 +42,10 @@
                             v-if="permissions.act_leavebill_edit && scope.row.state == 0"
                             @click.native="handleSubmit(scope.row,scope.index)">提交
           </el-dropdown-item>
+            <el-dropdown-item divided
+                            v-if="permissions.act_leavebill_edit && scope.row.state != 0"
+                            @click.native="handleHis(scope.row,scope.index)">审批历史
+          </el-dropdown-item>
           <el-dropdown-item divided
                             v-if="permissions.act_leavebill_edit"
                             @click.native="handleEdit(scope.row,scope.index)">编辑
@@ -54,11 +58,47 @@
         </template>
       </avue-crud>
     </basic-container>
+
+    <el-dialog title="审批历史" 
+       width="70%"
+      :visible.sync="dialogHistoryVisible">
+      <el-table
+        :data="taskHistory"
+        style="width: 100%">
+        <el-table-column
+          prop="taskName"
+          label="任务名称"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="userId"
+          label="处理人"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="deleteReason"
+          label="审批操作">
+        </el-table-column>
+         <el-table-column
+          prop="fullMessage"
+          label="审批意见">
+        </el-table-column>
+          <el-table-column
+          prop="time"
+          label="创建时间">
+        </el-table-column>
+        <el-table-column
+          prop="endTime"
+          label="结束时间">
+        </el-table-column>
+    </el-table>
+      <img :src="actPicUrl" width="100%">
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import {addObj, delObj, fetchList, getObj, putObj, submit} from '@/api/activiti/leave-bill'
+  import {addObj, delObj, fetchList, getObj, putObj, submit,fetchHistory} from '@/api/activiti/leave-bill'
   import {tableOption} from '@/const/crud/activiti/leave-bill'
   import {mapGetters} from 'vuex'
 
@@ -67,13 +107,16 @@
     data() {
       return {
         tableData: [],
+        taskHistory:[],
         page: {
           total: 0, // 总页数
           currentPage: 1, // 当前页数
           pageSize: 20 // 每页显示多少条
         },
         tableLoading: false,
-        tableOption: tableOption
+        dialogHistoryVisible: false,
+        tableOption: tableOption,
+        actPicUrl:'',
       }
     },
     created() {
@@ -109,6 +152,15 @@
       },
       handleDel(row, index) {
         this.$refs.crud.rowDel(row, index)
+      },
+      handleHis(row,index) {
+        fetchHistory(row.proInstanceId)
+        .then(response=>{
+          this.taskHistory = response.data.data
+        })
+
+        this.dialogHistoryVisible = true;
+        this.actPicUrl = `/act/task/view/` + row.proInstanceId
       },
       rowDel: function (row, index) {
         var _this = this

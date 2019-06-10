@@ -40,22 +40,28 @@ public class TaskController {
         return new WebResponse(actTaskService.submitTask(leaveBillDto));
     }
 
+    /**
+     *
+     * @param id 流程实例ID
+     * @return
+     */
     @GetMapping("/view/{id}")
     public ResponseEntity viewCurrentImage(@PathVariable String id) {
-        InputStream imageStream = actTaskService.viewByTaskId(id);
+        InputStream imageStream = actTaskService.viewCurrentStep(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
         return new ResponseEntity<>(IoUtil.readBytes(imageStream), headers, HttpStatus.CREATED);
     }
 
+    /**
+     *
+     * @param id 流程实例ID
+     * @return
+     */
     @GetMapping("/comment/{id}")
     public WebResponse commitList(@PathVariable String id) {
-        return new WebResponse<>(actTaskService.getCommentByTaskId(id));
+        return new WebResponse<>(actTaskService.getCommentByInstanceId(id));
     }
 
 
-    @GetMapping("/history")
-    public WebResponse getTaskHistory(@RequestParam Map<String,Object> params) {
-        return new WebResponse<>(actTaskService.getTaskHistory(params));
-    }
 }

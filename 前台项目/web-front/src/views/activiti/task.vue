@@ -159,7 +159,7 @@
         })
       },
       viewPic: function (row, index) {
-        this.actPicUrl = `/act/task/view/` + row.taskId
+        this.actPicUrl = `/act/task/view/` + row.processInstanceId
         this.showPicDialog = true
       },
       /**
