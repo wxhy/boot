@@ -91,7 +91,7 @@
               <avue-select v-model="form.deptId"
                                type="tree"
                                placeholder="请选择所属部门"
-                               :node-click="getNodeData"
+                               @click="getNodeData"
                                :dic="treeDeptData"
                                :props="defaultProps"></avue-select>
             </template>
@@ -170,7 +170,6 @@
       this.sys_user_edit = this.permissions["sys_user_edit"];
       this.sys_user_del = this.permissions["sys_user_del"];
       this.init();
-      console.log(this.$options.components)
     },
     methods: {
       init() {

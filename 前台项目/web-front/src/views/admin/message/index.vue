@@ -35,7 +35,14 @@
     </basic-container>
 
     <el-dialog title="发送新消息" :visible.sync="createVisible" :fullscreen="true">
-      <avue-form ref="form" v-model="obj" :option="formOption"></avue-form>
+      <avue-form ref="form" v-model="obj" :option="formOption" @submit="handleSubmit()">
+          <template slot="user" slot-scope="scope">
+            <div v-if="obj.ranger == 1">
+              <avue-userSelect v-model="obj.user">
+              </avue-userSelect>
+            </div>
+          </template>
+      </avue-form>
     </el-dialog>
   </div>
 </template>
@@ -59,22 +66,13 @@ export default {
       tableOption: tableOption,
       formOption: formOption,
       createVisible: false,
-      obj: {}
+      obj: {
+        user:[]
+      }
     };
   },
   created() {},
   mounted: function() {},
-  watch: {
-    "obj.ranger"() {
-      console.log(this.option.column)
-      const column = this.option.column[1];
-      if (this.form.text1 === 0) {
-        column.display = true;
-      } else {
-        column.display = false;
-      }
-    }
-  },
   computed: {
     ...mapGetters(["permissions"])
   },
@@ -97,6 +95,9 @@ export default {
     },
     handleAdd() {
       this.createVisible = true;
+    },
+    handleSubmit(){
+      console.log(this.obj)
     },
     /**
      * 搜索回调

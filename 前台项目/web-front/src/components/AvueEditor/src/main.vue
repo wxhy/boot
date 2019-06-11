@@ -51,9 +51,8 @@ export default {
         this.text = null;
       }
     },
-    value(val) {
-      //使用v-model设置初始值
-      this.editor.txt.html(val);
+    value() {
+      this.text = this.value;
     }
   },
   methods: {
@@ -65,6 +64,7 @@ export default {
       this.editor.customConfig.onchange = html => {
         // html 即变化之后的内容
         this.text = filterXSS(html) ;
+        this.$emit("input", this.text);
         this.$emit("change", this.text);
       };
       this.editor.create();

@@ -16,6 +16,13 @@
  */
 
 const DIC = {
+  SENDER:[{
+    label: '',
+    value: 0
+  },{
+    label: '',
+    value: 1
+  }],
   RANGER: [{
     label: '全体用户',
     value: 0
@@ -96,7 +103,8 @@ export const formOption = {
     {
       label: '新创建账号也推送',
       prop: 'createSend',
-      type: 'switch'
+      type: 'switch',
+      dicData: DIC.SEX,
     },
     {
       label: '发送范围',
@@ -104,15 +112,15 @@ export const formOption = {
       dicData: DIC.RANGER,
       span: 24,
       type: 'radio',
-      valueDefault: 0,
+      valueDefault: 0
     },
     {
-      label: '选择用户',
-      prop: 'userIds',
-      component: 'userSelect',
-      dataType: 'array',
+      label: '',
+      prop: 'user',
+      component:'userSelect',
+      formslot: true,
+      showClomnu:false,
       span: 24,
-      display: false
 
     }
   ]

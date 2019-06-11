@@ -8,18 +8,19 @@
       <el-collapse-item>
         <template slot="title">
           已选择
-          <span class="select-count">{{tags.length}}</span>
+          <span class="select-count">{{users.length}}</span>
           人
         </template>
         <p>
           <el-tag
             class="mr10"
             size="mini"
-            v-for="tag in tags"
-            :key="tag.name"
+            v-for="(user,index) in users"
+            :key="user.id"
             closable
             type="info"
-          >{{tag.name}}</el-tag>
+            @close="handleCloseTag(user.id,index)"
+          >{{user.name}}</el-tag>
         </p>
       </el-collapse-item>
     </el-collapse>
@@ -45,6 +46,14 @@
         <template slot="lockFlag" slot-scope="scope">
           <el-tag>{{scope.label}}</el-tag>
         </template>
+
+        <template slot="menu" slot-scope="scope">
+            <el-button 
+                         size="small"
+                         type="primary"
+                         @click="handleAdd(scope.row,scope.index)">添加该用户
+              </el-button>
+        </template>
       </avue-crud>
     </avue-drawer>
   </div>
@@ -54,6 +63,8 @@
 <script>
 import { fetchList } from "@/api/admin/user";
 import { tableOption } from "@/const/crud/admin/user";
+import _ from 'lodash';
+
 export default {
   name: "AvueUserSelect",
   data() {
@@ -69,14 +80,22 @@ export default {
       option: tableOption,
       list: [],
       listLoading: false,
-      tags: [
-        { name: "标签一", type: "info" },
-        { name: "标签二", type: "info" },
-        { name: "标签三", type: "info" },
-        { name: "标签四", type: "info" },
-        { name: "标签五", type: "info" }
-      ]
+      users:[],
+      userIds:[]
     };
+  },
+   props: {
+    value: {
+      type: Array,
+      default: ()=>{
+        return [];
+      }
+    }
+  },
+  watch: {
+    value(){
+      this.userIds = this.value;
+    }
   },
   created() {
     this.getList(this.page);
@@ -107,6 +126,28 @@ export default {
     },
     choseUser() {
       this.dialogVisible = true;
+    },
+    handleAdd(item,index){
+      const result = _.some(this.users,{id:item.userId,name:item.username});
+      if(result){
+        this.$message.warning("已经添加过啦,请勿重复选择")
+        return;
+      }
+      this.users.push({
+        id:item.userId,
+        name:item.username
+      })
+
+      this.userIds.push(item.userId);
+      this.$emit("input", this.userIds);
+      this.$emit('change', this.userIds);
+      this.$message.success("添加用户"+item.username+"成功");
+    },
+    handleCloseTag(id,index){
+      this.users.splice(index,1);
+      this.userIds.splice(index,1);
+      this.$emit("input", this.userIds);
+      this.$emit('change', this.userIds);
     }
   }
 };
@@ -132,5 +173,6 @@ export default {
 }
 .mr10 {
   margin-right: 10px;
+  margin-bottom:10px;
 }
 </style>
