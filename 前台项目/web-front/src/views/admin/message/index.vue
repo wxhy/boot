@@ -18,96 +18,100 @@
 <template>
   <div class="message">
     <basic-container>
-      <avue-crud ref="crud"
-                 :page="page"
-                 :data="tableData"
-                 :table-loading="tableLoading"
-                 :option="tableOption"
-                 @on-load="getList"
-                 @search-change="searchChange"
-                 @refresh-change="refreshChange"
-                 @row-del="rowDel">
-        <template slot-scope="scope"
-                  slot="menuLeft">
-          <el-button type="primary"
-                     icon="el-icon-plus"
-                     size="mini"
-                     @click="handleAdd()">新增
-          </el-button>
+      <avue-crud
+        ref="crud"
+        :page="page"
+        :data="tableData"
+        :table-loading="tableLoading"
+        :option="tableOption"
+        @on-load="getList"
+        @search-change="searchChange"
+        @refresh-change="refreshChange"
+      >
+        <template slot-scope="scope" slot="menuLeft">
+          <el-button type="primary" icon="el-icon-plus" size="mini" @click="handleAdd()">新增</el-button>
         </template>
       </avue-crud>
     </basic-container>
 
-    <el-dialog title="发送新消息"
-        :visible.sync="createVisible">
-      <avue-form ref="form" v-model="obj" :option="formOption">
-          <template slot="content" slot-scope="{item,value,label}">
-              <span></span>
-          </template>
-      </avue-form>
+    <el-dialog title="发送新消息" :visible.sync="createVisible" :fullscreen="true">
+      <avue-form ref="form" v-model="obj" :option="formOption"></avue-form>
     </el-dialog>
   </div>
 </template>
 
 <script>
-  import {fetchList} from '@/api/admin/message'
-  import {tableOption,formOption} from '@/const/crud/admin/message'
-  import {mapGetters} from 'vuex'
-import { truncate } from 'fs';
+import { fetchList } from "@/api/admin/message";
+import { tableOption, formOption } from "@/const/crud/admin/message";
+import { mapGetters } from "vuex";
 
-  export default {
-    name: 'message',
-    data() {
-      return {
-        tableData: [],
-        page: {
-          total: 0, // 总页数
-          currentPage: 1, // 当前页数
-          pageSize: 20 // 每页显示多少条
-        },
-        tableLoading: false,
-        tableOption: tableOption,
-        formOption:formOption,
-        createVisible:false,
-        obj:{}
-      }
-    },
-    created() {
-    },
-    mounted: function () {
-    },
-    computed: {
-      ...mapGetters(['permissions'])
-    },
-    methods: {
-      getList(page, params) {
-        this.tableLoading = true
-        fetchList(Object.assign({
-          current: page.currentPage,
-          size: page.pageSize
-        }, params)).then(response => {
-          this.tableData = response.data.data.records
-          this.page.total = response.data.data.total
-          this.tableLoading = false
-        })
+export default {
+  name: "message",
+  data() {
+    return {
+      tableData: [],
+      page: {
+        total: 0, // 总页数
+        currentPage: 1, // 当前页数
+        pageSize: 20 // 每页显示多少条
       },
-      handleAdd(){
-        this.createVisible = true;
-      },
-      /**
-       * 搜索回调
-       */
-      searchChange(form) {
-        this.getList(this.page, form)
-      },
-      /**
-       * 刷新回调
-       */
-      refreshChange() {
-        this.getList(this.page)
+      tableLoading: false,
+      tableOption: tableOption,
+      formOption: formOption,
+      createVisible: false,
+      obj: {}
+    };
+  },
+  created() {},
+  mounted: function() {},
+  watch: {
+    "obj.ranger"() {
+      console.log(this.option.column)
+      const column = this.option.column[1];
+      if (this.form.text1 === 0) {
+        column.display = true;
+      } else {
+        column.display = false;
       }
     }
+  },
+  computed: {
+    ...mapGetters(["permissions"])
+  },
+  methods: {
+    getList(page, params) {
+      this.tableLoading = true;
+      fetchList(
+        Object.assign(
+          {
+            current: page.currentPage,
+            size: page.pageSize
+          },
+          params
+        )
+      ).then(response => {
+        this.tableData = response.data.data.records;
+        this.page.total = response.data.data.total;
+        this.tableLoading = false;
+      });
+    },
+    handleAdd() {
+      this.createVisible = true;
+    },
+    /**
+     * 搜索回调
+     */
+    searchChange(form) {
+      this.getList(this.page, form);
+    },
+    /**
+     * 刷新回调
+     */
+    refreshChange() {
+      this.getList(this.page);
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>

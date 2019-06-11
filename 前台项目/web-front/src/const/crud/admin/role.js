@@ -91,7 +91,7 @@ export const tableOption = {
   }, {
     label:'',
     prop: 'dsScope',
-    formsolt: true,
+    formslot: true,
     showClomnu:false,
     hide: true
   }, {

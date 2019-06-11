@@ -7,13 +7,14 @@
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
     <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
     <result column="role_desc" jdbcType="VARCHAR" property="roleDesc" />
+    <result column="ds_type"  property="dsType"/>
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="del_flag" jdbcType="CHAR" property="delFlag" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Mon May 13 17:01:26 CST 2019.-->
-    role_id, role_name, role_code, role_desc, create_time, update_time, del_flag
+    role_id, role_name, role_code, role_desc,ds_type, create_time, update_time, del_flag
   </sql>
 
   <select id="listRolesByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">

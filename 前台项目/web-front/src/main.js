@@ -13,13 +13,18 @@ import * as urls from '@/config/env'
 import { iconfontUrl, iconfontVersion } from '@/config/env'
 import * as filters from './filters' // 全局filter
 import './styles/common.scss'
+
 // 引入avue的包
-import Avue from '@smallwei/avue/lib/index.js'
+import Avue from '@smallwei/avue';
 // 引入avue的样式文件
-import '@smallwei/avue/lib/theme-chalk/index.css'
+import '@smallwei/avue/lib/index.css';
 import basicContainer from './components/basic-container/main'
 // 插件 json 展示
 import vueJsonTreeView from 'vue-json-tree-view'
+//富文本框
+import AvueEditor from './components/AvueEditor'
+//用户抽屉选择
+import AvueUserSelect from './components/UserSelect'
 
 import { validatenull } from '@/util/validate'
 
@@ -32,6 +37,11 @@ Vue.use(router)
 Vue.use(vueJsonTreeView)
 
 Vue.use(VueAxios, axios)
+
+// 注册富文本框容器
+Vue.use(AvueEditor)
+//会员选择
+Vue.use(AvueUserSelect)
 
 // 注册全局容器
 Vue.component('basicContainer', basicContainer)
@@ -52,7 +62,6 @@ iconfontVersion.forEach(ele => {
 })
 
 Vue.config.productionTip = false
-
 new Vue({
   router,
   store,

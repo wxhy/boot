@@ -66,7 +66,7 @@
             </template>
             <template slot="deptId"
                       slot-scope="scope">
-              {{scope.row.deptName}}
+               {{scope.row.deptName}}
             </template>
             <template slot="lockFlag"
                       slot-scope="scope">
@@ -87,22 +87,20 @@
                          @click="deletes(scope.row,scope.index)">删除
               </el-button>
             </template>
-            <template slot="deptIdForm"
-                      slot-scope="scope">
-              <avue-crud-input v-model="form.deptId"
+            <template slot="deptIdForm" slot-scope="scope">
+              <avue-select v-model="form.deptId"
                                type="tree"
                                placeholder="请选择所属部门"
                                :node-click="getNodeData"
                                :dic="treeDeptData"
-                               :props="defaultProps"></avue-crud-input>
+                               :props="defaultProps"></avue-select>
             </template>
-            <template slot="roleForm"
-                      slot-scope="scope">
-              <avue-crud-select v-model="role"
+            <template slot="roleForm" slot-scope="scope">
+              <avue-select v-model="role"
                                 multiple
                                 placeholder="请选择角色"
                                 :dic="rolesOptions"
-                                :props="roleProps"></avue-crud-select>
+                                :props="roleProps"></avue-select>
             </template>
           </avue-crud>
         </el-col>
@@ -172,6 +170,7 @@
       this.sys_user_edit = this.permissions["sys_user_edit"];
       this.sys_user_del = this.permissions["sys_user_del"];
       this.init();
+      console.log(this.$options.components)
     },
     methods: {
       init() {

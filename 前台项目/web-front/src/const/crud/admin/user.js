@@ -81,10 +81,11 @@ export const tableOption = {
   }, {
     label: '所属部门',
     prop: 'deptId',
-    formsolt: true,
-    solt: true,
     span: 24,
     hide: true,
+    slot:true,
+    formslot:true,
+    typeslot:true,
     rules: [{
       required: true,
       message: '请选择部门',
@@ -105,10 +106,10 @@ export const tableOption = {
   }, {
     label: '角色',
     prop: 'role',
-    formsolt: true,
-    solt: true,
-    overHidden: true,
     span: 24,
+    slot:true,
+    formslot:true,
+    typeslot:true,
     rules: [{
       required: true,
       message: '请选择角色',
@@ -118,7 +119,7 @@ export const tableOption = {
     label: '状态',
     prop: 'lockFlag',
     type: 'select',
-    solt: true,
+    slot:true,
     span: 24,
     rules: [{
       required: true,
