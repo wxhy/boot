@@ -4,7 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.MenuTree;
 import com.study.boot.upms.api.entity.SysMenu;

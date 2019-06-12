@@ -1,7 +1,7 @@
 package com.study.boot.common.auth.feign;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import feign.Feign;
 import feign.RequestInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

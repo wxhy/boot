@@ -46,3 +46,38 @@ export function fetchMessageList (query) {
     params: query
   })
 }
+
+export function doRead(id){
+  return request({
+    url:'/admin/messageSend/read/' + id,
+    method:'put'
+  })
+}
+
+export function doReadAll() {
+  return request({
+    url:'/admin/messageSend/read-all',
+    method:'get'
+  })
+}
+
+export function getMessageObj(id) {
+  return request({
+    url:'/admin/messageSend/' + id,
+    method:'get'
+  })
+}
+
+export function removeMessage(id) {
+  return request({
+    url:'/admin/messageSend/' + id,
+    method:'put'
+  })
+}
+
+export function delMessage(id) {
+  return request({
+    url:'/admin/messageSend/' + id,
+    method:'delete'
+  })
+}

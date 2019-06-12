@@ -2,7 +2,7 @@ package com.study.boot.gateway.handler;
 
 import cn.hutool.core.io.FastByteArrayOutputStream;
 import com.google.code.kaptcha.Producer;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;

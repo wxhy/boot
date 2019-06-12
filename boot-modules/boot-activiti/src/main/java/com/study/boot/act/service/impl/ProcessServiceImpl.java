@@ -8,7 +8,7 @@ import com.study.boot.act.dto.ProcessDefDTO;
 import com.study.boot.act.entity.LeaveBill;
 import com.study.boot.act.service.LeaveBillService;
 import com.study.boot.act.service.ProcessService;
-import com.study.boot.common.enums.PaginationConstants;
+import com.study.boot.common.constants.PaginationConstants;
 import com.study.boot.common.enums.ProcessStatusEnum;
 import com.study.boot.common.enums.ResourceTypeEnum;
 import com.study.boot.common.enums.TaskStatusEnum;

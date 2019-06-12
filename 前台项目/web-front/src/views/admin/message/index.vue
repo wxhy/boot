@@ -32,6 +32,11 @@
           <el-button type="primary" icon="el-icon-plus" size="mini" @click="handleAdd()">新增</el-button>
         </template>
 
+        <template slot-scope="scope" slot="content">
+          <avue-text-ellipsis :text="scope.row.content" :height="30" :width="220" use-tooltip placement="top">
+          </avue-text-ellipsis>
+        </template>
+
         <template slot="menu" slot-scope="scope">
           <el-button
             size="small"

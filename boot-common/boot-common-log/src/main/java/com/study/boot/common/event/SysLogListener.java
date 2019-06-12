@@ -1,6 +1,6 @@
 package com.study.boot.common.event;
 
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import com.study.boot.upms.api.entity.SysLog;
 import com.study.boot.upms.api.feign.RemoteLogService;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.study.boot.common.enums;
+package com.study.boot.common.constants;
 
 /**
  * 通用的常量标识
@@ -60,4 +60,8 @@ public interface CommonConstants {
      * 数据字典缓存前缀
      */
     String DICTS = "DICTS:";
+    /**
+     * 消息类型
+     */
+    String MESSAGE_TYPE = "message_type";
 }

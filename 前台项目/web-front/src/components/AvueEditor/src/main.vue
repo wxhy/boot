@@ -6,7 +6,7 @@
     <el-button size="small" icon="el-icon-delete" @click="handleClear">清空</el-button>
 
     <el-dialog title="预览" fullscreen append-to-body :visible.sync="prewVisible">
-      <div v-html="text"></div>
+      <div v-html="text" style="padding:0 10px;"></div>
     </el-dialog>
 
     <el-dialog append-to-body title="编辑HTML代码" :visible.sync="editorVisible">
@@ -53,6 +53,7 @@ export default {
     },
     value() {
       this.text = this.value;
+      this.editor.txt.html(this.text)
     }
   },
   methods: {
@@ -63,7 +64,8 @@ export default {
       this.editor.customConfig.zIndex = 100
       this.editor.customConfig.onchange = html => {
         // html 即变化之后的内容
-        this.text = filterXSS(html) ;
+        // this.text = filterXSS(html) ;
+        this.text = html;
         this.$emit("input", this.text);
         this.$emit("change", this.text);
       };

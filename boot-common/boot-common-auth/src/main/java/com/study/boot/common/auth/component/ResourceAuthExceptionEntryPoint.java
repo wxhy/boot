@@ -3,7 +3,7 @@ package com.study.boot.common.auth.component;
 import cn.hutool.http.HttpStatus;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

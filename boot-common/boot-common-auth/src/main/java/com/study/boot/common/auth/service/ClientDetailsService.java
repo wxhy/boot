@@ -1,6 +1,6 @@
 package com.study.boot.common.auth.service;
 
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.security.oauth2.provider.ClientDetails;

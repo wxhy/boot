@@ -2,7 +2,7 @@ package com.study.boot.gateway.config;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,6 +1,6 @@
 package com.study.boot.common.util;
 
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import lombok.*;
 
 import java.io.Serializable;

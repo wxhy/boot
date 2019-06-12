@@ -4,7 +4,7 @@ import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

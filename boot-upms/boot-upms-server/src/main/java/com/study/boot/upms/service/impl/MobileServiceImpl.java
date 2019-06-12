@@ -2,9 +2,9 @@ package com.study.boot.upms.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.enums.LoginTypeEnum;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.MobileService;

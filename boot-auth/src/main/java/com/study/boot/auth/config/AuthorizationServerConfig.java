@@ -3,7 +3,7 @@ package com.study.boot.auth.config;
 
 import com.study.boot.common.auth.component.CustomWebResponseExceptionTranslator;
 import com.study.boot.common.auth.service.ClientDetailsService;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;

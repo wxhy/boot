@@ -1,7 +1,7 @@
 package com.study.boot.common.auth.feign;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;

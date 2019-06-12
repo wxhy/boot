@@ -1,6 +1,6 @@
 package com.study.boot.common.auth.mobile;
 
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;

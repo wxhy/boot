@@ -57,6 +57,7 @@ export const tableOption = {
     prop: 'title'
   }, {
     label: '内容',
+    slot:true,
     prop: 'content'
   }, {
     label: '类型',

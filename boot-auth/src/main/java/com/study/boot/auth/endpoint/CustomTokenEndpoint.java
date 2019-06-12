@@ -1,7 +1,7 @@
 package com.study.boot.auth.endpoint;
 
 import cn.hutool.core.util.StrUtil;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.util.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

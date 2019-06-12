@@ -2,8 +2,8 @@ package com.study.boot.common.auth.service;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
-import com.study.boot.common.enums.CommonConstants;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.CommonConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.api.entity.SysUser;

@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.auth.util.SecurityUtils;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.upms.api.entity.SysMessage;
 import com.study.boot.upms.api.entity.SysMessageSend;
 import com.study.boot.upms.api.entity.SysUser;

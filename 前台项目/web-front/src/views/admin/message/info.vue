@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container calendar-list-container">
+  <span class="app-container calendar-list-container">
     <basic-container>
-      <el-row :span="24" style="min-height:650px;">
+      <el-row :span="24" style="min-height:550px;">
         <el-col :xs="24" :sm="24" :md="5">
           <el-tabs v-model="activeName" tab-position="left" @tab-click="switchTab">
             <el-tab-pane label="未读消息" name="0"/>
@@ -9,70 +9,103 @@
           </el-tabs>
         </el-col>
         <el-col :xs="24" :sm="24" :md="19">
-          <el-button>全部标记为已读</el-button>
-          <el-table :data="data" style="width:100%">
-            <el-table-column prop="id" label="#" width="50">
-              <template slot-scope="scope">{{scope.row.messageId}}</template>
-            </el-table-column>
-            <el-table-column prop="title" width="800">
-              <template slot-scope="scope">
-                <span class="message-title">[{{scope.row.type}}] {{scope.row.title}}</span>
-              </template>
-            </el-table-column>
-            <el-table-column prop="createTime" width="200">
-              <template slot-scope="scope">
-                <i class="el-icon-time"></i>
-                <span style="margin-left: 10px">{{ scope.row.createTime }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column>
-              <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
-                >标记为已读</el-button>
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
-                >删除</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div class="messagetb" v-if="!cardVisible">
+            <el-button v-if="activeName == 0" @click="doAllRead()">全部标记为已读</el-button>
+            <el-table :data="data" style="width:100%" v-loading="loading">
+              <el-table-column prop="id" label="#" width="50">
+                <template slot-scope="scope">{{scope.row.messageId}}</template>
+              </el-table-column>
+              <el-table-column prop="title" width="600">
+                <template slot-scope="scope">
+                  <span
+                    class="message-title"
+                    @click="lookDetail(scope.row.id)"
+                  >[{{dictData[scope.row.type]}}] {{scope.row.title}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="createTime" width="200">
+                <template slot-scope="scope">
+                  <i class="el-icon-time"></i>
+                  <span style="margin-left: 10px">{{ scope.row.createTime }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column>
+                <template slot-scope="scope">
+                  <el-button
+                    v-if="activeName==0"
+                    size="mini"
+                    type="danger"
+                    @click="handleRead(scope.row, scope.$index)"
+                  >标记为已读</el-button>
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(scope.row, scope.$index)"
+                  >删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
 
-          <div class="pgbottom">
-            <el-pagination
-              :current-page="page.currentPage"
-              :page-size="page.pageSize"
-              layout="total,  prev, pager, next, jumper"
-              :total="page.total"
-            ></el-pagination>
+            <div class="pgbottom">
+              <el-pagination
+                :current-page="page.currentPage"
+                :page-size="page.pageSize"
+                layout="total,  prev, pager, next, jumper"
+                :total="page.total"
+              ></el-pagination>
+            </div>
           </div>
+
+          <el-card class="box-card" v-if="cardVisible">
+            <span slot="header">
+              <el-button type="text" @click="goBack()" style="float:left;">
+                <span>
+                  <i class="el-icon-arrow-left"></i>
+                  返回
+                </span>
+              </el-button>
+
+              <span style="font-weight: bold;">{{detail.title}}</span>
+            </span>
+            <div v-html="detail.content"></div>
+          </el-card>
         </el-col>
       </el-row>
     </basic-container>
-  </div>
+  </span>
 </template>
 
 
 <script>
-import { fetchMessageList, addObj, getObj, putObj, delObj } from "@/api/admin/message";
+import {
+  fetchMessageList,
+  doRead,
+  doReadAll,
+  getMessageObj,
+  removeMessage,
+  delMessage
+} from "@/api/admin/message";
 import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       data: [],
+      loading: false,
+      cardVisible: false,
+      detail: {},
       page: {
         total: 0, // 总页数
         currentPage: 1, // 当前页数
         pageSize: 20 // 每页显示多少条
       },
-      activeName:"0"
+      activeName: "0",
+      dictData: {
+        "0": "系统公告"
+      }
     };
   },
   created() {
-    this.getList(this.page);
+    this.getList(this.page, { status: this.activeName, delflag: "0" });
   },
   mounted: function() {},
   computed: {
@@ -82,10 +115,10 @@ export default {
     switchTab(tab, event) {
       this.activeName = tab.name;
       this.page.currentPage = 1;
-      this.getList(this.page,{status:this.activeName})
+      this.getList(this.page, { status: this.activeName, delflag: "0" });
     },
     getList(page, params) {
-      this.tableLoading = true;
+      this.loading = true;
       fetchMessageList(
         Object.assign(
           {
@@ -97,9 +130,45 @@ export default {
       ).then(response => {
         this.data = response.data.data.records;
         this.page.total = response.data.data.total;
+        this.loading = false;
       });
     },
-    handleDelete(row, index) {}
+    handleRead(row, index) {
+      doRead(row.id).then(response => {
+        this.refreshChange();
+        this.data.splice(index, 1);
+        this.$message.success("已标记为阅读");
+      });
+    },
+    doAllRead() {
+      doReadAll().then(response => {
+        this.data = [];
+        this.$message.success("已全部标记为阅读");
+      });
+    },
+    handleDelete(row, index) {
+      removeMessage(row.id).then(response => {
+        this.refreshChange();
+        this.data.splice(index, 1);
+        this.$message.success("删除成功");
+      });
+    },
+    /**
+     * 刷新回调
+     */
+    refreshChange() {
+      this.getList(this.page, { status: this.activeName, delflag: "0" });
+    },
+    lookDetail(id) {
+      doRead(id);
+      getMessageObj(id).then(response => {
+        this.detail = response.data.data;
+        this.cardVisible = true;
+      });
+    },
+    goBack() {
+      this.cardVisible = false;
+    }
   }
 };
 </script>
@@ -107,6 +176,10 @@ export default {
 <style>
 .el-tabs__header {
   width: 300px;
+}
+.el-card__header {
+  padding-top: 0px;
+  text-align: center;
 }
 .el-tabs__header .el-tabs__item {
   text-align: center !important;

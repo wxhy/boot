@@ -1,7 +1,7 @@
 package com.study.boot.upms.compoment;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.upms.api.entity.SysDict;
 import com.study.boot.upms.service.SysDictService;
 import lombok.SneakyThrows;

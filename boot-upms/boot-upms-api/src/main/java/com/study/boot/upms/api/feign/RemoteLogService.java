@@ -1,8 +1,8 @@
 package com.study.boot.upms.api.feign;
 
 
-import com.study.boot.common.enums.SecurityConstants;
-import com.study.boot.common.enums.ServiceNameConstants;
+import com.study.boot.common.constants.SecurityConstants;
+import com.study.boot.common.constants.ServiceNameConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysLog;
 import com.study.boot.upms.api.feign.factory.RemoteLogServiceFallFactory;

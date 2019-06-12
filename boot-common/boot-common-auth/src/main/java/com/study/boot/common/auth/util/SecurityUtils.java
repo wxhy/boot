@@ -1,7 +1,7 @@
 package com.study.boot.common.auth.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.study.boot.common.enums.SecurityConstants;
+import com.study.boot.common.constants.SecurityConstants;
 import lombok.experimental.UtilityClass;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

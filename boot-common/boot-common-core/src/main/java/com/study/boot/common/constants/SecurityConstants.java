@@ -1,4 +1,4 @@
-package com.study.boot.common.enums;
+package com.study.boot.common.constants;
 
 /**
  * @author 32045

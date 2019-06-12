@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
-import com.study.boot.common.enums.CommonConstants;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.entity.SysUser;

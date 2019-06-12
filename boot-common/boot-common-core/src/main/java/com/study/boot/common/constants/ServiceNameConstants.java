@@ -1,4 +1,4 @@
-package com.study.boot.common.enums;
+package com.study.boot.common.constants;
 
 /**
  *  服务名称
