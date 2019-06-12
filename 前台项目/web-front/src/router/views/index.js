@@ -29,4 +29,14 @@ export default [{
             import ( /* webpackChunkName: "views" */ '@/views/activiti/detail')
     }]
 
+},{
+    path: '/message',
+    component: Layout,
+    redirect: '/message/index',
+    children:[{
+        path:'index',
+        name:"消息中心",
+        component:()=>
+            import ( /* webpackChunkName: "views" */  '@/views/admin/message/info')
+    }]
 }]

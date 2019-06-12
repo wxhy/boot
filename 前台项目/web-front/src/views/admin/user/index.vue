@@ -280,7 +280,7 @@
                 duration: 2000
               });
             })
-            .cache(() => {
+            .catch(() => {
               this.$notify({
                 title: "失败",
                 message: "删除失败",

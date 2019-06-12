@@ -16,12 +16,12 @@
  */
 
 const DIC = {
-  SENDER:[{
-    label: '',
-    value: 0
-  },{
-    label: '',
-    value: 1
+  SENDER: [{
+    label: '是',
+    value: "0"
+  }, {
+    label: '否',
+    value: "1"
   }],
   RANGER: [{
     label: '全体用户',
@@ -60,10 +60,12 @@ export const tableOption = {
     prop: 'content'
   }, {
     label: '类型',
-    prop: 'type'
+    prop: 'type',
+    dicUrl: '/admin/dict/type/message_type',
   }, {
     label: '新创建账号推送',
-    prop: 'sort'
+    prop: 'createSend',
+    dicData: DIC.SENDER
   }, {
     label: '创建时间',
     prop: 'createTime',
@@ -103,8 +105,9 @@ export const formOption = {
     {
       label: '新创建账号也推送',
       prop: 'createSend',
-      type: 'switch',
-      dicData: DIC.SEX,
+      type: 'radio',
+      dicData: DIC.SENDER,
+      valueDefault: 1
     },
     {
       label: '发送范围',
@@ -116,12 +119,51 @@ export const formOption = {
     },
     {
       label: '',
-      prop: 'user',
-      component:'userSelect',
+      prop: 'userIds',
+      component: 'userSelect',
       formslot: true,
-      showClomnu:false,
+      showClomnu: false,
       span: 24,
 
+    }
+  ]
+}
+
+
+
+export const updateOption = {
+  row: true,
+  span: 12,
+  column: [
+    {
+      label: '消息类型',
+      prop: 'type',
+      dicUrl: '/admin/dict/type/message_type',
+      type: 'select'
+    },
+    {
+      label: '标题',
+      span: 24,
+      prop: 'title',
+      rules: [{
+        required: true,
+        message: "请输入标题",
+        trigger: "blur"
+      }]
+    },
+    {
+      label: '内容',
+      prop: 'content',
+      span: 24,
+      component: 'editor',
+      dataType: 'string'
+    },
+    {
+      label: '新创建账号也推送',
+      prop: 'createSend',
+      type: 'radio',
+      dicData: DIC.SENDER,
+      valueDefault: 1
     }
   ]
 }

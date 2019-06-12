@@ -56,4 +56,8 @@ public interface CommonConstants {
      * 编码
      */
     String UTF8 = "UTF-8";
+    /**
+     * 数据字典缓存前缀
+     */
+    String DICTS = "DICTS:";
 }

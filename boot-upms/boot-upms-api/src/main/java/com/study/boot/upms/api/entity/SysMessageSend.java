@@ -42,6 +42,11 @@ public class SysMessageSend extends Model<SysMessageSend> {
     private String userName;
 
     /**
+     * 是否已读
+     */
+    private String status;
+
+    /**
     * 删除标识
     */
     private String delflag;

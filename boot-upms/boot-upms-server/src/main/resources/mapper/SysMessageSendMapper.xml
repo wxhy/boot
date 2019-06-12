@@ -10,6 +10,7 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="type" jdbcType="CHAR" property="type" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="status" jdbcType="CHAR" property="status" />
     <result column="delFlag" jdbcType="CHAR" property="delflag" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -18,7 +19,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, message_id, user_id, title, content, `type`, user_name, delFlag, create_by, create_time, 
+    id, message_id, user_id, title, content, `type`, user_name,`status` ,delFlag, create_by, create_time,
     update_by, update_time
   </sql>
 </mapper>

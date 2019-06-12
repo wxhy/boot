@@ -9,6 +9,7 @@ import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysDict;
 import com.study.boot.upms.service.SysDictService;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -67,6 +68,7 @@ public class DictController {
      */
     @SysLog("添加字典")
     @PostMapping
+    @Cacheable
     public WebResponse save(@Valid @RequestBody SysDict sysDict) {
         return new WebResponse<>(sysDictService.save(sysDict));
     }
