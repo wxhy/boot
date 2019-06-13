@@ -108,7 +108,7 @@ export const formOption = {
       prop: 'createSend',
       type: 'radio',
       dicData: DIC.SENDER,
-      valueDefault: 1
+      valueDefault: "1"
     },
     {
       label: '发送范围',

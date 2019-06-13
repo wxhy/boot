@@ -14,6 +14,7 @@ import com.study.boot.upms.service.SysMessageSendService;
 import com.study.boot.upms.service.SysMessageService;
 import com.study.boot.upms.service.SysUserService;
 import lombok.AllArgsConstructor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,8 +28,9 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SysMessageServiceImpl extends ServiceImpl<SysMessageMapper, SysMessage> implements SysMessageService {
 
-    private SysMessageSendService sysMessageSendService;
-    private SysUserService sysUserService;
+    private final SysMessageSendService sysMessageSendService;
+    private final SysUserService sysUserService;
+    private final SimpMessagingTemplate simpMessagingTemplate;
 
     /**
      * 保存发送消息
@@ -61,6 +63,7 @@ public class SysMessageServiceImpl extends ServiceImpl<SysMessageMapper, SysMess
                     return messageSend;
                 }).collect(Collectors.toList());
         this.sysMessageSendService.saveBatch(sends);
+        this.sendMessageToClient(sends);
         return Boolean.TRUE;
     }
 
@@ -75,5 +78,15 @@ public class SysMessageServiceImpl extends ServiceImpl<SysMessageMapper, SysMess
         this.sysMessageSendService.remove(Wrappers.<SysMessageSend>query().lambda().eq(SysMessageSend::getMessageId,id));
         this.removeById(id);
         return Boolean.TRUE;
+    }
+
+    /**
+     * 推送消息到客户端
+     * @param sends
+     */
+    public void sendMessageToClient(List<SysMessageSend> sends) {
+        sends.stream()
+                .forEach(messageSend -> simpMessagingTemplate.convertAndSendToUser(messageSend.getUserId().toString(), "/message", messageSend));
+
     }
 }

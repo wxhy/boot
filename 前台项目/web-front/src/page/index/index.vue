@@ -131,21 +131,25 @@
           'Authorization': 'Bearer ' + token
         }
         // 建立连接对象
-        this.socket = new SockJS('/act/ws');//连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
+        this.socket = new SockJS('/admin/ws');//连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
         // 获取STOMP子协议的客户端对象
         this.stompClient = Stomp.over(this.socket);
 
         // 向服务器发起websocket连接
         this.stompClient.connect(headers, () => {
-          this.stompClient.subscribe('/user/' + this.userInfo.username + '/remind', (msg) => { // 订阅服务端提供的某个topic;
+          this.stompClient.subscribe('/user/' + this.userInfo.userId + '/message', (msg) => { // 订阅服务端提供的某个topic;
+            const data =  JSON.parse(msg.body);
+            this.$store.commit('SET_HAS_NEWS', true);
             this.$notify({
-              title: "协同提醒",
+              title: "新消息",
               type: 'warning',
               dangerouslyUseHTMLString: true,
-              message: msg.body + '任务，请及时处理',
+              message:  data.title,
               offset: 60
             });
           });
+
+          this.stompClient.subscribe('')
         }, (err) => {
             console.log(err)
         });

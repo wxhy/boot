@@ -21,7 +21,8 @@ const common = {
     theme: getStore({ name: 'theme' }) || '#409EFF',
     themeName: getStore({ name: 'themeName' }) || 'theme-white',
     lockPasswd: getStore({ name: 'lockPasswd' }) || '',
-    website: website
+    website: website,
+    hasNews: false
   },
   actions: {},
   mutations: {
@@ -138,6 +139,13 @@ const common = {
       })
       removeStore({
         name: 'isLock'
+      })
+    },
+    SET_HAS_NEWS:(state,active)=>{
+      state.hasNews = active;
+      setStore({
+          name:"hasNews",
+          content: state.hasNews
       })
     }
   }

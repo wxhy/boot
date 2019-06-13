@@ -1,7 +1,7 @@
 <template>
   <span class="app-container calendar-list-container">
     <basic-container>
-      <el-row :span="24" style="min-height:550px;">
+      <el-row :span="24" style="min-height:700px;height: auto;">
         <el-col :xs="24" :sm="24" :md="5">
           <el-tabs v-model="activeName" tab-position="left" @tab-click="switchTab">
             <el-tab-pane label="未读消息" name="0"/>
@@ -9,7 +9,7 @@
           </el-tabs>
         </el-col>
         <el-col :xs="24" :sm="24" :md="19">
-          <div class="messagetb" v-if="!cardVisible">
+          <div class="messagetb" v-if="!cardVisible" style="min-height:700px;height: auto;">
             <el-button v-if="activeName == 0" @click="doAllRead()">全部标记为已读</el-button>
             <el-table :data="data" style="width:100%" v-loading="loading">
               <el-table-column prop="id" label="#" width="50">
@@ -20,7 +20,7 @@
                   <span
                     class="message-title"
                     @click="lookDetail(scope.row.id)"
-                  >[{{dictData[scope.row.type]}}] {{scope.row.title}}</span>
+                  >[{{findKey(scope.row.type)}}] {{scope.row.title}}</span>
                 </template>
               </el-table-column>
               <el-table-column prop="createTime" width="200">
@@ -48,6 +48,7 @@
 
             <div class="pgbottom">
               <el-pagination
+                @current-change="handleCurrentChange"
                 :current-page="page.currentPage"
                 :page-size="page.pageSize"
                 layout="total,  prev, pager, next, jumper"
@@ -85,6 +86,7 @@ import {
   removeMessage,
   delMessage
 } from "@/api/admin/message";
+import { remote } from "@/api/admin/dict";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -96,18 +98,21 @@ export default {
       page: {
         total: 0, // 总页数
         currentPage: 1, // 当前页数
-        pageSize: 20 // 每页显示多少条
+        pageSize: 10 // 每页显示多少条
       },
       activeName: "0",
-      dictData: {
-        "0": "系统公告"
-      }
+      dictData: []
     };
   },
   created() {
     this.getList(this.page, { status: this.activeName, delflag: "0" });
+    remote("message_type").then(response => {
+      this.dictData = response.data.data;
+    });
   },
-  mounted: function() {},
+  mounted: function() {
+    this.$store.commit("SET_HAS_NEWS", false);
+  },
   computed: {
     ...mapGetters(["permissions"])
   },
@@ -133,6 +138,15 @@ export default {
         this.loading = false;
       });
     },
+    findKey(value) {
+      let label = "";
+      this.dictData.forEach(el => {
+        if (el.value === value) {
+          label = el.label;
+        }
+      });
+      return label;
+    },
     handleRead(row, index) {
       doRead(row.id).then(response => {
         this.refreshChange();
@@ -152,6 +166,10 @@ export default {
         this.data.splice(index, 1);
         this.$message.success("删除成功");
       });
+    },
+    handleCurrentChange(val) {
+      this.page.currentPage = val;
+      this.refreshChange();
     },
     /**
      * 刷新回调

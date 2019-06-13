@@ -37,7 +37,7 @@
       <el-tooltip effect="dark" content="消息" placement="bottom">
         <div class="top-bar__item">
           <router-link to="/message/index">
-            <el-badge :value="3">
+            <el-badge :is-dot="hasNews">
               <i class="el-icon-bell"></i>
             </el-badge>
           </router-link>
@@ -126,7 +126,8 @@ export default {
       showCollapse: state => state.common.showCollapse,
       showSearch: state => state.common.showSearch,
       showMenu: state => state.common.showMenu,
-      showColor: state => state.common.showColor
+      showColor: state => state.common.showColor,
+      hasNews:state=> state.common.hasNews
     }),
     ...mapGetters([
       "userInfo",
