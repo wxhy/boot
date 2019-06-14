@@ -56,7 +56,6 @@
 		`user`.del_flag AS udel_flag,
 		`user`.lock_flag AS lock_flag,
 		`user`.dept_id AS deptId,
-		`user`.tenant_id AS tenantId,
 		r.role_id,
 		r.role_name,
 		r.role_code,

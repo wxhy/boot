@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.act.entity.LeaveBill;
 import com.study.boot.act.service.LeaveBillService;
 import com.study.boot.act.service.ProcessService;
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.TaskStatusEnum;
 import com.study.boot.common.util.WebResponse;
@@ -51,6 +52,7 @@ public class LeaveBillController {
      * @return
      */
     @PostMapping
+    @SysLog("新建请假流程")
     public WebResponse saveLeaveBill(@RequestBody LeaveBill leaveBill) {
         leaveBill.setUsername(SecurityUtils.getUserName());
         leaveBill.setState(TaskStatusEnum.UNSUBMIT.getStatus());
@@ -63,6 +65,7 @@ public class LeaveBillController {
      * @return
      */
     @PutMapping
+    @SysLog("修改请假流程")
     public WebResponse updateById(@RequestBody LeaveBill leaveBill) {
         return new WebResponse<>(leaveBillService.updateById(leaveBill));
     }
@@ -74,6 +77,7 @@ public class LeaveBillController {
      * @return R
      */
     @DeleteMapping("/{leaveId}")
+    @SysLog("删除请假流程")
     public WebResponse removeById(@PathVariable Integer leaveId) {
         return new WebResponse<>(leaveBillService.removeById(leaveId));
     }
@@ -85,6 +89,7 @@ public class LeaveBillController {
      * @return R
      */
     @GetMapping("/submit/{leaveId}")
+    @SysLog("发起请假流程审批")
     public WebResponse submit(@PathVariable String leaveId) {
         return new WebResponse<>(processService.saveStartProcess(leaveId));
     }

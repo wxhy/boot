@@ -112,7 +112,7 @@ export default {
   },
   filters: {},
   created() {
-    // handleImg(this.userInfo.avatar, 'thumbnail');
+    handleImg(this.userInfo.avatar, 'thumbnail');
   },
   mounted() {
     listenfullscreen(this.setScreen);

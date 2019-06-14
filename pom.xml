@@ -27,6 +27,7 @@
         <flowable.version>6.4.1</flowable.version>
         <jackson.modules>2.9.8</jackson.modules>
         <kaptcha.version>0.0.9</kaptcha.version>
+        <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
     </properties>
 
     <modules>

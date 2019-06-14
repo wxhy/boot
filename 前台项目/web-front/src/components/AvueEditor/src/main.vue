@@ -26,6 +26,9 @@ import E from "wangeditor";
 import filterXSS from 'xss';
 export default {
   name: "AvueEditor",
+  components: {
+    E
+  },
   data() {
     return {
       editor: null,

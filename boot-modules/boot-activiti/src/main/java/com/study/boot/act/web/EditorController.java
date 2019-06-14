@@ -1,6 +1,7 @@
 package com.study.boot.act.web;
 
 import com.study.boot.act.service.EditorService;
+import com.study.boot.common.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class EditorController {
     }
 
     @PutMapping("/model/{modelId}/save")
+    @SysLog("新建流程MODEL")
     public void saveModel(@PathVariable(value = "modelId") String modelId, String name, String description,
                           @RequestParam("json_xml") String jsonXml, @RequestParam("svg_xml") String svgXml) {
         editorService.saveModel(modelId, name, description, jsonXml, svgXml);

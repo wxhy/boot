@@ -37,7 +37,8 @@ public class MessageSendController {
     public WebResponse getMessagePage(Page page, SysMessageSend messageSend) {
         SysUser sysUser = sysUserService.findByUsername(SecurityUtils.getUserName());
         messageSend.setUserId(sysUser.getUserId());
-        return new WebResponse<>(sysMessageSendService.page(page, Wrappers.query(messageSend).orderByDesc("create_time")));
+        return new WebResponse<>(sysMessageSendService.page(page,
+                Wrappers.query(messageSend).orderByDesc(SysMessageSend.COL_CREATE_TIME)));
     }
 
     /**

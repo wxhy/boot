@@ -1,0 +1,6 @@
+{
+  "fkey": "${key}",
+  "name": "${fname}",
+  "size": "$(size)",
+  "type": "${mimeType}"
+}

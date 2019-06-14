@@ -35,3 +35,13 @@ security:
       client-id: test
       client-secret: test
       scope: server
+
+
+## 七牛云配置
+oss:
+  name: qiniu
+qiniu:
+  accessKey: 3QwcYlLnnsmKAb_y2thYWhMthLnLJE4BhgEg5CMP
+  secretKey: VbTcSVpXEyGkUCo2WEdVnzT3mnqWn0gtnXde9sBU
+  bucket: otcars
+  path: http://pt14pw6yg.bkt.clouddn.com

@@ -3,6 +3,7 @@ package com.study.boot.upms.web;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysMessage;
 import com.study.boot.upms.api.vo.MessageVo;
@@ -46,6 +47,7 @@ public class MessageController {
      * @return
      */
     @PostMapping
+    @SysLog("发送消息")
     public WebResponse saveMessage(@RequestBody MessageVo messageVo){
         return new WebResponse<>(sysMessageService.saveMessage(messageVo));
     }
@@ -56,6 +58,7 @@ public class MessageController {
      * @return
      */
     @DeleteMapping("/{id}")
+    @SysLog("删除消息")
     public WebResponse removeMessageById(@PathVariable Integer id) {
         return new WebResponse<>(sysMessageService.removeMessageById(id));
     }
@@ -67,6 +70,7 @@ public class MessageController {
      * @return
      */
     @PutMapping
+    @SysLog("修改消息")
     public WebResponse updateMessageById(@RequestBody SysMessage sysMessage) {
         return new WebResponse<>(sysMessageService.updateById(sysMessage));
     }
