@@ -1,0 +1,25 @@
+# 使用说明 V2.1.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '3'
+services:
+  boot-mysql:
+    build:
+      context: ./
+      dockerfile: ./doc/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    restart: always
+    container_name: boot-mysql
+    image: boot-mysql
+    ports:
+      - 3306:3306
+
+  boot-redis:
+    image: redis:5.0.5
+    restart: always
+    container_name: boot-redis
+    ports:
+      - 6379:6379
