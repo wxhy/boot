@@ -3,7 +3,7 @@
 # 2. 无需修改源码，根目录  docker-compose up 即可
 # 3. 静静等待服务启动
 
-version: '2'
+version: '3'
 services:
   boot-mysql:
     build:
@@ -45,39 +45,39 @@ services:
     ports:
       - 8888:8888
 
-#  boot-auth:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-auth/Dockerfile
-#    restart: always
-#    container_name: boot-auth
-#    image: boot-auth
-#    depends_on:
-#      - boot-eureka
-#      - boot-config
-#
-#  boot-upms:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-upms/boot-upms-server/Dockerfile
-#    restart: always
-#    container_name: boot-upms
-#    image: boot-upms
-#
-#  boot-activiti:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-modules/boot-activiti/Dockerfile
-#    restart: always
-#    container_name: boot-activiti
-#    image: boot-activiti
-#
-#  boot-gateway:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-gateway/Dockerfile
-#    restart: always
-#    container_name: boot-gateway
-#    image: boot-gateway
-#    ports:
-#      - 8081:8081
+  boot-auth:
+    build:
+      context: ./
+      dockerfile: ./boot-auth/Dockerfile
+    restart: always
+    container_name: boot-auth
+    image: boot-auth
+    depends_on:
+      - boot-eureka
+      - boot-config
+
+  boot-upms:
+    build:
+      context: ./
+      dockerfile: ./boot-upms/boot-upms-server/Dockerfile
+    restart: always
+    container_name: boot-upms
+    image: boot-upms
+
+  boot-activiti:
+    build:
+      context: ./
+      dockerfile: ./boot-modules/boot-activiti/Dockerfile
+    restart: always
+    container_name: boot-activiti
+    image: boot-activiti
+
+  boot-gateway:
+    build:
+      context: ./
+      dockerfile: ./boot-gateway/Dockerfile
+    restart: always
+    container_name: boot-gateway
+    image: boot-gateway
+    ports:
+      - 8081:8081
