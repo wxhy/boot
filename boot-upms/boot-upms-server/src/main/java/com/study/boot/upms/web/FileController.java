@@ -1,16 +1,7 @@
 package com.study.boot.upms.web;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.util.IdUtil;
-import cn.hutool.core.util.StrUtil;
-import com.study.boot.common.auth.util.SecurityUtils;
-import com.study.boot.common.constants.CommonConstants;
-import com.study.boot.common.oss.service.OssTemplate;
-import com.study.boot.common.oss.vo.QiniuResult;
 import com.study.boot.common.util.WebResponse;
-import com.study.boot.upms.api.entity.SysOss;
 import com.study.boot.upms.service.SysOssService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +20,6 @@ import java.io.InputStream;
 @AllArgsConstructor
 public class FileController {
 
-    private final OssTemplate ossEndpoint;
-
     private final SysOssService sysOssService;
     /**
      *  上传文件
@@ -40,17 +29,7 @@ public class FileController {
      */
     @PostMapping("/upload")
     public WebResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        String fileName = IdUtil.simpleUUID()+ StrUtil.DOT+ FileUtil.extName(file.getName());
-        try {
-            QiniuResult result = ossEndpoint.createObject(file, fileName);
-            SysOss sysOss = new SysOss();
-            BeanUtil.copyProperties(result,sysOss);
-            sysOss.setCrateBy(SecurityUtils.getUserName());
-            this.sysOssService.save(sysOss);
-            return new WebResponse<>(result.getFkey());
-        }catch (Exception e) {
-            return new WebResponse<>(CommonConstants.FAIL,e.getLocalizedMessage());
-        }
+            return new WebResponse<>(sysOssService.saveOss(file));
     }
 
     /**
@@ -60,7 +39,7 @@ public class FileController {
      */
     @GetMapping("/{fileName}")
     public void file(@PathVariable String fileName, HttpServletResponse response) {
-        try(InputStream inputStream = ossEndpoint.getObject(fileName)) {
+        try(InputStream inputStream = sysOssService.getOssInputStream(fileName)) {
             response.setContentType("application/octet-stream; charset=UTF-8");
             IoUtil.copy(inputStream, response.getOutputStream());
         }catch (Exception e) {
