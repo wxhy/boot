@@ -12,17 +12,19 @@ new = "evcar"
 
 def main():
 	items = []
-	keys = []
+	keys = dict()
 	q = Auth(accessKey, secretKey)
 	bucketManager = BucketManager(q)
 	data = bucketManager.list(bucket)
 	if data[0].get("items"):
 		items = data[0].get("items")
 	for value in items:
-		keys.append(value.get("key"))
-# force为true时强制同名覆盖, 字典的键为原文件，值为目标文件
-ops = build_batch_move(src_bucket_name, {'src_key1': 'target_key1', 'src_key2': 'target_key2'}, target_bucket_name, force='true')
-	build_batch_move(bucket,)
+		keys[value.get("key")] = value.get("key")
+	# force为true时强制同名覆盖, 字典的键为原文件，值为目标文件
+	ops = build_batch_move(bucket, keys, new, force='true')
+	ret, info = bucketManager.batch(ops)
+	print(ret)
+	print(info)
 	pass
 
 
