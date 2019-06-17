@@ -3,7 +3,6 @@ package com.study.boot.common.oss.service;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.URLUtil;
-import com.google.gson.Gson;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
@@ -44,7 +43,7 @@ public class OssTemplate {
         putPolicy.put("returnBody",IoUtil.read(stream, CharsetUtil.UTF_8)) ;
         Response response = uploadManager.put(object.getInputStream(), objectName, uploadToken, putPolicy, null);
         //解析上传成功的结果
-        QiniuResult result = new Gson().fromJson(response.bodyString(), QiniuResult.class);
+        QiniuResult result = response.jsonToObject(QiniuResult.class);
         return result;
     }
 

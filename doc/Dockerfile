@@ -8,4 +8,4 @@ COPY ./doc/db/schema.sql /docker-entrypoint-initdb.d
 
 COPY ./doc/db/boot.sql /docker-entrypoint-initdb.d
 
-COPY ./doc/db/ac.sql /docker-entrypoint-initdb.d
+COPY ./doc/db/flowable-boot.sql /docker-entrypoint-initdb.d
