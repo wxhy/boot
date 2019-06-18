@@ -192,7 +192,7 @@ export default {
 </script>
 
 <style>
-.el-tabs__header {
+.app-container .el-tabs__header {
   width: 300px;
 }
 .el-card__header {
