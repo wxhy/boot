@@ -29,7 +29,8 @@ public class FileController {
      */
     @PostMapping("/upload")
     public WebResponse uploadFile(@RequestParam("file") MultipartFile file) {
-            return new WebResponse<>(sysOssService.saveOss(file));
+        String result = sysOssService.saveOss(file);
+        return new WebResponse<>(result);
     }
 
     /**

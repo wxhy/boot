@@ -9,7 +9,6 @@ import lombok.Data;
 public class QiniuResult {
 
     private String fkey;
-    private String name;
     private String type;
-    private Long size;
+    private Long fileSize;
 }

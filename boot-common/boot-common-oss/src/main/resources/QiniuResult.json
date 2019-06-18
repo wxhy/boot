@@ -1,6 +1,1 @@
-{
-  "fkey": "$(key)",
-  "name": "$(fname)",
-  "size": "$(size)",
-  "type": "$(mimeType)"
-}
+{"fkey": "$(key)","name": "$(fname)","size": "$(size)", "type": "$(mimeType)"}

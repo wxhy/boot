@@ -3,10 +3,10 @@
 <mapper namespace="com.study.boot.upms.mapper.SysOssMapper">
   <resultMap id="BaseResultMap" type="com.study.boot.upms.api.entity.SysOss">
     <!--@mbg.generated generated on Fri Jun 14 09:56:18 CST 2019.-->
-    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="fkey" jdbcType="VARCHAR" property="fkey" />
-    <result column="size" jdbcType="BIGINT" property="size" />
+    <result column="file_size" jdbcType="BIGINT" property="fileSize" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="crate_by" jdbcType="VARCHAR" property="crateBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -16,7 +16,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Fri Jun 14 09:56:18 CST 2019.-->
-    id, `name`, fkey, `size`, `type`, crate_by, create_time, update_by, update_time, 
+    id, `name`, fkey, `file_size`, `type`, crate_by, create_time, update_by, update_time,
     delFlag
   </sql>
 </mapper>

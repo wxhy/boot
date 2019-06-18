@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "sys-oss")
+@TableName(value = "sys_oss")
 public class SysOss extends Model<SysOss> {
-     @TableId(value = "id", type = IdType.INPUT)
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 原文件名称
@@ -36,8 +36,8 @@ public class SysOss extends Model<SysOss> {
     /**
      * 文件大小
      */
-    @TableField(value = "size")
-    private Long size;
+    @TableField(value = "file_size")
+    private Long fileSize;
 
     /**
      * 文件类型
@@ -79,7 +79,7 @@ public class SysOss extends Model<SysOss> {
 
     public static final String COL_FKEY = "fkey";
 
-    public static final String COL_SIZE = "size";
+    public static final String COL_FILE_SIZE = "file_size";
 
     public static final String COL_TYPE = "type";
 

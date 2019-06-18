@@ -224,8 +224,9 @@
         openWindow(url, thirdpart, 540, 540)
       },
       handleAvatarSuccess(res, file) {
+        console.log(res)
         this.avatarUrl = URL.createObjectURL(file.raw);
-        this.ruleForm2.avatar =res.data.data;
+        this.ruleForm2.avatar =res.data;
       }
     }
   }

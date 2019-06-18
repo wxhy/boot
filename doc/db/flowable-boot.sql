@@ -13,7 +13,7 @@
 
  Date: 17/06/2019 09:19:00
 */
-USE `flowable-boot`
+USE `flowable-boot`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 

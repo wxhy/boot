@@ -1,7 +1,5 @@
 package com.study.boot.common.oss.service;
 
-import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.URLUtil;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -47,11 +45,13 @@ public class OssTemplate {
         UploadManager uploadManager = new UploadManager(cfg);
 
         Auth auth = Auth.create(accessKey, secretKey);
-        String uploadToken = auth.uploadToken(bucket);
         StringMap putPolicy = new StringMap();
         InputStream stream = this.getClass().getClassLoader().getResourceAsStream("QiniuResult.json");
-        putPolicy.put("returnBody",IoUtil.read(stream, CharsetUtil.UTF_8)) ;
-        Response response = uploadManager.put(object.getInputStream(), objectName, uploadToken, putPolicy, null);
+        putPolicy.put("returnBody","{\"fkey\": \"$(key)\",\"fileSize\": $(fsize), \"type\": \"$(mimeType)\"}") ;
+        long expireSeconds = 3600;
+        String uploadToken = auth.uploadToken(bucket,null,expireSeconds,putPolicy);
+
+        Response response = uploadManager.put(object.getInputStream(), objectName, uploadToken,null,null);
         //解析上传成功的结果
         QiniuResult result = response.jsonToObject(QiniuResult.class);
         return result;

@@ -7,6 +7,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.auth.util.SecurityUtils;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.service.OssTemplate;
 import com.study.boot.common.oss.vo.QiniuResult;
 import com.study.boot.upms.api.entity.SysOss;
@@ -53,7 +54,7 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssMapper, SysOss> impleme
             oss.setCrateBy(SecurityUtils.getUserName());
             oss.setFkey(fileName);
             oss.setName(sysOss.getName());
-            oss.setSize(sysOss.getSize());
+            oss.setFileSize(sysOss.getFileSize());
             oss.setType(sysOss.getType());
             this.baseMapper.insert(oss);
         }
@@ -69,7 +70,7 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssMapper, SysOss> impleme
                     return sysOss.getFkey();
                 }).collect(Collectors.toList());
         List<String> results = ossTemplate.removeBatch(keys.toArray(new String[0]));
-        List<Long> ids = this.baseMapper.selectList(Wrappers.<SysOss>query()
+        List<Integer> ids = this.baseMapper.selectList(Wrappers.<SysOss>query()
                 .lambda().in(SysOss::getFkey, results))
                 .stream()
                 .map(oss -> oss.getId())
@@ -79,18 +80,17 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssMapper, SysOss> impleme
     }
 
     @Override
-    public Boolean saveOss(MultipartFile file) {
-        String fileName = IdUtil.simpleUUID()+ StrUtil.DOT+ FileUtil.extName(file.getName());
-        try {
-            QiniuResult result = ossTemplate.createObject(file, fileName);
-            SysOss sysOss = new SysOss();
-            BeanUtil.copyProperties(result, sysOss);
-            sysOss.setCrateBy(SecurityUtils.getUserName());
-            this.baseMapper.insert(sysOss);
-        }catch (Exception e) {
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
+    public String saveOss(MultipartFile file) {
+        String fileName = IdUtil.simpleUUID()+ StrUtil.DOT+ FileUtil.extName(file.getOriginalFilename());
+        QiniuResult result = ossTemplate.createObject(file, fileName);
+        SysOss sysOss = new SysOss();
+        BeanUtil.copyProperties(result, sysOss);
+        sysOss.setName(file.getOriginalFilename());
+        sysOss.setCrateBy(SecurityUtils.getUserName());
+        sysOss.setDelflag(CommonConstants.STATUS_NORMAL);
+        sysOss.setUpdateBy(SecurityUtils.getUserName());
+        this.baseMapper.insert(sysOss);
+        return fileName;
     }
 
     @Override

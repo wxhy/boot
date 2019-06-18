@@ -28,6 +28,8 @@
         <jackson.modules>2.9.8</jackson.modules>
         <kaptcha.version>0.0.9</kaptcha.version>
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
+        <docker.url></docker.url>
+        <registry.url>https://hub.docker.com</registry.url>
     </properties>
 
     <modules>
@@ -83,15 +85,15 @@
             <version>${spring-boot-admin.version}</version>
         </dependency>
         <!--服务链路追踪-->
-<!--        导致websocket冲突-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
-<!--        </dependency>-->
+        <!--        导致websocket冲突-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+        <!--        </dependency>-->
         <!--断路器依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -177,17 +179,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <target>${maven.compiler.target}</target>
-                    <source>${maven.compiler.source}</source>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
 </project>

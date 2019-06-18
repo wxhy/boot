@@ -37,7 +37,7 @@ public interface SysOssService extends IService<SysOss> {
      * @param file
      * @return
      */
-    Boolean saveOss(MultipartFile file);
+    String saveOss(MultipartFile file);
 
     /**
      * 获取图片流

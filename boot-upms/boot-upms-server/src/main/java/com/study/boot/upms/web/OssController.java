@@ -47,7 +47,6 @@ public class OssController {
 
     @DeleteMapping("/removeBatch/{idList}")
     public WebResponse removeBatch(@PathVariable String idList){
-        String[] arrays = idList.split("-");
-        return new WebResponse();
+        return new WebResponse(this.sysOssService.removeOssBatch(idList));
     }
 }

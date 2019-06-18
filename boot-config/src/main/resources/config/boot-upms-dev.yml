@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://boot-mysql:3306/pigxx?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+    url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
@@ -44,4 +44,4 @@ qiniu:
   accessKey: 3QwcYlLnnsmKAb_y2thYWhMthLnLJE4BhgEg5CMP
   secretKey: VbTcSVpXEyGkUCo2WEdVnzT3mnqWn0gtnXde9sBU
   bucket: otcars
-  path: http://pt14pw6yg.bkt.clouddn.com
+  path: http://pt14pw6yg.bkt.clouddn.com/

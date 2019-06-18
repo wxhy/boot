@@ -120,6 +120,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUser.setPhone(userDto.getPhone());
         sysUser.setUserId(userVO.getUserId());
         sysUser.setAvatar(userDto.getAvatar());
+        this.baseMapper.updateById(sysUser);
         return Boolean.TRUE;
     }
 
