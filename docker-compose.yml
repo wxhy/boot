@@ -74,3 +74,21 @@ services:
     image: boot-gateway
     ports:
       - 8081:8081
+
+  web-front:
+    build:
+      context: ./前台项目/web-front/
+      dockerfile: ./Dockerfile
+    restart: always
+    container_name: web-front
+    image: web-front
+
+  boot-nginx:
+    image: nginx
+    ports:
+      - 8000:8000
+    container_name: boot-nginx
+    restart: always
+    volumes:
+      - /web-front/dist:/usr/share/nginx/html:ro
+      - ./doc/nginx.conf:/etc/nginx/conf.d/default.conf
