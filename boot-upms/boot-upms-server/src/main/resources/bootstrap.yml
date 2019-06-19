@@ -14,6 +14,7 @@ spring:
       discovery:
         enabled: true
         service-id: boot-config
+      uri: http://localhost:8888
   main:
     allow-bean-definition-overriding: true
 # 注册中心配置

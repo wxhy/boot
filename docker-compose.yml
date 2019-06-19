@@ -40,16 +40,14 @@ services:
     restart: always
     container_name: boot-config
     image: boot-config
-    ports:
-      - 8888:8888
 
-#  boot-auth:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-auth/Dockerfile
-#    restart: always
-#    container_name: boot-auth
-#    image: boot-auth
+  boot-auth:
+    build:
+      context: ./
+      dockerfile: ./boot-auth/Dockerfile
+    restart: always
+    container_name: boot-auth
+    image: boot-auth
 
   boot-upms:
     build:
@@ -59,20 +57,20 @@ services:
     container_name: boot-upms
     image: boot-upms
 
-#  boot-activiti:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-modules/boot-activiti/Dockerfile
-#    restart: always
-#    container_name: boot-activiti
-#    image: boot-activiti
-#
-#  boot-gateway:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-gateway/Dockerfile
-#    restart: always
-#    container_name: boot-gateway
-#    image: boot-gateway
-#    ports:
-#      - 8081:8081
+  boot-activiti:
+    build:
+      context: ./
+      dockerfile: ./boot-modules/boot-activiti/Dockerfile
+    restart: always
+    container_name: boot-activiti
+    image: boot-activiti
+
+  boot-gateway:
+    build:
+      context: ./
+      dockerfile: ./boot-gateway/Dockerfile
+    restart: always
+    container_name: boot-gateway
+    image: boot-gateway
+    ports:
+      - 8081:8081
