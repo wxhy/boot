@@ -3,6 +3,7 @@ const url = 'http://127.0.0.1:8081'
 module.exports = {
   lintOnSave: true,
   productionSourceMap: false,
+  publicPath:'/boot/',
   chainWebpack: config => {
     // 忽略的打包文件
     config.externals({

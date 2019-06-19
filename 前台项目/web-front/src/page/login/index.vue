@@ -8,7 +8,7 @@
           {{time}}
         </div>
         <img class="img"
-             src="/img/logo.png"
+             src="img/logo.png"
              alt="">
         <p class="title">{{website.infoTitle}}</p>
         <p>v 2.2.0</p>

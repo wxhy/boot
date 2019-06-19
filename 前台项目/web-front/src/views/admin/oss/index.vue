@@ -66,7 +66,7 @@
         drag
         :headers="headers"
         :before-close="refreshChange"
-        action="admin/file/upload"
+        action="/admin/file/upload"
         multiple
       >
         <i class="el-icon-upload"></i>
