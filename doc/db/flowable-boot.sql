@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : docker
  Source Server Type    : MySQL
  Source Server Version : 80015
- Source Host           : localhost:3306
+ Source Host           : 127.0.0.1:3306
  Source Schema         : flowable-boot
 
  Target Server Type    : MySQL
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 17/06/2019 09:19:00
+ Date: 19/06/2019 10:06:29
 */
 USE `flowable-boot`;
 SET NAMES utf8mb4;

@@ -1,42 +1,21 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : docker
  Source Server Type    : MySQL
  Source Server Version : 80015
- Source Host           : localhost:3306
+ Source Host           : 127.0.0.1:3306
  Source Schema         : boot
 
  Target Server Type    : MySQL
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 17/06/2019 09:16:20
+ Date: 19/06/2019 10:06:39
 */
-
--- boot 核心表
 USE `boot`;
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for sys-oss
--- ----------------------------
-DROP TABLE IF EXISTS `sys-oss`;
-CREATE TABLE `sys-oss`  (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '原文件名称',
-  `fkey` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '存储文件名',
-  `size` bigint(20) NULL DEFAULT NULL COMMENT '文件大小',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件类型',
-  `crate_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改人',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
-  `delFlag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '删除状态',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_dept
@@ -124,7 +103,7 @@ CREATE TABLE `sys_dict`  (
   INDEX `sys_dict_value`(`value`) USING BTREE,
   INDEX `sys_dict_label`(`label`) USING BTREE,
   INDEX `sys_dict_del_flag`(`del_flag`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict
@@ -215,6 +194,28 @@ INSERT INTO `sys_log` VALUES (97, '1', '修改角色', 'test', 'admin', '2019-06
 INSERT INTO `sys_log` VALUES (98, '1', '修改菜单', 'test', 'admin', '2019-06-12 13:12:42', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '83', '0', NULL);
 INSERT INTO `sys_log` VALUES (99, '1', '修改菜单', 'test', 'admin', '2019-06-12 13:14:12', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '50', '0', NULL);
 INSERT INTO `sys_log` VALUES (100, '1', '修改会员个人信息', 'test', 'admin', '2019-06-14 17:47:37', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/user/edit', 'PUT', '', '12', '0', NULL);
+INSERT INTO `sys_log` VALUES (101, '1', '修改会员个人信息', 'test', 'admin', '2019-06-18 12:58:24', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/user/edit', 'PUT', '', '12', '0', NULL);
+INSERT INTO `sys_log` VALUES (102, '1', '修改会员个人信息', 'test', 'admin', '2019-06-18 12:59:51', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/user/edit', 'PUT', '', '15540', '0', NULL);
+INSERT INTO `sys_log` VALUES (103, '1', '修改会员个人信息', 'test', 'admin', '2019-06-18 13:02:17', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/user/edit', 'PUT', '', '86', '0', NULL);
+INSERT INTO `sys_log` VALUES (104, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:01', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2300', 'DELETE', '', '97', '0', NULL);
+INSERT INTO `sys_log` VALUES (105, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:07', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2700', 'DELETE', '', '61', '0', NULL);
+INSERT INTO `sys_log` VALUES (106, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:11', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2601', 'DELETE', '', '79', '0', NULL);
+INSERT INTO `sys_log` VALUES (107, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:14', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2600', 'DELETE', '', '78', '0', NULL);
+INSERT INTO `sys_log` VALUES (108, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:17', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2503', 'DELETE', '', '107', '0', NULL);
+INSERT INTO `sys_log` VALUES (109, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:20', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2502', 'DELETE', '', '69', '0', NULL);
+INSERT INTO `sys_log` VALUES (110, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:24', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2501', 'DELETE', '', '560', '0', NULL);
+INSERT INTO `sys_log` VALUES (111, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:27', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2500', 'DELETE', '', '156', '0', NULL);
+INSERT INTO `sys_log` VALUES (112, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:30', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2401', 'DELETE', '', '79', '0', NULL);
+INSERT INTO `sys_log` VALUES (113, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:34', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2403', 'DELETE', '', '89', '0', NULL);
+INSERT INTO `sys_log` VALUES (114, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:38', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/2402', 'DELETE', '', '82', '0', NULL);
+INSERT INTO `sys_log` VALUES (115, '1', '删除菜单', 'test', 'admin', '2019-06-18 13:08:54', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu/3000', 'DELETE', '', '21', '0', NULL);
+INSERT INTO `sys_log` VALUES (116, '1', '添加菜单', 'test', 'admin', '2019-06-18 13:10:36', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'POST', '', '62', '0', NULL);
+INSERT INTO `sys_log` VALUES (117, '1', '修改菜单', 'test', 'admin', '2019-06-18 13:10:53', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '89', '0', NULL);
+INSERT INTO `sys_log` VALUES (118, '1', '修改菜单', 'test', 'admin', '2019-06-18 13:12:18', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '51', '0', NULL);
+INSERT INTO `sys_log` VALUES (119, '1', '更新角色菜单', 'test', 'admin', '2019-06-18 13:12:31', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2800%2C3000%2C3100%2C3200%2C3300%2C3400%2C3500%2C3600%2C3601%2C3700%2C3800%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C%5D', '206', '0', NULL);
+INSERT INTO `sys_log` VALUES (120, '1', '修改菜单', 'test', 'admin', '2019-06-18 13:14:39', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '135', '0', NULL);
+INSERT INTO `sys_log` VALUES (121, '1', '修改菜单', 'test', 'admin', '2019-06-18 13:17:28', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/menu', 'PUT', '', '380', '0', NULL);
+INSERT INTO `sys_log` VALUES (122, '1', '修改会员个人信息', 'test', 'admin', '2019-06-18 15:57:36', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', '/user/edit', 'PUT', '', '160', '0', NULL);
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -265,18 +266,8 @@ INSERT INTO `sys_menu` VALUES (2200, '字典管理', NULL, 'dict', 2000, 'icon-n
 INSERT INTO `sys_menu` VALUES (2201, '字典删除', 'sys_dict_del', NULL, 2200, NULL, NULL, NULL, '0', '1', '2017-11-29 11:30:11', '2018-09-28 09:09:10', '0');
 INSERT INTO `sys_menu` VALUES (2202, '字典新增', 'sys_dict_add', NULL, 2200, NULL, NULL, NULL, '0', '1', '2018-05-11 22:34:55', '2018-09-28 09:09:12', '0');
 INSERT INTO `sys_menu` VALUES (2203, '字典修改', 'sys_dict_edit', NULL, 2200, NULL, NULL, NULL, '0', '1', '2018-05-11 22:36:03', '2018-09-28 09:09:16', '0');
-INSERT INTO `sys_menu` VALUES (2300, '代码生成', '', 'gen', 2000, 'icon-weibiaoti46', 'views/gen/index', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 05:21:01', '0');
+INSERT INTO `sys_menu` VALUES (2300, '文件对象存储', NULL, 'oss', 2000, 'icon-icon_workfile_line', 'views/admin/oss/index', 3, '0', '0', '2019-06-18 13:10:36', '2019-06-18 13:12:18', '0');
 INSERT INTO `sys_menu` VALUES (2400, '终端管理', '', 'client', 2000, 'icon-shouji', 'views/admin/client/index', 9, '0', '0', '2018-01-20 13:17:19', '2018-09-28 09:01:43', '0');
-INSERT INTO `sys_menu` VALUES (2401, '客户端新增', 'sys_client_add', NULL, 2400, '1', NULL, NULL, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:10:25', '0');
-INSERT INTO `sys_menu` VALUES (2402, '客户端修改', 'sys_client_edit', NULL, 2400, NULL, NULL, NULL, '0', '1', '2018-05-15 21:37:06', '2018-09-28 09:10:27', '0');
-INSERT INTO `sys_menu` VALUES (2403, '客户端删除', 'sys_client_del', NULL, 2400, NULL, NULL, NULL, '0', '1', '2018-05-15 21:39:16', '2018-09-28 09:10:30', '0');
-INSERT INTO `sys_menu` VALUES (2500, '密钥管理', '', 'social', 2000, 'icon-miyue', 'views/admin/social/index', 10, '0', '0', '2018-01-20 13:17:19', '2018-09-28 09:01:41', '0');
-INSERT INTO `sys_menu` VALUES (2501, '密钥新增', 'generator_syssocialdetails_add', NULL, 2500, '1', NULL, 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:11:02', '0');
-INSERT INTO `sys_menu` VALUES (2502, '密钥修改', 'generator_syssocialdetails_edit', NULL, 2500, '1', NULL, 1, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:11:04', '0');
-INSERT INTO `sys_menu` VALUES (2503, '密钥删除', 'generator_syssocialdetails_del', NULL, 2500, '1', NULL, 2, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:11:06', '0');
-INSERT INTO `sys_menu` VALUES (2600, '令牌管理', NULL, 'token', 2000, 'icon-denglvlingpai', 'views/admin/token/index', 11, '0', '0', '2018-09-04 05:58:41', '2018-09-28 09:01:38', '0');
-INSERT INTO `sys_menu` VALUES (2601, '令牌删除', 'sys_token_del', NULL, 2600, NULL, NULL, 1, '0', '1', '2018-09-04 05:59:50', '2018-09-28 09:11:24', '0');
-INSERT INTO `sys_menu` VALUES (2700, '动态路由', NULL, 'route', 2000, 'icon-luyou', 'views/admin/route/index', 12, '0', '0', '2018-09-04 05:58:41', '2018-09-28 09:01:38', '0');
 INSERT INTO `sys_menu` VALUES (2800, '消息管理', NULL, 'message', 2000, 'icon-message', 'views/admin/message/index', 13, '0', '0', '2019-06-10 15:31:38', '2019-06-10 15:32:04', '0');
 INSERT INTO `sys_menu` VALUES (3000, '系统监控', NULL, '/daemon', -1, 'icon-msnui-supervise', 'Layout', 2, '0', '0', '2018-07-27 01:13:21', '2018-09-28 08:53:24', '0');
 INSERT INTO `sys_menu` VALUES (3100, '服务监控', NULL, 'http://139.224.200.249:15001', 3000, 'icon-server', NULL, 0, '0', '0', '2018-06-26 10:50:32', '2018-12-11 17:17:07', '0');
@@ -354,6 +345,53 @@ INSERT INTO `sys_message_send` VALUES (17, 10, 1, '乘坐中国制造的客机�
 -- ----------------------------
 -- Table structure for sys_oauth_client_details
 -- ----------------------------
+DROP TABLE IF EXISTS `sys_oauth_client_details`;
+CREATE TABLE `sys_oauth_client_details`  (
+  `client_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `resource_ids` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `client_secret` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `scope` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `authorized_grant_types` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `web_server_redirect_uri` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `authorities` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `access_token_validity` int(11) NULL DEFAULT NULL,
+  `refresh_token_validity` int(11) NULL DEFAULT NULL,
+  `additional_information` varchar(4096) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `autoapprove` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`client_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '终端信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_oauth_client_details
+-- ----------------------------
+INSERT INTO `sys_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token', NULL, NULL, NULL, NULL, NULL, 'true');
+INSERT INTO `sys_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, NULL, NULL, NULL, NULL, 'true');
+INSERT INTO `sys_oauth_client_details` VALUES ('gen', NULL, 'gen', 'server', 'password,refresh_token', NULL, NULL, NULL, NULL, NULL, 'true');
+INSERT INTO `sys_oauth_client_details` VALUES ('pig', NULL, 'pig', 'server', 'password,refresh_token,authorization_code,client_credentials', 'http://localhost:4040/sso1/login,http://localhost:4041/sso1/login', NULL, NULL, NULL, NULL, 'true');
+INSERT INTO `sys_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, NULL, NULL, NULL, NULL, 'true');
+
+-- ----------------------------
+-- Table structure for sys_oss
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_oss`;
+CREATE TABLE `sys_oss`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '原文件名称',
+  `fkey` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '存储文件名',
+  `file_size` bigint(20) NOT NULL COMMENT '文件大小',
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文件类型',
+  `crate_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
+  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '修改人',
+  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `delFlag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '删除状态',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_oss
+-- ----------------------------
+INSERT INTO `sys_oss` VALUES (56, '005PKPY2ly8fdwsorhp1fj30e80dojro.jpg', '0303a2fbde0249619cde4d2d652a443f.jpg', 6415, 'image/jpeg', 'admin', '2019-06-18 15:16:32', 'admin', '2019-06-18 15:16:32', '0');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -371,7 +409,7 @@ CREATE TABLE `sys_role`  (
   `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT '0' COMMENT '删除标识（0-正常,1-删除）',
   PRIMARY KEY (`role_id`) USING BTREE,
   UNIQUE INDEX `role_idx1_role_code`(`role_code`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统角色表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
@@ -419,16 +457,6 @@ INSERT INTO `sys_role_menu` VALUES (1, 2202);
 INSERT INTO `sys_role_menu` VALUES (1, 2203);
 INSERT INTO `sys_role_menu` VALUES (1, 2300);
 INSERT INTO `sys_role_menu` VALUES (1, 2400);
-INSERT INTO `sys_role_menu` VALUES (1, 2401);
-INSERT INTO `sys_role_menu` VALUES (1, 2402);
-INSERT INTO `sys_role_menu` VALUES (1, 2403);
-INSERT INTO `sys_role_menu` VALUES (1, 2500);
-INSERT INTO `sys_role_menu` VALUES (1, 2501);
-INSERT INTO `sys_role_menu` VALUES (1, 2502);
-INSERT INTO `sys_role_menu` VALUES (1, 2503);
-INSERT INTO `sys_role_menu` VALUES (1, 2600);
-INSERT INTO `sys_role_menu` VALUES (1, 2601);
-INSERT INTO `sys_role_menu` VALUES (1, 2700);
 INSERT INTO `sys_role_menu` VALUES (1, 2800);
 INSERT INTO `sys_role_menu` VALUES (1, 3000);
 INSERT INTO `sys_role_menu` VALUES (1, 3100);
@@ -457,10 +485,57 @@ INSERT INTO `sys_role_menu` VALUES (2, 2000);
 INSERT INTO `sys_role_menu` VALUES (2, 2100);
 INSERT INTO `sys_role_menu` VALUES (2, 2101);
 
+-- ----------------------------
+-- Table structure for sys_route_conf
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_route_conf`;
+CREATE TABLE `sys_route_conf`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `route_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由名称',
+  `route_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '路由ID',
+  `predicates` json NULL COMMENT '断言',
+  `filters` json NULL COMMENT '过滤器',
+  `uri` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `order` int(2) NULL DEFAULT 0 COMMENT '排序',
+  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '删除标记',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '路由配置表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_route_conf
+-- ----------------------------
+INSERT INTO `sys_route_conf` VALUES (1, '工作流管理模块', 'pigx-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://pigx-activiti', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:07', '0');
+INSERT INTO `sys_route_conf` VALUES (2, '认证中心', 'pigx-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://pigx-auth', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:09', '0');
+INSERT INTO `sys_route_conf` VALUES (3, '代码生成模块', 'pigx-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://pigx-codegen', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:10', '0');
+INSERT INTO `sys_route_conf` VALUES (4, '定时任务模块', 'pigx-daemon', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://pigx-daemon', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:12', '0');
+INSERT INTO `sys_route_conf` VALUES (5, '分布式事务模块', 'pigx-tx-manager', '[{\"args\": {\"_genkey_0\": \"/tx/**\"}, \"name\": \"Path\"}]', '[]', 'lb://pigx-tx-manager', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:14', '0');
+INSERT INTO `sys_route_conf` VALUES (6, '通用权限模块', 'pigx-upms-biz', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://pigx-upms-biz', 0, '2019-01-17 16:42:50', '2019-01-17 16:44:16', '0');
+INSERT INTO `sys_route_conf` VALUES (7, '工作流长链接支持1', 'pigx-activiti-ws-1', '[{\"args\": {\"_genkey_0\": \"/act/ws/info\"}, \"name\": \"Path\"}]', '[]', 'lb://pigx-activiti', 0, '2019-01-17 16:42:50', '2019-01-17 17:55:07', '0');
+INSERT INTO `sys_route_conf` VALUES (8, '工作流长链接支持2', 'pigx-activiti-ws-2', '[{\"args\": {\"_genkey_0\": \"/act/ws/**\"}, \"name\": \"Path\"}]', '[]', 'lb:ws://pigx-activiti', 0, '2019-01-17 16:42:50', '2019-01-17 17:55:11', '0');
 
 -- ----------------------------
 -- Table structure for sys_social_details
 -- ----------------------------
+DROP TABLE IF EXISTS `sys_social_details`;
+CREATE TABLE `sys_social_details`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主鍵',
+  `type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '类型',
+  `remark` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '描述',
+  `app_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'appid',
+  `app_secret` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'app_secret',
+  `redirect_url` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '回调地址',
+  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `del_flag` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' COMMENT '删除标记',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统社交登录账号表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_social_details
+-- ----------------------------
+INSERT INTO `sys_social_details` VALUES (1, 'WX', '微信互联参数', 'wxd1678d3f83b1d83a', '6ddb043f94da5d2172926abe8533504f', 'daoweicloud.com', '2018-08-16 14:24:25', '2018-12-04 11:50:57', '0');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -484,12 +559,12 @@ CREATE TABLE `sys_user`  (
   INDEX `user_wx_openid`(`wx_openid`) USING BTREE,
   INDEX `user_qq_openid`(`qq_openid`) USING BTREE,
   INDEX `user_idx1_username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', NULL, '17034642888', 'http://img5.imgtn.bdimg.com/it/u=235810630,594632317&fm=26&gp=0.jpg', 1, '2018-04-20 07:15:18', '2019-06-06 15:07:43', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', NULL, '15077923572', 'f0de6f9d2507424d8d8cb4f87ace2340.jpg', 1, '2018-04-20 07:15:18', '2019-06-18 15:57:34', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
 INSERT INTO `sys_user` VALUES (5, 'test', '$2a$10$8kRPVwZHyMi5Fq89Vf49aeOEtM.pKf5vHou3A4eVTE3q7xsz0B3Zu', NULL, '', 'http://img5.imgtn.bdimg.com/it/u=235810630,594632317&fm=26&gp=0.jpg', 11, '2019-05-23 17:47:13', '2019-06-06 15:07:45', '0', '0', NULL, NULL);
 
 -- ----------------------------
