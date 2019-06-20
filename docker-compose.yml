@@ -5,75 +5,75 @@
 
 version: '2'
 services:
-#  boot-mysql:
-#    build:
-#      context: ./
-#      dockerfile: ./doc/Dockerfile
-#    environment:
-#      MYSQL_ROOT_PASSWORD: 123456
-#    restart: always
-#    container_name: boot-mysql
-#    image: boot-mysql
-#    ports:
-#      - 3306:3306
-#
-#  boot-redis:
-#    image: redis:5.0.5
-#    restart: always
-#    container_name: boot-redis
-#
-#  boot-eureka:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-eureka/Dockerfile
-#    restart: always
-#    container_name: boot-eureka
-#    image: boot-eureka
-#    ports:
-#      - 9999:9999
-#
-#
-#  boot-config:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-config/Dockerfile
-#    restart: always
-#    container_name: boot-config
-#    image: boot-config
-#
-#  boot-auth:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-auth/Dockerfile
-#    restart: always
-#    container_name: boot-auth
-#    image: boot-auth
-#
-#  boot-upms:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-upms/boot-upms-server/Dockerfile
-#    restart: always
-#    container_name: boot-upms
-#    image: boot-upms
-#
-#  boot-activiti:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-modules/boot-activiti/Dockerfile
-#    restart: always
-#    container_name: boot-activiti
-#    image: boot-activiti
-#
-#  boot-gateway:
-#    build:
-#      context: ./
-#      dockerfile: ./boot-gateway/Dockerfile
-#    restart: always
-#    container_name: boot-gateway
-#    image: boot-gateway
-#    ports:
-#      - 8081:8081
+  boot-mysql:
+    build:
+      context: ./
+      dockerfile: ./doc/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    restart: always
+    container_name: boot-mysql
+    image: boot-mysql
+    ports:
+      - 3306:3306
+
+  boot-redis:
+    image: redis:5.0.5
+    restart: always
+    container_name: boot-redis
+
+  boot-eureka:
+    build:
+      context: ./
+      dockerfile: ./boot-eureka/Dockerfile
+    restart: always
+    container_name: boot-eureka
+    image: boot-eureka
+    ports:
+      - 9999:9999
+
+
+  boot-config:
+    build:
+      context: ./
+      dockerfile: ./boot-config/Dockerfile
+    restart: always
+    container_name: boot-config
+    image: boot-config
+
+  boot-auth:
+    build:
+      context: ./
+      dockerfile: ./boot-auth/Dockerfile
+    restart: always
+    container_name: boot-auth
+    image: boot-auth
+
+  boot-upms:
+    build:
+      context: ./
+      dockerfile: ./boot-upms/boot-upms-server/Dockerfile
+    restart: always
+    container_name: boot-upms
+    image: boot-upms
+
+  boot-activiti:
+    build:
+      context: ./
+      dockerfile: ./boot-modules/boot-activiti/Dockerfile
+    restart: always
+    container_name: boot-activiti
+    image: boot-activiti
+
+  boot-gateway:
+    build:
+      context: ./
+      dockerfile: ./boot-gateway/Dockerfile
+    restart: always
+    container_name: boot-gateway
+    image: boot-gateway
+    ports:
+      - 8081:8081
 
   web-front:
     build:
