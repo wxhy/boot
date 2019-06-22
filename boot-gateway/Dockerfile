@@ -10,6 +10,6 @@ WORKDIR /boot-gateway
 
 EXPOSE 8081
 
-ADD ./boot-gateway/target/boot-gateway.jar ./
+ADD ./target/boot-gateway.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-gateway.jar

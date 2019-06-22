@@ -10,6 +10,6 @@ WORKDIR /boot-config
 
 EXPOSE 8888
 
-ADD ./boot-config/target/boot-config.jar ./
+ADD ./target/boot-config.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-config.jar

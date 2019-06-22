@@ -1,0 +1,18 @@
+
+version: '2'
+services:
+  docker-registry:
+    image: registry
+    restart: always
+    container_name: docker-registry
+    ports:
+      - 5000:5000
+    volumes:
+      - ./data:/var/lib/registry
+
+  registry-web:
+    image: hyper/docker-registry-web
+    ports:
+      - 9000:8080
+    volumes:
+      - ./config.yml:/conf/config.yml:ro

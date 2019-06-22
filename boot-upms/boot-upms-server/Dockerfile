@@ -10,6 +10,6 @@ WORKDIR /boot-upms
 
 EXPOSE 8087
 
-ADD ./boot-upms/boot-upms-server/target/boot-upms-server.jar ./
+ADD ./target/boot-upms-server.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-upms-server.jar

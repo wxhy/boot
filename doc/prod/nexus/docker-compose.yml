@@ -1,0 +1,10 @@
+version: '2'
+services:
+  nexus:
+    restart: always
+    image: sonatype/nexus3
+    container_name: nexus
+    volumes:
+      - ./data:/var/nexus-data
+    ports:
+      - 9116:8081

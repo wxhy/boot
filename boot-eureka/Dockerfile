@@ -10,6 +10,6 @@ WORKDIR /boot-eureka
 
 EXPOSE 9999
 
-ADD ./boot-eureka/target/boot-eureka.jar ./
+ADD ./target/boot-eureka.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-eureka.jar

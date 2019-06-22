@@ -28,8 +28,8 @@
         <jackson.modules>2.9.8</jackson.modules>
         <kaptcha.version>0.0.9</kaptcha.version>
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
-        <docker.url></docker.url>
-        <registry.url>https://hub.docker.com</registry.url>
+        <dockerfile.plugin.version>1.4.10</dockerfile.plugin.version>
+        <registry.url>47.104.172.27:5000</registry.url>
     </properties>
 
     <modules>
@@ -176,6 +176,33 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>javax.activation</groupId>
+                            <artifactId>activation</artifactId>
+                            <version>1.1.1</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <repository>${registry.url}/${project.build.finalName}</repository>
+                        <contextDirectory>${project.basedir}</contextDirectory>
+                        <tag>${project.version}</tag>
+                        <buildArgs>${project.build.finalName}.jar</buildArgs>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

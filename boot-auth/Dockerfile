@@ -10,6 +10,6 @@ WORKDIR /boot-auth
 
 EXPOSE 8888
 
-ADD ./boot-auth/target/boot-auth.jar ./
+ADD ./target/boot-auth.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-auth.jar

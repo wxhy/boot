@@ -10,6 +10,6 @@ WORKDIR /boot-activiti
 
 EXPOSE 8082
 
-ADD ./boot-modules/boot-activiti/target/boot-activiti.jar ./
+ADD ./target/boot-activiti.jar ./
 
 CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-activiti.jar
