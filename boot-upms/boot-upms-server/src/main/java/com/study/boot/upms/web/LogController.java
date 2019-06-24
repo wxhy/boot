@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysLog;
 import com.study.boot.upms.service.SysLogService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/log")
 @AllArgsConstructor
+@Api(value="log",description = "日志管理模块")
 public class LogController {
 
     private final SysLogService sysLogService;
@@ -37,6 +40,7 @@ public class LogController {
      * @return
      */
     @DeleteMapping("/{id}")
+    @PreAuthorize("@pms.hasPermission('sys_log_del')")
     public WebResponse removeLogById(@PathVariable Integer id) {
         return new WebResponse<>(sysLogService.removeById(id));
     }

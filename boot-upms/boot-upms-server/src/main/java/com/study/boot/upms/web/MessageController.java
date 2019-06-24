@@ -9,6 +9,7 @@ import com.study.boot.upms.api.entity.SysMessage;
 import com.study.boot.upms.api.vo.MessageVo;
 import com.study.boot.upms.service.SysMessageService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -48,6 +49,7 @@ public class MessageController {
      */
     @PostMapping
     @SysLog("发送消息")
+    @PreAuthorize("@pms.hasPermission('sys_message_add')")
     public WebResponse saveMessage(@RequestBody MessageVo messageVo){
         return new WebResponse<>(sysMessageService.saveMessage(messageVo));
     }
@@ -59,6 +61,7 @@ public class MessageController {
      */
     @DeleteMapping("/{id}")
     @SysLog("删除消息")
+    @PreAuthorize("@pms.hasPermission('sys_message_del')")
     public WebResponse removeMessageById(@PathVariable Integer id) {
         return new WebResponse<>(sysMessageService.removeMessageById(id));
     }
@@ -71,6 +74,7 @@ public class MessageController {
      */
     @PutMapping
     @SysLog("修改消息")
+    @PreAuthorize("@pms.hasPermission('sys_message_edit')")
     public WebResponse updateMessageById(@RequestBody SysMessage sysMessage) {
         return new WebResponse<>(sysMessageService.updateById(sysMessage));
     }

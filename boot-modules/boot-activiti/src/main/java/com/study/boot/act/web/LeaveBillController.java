@@ -10,6 +10,7 @@ import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.enums.TaskStatusEnum;
 import com.study.boot.common.util.WebResponse;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/leave-bill")
 @AllArgsConstructor
+@Api(value="leave",description = "请假管理模块")
 public class LeaveBillController {
 
     private final LeaveBillService leaveBillService;

@@ -7,7 +7,9 @@ import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysRole;
 import com.study.boot.upms.service.SysRoleMenuService;
 import com.study.boot.upms.service.SysRoleService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/role")
 @AllArgsConstructor
+@Api(value="role",description = "角色管理模块")
 public class RoleController {
 
     private final SysRoleService sysRoleService;
@@ -63,6 +66,7 @@ public class RoleController {
      */
     @PostMapping
     @SysLog("添加角色")
+    @PreAuthorize(value = "@pms.hasPermission('sys_role_add')")
     public WebResponse saveRole(@Valid @RequestBody SysRole sysRole){
         return new WebResponse<>(sysRoleService.save(sysRole));
     }
@@ -74,6 +78,7 @@ public class RoleController {
      */
     @PutMapping
     @SysLog("修改角色")
+    @PreAuthorize("@pms.hasPermission('sys_role_edit')")
     public WebResponse updateRole(@Valid @RequestBody SysRole sysRole) {
         return new WebResponse<>(sysRoleService.updateById(sysRole));
     }
@@ -85,6 +90,7 @@ public class RoleController {
      */
     @DeleteMapping("/{id}")
     @SysLog("删除角色")
+    @PreAuthorize("@pms.hasPermission('sys_role_del')")
     public WebResponse removeById(@PathVariable Integer id) {
         return new WebResponse<>(sysRoleService.removeRoleById(id));
     }
@@ -97,6 +103,7 @@ public class RoleController {
      */
     @PutMapping("/menu")
     @SysLog("更新角色菜单")
+    @PreAuthorize("@pms.hasPermission('sys_role_perm')")
     public WebResponse saveRoleMenus(Integer roleId,@RequestParam(value = "menuIds",required = false)String menuIds) {
         return new WebResponse<>(sysRoleMenuService.saveRoleMenus(roleId,menuIds));
     }

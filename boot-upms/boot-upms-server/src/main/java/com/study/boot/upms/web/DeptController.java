@@ -4,7 +4,9 @@ import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysDept;
 import com.study.boot.upms.service.SysDeptService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,6 +17,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/dept")
 @AllArgsConstructor
+@Api(value="dept",description = "部门管理模块")
 public class DeptController {
 
     private final SysDeptService sysDeptService;
@@ -55,6 +58,7 @@ public class DeptController {
      */
     @PostMapping
     @SysLog("添加部门")
+    @PreAuthorize("@pms.hasPermission('sys_dept_add')")
     public WebResponse saveDept(@Valid @RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.save(sysDept));
     }
@@ -66,6 +70,7 @@ public class DeptController {
      */
     @PutMapping
     @SysLog("修改部门")
+    @PreAuthorize("@pms.hasPermission('sys_dept_edit')")
     public WebResponse updateDept(@Valid @RequestBody SysDept sysDept) {
         return new WebResponse<>(sysDeptService.updateDeptById(sysDept));
     }
@@ -77,6 +82,7 @@ public class DeptController {
      */
     @DeleteMapping("/{id}")
     @SysLog("删除部门")
+    @PreAuthorize("@pms.hasPermission('sys_dept_del')")
     public WebResponse removeDept(@PathVariable Integer id) {
         return new WebResponse<>(sysDeptService.removeDeptById(id));
     }

@@ -71,3 +71,25 @@ security:
   oauth2:
     resource:
       token-info-uri: http://boot-auth:3000/oauth/check_token
+
+#swagger公共信息
+swagger:
+  title: PigX Swagger API
+  description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
+  host: http://boot-gateway:8081/
+  version: 1.0
+  license: Powered By PigX
+  licenseUrl: https://pig4cloud.com/
+  terms-of-service-url: https://pig4cloud.com/
+  contact:
+    name: 冷冷
+    email: wangiegie@gmail.com
+    url: https://pig4cloud.com/about.html
+  authorization:
+    name: pigX OAuth
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: server all
+  token-url-list:
+    - http://boot-auth:9999/auth/oauth/token

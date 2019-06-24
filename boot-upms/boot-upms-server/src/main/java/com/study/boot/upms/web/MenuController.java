@@ -11,7 +11,9 @@ import com.study.boot.upms.api.entity.SysMenu;
 import com.study.boot.upms.api.util.TreeUtils;
 import com.study.boot.upms.api.vo.MenuVO;
 import com.study.boot.upms.service.SysMenuService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,6 +32,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/menu")
 @AllArgsConstructor
+@Api(value="menu",description = "菜单管理模块")
 public class MenuController {
 
     private final SysMenuService sysMenuService;
@@ -91,6 +94,7 @@ public class MenuController {
      */
     @PostMapping
     @SysLog("添加菜单")
+    @PreAuthorize("@pms.hasPermission('sys_menu_add')")
     public WebResponse saveMenu(@Valid @RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.save(sysMenu));
     }
@@ -102,6 +106,7 @@ public class MenuController {
      */
     @DeleteMapping("/{id}")
     @SysLog("删除菜单")
+    @PreAuthorize("@pms.hasPermission('sys_menu_del')")
     public WebResponse deleteMenu(@PathVariable Integer id) {
         List<SysMenu> menus = sysMenuService.list(Wrappers.<SysMenu>query().lambda().eq(SysMenu::getParentId, id));
         if(CollectionUtil.isNotEmpty(menus)){
@@ -117,6 +122,7 @@ public class MenuController {
      */
     @PutMapping
     @SysLog("修改菜单")
+    @PreAuthorize("@pms.hasPermission('sys_menu_edit')")
     public WebResponse updateMenu(@Valid @RequestBody SysMenu sysMenu) {
         return new WebResponse<>(sysMenuService.updateById(sysMenu));
     }

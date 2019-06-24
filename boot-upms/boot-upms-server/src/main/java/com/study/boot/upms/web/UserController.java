@@ -11,7 +11,9 @@ import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.SysUserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +24,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/user")
+@Api(value="user",description = "用户管理模块")
 public class UserController {
 
     @Autowired
@@ -66,6 +69,7 @@ public class UserController {
      */
     @PostMapping
     @SysLog("添加会员")
+    @PreAuthorize("@pms.hasPermission('sys_user_add')")
     public WebResponse add(@RequestBody UserDTO userDTO){
         return new WebResponse<>(sysUserService.saveUser(userDTO));
     }
@@ -77,6 +81,7 @@ public class UserController {
      */
     @PutMapping
     @SysLog("修改会员")
+    @PreAuthorize("@pms.hasPermission('sys_user_edit')")
     public WebResponse updateUser(@RequestBody @Valid UserDTO userDTO){
         return new WebResponse<>(sysUserService.updateUser(userDTO));
     }
@@ -89,6 +94,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @SysLog("删除会员")
+    @PreAuthorize("@pms.hasPermission('sys_user_del')")
     public WebResponse userDel(@PathVariable Integer id) {
         SysUser user = sysUserService.getById(id);
         return new WebResponse<>(sysUserService.removeUserById(user));

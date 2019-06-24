@@ -1,7 +1,6 @@
 package com.study.boot.gateway.config;
 
-import com.study.boot.gateway.handler.HystrixFallbackHandler;
-import com.study.boot.gateway.handler.ImageCodeHandler;
+import com.study.boot.gateway.handler.*;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +19,10 @@ public class RouterFunctionConfiguration {
 
     private final HystrixFallbackHandler hystrixFallbackHandler;
     private final ImageCodeHandler imageCodeHandler;
+    private final SwaggerResourceHandler swaggerResourceHandler;
+    private final SwaggerSecurityHandler swaggerSecurityHandler;
+    private final SwaggerUiHandler swaggerUiHandler;
+
     @Bean
     public RouterFunction  routerFunction(){
         return RouterFunctions.route(
@@ -27,6 +30,12 @@ public class RouterFunctionConfiguration {
                 .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),hystrixFallbackHandler)
                 .andRoute(RequestPredicates.GET("/code")
                                 .and(RequestPredicates.accept(MediaType.TEXT_PLAIN))
-                        ,imageCodeHandler);
+                        ,imageCodeHandler)
+                .andRoute(RequestPredicates.GET("/swagger-resources")
+                        .and(RequestPredicates.accept(MediaType.ALL)), swaggerResourceHandler)
+                .andRoute(RequestPredicates.GET("/swagger-resources/configuration/ui")
+                        .and(RequestPredicates.accept(MediaType.ALL)), swaggerUiHandler)
+                .andRoute(RequestPredicates.GET("/swagger-resources/configuration/security")
+                        .and(RequestPredicates.accept(MediaType.ALL)), swaggerSecurityHandler);
     }
 }

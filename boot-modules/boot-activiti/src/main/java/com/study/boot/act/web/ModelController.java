@@ -4,6 +4,7 @@ package com.study.boot.act.web;
 import com.study.boot.act.dto.ModelForm;
 import com.study.boot.act.service.ModelService;
 import com.study.boot.common.util.WebResponse;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/model")
 @AllArgsConstructor
+@Api(value="model",description = "模型管理模块")
 public class ModelController {
 
     private final ModelService modelService;
