@@ -201,7 +201,6 @@
                         <repository>${registry.url}/${project.build.finalName}</repository>
                         <contextDirectory>${project.basedir}</contextDirectory>
                         <tag>${project.version}</tag>
-                        <buildArgs>${project.build.finalName}.jar</buildArgs>
                     </configuration>
                 </plugin>
             </plugins>
