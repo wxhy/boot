@@ -39,4 +39,14 @@ export default [{
         component:()=>
             import ( /* webpackChunkName: "views" */  '@/views/admin/message/info')
     }]
+},{
+    path: '/pay',
+    component: Layout,
+    redirect: '/pay/info',
+    children:[{
+        path:'info',
+        name:"确认订单",
+        component:()=>
+            import ( /* webpackChunkName: "views" */  '@/views/admin/pay/info')
+    }]
 }]

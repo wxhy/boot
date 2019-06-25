@@ -25,6 +25,10 @@ spring:
           uri: lb://boot-activiti
           predicates:
             - Path=/act/**
+        - id: boot-pay
+          uri: lb://boot-pay
+          predicates:
+            - Path=/pay/**
 
 security:
   encode:

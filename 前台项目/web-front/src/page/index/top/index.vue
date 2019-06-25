@@ -61,7 +61,7 @@
         placement="bottom"
       >
         <div class="top-bar__item">
-          <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'" @click="handleScreen"></i>
+          <i :class="isFullScren?'icon-tuichuquanping':'icon-icon-quanping'" @click="handleScreen"></i>
         </div>
       </el-tooltip>
       <el-tooltip v-if="this.userInfo.avatar" effect="dark" content="用户头像" placement="bottom">

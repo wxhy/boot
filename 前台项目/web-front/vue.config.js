@@ -72,6 +72,13 @@ module.exports = {
         pathRewrite: {
           '^/act': '/act'
         }
+      },
+      '/pay': {
+        target: url,
+        ws: true,
+        pathRewrite: {
+          '^/pay': '/pay'
+        }
       }
     }
   }

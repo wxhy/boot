@@ -1,25 +1,22 @@
-package com.study.boot.upms;
+package com.study.boot.pay;
 
-import com.study.boot.common.swagger.annoation.EnableBootSwagger;
+
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
- *
  * @author Administrator
  */
-
-@EnableFeignClients
-@SpringCloudApplication
-@EnableBootSwagger
+@SpringBootApplication
+@EnableDiscoveryClient
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class BootUpmsApplication {
+public class BootPayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootUpmsApplication.class,args);
+        SpringApplication.run(BootPayApplication.class,args);
     }
 }

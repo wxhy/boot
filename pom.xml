@@ -41,6 +41,7 @@
         <module>boot-config</module>
         <module>boot-gateway</module>
         <module>boot-modules</module>
+        <module>boot-pay</module>
     </modules>
 
     <dependencies>
