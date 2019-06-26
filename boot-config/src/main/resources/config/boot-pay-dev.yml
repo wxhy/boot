@@ -35,3 +35,6 @@ security:
       client-id: test
       client-secret: test
       scope: server
+
+
+#支付宝付款

@@ -48,5 +48,10 @@ export default [{
         name:"确认订单",
         component:()=>
             import ( /* webpackChunkName: "views" */  '@/views/admin/pay/info')
+    },{
+        path:'success',
+        name:'支付完成',
+        component:()=>
+            import ('@/views/admin/pay/success')
     }]
 }]
