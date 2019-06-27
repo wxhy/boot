@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>boot-activiti</module>
+        <module>boot-daemon</module>
     </modules>
 
 

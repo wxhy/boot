@@ -1,0 +1,27 @@
+server:
+  port: 8666
+spring:
+  application:
+    name: boot-daemon
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: boot-config
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+#eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:123456@boot-eureka:9999/eureka/

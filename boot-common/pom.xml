@@ -17,6 +17,7 @@
         <module>boot-common-log</module>
         <module>boot-common-oss</module>
         <module>boot-common-swagger</module>
+        <module>boot-common-job</module>
     </modules>
 
 

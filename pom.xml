@@ -31,6 +31,7 @@
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
         <dockerfile.plugin.version>1.4.10</dockerfile.plugin.version>
         <registry.url>47.104.172.27:5000</registry.url>
+        <elastic.job.version>2.1.5</elastic.job.version>
     </properties>
 
     <modules>
