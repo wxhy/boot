@@ -19,6 +19,7 @@ public class WebSecurityConfigurer extends ResourceServerConfigurerAdapter {
                         "/mobile/**",
                         "/ws/**",
                         "/social/info/*",
+                        "/route",
                         "/log/**").permitAll()
                 .anyRequest().authenticated();
     }

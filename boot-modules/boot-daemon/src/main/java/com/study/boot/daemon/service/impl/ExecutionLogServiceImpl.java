@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author lishangbu
  * @date 2018/11/22
  */
-@Service("executionLogService")
+@Service
 public class ExecutionLogServiceImpl extends ServiceImpl<ExecutionLogMapper, ExecutionLog> implements ExecutionLogService {
 
 }

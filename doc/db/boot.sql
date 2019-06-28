@@ -555,4 +555,29 @@ INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (2, 2);
 INSERT INTO `sys_user_role` VALUES (5, 2);
 
+DROP TABLE IF EXISTS `sys_route_conf`;
+CREATE TABLE `sys_route_conf`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `route_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路由名称',
+  `route_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '路由ID',
+  `predicates` json NULL COMMENT '断言',
+  `filters` json NULL COMMENT '过滤器',
+  `uri` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order` int(2) NULL DEFAULT 0 COMMENT '排序',
+  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标记',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '路由配置表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_route_conf
+-- ----------------------------
+INSERT INTO `sys_route_conf` VALUES (1, '工作流管理模块', 'boot-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-activiti', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:25', '0');
+INSERT INTO `sys_route_conf` VALUES (2, '认证中心', 'boot-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://boot-auth', 0, '2019-01-17 16:42:50', '2019-06-28 17:07:40', '0');
+INSERT INTO `sys_route_conf` VALUES (4, '定时任务模块', 'pigx-daemon', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:50', '0');
+INSERT INTO `sys_route_conf` VALUES (5, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-01-17 16:42:50', '2019-06-28 17:11:22', '0');
+INSERT INTO `sys_route_conf` VALUES (6, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://boot-upms', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:03', '0');
+
+
 SET FOREIGN_KEY_CHECKS = 1;

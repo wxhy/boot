@@ -4,31 +4,6 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes:
-        # 认证中心
-        - id: boot-auth
-          uri: lb://boot-auth
-          predicates:
-           - Path=/auth/**
-          filters:
-            # 验证码处理
-            - ValidateCodeGatewayFilter
-            #密码解密处理
-            - PasswordDecoderFilter
-        #UPMS 模块
-        - id: boot-upms
-          uri: lb://boot-upms
-          predicates:
-           - Path=/admin/**
-        # 工作流模块
-        - id: boot-activiti
-          uri: lb://boot-activiti
-          predicates:
-            - Path=/act/**
-        - id: boot-pay
-          uri: lb://boot-pay
-          predicates:
-            - Path=/pay/**
 
 security:
   encode:

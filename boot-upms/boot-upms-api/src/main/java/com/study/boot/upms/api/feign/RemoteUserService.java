@@ -4,8 +4,8 @@ import com.study.boot.common.constants.SecurityConstants;
 import com.study.boot.common.constants.ServiceNameConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserInfo;
+import com.study.boot.upms.api.entity.SysRouteConf;
 import com.study.boot.upms.api.entity.SysUser;
-import com.study.boot.upms.api.feign.factory.RemoteUserServiceFallFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Administrator
  */
-@FeignClient(value = ServiceNameConstants.UMPS_SERVICE,fallbackFactory = RemoteUserServiceFallFactory.class)
+@FeignClient(value = ServiceNameConstants.UMPS_SERVICE)
 public interface RemoteUserService {
 
 
@@ -52,4 +52,11 @@ public interface RemoteUserService {
      */
     @GetMapping("/user/ancestor/{username}")
     WebResponse<List<SysUser>> ancestorUsers(@PathVariable("username") String username);
+
+    /**
+     * 获取路由
+     * @return
+     */
+    @GetMapping("/route")
+    WebResponse<List<SysRouteConf>> routes();
 }

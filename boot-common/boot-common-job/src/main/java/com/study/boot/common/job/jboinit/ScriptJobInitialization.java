@@ -8,6 +8,9 @@ import com.study.boot.common.job.properties.ElasticJobProperties;
 
 import java.util.Map;
 
+/**
+ * @author Administrator
+ */
 public class ScriptJobInitialization extends AbstractJobInitialization {
 
     private Map<String, ElasticJobProperties.ScriptConfiguration> scriptConfigurationMap;

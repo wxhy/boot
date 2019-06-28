@@ -64,4 +64,9 @@ public interface CommonConstants {
      * 消息类型
      */
     String MESSAGE_TYPE = "message_type";
+
+    /**
+     * 路由存放
+     */
+    String ROUTE_KEY = "gateway_route_key";
 }

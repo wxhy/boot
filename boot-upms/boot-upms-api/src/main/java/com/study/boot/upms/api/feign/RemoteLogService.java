@@ -5,7 +5,6 @@ import com.study.boot.common.constants.SecurityConstants;
 import com.study.boot.common.constants.ServiceNameConstants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysLog;
-import com.study.boot.upms.api.feign.factory.RemoteLogServiceFallFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 /**
  * @author Administrator
  */
-@FeignClient(value = ServiceNameConstants.UMPS_SERVICE,fallbackFactory = RemoteLogServiceFallFactory.class)
+@FeignClient(value = ServiceNameConstants.UMPS_SERVICE)
 @FunctionalInterface
 public interface RemoteLogService {
 

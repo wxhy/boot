@@ -32,6 +32,7 @@
         <dockerfile.plugin.version>1.4.10</dockerfile.plugin.version>
         <registry.url>47.104.172.27:5000</registry.url>
         <elastic.job.version>2.1.5</elastic.job.version>
+        <curator.version>2.10.0</curator.version>
     </properties>
 
     <modules>

@@ -36,7 +36,7 @@ public class ElasticJobAutoConfiguration {
     @Bean(name = DEFAULT_REGISTRY_CENTER_NAME,initMethod = "init")
     @ConditionalOnMissingBean
     public ZookeeperRegistryCenter elasticJobRegistryCenter(){
-        ElasticJobProperties.ZkConfiguration zkConfiguration = elasticJobProperties.getZkConfiguration();
+        ElasticJobProperties.ZkConfiguration zkConfiguration = elasticJobProperties.getZookeeper();
         ZookeeperConfiguration zookeeperConfiguration = new ZookeeperConfiguration(zkConfiguration.getServerLists(), zkConfiguration.getNamespace());
         zookeeperConfiguration.setBaseSleepTimeMilliseconds(zkConfiguration.getBaseSleepTimeMilliseconds());
         zookeeperConfiguration.setConnectionTimeoutMilliseconds(zkConfiguration.getConnectionTimeoutMilliseconds());
@@ -47,24 +47,24 @@ public class ElasticJobAutoConfiguration {
         return new ZookeeperRegistryCenter(zookeeperConfiguration);
     }
 
-    @Bean(initMethod = "init")
-    @ConditionalOnMissingBean
+    @Bean(name = "simpleJobInitialization",initMethod = "init")
     @ConditionalOnBean(ZookeeperRegistryCenter.class)
+    @ConditionalOnMissingBean
     public SimpleJobInitialization simpleJobConfiguration(){
         return new SimpleJobInitialization(elasticJobProperties.getSimples());
     }
 
 
-    @Bean(initMethod = "init")
-    @ConditionalOnMissingBean
+    @Bean(name = "dataflowJobInitialization",initMethod = "init")
     @ConditionalOnBean(ZookeeperRegistryCenter.class)
+    @ConditionalOnMissingBean
     public DataflowJobInitialization dataflowJobInitialization(){
         return new DataflowJobInitialization(elasticJobProperties.getDataflows());
     }
 
-    @Bean(initMethod = "init")
-    @ConditionalOnMissingBean
+    @Bean(name = "scriptJobInitialization",initMethod = "init")
     @ConditionalOnBean(ZookeeperRegistryCenter.class)
+    @ConditionalOnMissingBean
     public ScriptJobInitialization scriptJobInitialization(){
         return new ScriptJobInitialization(elasticJobProperties.getScripts());
     }

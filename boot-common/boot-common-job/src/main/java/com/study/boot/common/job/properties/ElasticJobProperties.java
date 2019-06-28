@@ -24,7 +24,7 @@ public class ElasticJobProperties {
     /**
      * 注册中心
      */
-    private ZkConfiguration zkConfiguration;
+    private ZkConfiguration zookeeper;
 
     /**
      * 简单作业配置

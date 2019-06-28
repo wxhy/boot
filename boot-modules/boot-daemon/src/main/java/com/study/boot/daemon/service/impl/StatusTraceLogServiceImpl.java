@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author lishangbu
  * @date 2018/11/22
  */
-@Service("statusTraceLogService")
+@Service
 @AllArgsConstructor
 public class StatusTraceLogServiceImpl extends ServiceImpl<StatusTraceLogMapper, StatusTraceLog> implements StatusTraceLogService {
 
