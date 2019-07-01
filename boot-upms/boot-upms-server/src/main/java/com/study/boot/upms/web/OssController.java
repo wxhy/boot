@@ -8,10 +8,7 @@ import com.study.boot.upms.api.entity.SysOss;
 import com.study.boot.upms.service.SysOssService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -32,7 +29,7 @@ public class OssController {
      * @param sysOss
      * @return
      */
-    @RequestMapping("/page")
+    @GetMapping("/page")
     public WebResponse getOssPage(Page page, SysOss sysOss) {
         return new WebResponse<>(sysOssService.page(page, Wrappers.query(sysOss).orderByDesc(SysOss.COL_CREATE_TIME)));
     }
