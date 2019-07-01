@@ -4,6 +4,7 @@ package com.study.boot.upms.web;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.dto.UserInfo;
 import com.study.boot.upms.service.SysSocialDetailsService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @Slf4j
+@Api(tags = "第三方登录")
 public class SysSocialController {
 
     private final SysSocialDetailsService sysSocialDetailsService;

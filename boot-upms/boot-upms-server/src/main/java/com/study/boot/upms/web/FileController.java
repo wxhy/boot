@@ -3,6 +3,7 @@ package com.study.boot.upms.web;
 import cn.hutool.core.io.IoUtil;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.service.SysOssService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.io.InputStream;
 @RequestMapping("/file")
 @Slf4j
 @AllArgsConstructor
+@Api(tags = "文件上传管理")
 public class FileController {
 
     private final SysOssService sysOssService;

@@ -10,7 +10,6 @@ import com.study.boot.upms.api.entity.SysDict;
 import com.study.boot.upms.service.SysDictService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/dict")
 @AllArgsConstructor
-@Api(value="dict",description = "字典管理模块")
+@Api(tags = "字典管理模块")
 public class DictController {
 
     private final SysDictService sysDictService;
@@ -71,7 +70,6 @@ public class DictController {
      */
     @SysLog("添加字典")
     @PostMapping
-    @Cacheable
     @PreAuthorize("@pms.hasPermission('sys_dict_add')")
     public WebResponse save(@Valid @RequestBody SysDict sysDict) {
         return new WebResponse<>(sysDictService.save(sysDict));
@@ -103,4 +101,5 @@ public class DictController {
     public WebResponse updateById(@Valid @RequestBody SysDict sysDict) {
         return new WebResponse<>(sysDictService.updateById(sysDict));
     }
+
 }

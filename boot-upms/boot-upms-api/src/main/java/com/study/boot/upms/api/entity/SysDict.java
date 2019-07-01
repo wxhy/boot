@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author Administrator
@@ -17,23 +17,14 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @TableName(value = "sys_dict")
 public class SysDict extends Model<SysDict> {
+    public static final String COL_VALUE = "value";
+    public static final String COL_LABEL = "label";
+    public static final String COL_SORT = "sort";
     /**
      * 编号
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-
-    /**
-     * 数据值
-     */
-    @TableField(value = "value")
-    private String value;
-
-    /**
-     * 标签名
-     */
-    @TableField(value = "label")
-    private String label;
 
     /**
      * 类型
@@ -42,28 +33,22 @@ public class SysDict extends Model<SysDict> {
     private String type;
 
     /**
-     * 描述
-     */
-    @TableField(value = "description")
-    private String description;
-
-    /**
-     * 排序（升序）
-     */
-    @TableField(value = "sort")
-    private Integer sort;
-
-    /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    private LocalDateTime updateTime;
+    private Date updateTime;
+
+    /**
+     * 描述
+     */
+    @TableField(value = "description")
+    private String description;
 
     /**
      * 备注信息
@@ -77,19 +62,13 @@ public class SysDict extends Model<SysDict> {
     @TableField(value = "del_flag")
     private String delFlag;
 
-    public static final String COL_VALUE = "value";
-
-    public static final String COL_LABEL = "label";
-
     public static final String COL_TYPE = "type";
-
-    public static final String COL_DESCRIPTION = "description";
-
-    public static final String COL_SORT = "sort";
 
     public static final String COL_CREATE_TIME = "create_time";
 
     public static final String COL_UPDATE_TIME = "update_time";
+
+    public static final String COL_DESCRIPTION = "description";
 
     public static final String COL_REMARKS = "remarks";
 

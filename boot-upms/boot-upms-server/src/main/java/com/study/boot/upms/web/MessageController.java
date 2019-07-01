@@ -8,6 +8,7 @@ import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysMessage;
 import com.study.boot.upms.api.vo.MessageVo;
 import com.study.boot.upms.service.SysMessageService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/message")
 @AllArgsConstructor
+@Api(tags = "消息发送管理")
 public class MessageController {
 
     private final SysMessageService sysMessageService;

@@ -9,6 +9,7 @@ import com.study.boot.upms.api.entity.SysMessageSend;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.SysMessageSendService;
 import com.study.boot.upms.service.SysUserService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("messageSend")
 @AllArgsConstructor
+@Api(tags = "消息管理")
 public class MessageSendController {
 
     private SysMessageSendService sysMessageSendService;

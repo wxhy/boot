@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/dept")
 @AllArgsConstructor
-@Api(value="dept",description = "部门管理模块")
+@Api(tags = "部门管理模块")
 public class DeptController {
 
     private final SysDeptService sysDeptService;

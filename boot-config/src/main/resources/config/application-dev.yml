@@ -76,7 +76,7 @@ security:
 swagger:
   title: PigX Swagger API
   description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
-  host: http://boot-gateway:8081/
+#  host: http://boot-gateway:8081
   version: 1.0
   license: Powered By PigX
   licenseUrl: https://pig4cloud.com/

@@ -18,6 +18,7 @@ public class WebSecurityConfigurer extends ResourceServerConfigurerAdapter {
                         "/user/info/*",
                         "/mobile/**",
                         "/ws/**",
+                        "/v2/api-docs",
                         "/social/info/*",
                         "/route",
                         "/log/**").permitAll()

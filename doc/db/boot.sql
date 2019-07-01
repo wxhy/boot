@@ -90,36 +90,58 @@ INSERT INTO `sys_dept_relation` VALUES (11, 11);
 DROP TABLE IF EXISTS `sys_dict`;
 CREATE TABLE `sys_dict`  (
   `id` int(64) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '数据值',
-  `label` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标签名',
   `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '类型',
-  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
-  `sort` int(10) NOT NULL COMMENT '排序（升序）',
   `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标记',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `sys_dict_value`(`value`) USING BTREE,
-  INDEX `sys_dict_label`(`label`) USING BTREE,
-  INDEX `sys_dict_del_flag`(`del_flag`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表' ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
-INSERT INTO `sys_dict` VALUES (1, '9', '异常', 'log_type', '日志异常', 1, '2018-07-09 06:16:14', '2018-11-24 07:25:11', '日志异常', '0');
-INSERT INTO `sys_dict` VALUES (2, '0', '正常', 'log_type', '正常', 0, '2018-07-09 06:15:40', '2018-11-24 07:25:14', '正常', '0');
-INSERT INTO `sys_dict` VALUES (3, 'WX', '微信', 'social_type', '微信登录', 0, '2018-08-16 14:01:45', '2018-11-24 07:25:16', '微信登录', '0');
-INSERT INTO `sys_dict` VALUES (4, 'QQ', 'QQ', 'social_type', 'QQ登录', 1, '2018-07-09 06:15:40', '2018-11-24 07:25:18', 'QQ登录', '0');
-INSERT INTO `sys_dict` VALUES (5, '0', '正常', 'log_type', '日志类型', 0, '2018-09-30 02:33:53', '2018-11-24 07:25:20', '日志正常', '0');
-INSERT INTO `sys_dict` VALUES (6, '0', '未提交', 'leave_status', '请假状态', 0, '2018-09-30 02:34:45', '2018-11-24 07:25:23', '请假状态', '0');
-INSERT INTO `sys_dict` VALUES (7, '1', '审批中', 'leave_status', '请假状态', 1, '2018-09-30 02:35:16', '2018-11-24 07:25:25', '请假状态', '0');
-INSERT INTO `sys_dict` VALUES (8, '2', '完成', 'leave_status', '请假状态', 2, '2018-09-30 02:35:58', '2018-11-24 07:25:28', '请假状态', '0');
-INSERT INTO `sys_dict` VALUES (9, '9', '驳回', 'leave_status', '请假状态', 9, '2018-09-30 02:36:31', '2018-11-24 07:25:31', '请假状态', '0');
-INSERT INTO `sys_dict` VALUES (10, '0', '系统公告', 'message_type', '消息类型', 0, '2019-06-11 12:54:13', '2019-06-11 12:54:13', '系统公告', '0');
-INSERT INTO `sys_dict` VALUES (11, '1', '提醒', 'message_type', '消息类型', 1, '2019-06-11 12:55:02', '2019-06-11 12:55:02', '提醒消息', '0');
-INSERT INTO `sys_dict` VALUES (12, '2', '私信', 'message_type', '消息类型', 2, '2019-06-11 12:56:39', '2019-06-11 12:56:39', '私信消息', '0');
+INSERT INTO `sys_dict` VALUES (13, 'log_type', '2019-07-01 13:31:47', '2019-07-01 13:31:49', '日志类型', '异常、正常', '0');
+INSERT INTO `sys_dict` VALUES (14, 'social_type', '2019-07-01 13:36:08', '2019-07-01 13:36:08', '社交登录', '微信、QQ', '0');
+INSERT INTO `sys_dict` VALUES (15, 'leave_status', '2019-07-01 13:36:57', '2019-07-01 13:36:57', '请假状态', '未提交、审批中、完成、驳回', '0');
+INSERT INTO `sys_dict` VALUES (16, 'message_type', '2019-07-01 13:37:28', '2019-07-01 13:37:28', '消息类型', '系统公告、提醒、私信', '0');
+
+-- ----------------------------
+-- Table structure for sys_dict_item
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dict_item`;
+CREATE TABLE `sys_dict_item`  (
+  `id` int(64) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `dict_id` int(64) NOT NULL COMMENT '字典主表ID',
+  `value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '数据值',
+  `label` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标签名',
+  `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '类型',
+  `sort` int(10) NOT NULL COMMENT '排序（升序）',
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
+  `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标记',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `sys_dict_item_value`(`value`) USING BTREE,
+  INDEX `sys_dict_item_label`(`label`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典项表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_dict_item
+-- ----------------------------
+INSERT INTO `sys_dict_item` VALUES (13, 13, '0', '正常', 'log_type', 0, '正常', '2019-07-01 16:10:40', '2019-07-01 16:10:40', '0');
+INSERT INTO `sys_dict_item` VALUES (14, 13, '9', '异常', 'log_type', 1, '异常', '2019-07-01 16:15:35', '2019-07-01 16:15:35', '0');
+INSERT INTO `sys_dict_item` VALUES (15, 14, '3', 'WX', 'social_type', 1, '微信登录', '2019-07-01 16:17:28', '2019-07-01 16:17:28', '0');
+INSERT INTO `sys_dict_item` VALUES (16, 14, '4', 'QQ', 'social_type', 2, 'QQ登录', '2019-07-01 16:17:42', '2019-07-01 16:17:42', '0');
+INSERT INTO `sys_dict_item` VALUES (17, 15, '0', '未提交', 'leave_status', 1, '未提交', '2019-07-01 16:18:40', '2019-07-01 16:18:40', '0');
+INSERT INTO `sys_dict_item` VALUES (18, 15, '1', '审批中', 'leave_status', 2, '审批中', '2019-07-01 16:18:53', '2019-07-01 16:18:53', '0');
+INSERT INTO `sys_dict_item` VALUES (19, 15, '2', '完成', 'leave_status', 3, '完成', '2019-07-01 16:19:09', '2019-07-01 16:19:09', '0');
+INSERT INTO `sys_dict_item` VALUES (20, 15, '9', '驳回', 'leave_status', 4, '驳回', '2019-07-01 16:19:24', '2019-07-01 16:19:24', '0');
+INSERT INTO `sys_dict_item` VALUES (21, 16, '0', '系统公告', 'message_type', 1, '系统公告', '2019-07-01 16:20:56', '2019-07-01 16:20:56', '0');
+INSERT INTO `sys_dict_item` VALUES (22, 16, '1', '提醒', 'message_type', 2, '提醒', '2019-07-01 16:21:09', '2019-07-01 16:21:09', '0');
+INSERT INTO `sys_dict_item` VALUES (23, 16, '2', '私信', 'message_type', 3, '私信', '2019-07-01 16:21:21', '2019-07-01 16:21:21', '0');
+
 
 -- ----------------------------
 -- Table structure for sys_log

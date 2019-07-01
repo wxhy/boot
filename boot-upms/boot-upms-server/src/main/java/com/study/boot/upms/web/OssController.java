@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysOss;
 import com.study.boot.upms.service.SysOssService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/oss")
 @AllArgsConstructor
+@Api(tags = "OSS文件管理")
 public class OssController {
 
     private final SysOssService sysOssService;
