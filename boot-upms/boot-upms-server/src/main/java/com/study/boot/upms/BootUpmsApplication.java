@@ -1,11 +1,10 @@
 package com.study.boot.upms;
 
+import com.study.boot.common.auth.annoation.EnableBootResourceServer;
 import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
  *
@@ -15,8 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableFeignClients
 @SpringCloudApplication
 @EnableBootSwagger
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableBootResourceServer
 public class BootUpmsApplication {
 
     public static void main(String[] args) {

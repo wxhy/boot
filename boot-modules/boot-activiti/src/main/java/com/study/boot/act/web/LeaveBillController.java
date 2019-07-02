@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/leave-bill")
 @AllArgsConstructor
-@Api(value="leave",description = "请假管理模块")
+@Api(tags = "请假管理模块")
 public class LeaveBillController {
 
     private final LeaveBillService leaveBillService;

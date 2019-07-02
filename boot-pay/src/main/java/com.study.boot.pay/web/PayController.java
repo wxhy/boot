@@ -14,6 +14,7 @@ import com.study.boot.common.util.WebResponse;
 import com.study.boot.pay.config.AlipayConfig;
 import com.study.boot.pay.entitiy.PayInfo;
 import com.study.boot.pay.service.PayInfoService;
+import io.swagger.annotations.Api;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/pay")
 @Slf4j
+@Api(tags = "支付模块")
 public class PayController {
 
     @Autowired

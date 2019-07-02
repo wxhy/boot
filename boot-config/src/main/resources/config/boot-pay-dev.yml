@@ -35,6 +35,9 @@ security:
       client-id: test
       client-secret: test
       scope: server
-
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+        - /pay/notify
 
 #支付宝付款

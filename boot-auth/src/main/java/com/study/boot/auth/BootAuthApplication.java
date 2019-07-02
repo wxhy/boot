@@ -1,5 +1,6 @@
 package com.study.boot.auth;
 
+import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -9,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author Administrator
  */
 @SpringCloudApplication
+@EnableBootSwagger
 @EnableFeignClients(basePackages = {"com.study.boot"})
 public class BootAuthApplication {
 

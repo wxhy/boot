@@ -65,8 +65,8 @@ public class SwaggerAutoConfiguration {
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
                 .paths(Predicates.and(Predicates.not(Predicates.or(excludePath)), Predicates.or(basePath)))
                 .build()
-                .securitySchemes(Collections.singletonList(securitySchema()))
-                .securityContexts(Collections.singletonList(securityContext()))
+//                .securitySchemes(Collections.singletonList(securitySchema()))
+//                .securityContexts(Collections.singletonList(securityContext()))
                 .pathMapping("/");
     }
 

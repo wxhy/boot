@@ -17,7 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/model")
 @AllArgsConstructor
-@Api(value="model",description = "模型管理模块")
+@Api(tags = "模型管理模块")
 public class ModelController {
 
     private final ModelService modelService;

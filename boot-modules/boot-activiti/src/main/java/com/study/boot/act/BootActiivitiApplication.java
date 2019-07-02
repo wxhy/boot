@@ -1,10 +1,10 @@
 package com.study.boot.act;
 
+import com.study.boot.common.auth.annoation.EnableBootResourceServer;
+import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
  * @author Carlos
@@ -13,8 +13,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  */
 @SpringCloudApplication
 @EnableFeignClients(basePackages ={"com.study.boot"})
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableBootResourceServer
+@EnableBootSwagger
 public class BootActiivitiApplication {
 
     public static void main(String[] args) {

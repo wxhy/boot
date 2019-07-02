@@ -35,7 +35,15 @@ security:
       client-id: test
       client-secret: test
       scope: server
-
+      ignore-urls:
+        - /actuator/**
+        - /user/info/*
+        - /mobile/**
+        - /ws/**
+        - /v2/api-docs
+        - /social/info/*
+        - /route
+        - /log/**
 
 ## 七牛云配置
 oss:

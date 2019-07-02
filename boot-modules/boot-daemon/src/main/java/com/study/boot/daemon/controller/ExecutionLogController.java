@@ -23,6 +23,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.daemon.entity.ExecutionLog;
 import com.study.boot.daemon.service.ExecutionLogService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/execution-log")
 @AllArgsConstructor
+@Api(tags = "任务日志管理")
 public class ExecutionLogController {
 
 	private final ExecutionLogService executionLogService;

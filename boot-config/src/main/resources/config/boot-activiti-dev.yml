@@ -15,6 +15,15 @@ security:
       client-id: test
       client-secret: test
       scope: server
+      ignore-urls:
+        - /actuator/**
+        - /service/**
+        - /editor-app/**
+        - /v2/api-docs
+        - /task/view/*
+        - /process/resource/**
+        - /modeler.html
+
 
 flowable:
   check-process-definitions: false

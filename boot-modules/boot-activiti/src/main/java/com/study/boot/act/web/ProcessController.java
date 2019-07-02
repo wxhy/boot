@@ -5,6 +5,7 @@ import cn.hutool.core.io.IoUtil;
 import com.study.boot.act.service.ProcessService;
 import com.study.boot.common.enums.ResourceTypeEnum;
 import com.study.boot.common.util.WebResponse;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.Map;
 @RequestMapping("/process")
 @RestController
 @AllArgsConstructor
+@Api(tags = "流程管理")
 public class ProcessController {
 
     private final ProcessService processService;

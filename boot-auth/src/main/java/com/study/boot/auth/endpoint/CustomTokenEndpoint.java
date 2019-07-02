@@ -3,6 +3,7 @@ package com.study.boot.auth.endpoint;
 import cn.hutool.core.util.StrUtil;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.util.WebResponse;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/token")
+@Api(tags="Token管理")
 public class CustomTokenEndpoint {
 
     private static final String BASIC_ = "Bearer";

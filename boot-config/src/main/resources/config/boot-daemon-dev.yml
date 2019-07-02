@@ -5,6 +5,11 @@ security:
       client-id: test
       client-secret: test
       scope: server
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+
+
 ## 定时任务
 spring:
   # 保存定时任务的数据源

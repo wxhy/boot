@@ -5,6 +5,7 @@ import com.study.boot.act.dto.LeaveBillDto;
 import com.study.boot.act.service.ActTaskService;
 import com.study.boot.common.auth.util.SecurityUtils;
 import com.study.boot.common.util.WebResponse;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/task")
 @AllArgsConstructor
+@Api(tags = "任务管理模块")
 public class TaskController {
 
     private final ActTaskService actTaskService;

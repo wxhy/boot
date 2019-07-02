@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.daemon.entity.StatusTraceLog;
 import com.study.boot.daemon.service.StatusTraceLogService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/status-trace-log")
+@Api(tags = "任务轨迹管理")
 public class StatusTraceLogController {
 	private final StatusTraceLogService statusTraceLogService;
 
