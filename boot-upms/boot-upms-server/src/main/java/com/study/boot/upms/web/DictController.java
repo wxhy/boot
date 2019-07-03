@@ -50,17 +50,6 @@ public class DictController {
         return new WebResponse<>(sysDictService.page(page,Wrappers.query(sysDict)));
     }
 
-    /**
-     * 通过字典类型查找字典
-     *
-     * @param type 类型
-     * @return 同类型字典
-     */
-    @GetMapping("/type/{type}")
-    public WebResponse getDictByType(@PathVariable String type) {
-        return new WebResponse<>(sysDictService.list(Wrappers.<SysDict>query()
-        .lambda().eq(SysDict::getType,type)));
-    }
 
     /**
      * 添加字典
@@ -79,13 +68,12 @@ public class DictController {
      * 删除字典，并且清除字典缓存
      *
      * @param id   ID
-     * @param type 类型
-     * @return R
+     * @return WebResponse
      */
     @SysLog("删除字典")
-    @DeleteMapping("/{id}/{type}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("@pms.hasPermission('sys_dict_del')")
-    public WebResponse removeById(@PathVariable Integer id, @PathVariable String type) {
+    public WebResponse removeById(@PathVariable Integer id) {
         return new WebResponse<>(sysDictService.removeById(id));
     }
 

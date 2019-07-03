@@ -62,7 +62,7 @@ export const tableOption = {
   }, {
     label: '类型',
     prop: 'type',
-    dicUrl: '/admin/dict/type/message_type',
+    dicUrl: '/admin/dict/item/type/message_type',
   }, {
     label: '新创建账号推送',
     prop: 'createSend',
@@ -83,7 +83,7 @@ export const formOption = {
     {
       label: '消息类型',
       prop: 'type',
-      dicUrl: '/admin/dict/type/message_type',
+      dicUrl: '/admin/dict/item/type/message_type',
       type: 'select'
     },
     {
@@ -139,7 +139,7 @@ export const updateOption = {
     {
       label: '消息类型',
       prop: 'type',
-      dicUrl: '/admin/dict/type/message_type',
+      dicUrl: '/admin/dict/item/type/message_type',
       type: 'select'
     },
     {

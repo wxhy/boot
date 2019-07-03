@@ -42,7 +42,7 @@ export function getObj (id) {
 
 export function delObj (row) {
   return request({
-    url: '/admin/dict/' + row.id + '/' + row.type,
+    url: '/admin/dict/' + row.id,
     method: 'delete'
   })
 }
@@ -55,9 +55,3 @@ export function putObj (obj) {
   })
 }
 
-export function remote (type) {
-  return request({
-    url: '/admin/dict/type/' + type,
-    method: 'get'
-  })
-}

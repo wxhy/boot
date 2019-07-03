@@ -60,13 +60,30 @@ public interface CommonConstants {
      * 数据字典缓存前缀
      */
     String DICTS = "DICTS:";
-    /**
-     * 消息类型
-     */
-    String MESSAGE_TYPE = "message_type";
 
     /**
      * 路由存放
      */
     String ROUTE_KEY = "gateway_route_key";
+
+    /**
+     * 日志状态
+     */
+    String LOG_TYPE = "log_type";
+
+    /**
+     * 第三方登录类型
+     */
+    String SOCIAL_TYPE= "social_type";
+
+    /**
+     * 请假状态
+     */
+    String LEAVE_STATUS = "leave_status";
+
+    /**
+     * 消息类型
+     */
+    String MESSAGE_TYPE = "message_type";
+
 }

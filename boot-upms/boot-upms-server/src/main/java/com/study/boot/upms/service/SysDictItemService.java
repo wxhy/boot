@@ -8,6 +8,5 @@ import com.study.boot.upms.api.entity.SysDictItem;
  */
 public interface SysDictItemService extends IService<SysDictItem> {
 
-
 }
 
