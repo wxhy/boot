@@ -37,9 +37,9 @@ export const tableOption = {
   delBtn: false,
   column: [{
     label: '用户ID',
-    prop: 'user_id',
+    prop: 'userId',
     align: 'center'
-  }, {
+  },{
     label: '用户名',
     prop: 'username',
     align: 'center'

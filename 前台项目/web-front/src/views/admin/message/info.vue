@@ -86,7 +86,7 @@ import {
   removeMessage,
   delMessage
 } from "@/api/admin/message";
-import { remote } from "@/api/admin/dict";
+import { remote } from "@/api/admin/dictItem";
 import { mapGetters } from "vuex";
 export default {
   data() {

@@ -100,4 +100,9 @@ public interface SecurityConstants {
      * 资源服务器默认bean名称
      */
     String RESOURCE_SERVER_CONFIGURER = "resourceServerConfigurerAdapter";
+
+    /**
+     * 客户端模式
+     */
+    String CLIENT_CREDENTIALS = "client_credentials";
 }

@@ -3,6 +3,7 @@ package com.study.boot.auth.config;
 
 import com.study.boot.common.auth.component.CustomWebResponseExceptionTranslator;
 import com.study.boot.common.auth.service.ClientDetailsService;
+import com.study.boot.common.auth.service.CustomUser;
 import com.study.boot.common.constants.SecurityConstants;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -12,19 +13,23 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- *
  * 认证服务器配置
+ *
  * @author Administrator
  */
 @Configuration
@@ -38,9 +43,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private final RedisConnectionFactory redisConnectionFactory;
 
     /**
-     *
      * https://blog.csdn.net/u012040869/article/details/80140515
      * 解决Spring Security OAuth在访问/oauth/token时候报401 authentication is required
+     *
      * @param oauthServer
      */
     @Override
@@ -52,7 +57,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // 开启/oauth/token_key验证端口无权限访问
                 .tokenKeyAccess("permitAll()")
                 // 开启/oauth/check_token验证端口无权限访问
-                .checkTokenAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
                 //主要是让/oauth/token支持client_id以及client_secret作登录认证
                 .allowFormAuthenticationForClients();
     }
@@ -68,20 +73,47 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     @SneakyThrows
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints){
-        endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET,HttpMethod.POST)
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+        endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                 .tokenStore(tokenStore())
+                .tokenEnhancer(tokenEnhancer())
                 .userDetailsService(userDetailsService)
                 .authenticationManager(authenticationManager)
                 .reuseRefreshTokens(false)
                 .exceptionTranslator(new CustomWebResponseExceptionTranslator());
     }
 
+    /**
+     * token缓存
+     *
+     * @return
+     */
     @Bean
-    public TokenStore tokenStore(){
+    public TokenStore tokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
         tokenStore.setPrefix(SecurityConstants.PROJECT_PREFIX + SecurityConstants.OAUTH_PREFIX);
         return tokenStore;
+    }
+
+    /**
+     * token增强,客户端模式不增强
+     *
+     * @return
+     */
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return (accessToken, authentication) -> {
+            if (SecurityConstants.CLIENT_CREDENTIALS.equals(authentication.getOAuth2Request().getGrantType())) {
+                return accessToken;
+            }
+
+            final Map<String, Object> additionalInfo = new HashMap<>(8);
+            CustomUser customUser = (CustomUser) authentication.getUserAuthentication().getPrincipal();
+            additionalInfo.put("userId", customUser.getId());
+            additionalInfo.put("username", customUser.getUsername());
+            ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
+            return accessToken;
+        };
     }
 
 }
