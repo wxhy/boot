@@ -1,14 +1,21 @@
 package com.study.boot.upms.web;
 
 
+import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.study.boot.common.oss.constant.QiniuConstant;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysOss;
+import com.study.boot.upms.api.vo.SysOssVo;
 import com.study.boot.upms.service.SysOssService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -22,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
 public class OssController {
 
     private final SysOssService sysOssService;
-
+    private final QiniuConstant qiniuConstant;
     /**
      *
      * @param page
@@ -31,7 +38,18 @@ public class OssController {
      */
     @GetMapping("/page")
     public WebResponse getOssPage(Page page, SysOss sysOss) {
-        return new WebResponse<>(sysOssService.page(page, Wrappers.query(sysOss).orderByDesc(SysOss.COL_CREATE_TIME)));
+        IPage result = sysOssService.page(page, Wrappers.query(sysOss).orderByDesc(SysOss.COL_CREATE_TIME));
+        List<SysOss> records = result.getRecords();
+
+        List<SysOssVo> resultList = records.stream().map(oss -> {
+            SysOssVo sysOssVo = new SysOssVo();
+            BeanUtil.copyProperties(oss, sysOssVo);
+            sysOssVo.setUrl(qiniuConstant.getPath() + sysOssVo.getFkey());
+            return sysOssVo;
+        }).collect(Collectors.toList());
+
+        result.setRecords(resultList);
+        return new WebResponse<>(result);
     }
 
     /**

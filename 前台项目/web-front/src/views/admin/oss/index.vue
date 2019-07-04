@@ -36,7 +36,7 @@
             :src="handleImg(scope.row.fkey,scope.row.fkey)"
             @click="openPreview(scope.row)"
             class="imgStyle"
-          >
+          />
         </template>
         <template slot="menuLeft">
           <el-button
@@ -46,7 +46,6 @@
             type="primary"
             icon="el-icon-upload"
           >上传</el-button>
-
           <el-button class="filter-item" @click="handleDelBatch" size="small" type="danger">批量删除</el-button>
         </template>
         <template slot-scope="scope" slot="menu">
@@ -78,7 +77,7 @@
     </avue-drawer>
 
     <el-dialog title="预览" :visible.sync="prewVisible" style="text-align:center">
-      <img id="pictureDetail" :src="avatarUrl">
+      <img id="pictureDetail" :src="avatarUrl" style="width: 100%; margin: 0px auto; display: block;"/>
     </el-dialog>
   </div>
 </template>
@@ -88,7 +87,7 @@ import { delObj, fetchList, delBatchObj } from "@/api/admin/oss";
 import { tableOption } from "@/const/crud/admin/oss";
 import { handleImg } from "@/util/util";
 import store from "@/store";
-import _ from 'lodash';
+import _ from "lodash";
 import { mapGetters } from "vuex";
 
 export default {
@@ -109,7 +108,7 @@ export default {
       headers: {
         Authorization: "Bearer " + store.getters.access_token
       },
-      selections:[]
+      selections: []
     };
   },
   created() {},
@@ -142,16 +141,15 @@ export default {
       this.selections = val;
     },
     handleDelBatch() {
-        if(this.selections.length <= 0) {
-            this.$message.warning('请至少选择一行');
-            return;
-        }
-       delBatchObj( _.map(this.selections,'id').join('-'))
-        .then(response=>{
-            this.getList(this.page);
-            this.$refs.crud.toggleSelection();
-            this.$message.success('删除了' + response.data.data +'条记录');
-        });
+      if (this.selections.length <= 0) {
+        this.$message.warning("请至少选择一行");
+        return;
+      }
+      delBatchObj(_.map(this.selections, "id").join("-")).then(response => {
+        this.getList(this.page);
+        this.$refs.crud.toggleSelection();
+        this.$message.success("删除了" + response.data.data + "条记录");
+      });
     },
     rowDel: function(row, index) {
       var _this = this;
