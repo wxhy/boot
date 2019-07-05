@@ -600,6 +600,7 @@ INSERT INTO `sys_route_conf` VALUES (2, '认证中心', 'boot-auth', '[{\"args\"
 INSERT INTO `sys_route_conf` VALUES (4, '定时任务模块', 'pigx-daemon', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:50', '0');
 INSERT INTO `sys_route_conf` VALUES (5, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-01-17 16:42:50', '2019-06-28 17:11:22', '0');
 INSERT INTO `sys_route_conf` VALUES (6, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://boot-upms', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:03', '0');
+INSERT INTO `sys_route_conf` VALUES (7, '代码生成', 'boot-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-codegen', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:03', '0');
 
 
 SET FOREIGN_KEY_CHECKS = 1;

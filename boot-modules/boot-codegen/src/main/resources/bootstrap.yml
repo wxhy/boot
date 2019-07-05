@@ -1,0 +1,28 @@
+server:
+  port: 8633
+
+spring:
+  application:
+    name: boot-codegen
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: boot-config
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+  main:
+    allow-bean-definition-overriding: true
+
+#注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:123456@boot-eureka:9999/eureka/
+

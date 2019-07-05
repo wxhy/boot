@@ -14,6 +14,7 @@
     <modules>
         <module>boot-activiti</module>
         <module>boot-daemon</module>
+        <module>boot-codegen</module>
     </modules>
 
 

@@ -69,7 +69,7 @@
               <el-form-item label="节点ID"
                             prop="menuId">
                 <el-input v-model="form.menuId"
-                          :disabled="formEdit && form.menuId"
+                          :disabled="formEdit && !form.menuId"
                           placeholder="请输入节点ID"></el-input>
               </el-form-item>
               <el-form-item label="标题"
@@ -86,6 +86,8 @@
               </el-form-item>
               <el-form-item label="图标"
                             prop="icon">
+
+                <avue-icon-select :icon-list="iconList"></avue-icon-select>
                 <el-input v-model="form.icon"
                           :disabled="formEdit"
                           placeholder="请输入图标"></el-input>
@@ -167,6 +169,10 @@
         showElement: false,
         typeOptions: ['0', '1'],
         methodOptions: ['GET', 'POST', 'PUT', 'DELETE'],
+        iconList: [{
+                  label: '阿里云图标',
+                  list: ['el-icon-time', 'el-icon-bell', 'el-icon-star-on','icon-guiji']
+                }],
         listQuery: {
           name: undefined
         },

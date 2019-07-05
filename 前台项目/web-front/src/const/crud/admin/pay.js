@@ -46,21 +46,21 @@ const DIC = {
       value: 'value'
     },
     column: [{
-      label: '昵称',
-      prop: 'nickname',
+      label: '商品名称',
+      prop: 'name',
       search: true
     }, {
-      label: '支付方式',
-      prop: 'title'
+      label: '商品编号',
+      prop: 'productNo'
+    }, {
+      label: '支付编号',
+      prop: 'payNo'
     }, {
       label: '支付金额',
       prop: 'money'
     }, {
-      label: '留言',
+      label: '商品描述',
       prop: 'remark'
-    }, {
-      label: '邮箱地址',
-      prop: 'email'
     }, {
       width: 80,
       label: '状态',
@@ -69,6 +69,13 @@ const DIC = {
       width: 150,
       label: '创建时间',
       prop: 'createTime',
+      type: 'datetime',
+      format: 'yyyy-MM-dd HH:mm',
+      valueFormat: 'yyyy-MM-dd HH:mm:ss'
+    }, {
+      width: 150,
+      label: '修改时间',
+      prop: 'updateTime',
       type: 'datetime',
       format: 'yyyy-MM-dd HH:mm',
       valueFormat: 'yyyy-MM-dd HH:mm:ss'
