@@ -87,7 +87,7 @@
               <el-form-item label="图标"
                             prop="icon">
 
-                <avue-icon-select :icon-list="iconList"></avue-icon-select>
+                <!-- <avue-icon-select :icon-list="iconList"></avue-icon-select> -->
                 <el-input v-model="form.icon"
                           :disabled="formEdit"
                           placeholder="请输入图标"></el-input>
@@ -171,7 +171,7 @@
         methodOptions: ['GET', 'POST', 'PUT', 'DELETE'],
         iconList: [{
                   label: '阿里云图标',
-                  list: ['el-icon-time', 'el-icon-bell', 'el-icon-star-on','icon-guiji']
+                  list: ['el-icon-time', 'el-icon-bell', 'el-icon-star-on','icon-chaxun']
                 }],
         listQuery: {
           name: undefined

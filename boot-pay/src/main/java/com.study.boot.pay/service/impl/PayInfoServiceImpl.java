@@ -8,6 +8,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.pay.config.AlipayConfig;
 import com.study.boot.pay.entitiy.PayInfo;
 import com.study.boot.pay.mapper.PayInfoMapper;
@@ -16,7 +17,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
 
 /**
  * @author Administrator
@@ -38,6 +39,9 @@ public class PayInfoServiceImpl extends ServiceImpl<PayInfoMapper, PayInfo> impl
         PayInfo info = new PayInfo();
         BeanUtil.copyProperties(payInfo,info);
         info.setProductNo(String.valueOf(goodNo));
+        info.setCreateTime(LocalDateTime.now());
+        info.setUpdateTime(LocalDateTime.now());
+        info.setStatus(CommonConstants.STATUS_NORMAL);
         this.baseMapper.insert(info);
 
         JSONObject data=new JSONObject();

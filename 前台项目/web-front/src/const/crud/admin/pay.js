@@ -64,6 +64,8 @@ const DIC = {
     }, {
       width: 80,
       label: '状态',
+      type:'select',
+      dicUrl: '/admin/dict/item/type/pay_status',
       prop: 'status'
     }, {
       width: 150,
