@@ -1,4 +1,4 @@
-import {validatenull} from './validate'
+import { validatenull } from './validate'
 import request from '@/router/axios'
 
 // 表单序列化
@@ -311,7 +311,7 @@ export const openWindow = (url, title, w, h) => {
  * @returns {PromiseLike<T | never> | Promise<T | never>}
  */
 export function handleImg(fileName, id) {
-  return validatenull(fileName)?null: request({
+  return validatenull(fileName) ? null : request({
     url: '/admin/file/' + fileName,
     method: 'get',
     responseType: 'blob'
@@ -325,3 +325,10 @@ export function handleImg(fileName, id) {
   })
 }
 
+export function formatBytes(a, b) {
+  if (0 == a) return "-";
+  var c = 1024, d = b || 2,
+    e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+    f = Math.floor(Math.log(a) / Math.log(c));
+  return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f]
+}
