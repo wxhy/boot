@@ -14,14 +14,14 @@
  * this software without specific prior written permission.
  * Author: lengleng (wangiegie@gmail.com)
  */
-package com.study.boot.pan.generator.entity;
+package com.study.boot.pan.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import java.io.Serializable;
+
 import java.time.LocalDateTime;
 
 /**

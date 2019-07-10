@@ -1,9 +1,9 @@
-package com.study.boot.pan.generator.service.impl;
+package com.study.boot.pan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.study.boot.pan.generator.entity.VirtualAddress;
-import com.study.boot.pan.generator.mapper.VirtualAddressMapper;
-import com.study.boot.pan.generator.service.VirtualAddressService;
+import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.mapper.VirtualAddressMapper;
+import com.study.boot.pan.service.VirtualAddressService;
 import org.springframework.stereotype.Service;
 
 /**

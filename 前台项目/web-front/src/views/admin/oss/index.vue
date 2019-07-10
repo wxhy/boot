@@ -33,7 +33,7 @@
         <template slot-scope="scope" slot="url">
           <img
             :id="scope.row.fkey"
-            :src="handleImg(scope.row.fkey,scope.row.fkey)"
+            v-lazy="handleImg(scope.row.fkey,scope.row.fkey)"
             @click="openPreview(scope.row)"
             class="imgStyle"
           />

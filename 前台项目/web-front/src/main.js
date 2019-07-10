@@ -3,6 +3,7 @@ import 'classlist-polyfill'
 import Vue from 'vue'
 import axios from './router/axios'
 import VueAxios from 'vue-axios'
+import VueLazyload from 'vue-lazyload'
 import App from './App'
 import './permission' // 权限
 import './error' // 日志
@@ -37,6 +38,9 @@ Vue.use(router)
 Vue.use(vueJsonTreeView)
 
 Vue.use(VueAxios, axios)
+
+Vue.use(VueLazyload)
+
 
 // 注册富文本框容器
 Vue.use(AvueEditor)

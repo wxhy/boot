@@ -1,9 +1,9 @@
-package com.study.boot.pan.generator.service.impl;
+package com.study.boot.pan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.study.boot.pan.generator.entity.SysFile;
-import com.study.boot.pan.generator.mapper.SysFileMapper;
-import com.study.boot.pan.generator.service.SysFileService;
+import com.study.boot.pan.entity.SysFile;
+import com.study.boot.pan.mapper.SysFileMapper;
+import com.study.boot.pan.service.SysFileService;
 import org.springframework.stereotype.Service;
 
 /**

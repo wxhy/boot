@@ -1,11 +1,11 @@
-package com.study.boot.pan.generator.controller;
+package com.study.boot.pan.web;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.common.annotation.SysLog;
-import com.study.boot.pan.generator.entity.VirtualAddress;
-import com.study.boot.pan.generator.service.VirtualAddressService;
+import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.service.VirtualAddressService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -54,4 +54,13 @@ export default [{
         component:()=>
             import ('@/views/admin/pay/success')
     }]
+},{
+    path:'/pan',
+    component:Layout,
+    redirect: '/pan/index',
+    children:[{
+        path:'index',
+        name:'网盘管理',
+        component:()=> import('@/views/pan/index')
+    }]
 }]

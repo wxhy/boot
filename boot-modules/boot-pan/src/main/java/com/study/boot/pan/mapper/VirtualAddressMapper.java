@@ -1,8 +1,8 @@
-package com.study.boot.pan.generator.mapper;
+package com.study.boot.pan.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import com.study.boot.pan.generator.entity.VirtualAddress;
+import com.study.boot.pan.entity.VirtualAddress;
 
 /**
  * 虚拟地址表
