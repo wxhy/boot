@@ -23,6 +23,8 @@ const getters = {
   logsList: state => state.logs.logsList,
   logsLen: state => state.logs.logsList.length || 0,
   logsFlag: (state, getters) => getters.logsLen === 0,
-  hasNews:(state)=> state.common.hasNews
+  hasNews:(state)=> state.common.hasNews,
+  flushFileListEvent:(state)=>state.pan.flushFileListEvent,
+  levelList:(state)=> state.pan.levelList
 }
 export default getters

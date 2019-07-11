@@ -34,36 +34,32 @@ import java.time.LocalDateTime;
 @TableName("sys_file")
 @EqualsAndHashCode(callSuper = true)
 public class SysFile extends Model<SysFile> {
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
-   * 主键ID
-   */
+     * 主键ID
+     */
     @TableId
     private String fileId;
     /**
-   * 文件名称
-   */
-    private String fileName;
-    /**
-   * 文件大小
-   */
+     * 文件大小
+     */
     private Long fileSize;
     /**
-   * 文件类型
-   */
-    private String fileType;
-    /**
-   * 文件路径
-   */
+     * 文件路径
+     */
     private String filePath;
     /**
-   * MD5
-   */
+     * MD5
+     */
     private String md5;
     /**
-   * 创建时间
-   */
+     * 创建时间
+     */
     private LocalDateTime createTime;
-  
+    /**
+     * 资源状态
+     */
+    private String status;
+
 }

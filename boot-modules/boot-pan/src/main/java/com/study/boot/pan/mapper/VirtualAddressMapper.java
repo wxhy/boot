@@ -1,8 +1,14 @@
 package com.study.boot.pan.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.vo.FileDetailVo;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 虚拟地址表
@@ -13,4 +19,11 @@ import com.study.boot.pan.entity.VirtualAddress;
 @Mapper
 public interface VirtualAddressMapper extends BaseMapper<VirtualAddress> {
 
+    /**
+     * 分页查询文件
+     * @param page
+     * @param virtualAddress
+     * @return
+     */
+    IPage<List<FileDetailVo>> getFileDetailVoByPage(Page page,@Param("query") VirtualAddress virtualAddress);
 }

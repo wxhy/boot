@@ -7,9 +7,8 @@
 
   <resultMap id="sysFileMap" type="com.study.boot.pan.entity.SysFile">
                   <id property="fileId" column="file_id"/>
-                        <result property="fileName" column="file_name"/>
                         <result property="fileSize" column="file_size"/>
-                        <result property="fileType" column="file_type"/>
+                        <result property="status" column="status"/>
                         <result property="filePath" column="file_path"/>
                         <result property="md5" column="md5"/>
                         <result property="createTime" column="create_time"/>

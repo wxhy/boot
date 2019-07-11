@@ -10,10 +10,46 @@
                         <result property="fileId" column="file_id"/>
                         <result property="fileName" column="file_name"/>
                         <result property="md5" column="md5"/>
-                        <result property="parentPath" column="parent_path"/>
-                        <result property="isDir" column="is_dir"/>
+                        <result property="parentId" column="parent_id"/>
+                        <result property="type" column="type"/>
                         <result property="createTime" column="create_time"/>
                         <result property="updateTime" column="update_time"/>
-                        <result property="status" column="status"/>
+                        <result property="delFlag" column="del_flag"/>
             </resultMap>
+
+    <resultMap id="fileDetailVoMap" type="com.study.boot.pan.vo.FileDetailVo">
+        <id property="id" column="id"/>
+        <result property="fileId" column="file_id"/>
+        <result property="fileName" column="file_name"/>
+        <result property="md5" column="md5"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="type" column="type"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="fileSize" column="file_size" />
+    </resultMap>
+
+
+    <select id="getFileDetailVoByPage" resultMap="fileDetailVoMap">
+        select
+        vd.id,
+        vd.file_id,
+        vd.file_name,
+        vd.md5,
+        vd.parent_id,
+        vd.type,
+        vd.create_time,
+        vd.update_time,
+        vd.del_flag,
+        IFNULL(sf.file_size,0) as file_size
+        from  virtual_address vd
+        left  join  sys_file sf
+        on  sf.file_id = vd.file_id
+        <where>
+            <if test="query.parentId != null">
+                and  vd.parent_id = #{query.parentId}
+            </if>
+        </where>
+    </select>
 </mapper>

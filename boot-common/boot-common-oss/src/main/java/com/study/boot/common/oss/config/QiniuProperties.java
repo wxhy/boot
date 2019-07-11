@@ -1,4 +1,4 @@
-package com.study.boot.common.oss.constant;
+package com.study.boot.common.oss.config;
 
 
 import lombok.Data;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @ConfigurationProperties(prefix = "qiniu")
-public class QiniuConstant {
+public class QiniuProperties {
 
     private String accessKey;
 

@@ -5,7 +5,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.study.boot.common.oss.constant.QiniuConstant;
+import com.study.boot.common.oss.config.QiniuProperties;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.upms.api.entity.SysOss;
 import com.study.boot.upms.api.vo.SysOssVo;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class OssController {
 
     private final SysOssService sysOssService;
-    private final QiniuConstant qiniuConstant;
+    private final QiniuProperties qiniuProperties;
     /**
      *
      * @param page
@@ -44,7 +44,7 @@ public class OssController {
         List<SysOssVo> resultList = records.stream().map(oss -> {
             SysOssVo sysOssVo = new SysOssVo();
             BeanUtil.copyProperties(oss, sysOssVo);
-            sysOssVo.setUrl(qiniuConstant.getPath() + sysOssVo.getFkey());
+            sysOssVo.setUrl(qiniuProperties.getPath() + sysOssVo.getFkey());
             return sysOssVo;
         }).collect(Collectors.toList());
 

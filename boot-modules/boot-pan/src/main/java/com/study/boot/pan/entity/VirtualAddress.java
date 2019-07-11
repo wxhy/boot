@@ -34,44 +34,44 @@ import java.time.LocalDateTime;
 @TableName("virtual_address")
 @EqualsAndHashCode(callSuper = true)
 public class VirtualAddress extends Model<VirtualAddress> {
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
-   * 主键ID
-   */
+     * 主键ID
+     */
     @TableId
     private Long id;
     /**
-   * 文件ID
-   */
+     * 文件ID
+     */
     private String fileId;
     /**
-   * 上传文件名
-   */
+     * 上传文件名
+     */
     private String fileName;
     /**
-   * MD5
-   */
+     * MD5
+     */
     private String md5;
     /**
-   * 父路径
-   */
-    private String parentPath;
+     * 父路径
+     */
+    private Long parentId;
     /**
-   * 是否是文件夹
-   */
-    private String isDir;
+     * 文件类型
+     */
+    private String type;
     /**
-   * 创建时间
-   */
+     * 创建时间
+     */
     private LocalDateTime createTime;
     /**
-   * 修改时间
-   */
+     * 修改时间
+     */
     private LocalDateTime updateTime;
     /**
-   * 状态
-   */
-    private String status;
-  
+     * 状态
+     */
+    private String delFlag;
+
 }
