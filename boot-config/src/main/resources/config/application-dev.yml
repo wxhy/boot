@@ -13,6 +13,11 @@ spring:
         max-wait: 500
         max-idle: 20
         min-idle: 8
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 100MB
+      enabled: true
 
 ## 暴露监控端点
 management:
@@ -93,3 +98,9 @@ swagger:
         description: server all
   token-url-list:
     - http://boot-auth:9999/auth/oauth/token
+
+##  Minio 文件系统
+minio:
+  url: http://boot-minio:9000
+  accessKey: admin
+  secretKey: 12345678

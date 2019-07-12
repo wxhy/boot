@@ -5,8 +5,9 @@
         type="primary"
         size="medium"
         icon="el-icon-upload"
-        @click="dialogVisible = true"
+        @click="uploadVisible = true"
       >上传文件</el-button>
+
       <el-button size="medium" icon="el-icon-folder-add" @click="createFolder">新建文件夹</el-button>
 
       <div id="search">
@@ -16,7 +17,6 @@
     </div>
     <Breadcrumb />
     <el-table :data="tableData" tooltip-effect="dark" :height="height" style="width: 100%">
-      <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="fileName" label="文件名" width="800" sortable>
         <template slot-scope="scope">
           <FileIcon :type="scope.row.type" />
@@ -28,50 +28,74 @@
           <a class="file-name" v-else>{{scope.row.fileName}}</a>
         </template>
       </el-table-column>
-      <el-table-column prop="fileSize" label="大小" width="150" :formatter="formatterSize"></el-table-column>
-      <el-table-column prop="updateTime" label="修改日期" width="150"></el-table-column>
-      <el-table-column>
-        <template slot-scope="{row,$index}">
-          <el-tooltip class="item" effect="dark" content="下载" placement="bottom-start">
-            <el-button type="text">
-              <i class="el-icon-download" @click="download(row.name)"></i>
-            </el-button>
-          </el-tooltip>
-          <el-tooltip class="item" effect="dark" content="删除" placement="bottom-start">
-            <el-button type="text">
-              <i class="el-icon-delete" @click="del(row.name,$index)"></i>
-            </el-button>
-          </el-tooltip>
+      <el-table-column prop="fileSize" label="大小" width="250" :formatter="formatterSize"></el-table-column>
+      <el-table-column prop="updateTime" label="修改日期" width="250"></el-table-column>
+      <el-table-column label="操作" min-width="22">
+        <template slot-scope="scope">
+          <FileOperator v-on:flush="flushAccordingToLevelList" :scope="scope" />
         </template>
       </el-table-column>
     </el-table>
+
+    <avue-drawer
+      title="文件上传"
+      show-close
+      v-model="uploadVisible"
+      :before-close="refreshClose"
+      :width="380"
+    >
+      <el-upload
+        ref="upload"
+        class="upload-demo"
+        drag
+        :data="uploadParams"
+        :headers="headers"
+        action="/pan/virtualaddress/upload"
+        multiple
+      >
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">
+          将文件拖到此处，或
+          <em>点击上传</em>
+        </div>
+      </el-upload>
+
+      <div class="drawer-footer">
+        <el-button style="margin-right:20px;" @click="clearUploads">清空上传列表</el-button>
+      </div>
+    </avue-drawer>
+
+    <FileTree v-on:flush="flushAccordingToLevelList" v-if="fileTreeDialogVisible" />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapState } from "vuex";
 import { addObj, fetchList } from "@/api/pan/pan";
 import { formatBytes } from "@/util/util";
 import store from "@/store";
 import FileIcon from "./FileIcon";
 import Breadcrumb from "./Breadcrumb";
+import FileOperator from "./FileOperator";
+import FileTree from "./FileTree";
 export default {
   name: "PanRight",
-  components: { FileIcon, Breadcrumb },
+  components: { FileIcon, Breadcrumb, FileOperator, FileTree },
   data() {
     return {
       height: window.innerHeight - 62 - 80 - 40,
       tableData: [],
       keywords: "",
+      uploadVisible: false,
       loading: false,
-      page: {
-        total: 0, // 总页数
-        currentPage: 1, // 当前页数
-        pageSize: 20 // 每页显示多少条
+      headers: {
+        Authorization: "Bearer " + store.getters.access_token
       },
-      dialogVisible: false
+      uploadParams: {}
     };
   },
   computed: {
+    ...mapGetters(["fileTreeDialogVisible"]),
     levelList() {
       return store.getters.levelList;
     }
@@ -87,6 +111,9 @@ export default {
   created() {
     if (this.levelList.length === 0) {
       this.getFileList(0, "全部文件");
+      this.uploadParams = {
+        parentId: 0
+      };
     } else {
       this.flushAccordingToLevelList();
     }
@@ -121,13 +148,10 @@ export default {
     getFileList(parentId, name) {
       this.loading = true;
       fetchList({
-        current: this.page.currentPage,
-        size: this.page.pageSize,
         parentId: parentId
       }).then(response => {
-        this.tableData = response.data.data.records;
-        this.page.total = response.data.data.total;
         let len = this.levelList.length;
+        this.tableData = response.data.data;
         this.loading = false;
         if (len !== 0 && this.levelList[len - 1].parentId === parentId) {
           return;
@@ -140,6 +164,9 @@ export default {
     },
     flushAccordingToLevelList() {
       let lastVal = this.levelList[this.levelList.length - 1];
+      this.uploadParams = {
+        parentId: lastVal.parentId
+      };
       this.getFileList(lastVal.parentId, lastVal.name);
     },
     formatterSize(row) {
@@ -147,6 +174,13 @@ export default {
         return "-";
       }
       return formatBytes(row.fileSize);
+    },
+    clearUploads() {
+      this.$refs.upload.clearFiles();
+    },
+    refreshClose(done) {
+      this.flushAccordingToLevelList();
+      done();
     }
   }
 };
@@ -167,7 +201,6 @@ a.file-name {
   max-width: 100%;
   background-color: white;
   height: 20px;
-  /*font: 12px/1.5 "Microsoft YaHei", arial, SimSun, "宋体";*/
   font-size: 8px;
   line-height: 20px;
 }
@@ -227,6 +260,17 @@ a:hover {
 .file-name {
   position: absolute;
   left: 50px;
-  top: 18px;
+  top: 12px;
+}
+.drawer-footer {
+  z-index: 10;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #e8e8e8;
+  padding: 10px 16px;
+  text-align: right;
+  background: #fff;
 }
 </style>

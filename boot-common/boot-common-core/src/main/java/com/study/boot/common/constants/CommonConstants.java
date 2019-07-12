@@ -86,4 +86,9 @@ public interface CommonConstants {
      */
     String MESSAGE_TYPE = "message_type";
 
+    /**
+     * 默认存储bucket
+     */
+    String BUCKET_NAME = "oss";
+
 }

@@ -1,11 +1,14 @@
 
 package com.study.boot.pan.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.util.WebResponse;
 import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.vo.FileDetailVo;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * 虚拟地址表
@@ -25,10 +28,27 @@ public interface VirtualAddressService extends IService<VirtualAddress> {
 
     /**
      * 分页查询
-     * @param page
      * @param virtualAddress
      * @return
      */
-    IPage getFileDetailByPage(Page page,VirtualAddress virtualAddress);
+    List<FileDetailVo> getFileDetailList(VirtualAddress virtualAddress);
 
+
+    /**
+     * 上传文件
+     * @param multipartFile
+     * @param parentId 父ID
+     * @return
+     */
+    Boolean uploadFile(MultipartFile multipartFile, Long parentId);
+
+
+    /**
+     * 检查是否存在同名文件,并返回修改后的文件名
+     * @param fileName 文件名称
+     * @param fileType 文件类型
+     * @param parentId 父ID
+     * @return
+     */
+    String checkExist(String fileName, FileContants.FileType fileType,Long parentId);
 }

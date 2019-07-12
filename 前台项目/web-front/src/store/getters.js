@@ -25,6 +25,8 @@ const getters = {
   logsFlag: (state, getters) => getters.logsLen === 0,
   hasNews:(state)=> state.common.hasNews,
   flushFileListEvent:(state)=>state.pan.flushFileListEvent,
-  levelList:(state)=> state.pan.levelList
+  levelList:(state)=> state.pan.levelList,
+  fileTreeInfo:(state)=> state.pan.fileTreeInfo,
+  fileTreeDialogVisible:(state)=> state.pan.fileTreeDialogVisible,
 }
 export default getters

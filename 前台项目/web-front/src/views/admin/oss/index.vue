@@ -61,6 +61,7 @@
 
     <avue-drawer title="文件上传" show-close v-model="uploadVisible" :width="380">
       <el-upload
+        ref="upload"
         class="upload-demo"
         drag
         :headers="headers"
@@ -74,6 +75,10 @@
           <em>点击上传</em>
         </div>
       </el-upload>
+
+      <div class="drawer-footer">
+          <el-button style="margin-right:20px;" @click="clearUploads">清空上传列表</el-button>
+      </div>
     </avue-drawer>
 
     <el-dialog title="预览" :visible.sync="prewVisible" style="text-align:center">
@@ -192,6 +197,9 @@ export default {
      */
     refreshChange() {
       this.getList(this.page);
+    },
+    clearUploads(){
+      this.$refs.upload.clearFiles()
     }
   }
 };
@@ -204,6 +212,17 @@ export default {
   height: 60px;
   margin: 10px 0px;
   object-fit: contain;
+}
+.drawer-footer{
+    z-index: 10;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 16px;
+    text-align: right;
+    background: #fff;
 }
 </style>
 

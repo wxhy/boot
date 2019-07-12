@@ -31,7 +31,7 @@
     </resultMap>
 
 
-    <select id="getFileDetailVoByPage" resultMap="fileDetailVoMap">
+    <select id="getFileDetailVoList" resultMap="fileDetailVoMap">
         select
         vd.id,
         vd.file_id,
@@ -47,8 +47,14 @@
         left  join  sys_file sf
         on  sf.file_id = vd.file_id
         <where>
+            <if test="query.type != null">
+                and  vd.type = #{query.type}
+            </if>
             <if test="query.parentId != null">
                 and  vd.parent_id = #{query.parentId}
+            </if>
+            <if test="query.delFlag != null">
+                and  vd.del_flag = #{query.delFlag}
             </if>
         </where>
     </select>
