@@ -16,6 +16,7 @@
         <module>boot-daemon</module>
         <module>boot-codegen</module>
         <module>boot-pan</module>
+        <module>boot-pay</module>
     </modules>
 
 

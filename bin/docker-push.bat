@@ -4,15 +4,6 @@ cd boot-auth
 call mvn dockerfile:push -f pom.xml
 
 cd ..
-cd boot-config
-call mvn dockerfile:push -f pom.xml
-
-
-cd ..
-cd boot-eureka
-call mvn dockerfile:push -f pom.xml
-
-cd ..
 cd boot-gateway
 call mvn dockerfile:push -f pom.xml
 

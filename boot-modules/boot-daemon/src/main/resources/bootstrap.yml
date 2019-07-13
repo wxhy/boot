@@ -3,25 +3,17 @@ server:
 spring:
   application:
     name: boot-daemon
-  profiles:
-    active: dev
   cloud:
-    config:
-      fail-fast: true
+    nacos:
       discovery:
-        enabled: true
-        service-id: boot-config
-      name: ${spring.application.name}
-      profile: ${spring.profiles.active}
+        server-addr: boot-nacos:8848
+        namespace: 7376c2a0-614f-4627-be55-30268e1d0af7
+      config:
+        namespace: 7376c2a0-614f-4627-be55-30268e1d0af7
+        shared-dataids: application.yml
+        refreshable-dataids: application.yml
+        file-extension: yml
+        server-addr: boot-nacos:8848
 
   main:
     allow-bean-definition-overriding: true
-
-
-#eureka
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:123456@boot-eureka:9999/eureka/

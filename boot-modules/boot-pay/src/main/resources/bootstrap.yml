@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8611
 
 spring:
   application:
-    name: boot-activiti
+    name: boot-pay
   cloud:
     nacos:
       discovery:
