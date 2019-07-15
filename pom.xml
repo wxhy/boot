@@ -36,6 +36,30 @@
         <curator.version>2.10.0</curator.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+            </properties>
+        </profile>
+    </profiles>
+
     <modules>
         <module>boot-auth</module>
         <module>boot-upms</module>
@@ -107,6 +131,7 @@
             <artifactId>commons-pool2</artifactId>
             <version>${commons-pool.version}</version>
         </dependency>
+
         <!--测试依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -169,6 +194,12 @@
 
     <build>
         <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>

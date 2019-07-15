@@ -5,15 +5,13 @@ server:
 spring:
   application:
     name: boot-auth
-  profiles:
-    active: dev
   cloud:
     nacos:
       discovery:
         server-addr: boot-nacos:8848
-        namespace: 7376c2a0-614f-4627-be55-30268e1d0af7
+        namespace: @nacosNamespace@
       config:
-        namespace: 7376c2a0-614f-4627-be55-30268e1d0af7
+        namespace: @nacosNamespace@
         shared-dataids: application.yml
         refreshable-dataids: application.yml
         file-extension: yml
