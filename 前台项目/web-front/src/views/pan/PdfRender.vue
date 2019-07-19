@@ -1,18 +1,16 @@
 <template>
-  <el-dialog :fullscreen="true" :visible.sync="visible">
-    <div class="pdfContent">
-      <img class="icon-add" src="/img/logo.png" @click="iconAdd" />
-      <img class="icon-jian" src="/img/logo.png" @click="iconJian" />
-      <canvas v-for="page in pages" :id="'canvas'+page" :key="page"></canvas>
-    </div>
-  </el-dialog>
+  <div>
+    <canvas v-for="page in pages" :id="'canvas'+page" :key="page"></canvas>
+  </div>
 </template>
 
 <script>
 import PDF from "pdfjs-dist";
-PDF.disableWorker = true;
+PDF.workerSrc = require("pdfjs-dist/build/pdf.worker.min");
 export default {
-  components: { PDF },
+  components: {
+    PDF
+  },
   props: ["path", "visible"],
   data() {
     return {
@@ -90,7 +88,6 @@ export default {
 };
 </script>
 
-
 <style>
 .pdfContent {
   width: 100%;
@@ -102,6 +99,7 @@ export default {
   right: 0;
   overflow: scroll;
 }
+
 .icon-add,
 .icon-jian {
   width: 1rem;
@@ -111,6 +109,7 @@ export default {
   bottom: 3.52rem;
   z-index: 100;
 }
+
 .icon-jian {
   bottom: 2.22rem;
 }
