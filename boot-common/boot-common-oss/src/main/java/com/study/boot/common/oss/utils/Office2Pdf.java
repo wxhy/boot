@@ -17,7 +17,7 @@ import java.io.File;
 @Slf4j
 public class Office2Pdf {
 
-    private static final String PDF =  ".pdf";
+    private static final String PDF =  "pdf";
 
 
     /**
@@ -62,5 +62,9 @@ public class Office2Pdf {
         return targetFile;
     }
 
+
+    public static void main(String[] args) {
+        Office2Pdf.officce2Pdf("file-system/123.txt");
+    }
 
 }

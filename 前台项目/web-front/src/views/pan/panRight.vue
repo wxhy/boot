@@ -20,6 +20,13 @@
             @click="getFileList(scope.row.id, scope.row.fileName)"
             v-if="scope.row.type === 'folder'"
           >{{scope.row.fileName}}</a>
+
+          <a
+            class="file-name"
+            @click="previewVisible=true"
+            v-if="scope.row.type === 'doc'"
+          >{{scope.row.fileName}}</a>
+
           <a class="file-name" v-else>{{scope.row.fileName}}</a>
         </template>
       </el-table-column>
@@ -33,6 +40,7 @@
     </el-table>
 
     <FileTree v-on:flush="flushAccordingToLevelList" v-if="fileTreeDialogVisible" />
+    <PdfRender visible="previewVisible" path="http://localhost:9000/oss/afa9b6f3da3dd154aa46235d9db2ae21..pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20190719%2F%2Fs3%2Faws4_request&X-Amz-Date=20190719T055746Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=f1ac040e7cd05f6a4a21da1ee7f31c5e18d5f3537c079a8ca80e43a80261e40c"/>
   </div>
 </template>
 
@@ -46,20 +54,22 @@ import Breadcrumb from "./Breadcrumb";
 import FileOperator from "./FileOperator";
 import FileTree from "./FileTree";
 import Bus from "@/const/bus";
+import PdfRender from './PdfRender'
 export default {
   name: "PanRight",
-  components: { FileIcon, Breadcrumb, FileOperator, FileTree },
+  components: { FileIcon, Breadcrumb, FileOperator, FileTree, PdfRender },
   data() {
     return {
       height: window.innerHeight - 62 - 80 - 40,
       tableData: [],
       keywords: "",
+      previewVisible:false,
       loading: false,
       uploadParams: {}
     };
   },
   computed: {
-    ...mapGetters(["fileTreeDialogVisible"]),
+    ...mapGetters(["fileTreeDialogVisible", "filePdfVisible"]),
     levelList() {
       return store.getters.levelList;
     }
@@ -155,8 +165,9 @@ export default {
     },
     upload() {
       console.log("选择文件上传");
-      Bus.$emit("openUploader",  this.uploadParams);
-    }
+      Bus.$emit("openUploader", this.uploadParams);
+    },
+    getPdfRender(id) {}
   }
 };
 </script>
