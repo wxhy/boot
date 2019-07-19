@@ -63,4 +63,9 @@ public class SysFile extends Model<SysFile> {
      */
     private String status;
 
+    /**
+     * 转码后路径
+     */
+    private String transPath;
+
 }

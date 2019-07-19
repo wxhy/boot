@@ -1,12 +1,7 @@
 <template>
   <div>
     <div class="bt">
-      <el-button
-        type="primary"
-        size="medium"
-        icon="el-icon-upload"
-        @click="uploadVisible = true"
-      >上传文件</el-button>
+      <el-button type="primary" size="medium" icon="el-icon-upload" @click="upload">上传文件</el-button>
 
       <el-button size="medium" icon="el-icon-folder-add" @click="createFolder">新建文件夹</el-button>
 
@@ -28,42 +23,14 @@
           <a class="file-name" v-else>{{scope.row.fileName}}</a>
         </template>
       </el-table-column>
-      <el-table-column prop="fileSize" label="大小" width="250" :formatter="formatterSize"></el-table-column>
-      <el-table-column prop="updateTime" label="修改日期" width="250"></el-table-column>
+      <el-table-column prop="fileSize" label="大小" width="250" :formatter="formatterSize" sortable></el-table-column>
+      <el-table-column prop="updateTime" label="修改日期" width="250" sortable></el-table-column>
       <el-table-column label="操作" min-width="22">
         <template slot-scope="scope">
           <FileOperator v-on:flush="flushAccordingToLevelList" :scope="scope" />
         </template>
       </el-table-column>
     </el-table>
-
-    <avue-drawer
-      title="文件上传"
-      show-close
-      v-model="uploadVisible"
-      :before-close="refreshClose"
-      :width="380"
-    >
-      <el-upload
-        ref="upload"
-        class="upload-demo"
-        drag
-        :data="uploadParams"
-        :headers="headers"
-        action="/pan/virtualaddress/upload"
-        multiple
-      >
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">
-          将文件拖到此处，或
-          <em>点击上传</em>
-        </div>
-      </el-upload>
-
-      <div class="drawer-footer">
-        <el-button style="margin-right:20px;" @click="clearUploads">清空上传列表</el-button>
-      </div>
-    </avue-drawer>
 
     <FileTree v-on:flush="flushAccordingToLevelList" v-if="fileTreeDialogVisible" />
   </div>
@@ -78,6 +45,7 @@ import FileIcon from "./FileIcon";
 import Breadcrumb from "./Breadcrumb";
 import FileOperator from "./FileOperator";
 import FileTree from "./FileTree";
+import Bus from "@/const/bus";
 export default {
   name: "PanRight",
   components: { FileIcon, Breadcrumb, FileOperator, FileTree },
@@ -86,11 +54,7 @@ export default {
       height: window.innerHeight - 62 - 80 - 40,
       tableData: [],
       keywords: "",
-      uploadVisible: false,
       loading: false,
-      headers: {
-        Authorization: "Bearer " + store.getters.access_token
-      },
       uploadParams: {}
     };
   },
@@ -117,6 +81,20 @@ export default {
     } else {
       this.flushAccordingToLevelList();
     }
+  },
+  mounted() {
+    // 文件选择后的回调
+    Bus.$on("fileAdded", () => {
+      console.log("文件已选择");
+    });
+    // 文件上传成功的回调
+    Bus.$on("fileSuccess", () => {
+      this.flushAccordingToLevelList();
+    });
+  },
+  destroyed() {
+    Bus.$off("fileAdded");
+    Bus.$off("fileSuccess");
   },
   methods: {
     createFolder() {
@@ -175,12 +153,9 @@ export default {
       }
       return formatBytes(row.fileSize);
     },
-    clearUploads() {
-      this.$refs.upload.clearFiles();
-    },
-    refreshClose(done) {
-      this.flushAccordingToLevelList();
-      done();
+    upload() {
+      console.log("选择文件上传");
+      Bus.$emit("openUploader",  this.uploadParams);
     }
   }
 };

@@ -18,7 +18,8 @@
 
 
 <script>
-import { delObj, renameFile } from "@/api/pan/pan";
+import { delObj, renameFile,downloadResource } from "@/api/pan/pan";
+import {download} from '@/util/download'
 export default {
   props: ["scope"],
   data() {
@@ -63,7 +64,13 @@ export default {
         })
         .catch(() => {});
     },
-    download() {},
+    download() {
+      downloadResource(this.scope.row.id).then(res=>{
+        if(res.data.code === 0) {
+          download(res.data.data,this.scope.row.fileName)
+        }
+      })
+    },
     deleteResource() {
       this.$confirm("是否确定要删除该文件？", "删除", {
         confirmButtonText: "确定",

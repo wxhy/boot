@@ -1,18 +1,36 @@
 package com.study.boot.pan.web;
 
 import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.util.CharUtil;
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.http.ContentType;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.study.boot.common.annotation.SysLog;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.constant.FileContants;
+import com.study.boot.common.oss.service.MinioTemplate;
 import com.study.boot.common.util.WebResponse;
+import com.study.boot.pan.entity.Chunk;
+import com.study.boot.pan.entity.SysFile;
 import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.service.ChunkService;
+import com.study.boot.pan.service.SysFileService;
 import com.study.boot.pan.service.VirtualAddressService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 
 
@@ -28,6 +46,13 @@ import java.util.List;
 public class PanController {
 
     private final VirtualAddressService virtualAddressService;
+
+    private final ChunkService chunkService;
+
+    private final SysFileService sysFileService;
+
+    private final MinioTemplate minioTemplate;
+
 
     /**
      * @param virtualAddress 虚拟地址表
@@ -116,20 +141,6 @@ public class PanController {
     }
 
     /**
-     * 上传文件
-     *
-     * @param multipartFile 文件
-     * @param parentId      父ID
-     * @return
-     */
-    @PostMapping("/upload")
-    @SneakyThrows
-    public WebResponse upload(@RequestParam("file") MultipartFile multipartFile, @RequestParam("parentId") Long parentId) {
-        return new WebResponse<>(virtualAddressService.
-                uploadFile(multipartFile, parentId));
-    }
-
-    /**
      * 移动文件
      *
      * @param id
@@ -164,4 +175,57 @@ public class PanController {
         target.setFileId(address.getFileId());
         return new WebResponse<>(virtualAddressService.save(target));
     }
+
+
+    /**
+     * 下载
+     *
+     * @return
+     */
+    @GetMapping("/download/{id}")
+    @SneakyThrows
+    public WebResponse download(@PathVariable("id") Long id, HttpServletResponse response) {
+        VirtualAddress virtualAddress = this.virtualAddressService.getById(id);
+        SysFile file = sysFileService.getById(virtualAddress.getFileId());
+        String url = minioTemplate.getObjectURL(CommonConstants.BUCKET_NAME, file.getFilePath(),1);
+        return new WebResponse<>(url);
+    }
+
+
+    /**
+     * 上传Chunk
+     *
+     * @param chunk
+     * @return
+     */
+    @PostMapping("/chunk")
+    public WebResponse uplodaChunk(Chunk chunk) {
+        return new WebResponse<>(chunkService.uploadChunk(chunk));
+    }
+
+    /**
+     * 检查chunk
+     *
+     * @param chunk
+     * @return
+     */
+    @GetMapping("/chunk")
+    public WebResponse checkChunk(Chunk chunk) {
+        return new WebResponse<>(chunkService.checkChunk(chunk));
+    }
+
+    /**
+     * 合并chunk
+     *
+     * @param md5
+     * @return
+     */
+    @GetMapping("/merge/{md5}/{parentId}/{name}")
+    public WebResponse mergeChunk(@PathVariable("md5") String md5,
+                                  @PathVariable("parentId") Long parentId,
+                                  @PathVariable("name") String name) {
+        return new WebResponse<>(chunkService.mergeChunk(md5, parentId,name));
+    }
+
+
 }

@@ -5,12 +5,13 @@
 
 <mapper namespace="com.study.boot.pan.mapper.SysFileMapper">
 
-  <resultMap id="sysFileMap" type="com.study.boot.pan.entity.SysFile">
-                  <id property="fileId" column="file_id"/>
-                        <result property="fileSize" column="file_size"/>
-                        <result property="status" column="status"/>
-                        <result property="filePath" column="file_path"/>
-                        <result property="md5" column="md5"/>
-                        <result property="createTime" column="create_time"/>
-            </resultMap>
+    <resultMap id="sysFileMap" type="com.study.boot.pan.entity.SysFile">
+        <id property="fileId" column="file_id"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="status" column="status"/>
+        <result property="filePath" column="file_path"/>
+        <result property="md5" column="md5"/>
+        <result property="createTime" column="create_time"/>
+        <result property="transPath" column="trans_path"/>
+    </resultMap>
 </mapper>

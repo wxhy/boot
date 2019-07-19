@@ -41,7 +41,7 @@ public class OssTemplate {
      */
     @SneakyThrows
     public QiniuResult createObject(MultipartFile object,String objectName) {
-        Configuration cfg = new Configuration(Zone.zone2());
+        Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);
 
         Auth auth = Auth.create(accessKey, secretKey);
@@ -70,7 +70,7 @@ public class OssTemplate {
      * @return
      */
     public List<String> removeBatch(String[] keyList){
-        Configuration cfg = new Configuration(Zone.zone2());
+        Configuration cfg = new Configuration(Zone.zone0());
         Auth auth = Auth.create(accessKey, secretKey);
         BucketManager bucketManager = new BucketManager(auth, cfg);
         List<String> result = new ArrayList<>();
@@ -98,7 +98,7 @@ public class OssTemplate {
      * @return
      */
     public Boolean removeObject(String key) {
-        Configuration cfg = new Configuration(Zone.zone2());
+        Configuration cfg = new Configuration(Zone.zone0());
         Auth auth = Auth.create(accessKey, secretKey);
         BucketManager bucketManager = new BucketManager(auth, cfg);
         try {
@@ -116,7 +116,7 @@ public class OssTemplate {
      * @return
      */
     public Boolean copyObject(String fromKey,String toKey) {
-        Configuration cfg = new Configuration(Zone.zone2());
+        Configuration cfg = new Configuration(Zone.zone0());
         Auth auth = Auth.create(accessKey, secretKey);
         BucketManager bucketManager = new BucketManager(auth, cfg);
         try {

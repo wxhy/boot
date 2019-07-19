@@ -50,8 +50,22 @@ export function moveObj(id, parentId) {
 }
 
 export function fetchSubfolder(parentId) {
-  return  request({
+  return request({
     url: '/pan/virtualaddress/subFolder/' + parentId,
+    method: 'get'
+  })
+}
+
+export function merge(md5, parentId,name) {
+  return request({
+    url: '/pan/virtualaddress/merge/' + md5 + '/' + parentId +'/' +name,
+    method: 'get'
+  })
+}
+
+export function downloadResource(id) {
+  return request({
+    url: '/pan/virtualaddress/download/' + id,
     method: 'get'
   })
 }

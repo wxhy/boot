@@ -22,5 +22,11 @@
             <artifactId>minio</artifactId>
             <version>3.0.10</version>
         </dependency>
+        <dependency>
+            <groupId>org.jodconverter</groupId>
+            <artifactId>jodconverter-local</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
     </dependencies>
 </project>

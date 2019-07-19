@@ -20,6 +20,7 @@ import com.study.boot.pan.service.VirtualAddressService;
 import com.study.boot.pan.vo.FileDetailVo;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,48 +74,41 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
         return this.baseMapper.getFileDetailVoList(virtualAddress);
     }
 
+
     /**
-     * 上传文件
-     *
+     * 保存文件
+     * @param md5
+     * @param fileName
+     * @param oldName
      * @param parentId 父ID
      * @return
      */
     @Override
     @SneakyThrows
     @Transactional(rollbackFor = Exception.class)
-    public Boolean uploadFile(MultipartFile multipartFile, Long parentId) {
-        String fileName = multipartFile.getOriginalFilename();
+    public Boolean saveFile(String md5, String fileName, String oldName,Long size, Long parentId) {
         VirtualAddress virtualAddress = new VirtualAddress();
-        InputStream stream = multipartFile.getInputStream();
-        String md5 = SecureUtil.md5(stream);
         SysFile file = sysFileService.getOne(Wrappers.<SysFile>query().lambda().eq(SysFile::getMd5, md5));
         //检查是否存在同名文件
-        fileName = this.checkExist(fileName,FileContants.getFileType(fileName), parentId);
+        oldName = this.checkExist(oldName,FileContants.getFileType(oldName), parentId);
         if (file != null) {
             virtualAddress.setFileId(file.getFileId());
         } else {
 
-            String objectName = IdUtil.simpleUUID() + StrUtil.DOT + FileUtil.extName(fileName);
-            minioTemplate.putObject(CommonConstants.BUCKET_NAME, objectName, multipartFile.getInputStream());
-
             SysFile sysFile = new SysFile();
             sysFile.setFileId(UUID.randomUUID().toString());
-            sysFile.setFileSize(multipartFile.getSize());
+            sysFile.setFileSize(size);
             sysFile.setMd5(md5);
-            sysFile.setFilePath(objectName);
+            sysFile.setFilePath(fileName);
             sysFile.setStatus(CommonConstants.STATUS_NORMAL);
             this.sysFileService.save(sysFile);
             virtualAddress.setFileId(sysFile.getFileId());
         }
 
-        virtualAddress.setFileName(fileName);
-        virtualAddress.setMd5(md5);
-        virtualAddress.setParentId(parentId);
-        virtualAddress.setDelFlag(CommonConstants.STATUS_NORMAL);
-        virtualAddress.setType(FileContants.getFileType(fileName).toString());
         this.baseMapper.insert(virtualAddress);
         return Boolean.TRUE;
     }
+
 
     /**
      * 检查是否存在同名文件
@@ -137,4 +131,6 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
         }
         return fileName;
     }
+
+
 }

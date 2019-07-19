@@ -91,4 +91,15 @@ public interface CommonConstants {
      */
     String BUCKET_NAME = "oss";
 
+    /**
+     * chunk存储bucket
+     */
+    String CHUNK_BUCKET_NAME="chunk";
+
+    /**
+     * 临时文件存储
+     */
+    String FILE_SYSTEM = "file-system/";
+
+
 }

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import axios from './router/axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
+import uploader from 'vue-simple-uploader'
 import App from './App'
 import './permission' // 权限
 import './error' // 日志
@@ -40,6 +41,8 @@ Vue.use(vueJsonTreeView)
 Vue.use(VueAxios, axios)
 
 Vue.use(VueLazyload)
+
+Vue.use(uploader)
 
 
 // 注册富文本框容器

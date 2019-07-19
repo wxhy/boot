@@ -35,12 +35,11 @@ public interface VirtualAddressService extends IService<VirtualAddress> {
 
 
     /**
-     * 上传文件
-     * @param multipartFile
+     * 保存文件存储地址
      * @param parentId 父ID
      * @return
      */
-    Boolean uploadFile(MultipartFile multipartFile, Long parentId);
+    Boolean saveFile(String md5,String fileName,String oldName,Long size, Long parentId);
 
 
     /**
@@ -51,4 +50,7 @@ public interface VirtualAddressService extends IService<VirtualAddress> {
      * @return
      */
     String checkExist(String fileName, FileContants.FileType fileType,Long parentId);
+
+
+
 }

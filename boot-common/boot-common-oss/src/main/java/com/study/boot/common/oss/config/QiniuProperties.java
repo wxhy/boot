@@ -3,6 +3,7 @@ package com.study.boot.common.oss.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Data
+@RefreshScope
 @ConfigurationProperties(prefix = "qiniu")
 public class QiniuProperties {
 

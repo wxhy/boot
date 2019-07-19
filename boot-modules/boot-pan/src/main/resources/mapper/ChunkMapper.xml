@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.boot.pan.mapper.ChunkMapper">
+  <resultMap id="BaseResultMap" type="com.study.boot.pan.entity.Chunk">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="chunk_number" jdbcType="BIGINT" property="chunkNumber" />
+    <result column="chunk_size" jdbcType="BIGINT" property="chunkSize" />
+    <result column="current_chunk_size" jdbcType="BIGINT" property="currentChunkSize" />
+    <result column="total_size" jdbcType="BIGINT" property="totalSize" />
+    <result column="identifier" jdbcType="VARCHAR" property="identifier" />
+    <result column="file_name" jdbcType="VARCHAR" property="filename" />
+    <result column="relative_path" jdbcType="VARCHAR" property="relativePath" />
+    <result column="total_chunks" jdbcType="BIGINT" property="totalChunks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, chunk_number, chunk_size, current_chunk_size, total_size, identifier, filename,
+    relative_path, total_chunks
+  </sql>
+</mapper>

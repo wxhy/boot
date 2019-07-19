@@ -1,17 +1,24 @@
 package com.study.boot.common.oss.constant;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 文件类型常量
+ *
  * @author Administrator
  */
 public class FileContants {
 
     public static final Map<String, FileType> fileTypeAccordingToSuffix = new HashMap<>(16);
+
+    /**
+     *  允许转码
+     */
+    public static final FileType[] ALLOW_TRANSFER_PDF = new FileType[]{FileType.CODE, FileType.DOC, FileType.PPT, FileType.TXT, FileType.WEB};
 
     /**
      * 文件类型
@@ -35,12 +42,13 @@ public class FileContants {
 
     /**
      * 获取文件类型
+     *
      * @param fileName
      * @return
      */
-    public static FileType getFileType(String fileName){
-        String suffix = FileUtil.extName(fileName);
-        return fileTypeAccordingToSuffix.getOrDefault(suffix,FileType.DEFAULT);
+    public static FileType getFileType(String fileName) {
+        String suffix = StrUtil.DOT + FileUtil.extName(fileName);
+        return fileTypeAccordingToSuffix.getOrDefault(suffix, FileType.DEFAULT);
     }
 
     static {
@@ -59,9 +67,15 @@ public class FileContants {
         fileTypeAccordingToSuffix.put(".rmvb", FileType.VIDEO);
         fileTypeAccordingToSuffix.put(".avi", FileType.VIDEO);
         fileTypeAccordingToSuffix.put(".mkv", FileType.VIDEO);
+        fileTypeAccordingToSuffix.put(".wmv", FileType.VIDEO);
 
         // audio
         fileTypeAccordingToSuffix.put(".mp3", FileType.AUDIO);
+        fileTypeAccordingToSuffix.put(".wav", FileType.AUDIO);
+        fileTypeAccordingToSuffix.put(".wma", FileType.AUDIO);
+        fileTypeAccordingToSuffix.put(".ogg", FileType.AUDIO);
+        fileTypeAccordingToSuffix.put(".aac", FileType.AUDIO);
+        fileTypeAccordingToSuffix.put(".flac", FileType.AUDIO);
 
         // picture
         fileTypeAccordingToSuffix.put(".png", FileType.PICTURE);
@@ -69,6 +83,7 @@ public class FileContants {
         fileTypeAccordingToSuffix.put(".jpeg", FileType.PICTURE);
         fileTypeAccordingToSuffix.put(".gif", FileType.PICTURE);
         fileTypeAccordingToSuffix.put(".ico", FileType.PICTURE);
+        fileTypeAccordingToSuffix.put(".bmp", FileType.PICTURE);
 
         // doc
         fileTypeAccordingToSuffix.put(".doc", FileType.DOC);
