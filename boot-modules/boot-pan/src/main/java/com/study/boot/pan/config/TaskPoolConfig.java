@@ -14,6 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 
 @Configuration
+@EnableAsync
 public class TaskPoolConfig {
 
     @Bean("taskExecutor")
@@ -28,6 +29,7 @@ public class TaskPoolConfig {
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setWaitForTasksToCompleteOnShutdown(true);
         executor.setAwaitTerminationSeconds(60);
+        executor.initialize();
         return executor;
     }
 }

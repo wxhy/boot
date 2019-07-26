@@ -3,11 +3,7 @@ package com.study.boot.common.oss.utils;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.jodconverter.JodConverter;
-import org.jodconverter.office.LocalOfficeManager;
-import org.jodconverter.office.OfficeException;
 import org.jodconverter.office.OfficeManager;
-import org.jodconverter.office.OfficeUtils;
 
 import java.io.File;
 
@@ -44,21 +40,19 @@ public class Office2Pdf {
             return null;
         }
 
-        try {
-            officeManager = LocalOfficeManager.install();
-
-            officeManager.start();
-
-            JodConverter.convert(sourceFile)
-                    .to(targetFile)
-                    .execute();
-
-        } catch (OfficeException e) {
-            log.error("转换失败", e);
-            return null;
-        } finally {
-            OfficeUtils.stopQuietly(officeManager);
-        }
+//        try {
+////            officeManager = OnlineOfficeManager.make("http://192.168.1.181:8100");
+////
+////            officeManager.start();
+////            OnlineConverter.make(officeManager).convert(sourceFile)
+////                    .to(targetFile)
+////                    .execute();
+//
+//        } catch (OfficeException e) {
+//            log.error("转换失败", e);
+//            return null;
+//        } finally {
+//        }
         return targetFile;
     }
 

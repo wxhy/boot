@@ -4,9 +4,10 @@ package com.study.boot.pan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.util.WebResponse;
+import com.study.boot.pan.entity.Chunk;
+import com.study.boot.pan.entity.SysFile;
 import com.study.boot.pan.entity.VirtualAddress;
 import com.study.boot.pan.vo.FileDetailVo;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -52,5 +53,13 @@ public interface VirtualAddressService extends IService<VirtualAddress> {
     String checkExist(String fileName, FileContants.FileType fileType,Long parentId);
 
 
+    /**
+     *
+     * 转码
+     * @param fileName
+     * @param chunks
+     * @param sysFile
+     */
+    void transferPdf(String fileName, List<Chunk> chunks, SysFile sysFile);
 
 }

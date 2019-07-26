@@ -3,7 +3,7 @@ const url = 'http://127.0.0.1:8081'
 module.exports = {
   lintOnSave: true,
   productionSourceMap: false,
-  publicPath:'/boot/',
+  publicPath: '/boot/',
   chainWebpack: config => {
     // 忽略的打包文件
     config.externals({
@@ -24,6 +24,13 @@ module.exports = {
   // 配置转发代理
   devServer: {
     proxy: {
+      '/oss': {
+        target: 'http://localhost:9000',
+        ws: true,
+        pathRewrite: {
+          '^/oss': '/oss'
+        }
+      },
       '/auth': {
         target: url,
         ws: true,
@@ -80,7 +87,7 @@ module.exports = {
           '^/pay': '/pay'
         }
       },
-      
+
       '/pan': {
         target: url,
         ws: true,

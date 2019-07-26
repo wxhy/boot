@@ -1,45 +1,31 @@
 package com.study.boot.pan.service.impl;
 
-import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.core.util.URLUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.oss.service.MinioTemplate;
-import com.study.boot.common.oss.utils.Office2Pdf;
+import com.study.boot.pan.entity.Chunk;
 import com.study.boot.pan.entity.SysFile;
 import com.study.boot.pan.entity.VirtualAddress;
+import com.study.boot.pan.mapper.ChunkMapper;
+import com.study.boot.pan.service.ChunkService;
 import com.study.boot.pan.service.SysFileService;
 import com.study.boot.pan.service.VirtualAddressService;
 import com.study.boot.pan.vo.ChunkResult;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import java.io.*;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Enumeration;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
 import java.util.stream.Collectors;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.study.boot.pan.entity.Chunk;
-import com.study.boot.pan.mapper.ChunkMapper;
-import com.study.boot.pan.service.ChunkService;
-import org.springframework.transaction.annotation.Transactional;
-import sun.reflect.misc.FieldUtil;
 
 /**
  * @author carlos
@@ -120,7 +106,7 @@ public class ChunkServiceImpl extends ServiceImpl<ChunkMapper, Chunk> implements
         this.virtualAddressService.save(virtualAddress);
 
         //合并文件，转码
-        this.transferPdf(fileName,chunks,sysFile);
+        this.virtualAddressService.transferPdf(fileName,chunks,sysFile);
 
 
         return Boolean.TRUE;
@@ -149,35 +135,6 @@ public class ChunkServiceImpl extends ServiceImpl<ChunkMapper, Chunk> implements
     }
 
 
-    /**
-     * 转码
-     */
-    @Async("taskExecutor")
-    @SneakyThrows
-    public void transferPdf(String fileName,List<Chunk> chunks,SysFile sysFile) {
-        String newFilePath = CommonConstants.FILE_SYSTEM + fileName;
-        if (!new File(newFilePath).exists()) {
-            Files.createFile(Paths.get(newFilePath));
-        }
-        //合并文件
-        for (Chunk chunk : chunks) {
-            String path = CommonConstants.FILE_SYSTEM + chunk.getIdentifier() + StrUtil.UNDERLINE + chunk.getChunkNumber();
-            Files.write(Paths.get(newFilePath), Files.readAllBytes(Paths.get(path)), StandardOpenOption.APPEND);
-            Files.delete(Paths.get(path));
-        }
-        //上传原始文件
-        minioTemplate.putObject(CommonConstants.BUCKET_NAME, fileName, new FileInputStream(new File(newFilePath)));
 
-        //支持转码
-        if(ArrayUtil.contains(FileContants.ALLOW_TRANSFER_PDF,FileContants.getFileType(fileName))) {
-            File file = Office2Pdf.officce2Pdf(newFilePath);
-            sysFile.setTransPath(file.getName());
-            this.sysFileService.updateById(sysFile);
-            minioTemplate.putObject(CommonConstants.BUCKET_NAME, file.getName(), new FileInputStream(file));
-            file.delete();
-        }
-        new File(newFilePath).delete();
-
-    }
 
 }

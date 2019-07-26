@@ -325,6 +325,35 @@ export function handleImg(fileName, id) {
   })
 }
 
+export function handlePrew(id) {
+  request({
+    url: '/oss/7cf93301a3fcbab75f27704df13775cc.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20190722%2F%2Fs3%2Faws4_request&X-Amz-Date=20190722T031555Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=5c5c3eb5e859a17b627d0955f9ece732673c75763bea2f533b2ffecbae0e8036',
+    method: 'get',
+    responseType: 'blob'
+  }).then((response) => { // 处理返回的文件流
+    let blob = response.data;
+    const link = document.createElement('a');
+    const body = document.querySelector('body');
+
+    link.href = '/web/viewer.html?file=' + window.URL.createObjectURL(blob);
+    // fix Firefox
+    link.style.display = 'none';
+    body.appendChild(link);
+
+    link.click();
+    body.removeChild(link);
+
+    window.URL.revokeObjectURL(link.href);
+    URL.createObjectURL(blob);
+  })
+}
+
+
+/**
+ * 格式化文件大小
+ * @param {*} a 
+ * @param {*} b 
+ */
 export function formatBytes(a, b) {
   if (0 == a) return "-";
   var c = 1024, d = b || 2,

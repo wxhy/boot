@@ -4,7 +4,6 @@ import com.study.boot.common.auth.annoation.EnableBootResourceServer;
 import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  *
@@ -13,7 +12,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringCloudApplication
 @EnableBootSwagger
 @EnableBootResourceServer
-@EnableAsync
 public class BootPanApplication {
 
     public static void main(String[] args) {

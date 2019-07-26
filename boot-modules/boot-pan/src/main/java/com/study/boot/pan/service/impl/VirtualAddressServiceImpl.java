@@ -2,16 +2,16 @@ package com.study.boot.pan.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.oss.service.MinioTemplate;
 import com.study.boot.common.util.WebResponse;
+import com.study.boot.pan.entity.Chunk;
 import com.study.boot.pan.entity.SysFile;
 import com.study.boot.pan.entity.VirtualAddress;
 import com.study.boot.pan.mapper.VirtualAddressMapper;
@@ -19,13 +19,17 @@ import com.study.boot.pan.service.SysFileService;
 import com.study.boot.pan.service.VirtualAddressService;
 import com.study.boot.pan.vo.FileDetailVo;
 import lombok.SneakyThrows;
+import org.jodconverter.DocumentConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,6 +48,10 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
     @Autowired
     private MinioTemplate minioTemplate;
 
+    @Autowired
+    private DocumentConverter converter;
+
+    private static final String PDF =  "pdf";
     /**
      * 创建文件夹
      *
@@ -132,5 +140,44 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
         return fileName;
     }
 
+
+    /**
+     * 转码
+     */
+    @Async("taskExecutor")
+    @SneakyThrows
+    @Override
+    public void transferPdf(String fileName, List<Chunk> chunks, SysFile sysFile) {
+        String newFilePath = CommonConstants.FILE_SYSTEM + fileName;
+        if (!new File(newFilePath).exists()) {
+            Files.createFile(Paths.get(newFilePath));
+        }
+        //合并文件
+        for (Chunk chunk : chunks) {
+            String path = CommonConstants.FILE_SYSTEM + chunk.getIdentifier() + StrUtil.UNDERLINE + chunk.getChunkNumber();
+            Files.write(Paths.get(newFilePath), Files.readAllBytes(Paths.get(path)), StandardOpenOption.APPEND);
+            Files.delete(Paths.get(path));
+        }
+        //上传原始文件
+        minioTemplate.putObject(CommonConstants.BUCKET_NAME, fileName, new FileInputStream(new File(newFilePath)));
+
+        //支持转码
+        if(ArrayUtil.contains(FileContants.ALLOW_TRANSFER_PDF,FileContants.getFileType(fileName))) {
+            File sourceFile = new File(newFilePath);
+            String filename = FileUtil.getName(sourceFile)
+                    .replace(FileUtil.extName(sourceFile), PDF);
+
+            File file = new File(sourceFile.getParent() + StrUtil.SLASH + filename);
+            converter.convert(sourceFile)
+                    .to(file)
+                    .execute();
+            sysFile.setTransPath(file.getName());
+            this.sysFileService.updateById(sysFile);
+            minioTemplate.putObject(CommonConstants.BUCKET_NAME, file.getName(), new FileInputStream(file));
+            file.delete();
+        }
+        new File(newFilePath).delete();
+
+    }
 
 }
