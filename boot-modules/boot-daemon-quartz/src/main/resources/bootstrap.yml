@@ -1,10 +1,9 @@
 server:
-  port: 3300
-
+  port: 5006
 
 spring:
   application:
-    name: boot-auth
+    name: boot-daemon-quartz
   cloud:
     nacos:
       discovery:
@@ -18,6 +17,4 @@ spring:
         server-addr: boot-nacos:8848
   main:
     allow-bean-definition-overriding: true
-
-
 

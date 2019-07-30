@@ -31,6 +31,13 @@ module.exports = {
           '^/oss': '/oss'
         }
       },
+      '/quartz': {
+        target: url,
+        ws: true,
+        pathRewrite: {
+          '^/quartz': '/quartz'
+        }
+      },
       '/auth': {
         target: url,
         ws: true,

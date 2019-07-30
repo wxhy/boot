@@ -2,7 +2,7 @@ server:
   port: 8666
 spring:
   application:
-    name: boot-daemon
+    name: boot-daemon-elastic-job
   cloud:
     nacos:
       discovery:

@@ -5,6 +5,7 @@ import axios from './router/axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
 import uploader from 'vue-simple-uploader'
+import VueCron from 'vue-cron'
 import App from './App'
 import './permission' // 权限
 import './error' // 日志
@@ -43,6 +44,8 @@ Vue.use(VueAxios, axios)
 Vue.use(VueLazyload)
 
 Vue.use(uploader)
+
+Vue.use(VueCron)
 
 
 // 注册富文本框容器

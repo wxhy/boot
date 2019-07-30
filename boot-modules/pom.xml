@@ -13,10 +13,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>boot-activiti</module>
-        <module>boot-daemon</module>
+        <module>boot-daemon-elastic-job</module>
         <module>boot-codegen</module>
         <module>boot-pan</module>
         <module>boot-pay</module>
+        <module>boot-daemon-quartz</module>
     </modules>
 
 

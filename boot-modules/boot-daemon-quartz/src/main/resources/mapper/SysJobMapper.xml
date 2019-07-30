@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.boot.daemon.quartz.mapper.SysJobMapper">
+  <resultMap id="BaseResultMap" type="com.study.boot.daemon.quartz.entity.SysJob">
+    <!--@mbg.generated-->
+    <id column="job_id" jdbcType="INTEGER" property="jobId" />
+    <id column="job_name" jdbcType="VARCHAR" property="jobName" />
+    <id column="job_group" jdbcType="VARCHAR" property="jobGroup" />
+    <result column="job_order" jdbcType="CHAR" property="jobOrder" />
+    <result column="job_type" jdbcType="CHAR" property="jobType" />
+    <result column="execute_path" jdbcType="VARCHAR" property="executePath" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="method_params_value" jdbcType="VARCHAR" property="methodParamsValue" />
+    <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
+    <result column="misfire_policy" jdbcType="VARCHAR" property="misfirePolicy" />
+    <result column="job_status" jdbcType="CHAR" property="jobStatus" />
+    <result column="job_execute_status" jdbcType="CHAR" property="jobExecuteStatus" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="previous_time" jdbcType="TIMESTAMP" property="previousTime" />
+    <result column="next_time" jdbcType="TIMESTAMP" property="nextTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    job_id, job_name, job_group, job_order, job_type, execute_path, class_name, method_name, 
+    method_params_value, cron_expression, misfire_policy, job_status, job_execute_status, 
+    create_by, create_time, update_by, update_time, start_time, previous_time, next_time, 
+    remark
+  </sql>
+</mapper>

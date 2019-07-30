@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.boot.daemon.quartz.mapper.SysJobLogMapper">
+  <resultMap id="BaseResultMap" type="com.study.boot.daemon.quartz.entity.SysJobLog">
+    <!--@mbg.generated-->
+    <id column="job_log_id" jdbcType="INTEGER" property="jobLogId" />
+    <result column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="job_name" jdbcType="VARCHAR" property="jobName" />
+    <result column="job_group" jdbcType="VARCHAR" property="jobGroup" />
+    <result column="job_order" jdbcType="CHAR" property="jobOrder" />
+    <result column="job_type" jdbcType="CHAR" property="jobType" />
+    <result column="execute_path" jdbcType="VARCHAR" property="executePath" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="method_params_value" jdbcType="VARCHAR" property="methodParamsValue" />
+    <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
+    <result column="job_message" jdbcType="VARCHAR" property="jobMessage" />
+    <result column="job_log_status" jdbcType="CHAR" property="jobLogStatus" />
+    <result column="execute_time" jdbcType="VARCHAR" property="executeTime" />
+    <result column="exception_info" jdbcType="VARCHAR" property="exceptionInfo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    job_log_id, job_id, job_name, job_group, job_order, job_type, execute_path, class_name, 
+    method_name, method_params_value, cron_expression, job_message, job_log_status, execute_time, 
+    exception_info, create_time
+  </sql>
+</mapper>
