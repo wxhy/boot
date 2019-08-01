@@ -35,7 +35,6 @@ export const tableOption = {
   border: true,
   index: true,
   indexLabel: '序号',
-  stripe: true,
   menuAlign: 'center',
   align: 'center',
   refreshBtn: true,

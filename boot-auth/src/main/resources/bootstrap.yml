@@ -8,14 +8,14 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: boot-nacos:8848
+        server-addr: 192.168.1.110:8848
         namespace: @nacosNamespace@
       config:
         namespace: @nacosNamespace@
         shared-dataids: application.yml
         refreshable-dataids: application.yml
         file-extension: yml
-        server-addr: boot-nacos:8848
+        server-addr: 192.168.1.110:8848
   main:
     allow-bean-definition-overriding: true
 

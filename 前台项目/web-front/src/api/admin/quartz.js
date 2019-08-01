@@ -37,3 +37,55 @@ export function putObj (obj) {
     data: obj
   })
 }
+
+export function validJobName(jobName,jobGroup) {
+  return request({
+    url: '/quartz/job/is-valid-task-name',
+    method: 'get',
+    params: {
+      jobName: jobName,
+      jobGroup: jobGroup
+    }
+  })
+}
+
+export function startJob(id) {
+  return request({
+    url: '/quartz/job/start-job/' + id,
+    method: 'post'
+  })
+}
+
+export function pauseJob(id) {
+  return request({
+    url: '/quartz/job/shutdown-job/' + id,
+    method: 'post'
+  })
+}
+export function startAll(){
+  return request({
+    url: '/quartz/job/start-jobs',
+    method: 'post'
+  })
+}
+export function pauseAll() {
+  return request({
+    url: '/quartz/job/shutdown-jobs',
+    method: 'post'
+  })
+}
+
+export function refreshAll() {
+  return request({
+    url: '/quartz/job/refresh-jobs',
+    method: 'post'
+  })
+}
+
+export function jobLog(query){
+  return request({
+    url: '/quartz/job/job-log',
+    method: 'get',
+    params: query
+  })
+}

@@ -8,8 +8,8 @@ RUN mkdir -p /boot-auth
 
 WORKDIR /boot-auth
 
-EXPOSE 8888
+EXPOSE 3300
 
 ADD ./target/boot-auth.jar ./
 
-CMD java -Djava.security.egd=file:/dev/./urandom -jar boot-auth.jar
+CMD java -Djava.security.egd=file:/dev/./urandom -Xms128m -Xmx512m -jar boot-auth.jar

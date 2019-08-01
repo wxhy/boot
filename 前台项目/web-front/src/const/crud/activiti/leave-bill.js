@@ -37,7 +37,6 @@ const DIC = {
 export const tableOption = {
   border: true,
   index: true,
-  stripe: true,
   menuAlign: 'center',
   align: 'center',
   menuBtn: true,

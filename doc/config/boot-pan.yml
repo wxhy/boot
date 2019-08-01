@@ -14,3 +14,7 @@ security:
       client-id: test
       client-secret: test
       scope: server
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+        - /virtualaddress/download/*

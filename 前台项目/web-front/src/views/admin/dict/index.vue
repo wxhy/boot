@@ -36,23 +36,20 @@
             type="text"
             v-if="permissions.sys_dict_edit"
             icon="el-icon-check"
-            size="mini"
-            plain
+            size="small"
             @click="handleEdit(scope.row,scope.index)"
           >编辑</el-button>
           <el-button
             type="text"
             v-if="permissions.sys_dict_del"
             icon="el-icon-delete"
-            size="mini"
-            plain
+            size="small"
             @click="handleDel(scope.row,scope.index)"
           >删除</el-button>
           <el-button
             type="text"
             icon="el-icon-menu"
-            size="mini"
-            plain
+            size="small"
             @click="handlItem(scope.row,scope.index)"
           >字典项</el-button>
         </template>
@@ -80,7 +77,7 @@
             type="text"
             v-if="permissions.sys_dict_edit"
             icon="el-icon-check"
-            size="mini"
+            size="samll"
             plain
             @click="handleItemEdit(scope.row,scope.index)"
           >编辑</el-button>
@@ -88,7 +85,7 @@
             type="text"
             v-if="permissions.sys_dict_del"
             icon="el-icon-delete"
-            size="mini"
+            size="samll"
             plain
             @click="handleItemDel(scope.row,scope.index)"
           >删除</el-button>

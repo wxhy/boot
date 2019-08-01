@@ -21,23 +21,6 @@ services:
     restart: always
     container_name: boot-redis
 
-  boot-eureka:
-    build:
-      dockerfile: ./boot-eureka/Dockerfile
-    restart: always
-    container_name: boot-eureka
-    image: boot-eureka
-    ports:
-      - 9999:9999
-
-
-  boot-config:
-    build:
-      dockerfile: ./boot-config/Dockerfile
-    restart: always
-    container_name: boot-config
-    image: boot-config
-
   boot-auth:
     build:
       dockerfile: ./boot-auth/Dockerfile

@@ -4,9 +4,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://boot-mysql:3306/quartz_job?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
-
+    url: jdbc:mysql://boot-mysql:3306/quartz_job?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8    
   quartz:
+    job-store-type: jdbc
     properties:
       org:
         quartz:
@@ -16,14 +16,23 @@ spring:
           jobStore:
             class: org.quartz.impl.jdbcjobstore.JobStoreTX
             driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: QRTZ_
+            tablePrefix: qrtz_
             isClustered: true
             clusterCheckinInterval: 10000
             useProperties: false
           threadPool:
             class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 20
+            threadCount: 10
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
-      #数据库方式
-    job-store-type: jdbc
+
+## security 配置
+security:
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+      scope: server
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs

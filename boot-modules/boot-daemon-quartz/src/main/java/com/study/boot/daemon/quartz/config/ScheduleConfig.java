@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.boot.autoconfigure.quartz.SchedulerFactoryBeanCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
 import java.util.Iterator;
 import java.util.List;
@@ -40,49 +40,56 @@ public class ScheduleConfig {
 
     private final Trigger[] triggers;
 
+    private final ApplicationContext applicationContext;
+
 
     public ScheduleConfig(QuartzProperties quartzProperties,
                           ObjectProvider<List<SchedulerFactoryBeanCustomizer>> customizers,
                           ObjectProvider<JobDetail[]> jobDetails,
                           ObjectProvider<Map<String, Calendar>> calendars,
-                          ObjectProvider<Trigger[]> triggers) {
+                          ObjectProvider<Trigger[]> triggers,
+                          ApplicationContext applicationContext) {
         this.quartzProperties = quartzProperties;
         this.customizers = customizers.getIfAvailable();
         this.jobDetails = jobDetails.getIfAvailable();
         this.calendars = calendars.getIfAvailable();
         this.triggers = triggers.getIfAvailable();
+        this.applicationContext = applicationContext;
     }
 
     @Bean
     public SchedulerFactoryBean quartzScheduler() {
         SchedulerFactoryBean factoryBean = new SchedulerFactoryBean();
-        factoryBean.setJobFactory(new SpringBeanJobFactory());
-        if(!this.quartzProperties.getProperties().isEmpty()) {
+        factoryBean.setJobFactory(new AutowireCapableBeanJobFactory(this.applicationContext.getAutowireCapableBeanFactory()));
+        if (!this.quartzProperties.getProperties().isEmpty()) {
             factoryBean.setQuartzProperties(this.asProperties(this.quartzProperties.getProperties()));
         }
-        if(ArrayUtil.isNotEmpty(this.jobDetails)) {
+        if (ArrayUtil.isNotEmpty(this.jobDetails)) {
             factoryBean.setJobDetails(this.jobDetails);
         }
 
-        if(CollectionUtil.isNotEmpty(calendars)) {
+        if (CollectionUtil.isNotEmpty(calendars)) {
             factoryBean.setCalendars(calendars);
         }
-        if(ArrayUtil.isNotEmpty(triggers)) {
+        if (ArrayUtil.isNotEmpty(triggers)) {
             factoryBean.setTriggers(triggers);
         }
 
-        if(CollectionUtil.isNotEmpty(customizers)) {
+        if (CollectionUtil.isNotEmpty(customizers)) {
             Iterator<SchedulerFactoryBeanCustomizer> iterator = customizers.iterator();
             while (iterator.hasNext()) {
                 SchedulerFactoryBeanCustomizer customizer = iterator.next();
                 customizer.customize(factoryBean);
             }
         }
+        //延迟60秒执行任务，避免系统未完全启动却开始执行定时任务的情况
+        factoryBean.setStartupDelay(10);
+        factoryBean.setWaitForJobsToCompleteOnShutdown(true);
 
         return factoryBean;
     }
 
-    public Properties asProperties(Map<String,String> sources) {
+    public Properties asProperties(Map<String, String> sources) {
         Properties properties = new Properties();
         properties.putAll(sources);
         return properties;

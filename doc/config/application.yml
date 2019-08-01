@@ -1,5 +1,3 @@
-
-
 #redis相关
 spring:
   redis:
@@ -16,7 +14,7 @@ spring:
   servlet:
     multipart:
       max-file-size: 1000MB
-      max-request-size: 100MB
+      max-request-size: 1000MB
       enabled: true
 
 ## 暴露监控端点
@@ -24,7 +22,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: '*'    
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 
 ## mybatis-plus配置
@@ -75,7 +76,7 @@ hystrix:
 security:
   oauth2:
     resource:
-      token-info-uri: http://boot-auth:3000/oauth/check_token
+      token-info-uri: http://boot-auth:3300/oauth/check_token
     client:
       ignore-urls:
         - /actuator/**
@@ -101,7 +102,7 @@ swagger:
       - scope: server
         description: server all
   token-url-list:
-    - http://boot-auth:9999/auth/oauth/token
+    - http://boot-auth:3300/auth/oauth/token
 
 ##  Minio 文件系统
 minio:

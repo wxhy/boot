@@ -30,7 +30,6 @@ const DIC = {
     border: true,
     index: true,
     indexLabel: '序号',
-    stripe: true,
     menuAlign: 'center',
     menuWidth: 150,
     align: 'center',

@@ -86,6 +86,9 @@ public class SysJobController {
     public WebResponse updateById(@RequestBody SysJob sysJob) {
         sysJob.setUpdateBy(SecurityUtils.getUserName());
         SysJob querySysJob = this.sysJobService.getById(sysJob.getJobId());
+        if(querySysJob != null && JOB_STATUS_RUNNING.getType().equals(querySysJob.getJobStatus())) {
+            return WebResponse.builder().code(CommonConstants.FAIL).message("运行中定时任务不可修改，请先暂停后操作").build();
+        }
         if(JOB_STATUS_NOT_RUNNING.getType().equals(querySysJob.getJobStatus())) {
             this.taskUtil.addOrUpdateJob(sysJob, scheduler);
             sysJobService.updateById(sysJob);
@@ -106,6 +109,9 @@ public class SysJobController {
     @ApiOperation(value = "唯一标识查询定时任务，暂停任务才能删除")
     public WebResponse removeById(@PathVariable Integer jobId) {
         SysJob querySysJob = this.sysJobService.getById(jobId);
+        if(JOB_STATUS_RUNNING.getType().equals(querySysJob.getJobStatus())) {
+            return WebResponse.builder().code(CommonConstants.FAIL).message("运行中定时任务不可删除，请先暂停后操作").build();
+        }
         if (JOB_STATUS_NOT_RUNNING.getType().equals(querySysJob.getJobStatus())) {
             this.taskUtil.removeJob(querySysJob, scheduler);
             this.sysJobService.removeById(jobId);
@@ -190,6 +196,7 @@ public class SysJobController {
     @ApiOperation(value = "启动定时任务")
     public WebResponse startJob(@PathVariable("id") Integer jobId) {
         SysJob querySysJob = this.sysJobService.getById(jobId);
+
         if (querySysJob != null && JOB_LOG_STATUS_FAIL.getType()
                 .equals(querySysJob.getJobStatus())) {
             taskUtil.addOrUpdateJob(querySysJob, scheduler);

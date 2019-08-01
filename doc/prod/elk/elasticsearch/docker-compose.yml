@@ -30,7 +30,7 @@ services:
     container_name: kibana
     environment:
       - SERVER_NAME=kibana
-      - ELASTICSEARCH_HOSTS=http://localhost:9200
+      - ELASTICSEARCH_HOSTS=http://192.168.1.110:9200
       - XPACK_MONITORING_ENABLED=true
     ports:
       - 5601:5601

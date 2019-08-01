@@ -37,7 +37,19 @@ security:
       scope: server
       ignore-urls:
         - /actuator/**
+        - /user/info/*
+        - /mobile/**
+        - /ws/**
         - /v2/api-docs
-        - /pay/notify
+        - /social/info/*
+        - /route
+        - /log/**
 
-#支付宝付款
+## 七牛云配置
+oss:
+  name: qiniu
+qiniu:
+  accessKey: 3QwcYlLnnsmKAb_y2thYWhMthLnLJE4BhgEg5CMP
+  secretKey: VbTcSVpXEyGkUCo2WEdVnzT3mnqWn0gtnXde9sBU
+  bucket: carloseva
+  path: http://pupx0cp1o.bkt.clouddn.com/
