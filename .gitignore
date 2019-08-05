@@ -21,3 +21,6 @@ logs/*
 
 *.iml
 
+
+/nacos/data
+/nacos/logs
