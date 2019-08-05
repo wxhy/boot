@@ -24,3 +24,6 @@ logs/*
 
 /nacos/data
 /nacos/logs
+/nacos/bin/logs
+/nacos/bin/work
+/nacos/bin/derby.log
