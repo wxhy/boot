@@ -49,7 +49,7 @@ public class MobileAuthenticationFilter extends AbstractAuthenticationProcessing
     @Override
     @SneakyThrows
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        if (postOnly && !request.getMethod().equals("POST")) {
+        if (postOnly && ! "POST".equals(request.getMethod())) {
             throw new AuthenticationServiceException(
                     "Authentication method not supported: " + request.getMethod());
         }
