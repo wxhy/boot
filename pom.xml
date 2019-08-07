@@ -34,6 +34,8 @@
         <registry.url>47.104.172.27:5000</registry.url>
         <elastic.job.version>2.1.5</elastic.job.version>
         <curator.version>2.10.0</curator.version>
+        <txlcn.version>5.0.2.RELEASE</txlcn.version>
+        <nacos.namespace>68c0bdb8-5c07-4f8e-a00c-b3d797ada803</nacos.namespace>
     </properties>
 
     <profiles>
@@ -43,19 +45,19 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+                <nacosNamespace>${nacos.namespace}</nacosNamespace>
             </properties>
         </profile>
         <profile>
             <id>test</id>
             <properties>
-                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+                <nacosNamespace>${nacos.namespace}</nacosNamespace>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <nacosNamespace>6d21713b-e637-472f-a50e-2fc4b90512fd</nacosNamespace>
+                <nacosNamespace>${nacos.namespace}</nacosNamespace>
             </properties>
         </profile>
     </profiles>
@@ -84,6 +86,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- sentinel -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
         <!--配置文件处理器-->
@@ -120,15 +128,9 @@
             <version>${spring-boot-admin.version}</version>
         </dependency>
         <!--服务链路追踪-->
-        <!--  导致websocket冲突-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
+        <!--  导致tx-lcn冲突-->
+
+
         <!--断路器依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

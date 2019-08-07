@@ -7,6 +7,7 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.oss.service.MinioTemplate;
@@ -18,6 +19,7 @@ import com.study.boot.pan.mapper.VirtualAddressMapper;
 import com.study.boot.pan.service.SysFileService;
 import com.study.boot.pan.service.VirtualAddressService;
 import com.study.boot.pan.vo.FileDetailVo;
+import com.study.boot.upms.api.feign.RemoteUserService;
 import lombok.SneakyThrows;
 import org.jodconverter.DocumentConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,9 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
 
     @Autowired
     private DocumentConverter converter;
+
+    @Autowired
+    private RemoteUserService remoteUserService;
 
     private static final String PDF =  "pdf";
     /**
@@ -178,6 +183,16 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
         }
         new File(newFilePath).delete();
 
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    @LcnTransaction
+    public void saveLcn() {
+        VirtualAddress virtualAddress = new VirtualAddress();
+        virtualAddress.setFileName("测试lcn");
+        this.save(virtualAddress);
+        WebResponse webResponse = this.remoteUserService.testLcn();
     }
 
 }

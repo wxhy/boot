@@ -34,6 +34,7 @@ public class FeignConfiguration {
             if(CollectionUtil.isNotEmpty(fromHeader) && fromHeader.contains(SecurityConstants.FROM_IN)) {
                 return;
             }
+
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if(authentication != null) {
                 if(authentication instanceof OAuth2Authentication) {

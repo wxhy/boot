@@ -62,4 +62,8 @@ public interface VirtualAddressService extends IService<VirtualAddress> {
      */
     void transferPdf(String fileName, List<Chunk> chunks, SysFile sysFile);
 
+    /**
+     * 测试LCN
+     */
+    void saveLcn();
 }

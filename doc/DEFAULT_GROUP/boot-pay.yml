@@ -1,0 +1,53 @@
+## 数据库连接池
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: false
+      connection-timeout: 30000
+      idle-timeout: 25000
+      login-timeout: 5
+      max-lifetime: 30000
+      read-only: false
+      validation-timeout: 3000
+      maximum-pool-size: 15
+      minimum-idle: 10
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+## security 配置
+security:
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+      scope: server
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+        - /pay/notify
+
+#支付宝付款
+alipay:
+  appId: 2016101100661144
+  merchantPrivateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC+Pabtp70OYltYwRb/CHMkJd3bNZk6+2tdgdj7CCHg2uOGqQn5LhhAon16WHSIapoq0kDVRjzvtO7VL9sz9uRzT7wLZOqy6BsLQaKUd9GzHs+ubqe4Q5T0pRDwRS2sYPpIBRERg+zlL3WqrlS9B0nIP8CPnEHOBUd630UnDa4WO49q7KIUxD/rnmaPRiyGU0cLKS5Kqttn+Wh+YzxRXQ0OVYJ9GAfiHIGtgawwNQPEZSGfCnU9amOy493302c+xdGKunUBCUuKdbeoy9czwdyrjg+LtgfbI7ZSPxCtb5Ct44lTgRIdVmraENEzPBFaISYOnr1Eg5pPdujxCINHnGtHAgMBAAECggEAE9iwsnheU8LVDsROFtsVz/6XT4ge7TVPdRjXvxCRIDkVpXW7EaDKbOvGtV3HAnhEjxUSKG3Ea6lvhRQSBTDLknAOCQ5FIdbvA1SclmqNmOcs+WCX5LRANOmHg9ljs2kGkz7cEfy2WQ6DcwPu2S2Kd/aWqyS9BLYuR9ZFC5b0w2LTPK0zR662hY0SiYsFYF3UjW9VrgR9rNYRd1FtQGiT4lvzCrhPF1DWASkSV9XcLqJm2WaKIjbJ0czoJFrKpPV+ltSaC2zhjCKU+GhSHw2R44JSBXRtrR7IAp9dvBWxF0xxp3Zxjw9OJKg0OMfRaMqW7XH9MkSecehmkGsCvbB60QKBgQDg5GRDLM378WeEcPd7nPahlRk2xMyC3wl7z8nh7ySOFoVhowU3N1yWL6JQ5HuadGU7o6v3wV3zL38RvgwBRhXecFVnDToz1RBD//9KxAVMyIwVgumkaqaBxkCNgAb4dW6+xwVGlWTC8f1/KRUgAy2PFyWKU0wE7WWF34ZKERzsfwKBgQDYjjrKL4Q0naHbBMAI9rivX6zszQq6SYSQLrvt6qITPvYn3brUkzzuX/1nnj3inD/yHvaQoJigRNYQ4xAJ1S+SyWXO2/9u1q22pVfkkGYR9j7qIR6lgZ75aKIzhL9039hkaCjuok8k7mPwwzIOaQlkarojnkl9/6wyjHN3AW69OQKBgFguFYYlbksId999b/yfKjFnRfCsr8fs7koGypD1dO7ls7z579Sbt4kH+mwferuwQfVlkstdnZn6GKf7Tbe+JFsIzuPOUvD57RvMp+xH+hAGXq8cmsImM02VT8Br38/SM+9IGDB56X1q50vR7v+TX2zI1aZsTNVtxC3+3Cf0l9O/AoGBALu96uf4c+RtuLG5l4bt5sVb6/5L8P352KxrZ8/mt+Z5kkyTpXK/x3Zdz8IyZTJ+Bc4x288c+9UOeIuhXvk3UowugE3rWrLL+UQ8akukiGkQFBFE713LV3igpuaFMrrviZna14mzO2woJIrJny7xDwx4nrFcfBh5PN+B9mR44Hm5AoGBAJ+DZqfhpBmdPvYQrxOfqVbgxnQJXZXbujDGgr9vTNlV+FeQ4h18oKjKG7f8xaKsoMyTdo3f5UEXntkhJO8nGNhhkcN1+PuX45P80PBmzTWA69yUfMkCS0DJRYxPKmOV5zn2Tz7SWMb7vfNEwTBGR0OS5Xvxup8z/4z1nnP3VxiH
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkJ7Zyb2CAJGwEEZiO3QBjaupicvaG89uvaRxtexpd4Cg2wpm36BkHDfD1L+guU9U7gTG8s4bgRaGQLzw2ahlGjo0Croqksk7Xk6Zh4EEjYXWkFKl7Y8bFZ5kz6IMOvoBxGTFdb6ccMFmNWPrCHSFBLqm7AJsQU81ZjHQ96iRNvtkDGPE5xZEN2rpcet6h2zWIYh4+2zhzX9YAI870Obyb6ObHkvKttOJ2xMDszVAjkxXX94Dds5UyrncVJNK/QOQ0DOcnUgoRXGXkdzBlX74wOi0CVOsKglFJxnimo3KA2tgyevtYPuW3mdNBT6aXUdoTdqpCcckOGX2v0/q7JNWZwIDAQAB
+  notifyUrl: http://localhost:8081/pay/pay/notify
+  returnUrl:  http://localhost:8080/boot#/pay/success
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+  signType: RSA2
+  charset: utf-8
+  paramType: json

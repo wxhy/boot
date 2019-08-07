@@ -59,4 +59,8 @@ public interface RemoteUserService {
      */
     @GetMapping("/route")
     WebResponse<List<SysRouteConf>> routes();
+
+
+    @GetMapping("/user/lcn")
+    WebResponse testLcn();
 }

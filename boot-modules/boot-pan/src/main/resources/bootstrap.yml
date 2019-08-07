@@ -22,3 +22,19 @@ spring:
 jodconverter:
   local:
     enabled: true
+
+
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+  logger:
+    enabled: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://boot-mysql:3306/boot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+logging:
+  level:
+    com:
+      codingapi: debug

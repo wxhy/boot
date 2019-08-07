@@ -12,6 +12,7 @@ import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.entity.SysUser;
 import com.study.boot.upms.service.SysUserService;
 import io.swagger.annotations.Api;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -134,4 +135,10 @@ public class UserController {
         return new WebResponse<>(sysUserService.listAncestorUsers(username));
     }
 
+
+    @GetMapping("/lcn")
+    @SneakyThrows
+    public WebResponse lcn(){
+        return WebResponse.builder().data(sysUserService.testLcn()).build();
+    }
 }

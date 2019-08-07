@@ -76,6 +76,7 @@ public interface SysUserService extends IService<SysUser> {
      */
     List<SysUser> listAncestorUsers(String username);
 
+    Boolean testLcn();
 }
 
 

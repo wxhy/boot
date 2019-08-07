@@ -1,8 +1,8 @@
 package com.study.boot.gateway;
 
+import com.study.boot.common.gateway.annotation.EnableDynamicRoute;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 
@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 
 @SpringCloudApplication
-@EnableFeignClients(basePackages = {"com.study.boot"})
+@EnableDynamicRoute
 public class BootGateWayApplication {
 
     public static void main(String[] args) {
