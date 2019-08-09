@@ -52,7 +52,7 @@ mybatis-plus:
 
 # feign 配置
 feign:
-  hystrix:
+  sentinel:
     enabled: true
   okhttp:
     enabled: true
