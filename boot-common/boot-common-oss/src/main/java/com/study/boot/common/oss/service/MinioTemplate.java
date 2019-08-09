@@ -3,7 +3,6 @@ package com.study.boot.common.oss.service;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
 import io.minio.messages.Bucket;
-import io.minio.policy.PolicyType;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.InitializingBean;

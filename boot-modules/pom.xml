@@ -18,6 +18,7 @@
         <module>boot-pan</module>
         <module>boot-pay</module>
         <module>boot-daemon-quartz</module>
+        <module>boot-monitor</module>
     </modules>
 
 

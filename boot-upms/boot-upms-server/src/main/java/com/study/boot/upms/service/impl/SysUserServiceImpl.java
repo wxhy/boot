@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.upms.api.dto.UserDTO;
 import com.study.boot.upms.api.dto.UserInfo;
@@ -19,7 +18,6 @@ import com.study.boot.upms.api.vo.MenuVO;
 import com.study.boot.upms.api.vo.UserVO;
 import com.study.boot.upms.mapper.SysUserMapper;
 import com.study.boot.upms.service.*;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -204,20 +202,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .eq(SysUser::getDeptId, parentId));
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    @LcnTransaction
-    @SneakyThrows
-    public Boolean testLcn() {
-        SysUser sysUser = this.getById(1);
-        sysUser.setSalt("123123123");
-        boolean b = this.updateById(sysUser);
-        if(b) {
-            throw new Exception();
-        }
-
-        return Boolean.TRUE;
-    }
 }
 
 

@@ -1,40 +1,10 @@
 version: '2'
 services:
-  es-master:
-    image:  docker.elastic.co/elasticsearch/elasticsearch:7.2.0
-    container_name: es-master
-    restart: always
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    volumes:
-      - ./master/data:/usr/share/elasticsearch/data:rw
-      - ./master/conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./master/logs:/user/share/elasticsearch/logs:rw
+  elasticsearch:
+    image: elasticsearch:latest
+    container_name: elasticsearch
     ports:
-      - "9200:9200"
-      - "9300:9300"
-
-  es-node1:
-    image:  docker.elastic.co/elasticsearch/elasticsearch:7.2.0
-    container_name: es-node1
-    restart: always
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - 9200:9200
+      - 9300:9300
     volumes:
-      - ./node1/data:/usr/share/elasticsearch/data:rw
-      - ./node1/conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./node1/logs:/user/share/elasticsearch/logs:rw
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.2.0
-    container_name: kibana
-    environment:
-      - SERVER_NAME=kibana
-      - ELASTICSEARCH_HOSTS=http://192.168.1.110:9200
-      - XPACK_MONITORING_ENABLED=true
-    ports:
-      - 5601:5601
-    depends_on:
-     - es-master
-    external_links:
-      - es-master
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml

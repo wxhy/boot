@@ -1,5 +1,12 @@
 #redis相关
 spring:
+  zipkin:
+    base-url: http://localhost:9411
+  cloud:
+      sentinel:
+        transport:
+          port: 8719
+          dashboard: localhost:8033
   redis:
     host: boot-redis
     password:

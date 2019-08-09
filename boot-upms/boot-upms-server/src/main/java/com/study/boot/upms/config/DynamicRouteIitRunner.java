@@ -4,11 +4,12 @@ package com.study.boot.upms.config;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.study.boot.common.constants.CommonConstants;
+import com.study.boot.common.gateway.support.DynamicRouteInitEvent;
 import com.study.boot.common.gateway.vo.RouteDefinitionVo;
 import com.study.boot.upms.service.SysRouteConfService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.config.PropertiesRouteDefinitionLocator;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
@@ -38,7 +39,7 @@ public class DynamicRouteIitRunner {
 
     @Async
     @Order
-    @EventListener({WebServerInitializedEvent.class})
+    @EventListener({ApplicationStartedEvent.class, DynamicRouteInitEvent.class})
     public void initRoute(){
         //清空redis缓存的路由
         Boolean result = redisTemplate.delete(CommonConstants.ROUTE_KEY);

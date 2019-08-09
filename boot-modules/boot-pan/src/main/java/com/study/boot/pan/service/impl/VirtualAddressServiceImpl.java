@@ -7,7 +7,6 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.study.boot.common.constants.CommonConstants;
 import com.study.boot.common.oss.constant.FileContants;
 import com.study.boot.common.oss.service.MinioTemplate;
@@ -185,14 +184,5 @@ public class VirtualAddressServiceImpl extends ServiceImpl<VirtualAddressMapper,
 
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    @LcnTransaction
-    public void saveLcn() {
-        VirtualAddress virtualAddress = new VirtualAddress();
-        virtualAddress.setFileName("测试lcn");
-        this.save(virtualAddress);
-        WebResponse webResponse = this.remoteUserService.testLcn();
-    }
 
 }

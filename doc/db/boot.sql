@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 19/07/2019 17:43:15
+ Date: 07/08/2019 17:02:16
 */
 
 SET NAMES utf8mb4;
@@ -32,15 +32,52 @@ CREATE TABLE `chunk` (
   `relative_path` varchar(255) NOT NULL COMMENT '相对路径',
   `total_chunks` bigint(64) NOT NULL COMMENT '总块数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=974 DEFAULT CHARSET=utf8 COMMENT='文件分块上传表';
+) ENGINE=InnoDB AUTO_INCREMENT=999 DEFAULT CHARSET=utf8 COMMENT='文件分块上传表';
 
 -- ----------------------------
 -- Records of chunk
 -- ----------------------------
 BEGIN;
-INSERT INTO `chunk` VALUES (971, 1, 51200000, 868827, 868827, 'afa9b6f3da3dd154aa46235d9db2ae21', 'Apache_Shiro参考手册中文版-converted.docx', 'Apache_Shiro参考手册中文版-converted.docx', 1);
-INSERT INTO `chunk` VALUES (972, 1, 51200000, 319638, 319638, '065037c8bec62bd0d836a0a416b1ef45', '1294929-20181205144240125-1096993697.gif', '1294929-20181205144240125-1096993697.gif', 1);
-INSERT INTO `chunk` VALUES (973, 1, 51200000, 720039, 720039, '7cf93301a3fcbab75f27704df13775cc', 'Netty 入门与实战：仿写微信 IM 即时通讯系统.docx', 'Netty 入门与实战：仿写微信 IM 即时通讯系统.docx', 1);
+INSERT INTO `chunk` VALUES (974, 1, 51200000, 868827, 868827, 'afa9b6f3da3dd154aa46235d9db2ae21', 'Apache_Shiro参考手册中文版-converted.docx', 'Apache_Shiro参考手册中文版-converted.docx', 1);
+INSERT INTO `chunk` VALUES (975, 1, 51200000, 5632, 5632, 'f1e92e38487c76bda23cebd321c34929', 'order2019030125373483.xls', 'order2019030125373483.xls', 1);
+INSERT INTO `chunk` VALUES (976, 1, 51200000, 2316087, 2316087, 'c6c9e828922bf7226d687c2ea7fa2440', '我的二次元不可能这么日常.txt', '我的二次元不可能这么日常.txt', 1);
+INSERT INTO `chunk` VALUES (977, 1, 51200000, 4231, 4231, 'd8b5003b02178e6322fe989764af406d', 'test20190520.bpmn20.xml', 'test20190520.bpmn20.xml', 1);
+INSERT INTO `chunk` VALUES (978, 1, 51200000, 163, 163, '6bbdee466b4ac2a8a8db8b435179846f', '第五周作业.txt', '第五周作业.txt', 1);
+INSERT INTO `chunk` VALUES (979, 1, 51200000, 955474, 955474, 'd60c0cebd6b9d6ba2e8b87054ca7cf25', '大型电商分布式系统实践+-+第二课.pdf', '大型电商分布式系统实践+-+第二课.pdf', 1);
+INSERT INTO `chunk` VALUES (980, 1, 51200000, 319638, 319638, '065037c8bec62bd0d836a0a416b1ef45', '1294929-20181205144240125-1096993697.gif', '1294929-20181205144240125-1096993697.gif', 1);
+INSERT INTO `chunk` VALUES (981, 1, 51200000, 37866, 37866, 'de036dcd7a0ecef75148a2c3150e676f', '1.jpg', '1.jpg', 1);
+INSERT INTO `chunk` VALUES (982, 1, 51200000, 283323, 283323, '0683f16d0fb52740a0e864b0567e48de', '2.jpg', '2.jpg', 1);
+INSERT INTO `chunk` VALUES (983, 1, 51200000, 26558640, 26558640, '53f8b69bec9030a75db42d401273fb72', 'MybatisCodeHelperNew-2.7.1-IDEA173-IDEA192.zip', 'MybatisCodeHelperNew-2.7.1-IDEA173-IDEA192.zip', 1);
+INSERT INTO `chunk` VALUES (984, 1, 51200000, 51200000, 111449784, '6f1e317d6d4787b70ee7459e32339d6a', '23.下一代微服务安全架构.mp4', '23.下一代微服务安全架构.mp4', 2);
+INSERT INTO `chunk` VALUES (985, 2, 51200000, 60249784, 111449784, '6f1e317d6d4787b70ee7459e32339d6a', '23.下一代微服务安全架构.mp4', '23.下一代微服务安全架构.mp4', 2);
+INSERT INTO `chunk` VALUES (986, 3, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (987, 1, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (988, 2, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (989, 4, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (990, 6, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (991, 5, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (992, 7, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (993, 8, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (994, 9, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (995, 10, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (996, 11, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (997, 13, 51200000, 83768281, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+INSERT INTO `chunk` VALUES (998, 12, 51200000, 51200000, 698168281, 'ab9b561e2046cd192b89d80daaad1860', 'ideaIU-2019.1.2.dmg', 'ideaIU-2019.1.2.dmg', 13);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for hibernate_sequence
+-- ----------------------------
+DROP TABLE IF EXISTS `hibernate_sequence`;
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hibernate_sequence
+-- ----------------------------
+BEGIN;
+INSERT INTO `hibernate_sequence` VALUES (1);
 COMMIT;
 
 -- ----------------------------
@@ -772,7 +809,7 @@ CREATE TABLE `sys_dict` (
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注信息',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='字典表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='字典表';
 
 -- ----------------------------
 -- Records of sys_dict
@@ -784,6 +821,10 @@ INSERT INTO `sys_dict` VALUES (15, 'leave_status', '2019-07-01 13:36:57', '2019-
 INSERT INTO `sys_dict` VALUES (16, 'message_type', '2019-07-01 13:37:28', '2019-07-01 13:37:28', '消息类型', '系统公告、提醒、私信', '0');
 INSERT INTO `sys_dict` VALUES (18, 'pay_status', '2019-07-08 10:05:23', '2019-07-08 10:05:23', '支付状态', '未支付、支付完成、支付失败', '0');
 INSERT INTO `sys_dict` VALUES (19, 'resource_type', '2019-07-11 09:11:00', '2019-07-11 09:11:00', '资源类型', '资源类型', '0');
+INSERT INTO `sys_dict` VALUES (20, 'job_type', '2019-07-30 17:49:44', '2019-07-30 17:49:44', '任务类型', 'Quartz 任务类型', '0');
+INSERT INTO `sys_dict` VALUES (21, 'misfire_policy', '2019-07-30 17:57:02', '2019-07-30 17:57:02', '错失执行策略', 'Quartz任务错失执行策略', '0');
+INSERT INTO `sys_dict` VALUES (22, 'job_execute_status', '2019-07-31 16:34:09', '2019-07-31 16:34:09', '任务执行状态', 'Quartz任务执行状态', '0');
+INSERT INTO `sys_dict` VALUES (23, 'job_status', '2019-07-31 16:35:07', '2019-07-31 16:35:07', '定时任务状态', '发布状态、运行状态', '0');
 COMMIT;
 
 -- ----------------------------
@@ -804,7 +845,7 @@ CREATE TABLE `sys_dict_item` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `sys_dict_item_value` (`value`) USING BTREE,
   KEY `sys_dict_item_label` (`label`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='字典项表';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='字典项表';
 
 -- ----------------------------
 -- Records of sys_dict_item
@@ -829,6 +870,19 @@ INSERT INTO `sys_dict_item` VALUES (29, 19, '1', '文档', 'resource_type', 2, '
 INSERT INTO `sys_dict_item` VALUES (30, 19, '2', '视频', 'resource_type', 3, '视频', '2019-07-11 09:12:14', '2019-07-11 09:12:14', '0');
 INSERT INTO `sys_dict_item` VALUES (31, 19, '3', '音乐', 'resource_type', 4, '音乐', '2019-07-11 09:12:30', '2019-07-11 09:12:30', '0');
 INSERT INTO `sys_dict_item` VALUES (32, 19, '4', '其他', 'resource_type', 5, '其他', '2019-07-11 09:12:43', '2019-07-11 09:12:43', '0');
+INSERT INTO `sys_dict_item` VALUES (33, 20, '1', 'Java类', 'job_type', 1, 'Java类', '2019-07-30 17:51:20', '2019-07-30 17:51:20', '0');
+INSERT INTO `sys_dict_item` VALUES (34, 20, '2', 'spring bean', 'job_type', 2, 'spring bean容器实例', '2019-07-30 17:52:18', '2019-07-30 17:52:18', '0');
+INSERT INTO `sys_dict_item` VALUES (35, 20, '3', 'Rest 调用', 'job_type', 3, 'Rest 调用', '2019-07-30 17:52:42', '2019-07-30 17:52:42', '0');
+INSERT INTO `sys_dict_item` VALUES (36, 20, '4', 'JAR', 'job_type', 4, 'JAR类型', '2019-07-30 17:53:15', '2019-07-30 17:53:15', '0');
+INSERT INTO `sys_dict_item` VALUES (37, 20, '9', '其他类型', 'job_type', 5, '其他类型', '2019-07-30 17:53:56', '2019-07-30 17:53:56', '0');
+INSERT INTO `sys_dict_item` VALUES (38, 21, '1', '错失周期立即执行', 'misfire_policy', 1, '错失周期立即执行', '2019-07-30 17:57:16', '2019-07-30 17:57:16', '0');
+INSERT INTO `sys_dict_item` VALUES (39, 21, '2', '错失周期执行一次', 'misfire_policy', 2, '错失周期执行一次', '2019-07-30 17:57:29', '2019-07-30 17:57:29', '0');
+INSERT INTO `sys_dict_item` VALUES (40, 21, '3', '下周期执行', 'misfire_policy', 3, '下周期执行', '2019-07-30 17:57:39', '2019-07-30 17:57:39', '0');
+INSERT INTO `sys_dict_item` VALUES (41, 22, '0', '正常', 'job_execute_status', 1, '正常', '2019-07-31 16:34:29', '2019-07-31 16:34:29', '0');
+INSERT INTO `sys_dict_item` VALUES (42, 22, '1', '异常', 'job_execute_status', 2, '异常', '2019-07-31 16:34:40', '2019-07-31 16:34:40', '0');
+INSERT INTO `sys_dict_item` VALUES (43, 23, '1', '未发布', 'job_status', 1, '未发布', '2019-07-31 16:35:24', '2019-07-31 16:35:24', '0');
+INSERT INTO `sys_dict_item` VALUES (44, 23, '2', '运行中', 'job_status', 2, '运行中', '2019-07-31 16:35:40', '2019-07-31 16:35:40', '0');
+INSERT INTO `sys_dict_item` VALUES (45, 23, '3', '暂停', 'job_status', 3, '暂停', '2019-07-31 16:35:49', '2019-07-31 16:35:49', '0');
 COMMIT;
 
 -- ----------------------------
@@ -851,9 +905,18 @@ CREATE TABLE `sys_file` (
 -- Records of sys_file
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_file` VALUES ('274980ee-f958-4263-bef6-61e29b42a8e5', 720039, '7cf93301a3fcbab75f27704df13775cc.docx', '7cf93301a3fcbab75f27704df13775cc', '2019-07-19 17:41:48', '0', '7cf93301a3fcbab75f27704df13775cc.pdf');
-INSERT INTO `sys_file` VALUES ('3b5ce218-8dc3-4f0a-ab52-c98e0795e806', 319638, '065037c8bec62bd0d836a0a416b1ef45.gif', '065037c8bec62bd0d836a0a416b1ef45', '2019-07-19 17:39:12', '0', NULL);
-INSERT INTO `sys_file` VALUES ('b84bfce4-5851-466f-bf99-de4ac0289f64', 868827, 'afa9b6f3da3dd154aa46235d9db2ae21.docx', 'afa9b6f3da3dd154aa46235d9db2ae21', '2019-07-19 14:08:35', '0', 'afa9b6f3da3dd154aa46235d9db2ae21..pdf');
+INSERT INTO `sys_file` VALUES ('0c8353b8-39f3-412b-b602-5ff568a813fd', 283323, '0683f16d0fb52740a0e864b0567e48de.jpg', '0683f16d0fb52740a0e864b0567e48de', '2019-07-23 09:26:35', '0', NULL);
+INSERT INTO `sys_file` VALUES ('1fbfdbd3-6b89-4f4e-a7af-d4f5757d2810', 26558640, '53f8b69bec9030a75db42d401273fb72.zip', '53f8b69bec9030a75db42d401273fb72', '2019-07-23 11:19:17', '0', NULL);
+INSERT INTO `sys_file` VALUES ('2f899be6-c396-43dc-9667-632dfc5fd334', 37866, 'de036dcd7a0ecef75148a2c3150e676f.jpg', 'de036dcd7a0ecef75148a2c3150e676f', '2019-07-23 09:26:34', '0', NULL);
+INSERT INTO `sys_file` VALUES ('4d7390d8-2f31-48e1-9c77-dae7573102b9', 868827, 'afa9b6f3da3dd154aa46235d9db2ae21.docx', 'afa9b6f3da3dd154aa46235d9db2ae21', '2019-07-22 11:21:33', '0', 'afa9b6f3da3dd154aa46235d9db2ae21.pdf');
+INSERT INTO `sys_file` VALUES ('65cfbe51-337d-48ba-a267-2b2ff75b9bf3', 163, '6bbdee466b4ac2a8a8db8b435179846f.txt', '6bbdee466b4ac2a8a8db8b435179846f', '2019-07-22 17:48:56', '0', '6bbdee466b4ac2a8a8db8b435179846f.pdf');
+INSERT INTO `sys_file` VALUES ('7d3fe577-27fa-4814-8aec-237287e1b6ab', 955474, 'd60c0cebd6b9d6ba2e8b87054ca7cf25.pdf', 'd60c0cebd6b9d6ba2e8b87054ca7cf25', '2019-07-22 17:49:10', '0', NULL);
+INSERT INTO `sys_file` VALUES ('895da13f-7c8a-472b-914e-992a666d4fda', 4231, 'd8b5003b02178e6322fe989764af406d.xml', 'd8b5003b02178e6322fe989764af406d', '2019-07-22 17:47:36', '0', NULL);
+INSERT INTO `sys_file` VALUES ('8d8e4aa8-4f89-4a88-8446-efa0afaf9ae6', 2316087, 'c6c9e828922bf7226d687c2ea7fa2440.txt', 'c6c9e828922bf7226d687c2ea7fa2440', '2019-07-22 14:13:35', '0', 'c6c9e828922bf7226d687c2ea7fa2440.pdf');
+INSERT INTO `sys_file` VALUES ('a436932d-8b98-47ef-be01-217f63fe5a3e', 698168281, 'ab9b561e2046cd192b89d80daaad1860.dmg', 'ab9b561e2046cd192b89d80daaad1860', '2019-07-23 11:23:31', '0', NULL);
+INSERT INTO `sys_file` VALUES ('ca735c8a-5c5e-49d1-80da-86018459b248', 5632, 'f1e92e38487c76bda23cebd321c34929.xls', 'f1e92e38487c76bda23cebd321c34929', '2019-07-22 14:11:55', '0', NULL);
+INSERT INTO `sys_file` VALUES ('cafd2d38-d7c3-44bd-bce9-70a05a8adbd7', 111449784, '6f1e317d6d4787b70ee7459e32339d6a.mp4', '6f1e317d6d4787b70ee7459e32339d6a', '2019-07-23 11:22:40', '0', NULL);
+INSERT INTO `sys_file` VALUES ('fa8360cd-4167-42b6-80dd-97b30b309764', 319638, '065037c8bec62bd0d836a0a416b1ef45.gif', '065037c8bec62bd0d836a0a416b1ef45', '2019-07-22 17:49:25', '0', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -881,7 +944,7 @@ CREATE TABLE `sys_log` (
   KEY `sys_log_request_uri` (`request_uri`) USING BTREE,
   KEY `sys_log_type` (`type`) USING BTREE,
   KEY `sys_log_create_date` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=288 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='日志表';
 
 -- ----------------------------
 -- Records of sys_log
@@ -1071,6 +1134,52 @@ INSERT INTO `sys_log` VALUES (238, '1', '修改会员个人信息', 'test', 'adm
 INSERT INTO `sys_log` VALUES (239, '1', '重命名', 'test', 'admin', '2019-07-18 09:26:49', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/virtualaddress/49', 'PUT', 'fileName=%5B1%5B2%5D.jpg%5D', '126', '0', NULL);
 INSERT INTO `sys_log` VALUES (240, '1', '重命名', 'test', 'admin', '2019-07-18 10:34:30', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/virtualaddress/46', 'PUT', 'fileName=%5BideaIU.dmg%5D', '112', '0', NULL);
 INSERT INTO `sys_log` VALUES (241, '1', '删除文件', 'test', 'admin', '2019-07-19 14:05:09', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/virtualaddress/56', 'DELETE', '', '77', '0', NULL);
+INSERT INTO `sys_log` VALUES (242, '1', '添加菜单', 'test', 'admin', '2019-07-30 12:54:35', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'POST', '', '80', '0', NULL);
+INSERT INTO `sys_log` VALUES (243, '1', '修改菜单', 'test', 'admin', '2019-07-30 12:54:52', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '62', '0', NULL);
+INSERT INTO `sys_log` VALUES (244, '1', '修改菜单', 'test', 'admin', '2019-07-30 12:55:14', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '55', '0', NULL);
+INSERT INTO `sys_log` VALUES (245, '1', '修改菜单', 'test', 'admin', '2019-07-30 12:58:15', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '100', '0', NULL);
+INSERT INTO `sys_log` VALUES (246, '1', '更新角色菜单', 'test', 'admin', '2019-07-30 12:58:31', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3200%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '245', '0', NULL);
+INSERT INTO `sys_log` VALUES (247, '1', '添加字典', 'test', 'admin', '2019-07-30 17:49:45', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/dict', 'POST', '', '69', '0', NULL);
+INSERT INTO `sys_log` VALUES (248, '1', '添加字典', 'test', 'admin', '2019-07-30 17:57:02', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/dict', 'POST', '', '74', '0', NULL);
+INSERT INTO `sys_log` VALUES (249, '1', '新增定时任务', 'test', 'admin', '2019-07-31 16:30:18', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job', 'POST', '', '154', '0', NULL);
+INSERT INTO `sys_log` VALUES (250, '1', '添加字典', 'test', 'admin', '2019-07-31 16:34:09', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/dict', 'POST', '', '127', '0', NULL);
+INSERT INTO `sys_log` VALUES (251, '1', '添加字典', 'test', 'admin', '2019-07-31 16:35:07', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/dict', 'POST', '', '76', '0', NULL);
+INSERT INTO `sys_log` VALUES (252, '1', '修改定时任务', 'test', 'admin', '2019-07-31 17:20:04', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job', 'PUT', '', '87', '0', NULL);
+INSERT INTO `sys_log` VALUES (253, '1', '启动定时任务', 'test', 'admin', '2019-07-31 17:26:38', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/3', 'POST', '', '723', '0', NULL);
+INSERT INTO `sys_log` VALUES (254, '1', '新增定时任务', 'test', 'admin', '2019-08-01 12:55:47', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job', 'POST', '', '54', '0', NULL);
+INSERT INTO `sys_log` VALUES (255, '1', '启动定时任务', 'test', 'admin', '2019-08-01 12:55:50', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '314', '0', NULL);
+INSERT INTO `sys_log` VALUES (256, '1', '暂停定时任务', 'test', 'admin', '2019-08-01 12:56:19', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-job/4', 'POST', '', '148', '0', NULL);
+INSERT INTO `sys_log` VALUES (257, '1', '启动定时任务', 'test', 'admin', '2019-08-01 13:11:07', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '273', '0', NULL);
+INSERT INTO `sys_log` VALUES (258, '1', '启动定时任务', 'test', 'admin', '2019-08-01 13:11:11', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '23', '0', NULL);
+INSERT INTO `sys_log` VALUES (259, '1', '暂停定时任务', 'test', 'admin', '2019-08-01 13:11:27', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-job/4', 'POST', '', '243', '0', NULL);
+INSERT INTO `sys_log` VALUES (260, '1', '启动定时任务', 'test', 'admin', '2019-08-01 13:17:17', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '243', '0', NULL);
+INSERT INTO `sys_log` VALUES (261, '1', '修改定时任务', 'test', 'admin', '2019-08-01 13:17:22', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job', 'PUT', '', '36', '0', NULL);
+INSERT INTO `sys_log` VALUES (262, '1', '修改定时任务', 'test', 'admin', '2019-08-01 13:19:11', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job', 'PUT', '', '6', '0', NULL);
+INSERT INTO `sys_log` VALUES (263, '1', '暂停定时任务', 'test', 'admin', '2019-08-01 13:20:30', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-job/4', 'POST', '', '165', '0', NULL);
+INSERT INTO `sys_log` VALUES (264, '1', '启动定时任务', 'test', 'admin', '2019-08-01 13:27:55', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '119', '0', NULL);
+INSERT INTO `sys_log` VALUES (265, '1', '暂停全部定时任务', 'test', 'admin', '2019-08-01 13:27:59', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-jobs', 'POST', '', '290', '0', NULL);
+INSERT INTO `sys_log` VALUES (266, '1', '启动全部定时任务', 'test', 'admin', '2019-08-01 13:32:11', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-jobs', 'POST', '', '320', '0', NULL);
+INSERT INTO `sys_log` VALUES (267, '1', '暂停全部定时任务', 'test', 'admin', '2019-08-01 13:32:14', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-jobs', 'POST', '', '212', '0', NULL);
+INSERT INTO `sys_log` VALUES (268, '1', '刷新全部定时任务', 'test', 'admin', '2019-08-01 13:32:16', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/refresh-jobs', 'POST', '', '223', '0', NULL);
+INSERT INTO `sys_log` VALUES (269, '1', '启动全部定时任务', 'test', 'admin', '2019-08-01 13:32:19', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-jobs', 'POST', '', '276', '0', NULL);
+INSERT INTO `sys_log` VALUES (270, '1', '删除定时任务', 'test', 'admin', '2019-08-01 13:54:57', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/4', 'DELETE', '', '4', '0', NULL);
+INSERT INTO `sys_log` VALUES (271, '1', '删除定时任务', 'test', 'admin', '2019-08-01 14:08:00', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/4', 'DELETE', '', '4', '0', NULL);
+INSERT INTO `sys_log` VALUES (272, '1', '暂停定时任务', 'test', 'admin', '2019-08-01 14:08:09', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-job/4', 'POST', '', '103', '0', NULL);
+INSERT INTO `sys_log` VALUES (273, '1', '启动定时任务', 'test', 'admin', '2019-08-01 15:10:55', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/start-job/4', 'POST', '', '171', '0', NULL);
+INSERT INTO `sys_log` VALUES (274, '1', '暂停定时任务', 'test', 'admin', '2019-08-01 15:17:42', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/job/shutdown-job/4', 'POST', '', '105', '0', NULL);
+INSERT INTO `sys_log` VALUES (275, '1', '添加菜单', 'test', 'admin', '2019-08-07 11:03:12', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'POST', '', '358', '0', NULL);
+INSERT INTO `sys_log` VALUES (276, '1', '修改菜单', 'test', 'admin', '2019-08-07 11:06:25', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '241', '0', NULL);
+INSERT INTO `sys_log` VALUES (277, '1', '更新角色菜单', 'test', 'admin', '2019-08-07 11:06:52', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2110%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3200%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '340', '0', NULL);
+INSERT INTO `sys_log` VALUES (278, '1', '修改菜单', 'test', 'admin', '2019-08-07 11:08:24', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '183', '0', NULL);
+INSERT INTO `sys_log` VALUES (279, '1', '修改路由', 'test', 'admin', '2019-08-07 11:09:15', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/route', 'PUT', '', '293', '0', NULL);
+INSERT INTO `sys_log` VALUES (280, '1', '修改路由', 'test', 'admin', '2019-08-07 11:10:07', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/route', 'PUT', '', '351', '0', NULL);
+INSERT INTO `sys_log` VALUES (281, '1', '添加菜单', 'test', 'admin', '2019-08-07 13:42:47', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'POST', '', '72', '0', NULL);
+INSERT INTO `sys_log` VALUES (282, '1', '更新角色菜单', 'test', 'admin', '2019-08-07 13:43:02', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2110%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3100%2C3200%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '178', '0', NULL);
+INSERT INTO `sys_log` VALUES (283, '1', '修改菜单', 'test', 'admin', '2019-08-07 13:43:45', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '36', '0', NULL);
+INSERT INTO `sys_log` VALUES (284, '1', '修改菜单', 'test', 'admin', '2019-08-07 13:49:15', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '53', '0', NULL);
+INSERT INTO `sys_log` VALUES (285, '1', '添加菜单', 'test', 'admin', '2019-08-07 16:21:53', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'POST', '', '70', '0', NULL);
+INSERT INTO `sys_log` VALUES (286, '1', '修改菜单', 'test', 'admin', '2019-08-07 16:22:35', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '63', '0', NULL);
+INSERT INTO `sys_log` VALUES (287, '1', '更新角色菜单', 'test', 'admin', '2019-08-07 16:22:48', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2110%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3100%2C3200%2C3300%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '263', '0', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1119,6 +1228,7 @@ INSERT INTO `sys_menu` VALUES (1403, '部门删除', 'sys_dept_del', NULL, 1400,
 INSERT INTO `sys_menu` VALUES (2000, '系统管理', NULL, '/admin', -1, 'icon-xitongguanli', 'Layout', 1, '0', '0', '2017-11-07 20:56:00', '2018-09-28 08:53:18', '0');
 INSERT INTO `sys_menu` VALUES (2100, '日志管理', NULL, 'log', 2000, 'icon-rizhiguanli', 'views/admin/log/index', 1, '0', '0', '2017-11-20 14:06:22', '2018-09-28 09:01:52', '0');
 INSERT INTO `sys_menu` VALUES (2101, '日志删除', 'sys_log_del', NULL, 2100, NULL, NULL, NULL, '0', '1', '2017-11-20 20:37:37', '2018-09-28 09:08:44', '0');
+INSERT INTO `sys_menu` VALUES (2110, '动态路由', NULL, 'route', 2000, 'icon-luyou', 'views/admin/route/index', 11, '0', '0', '2019-08-07 11:03:10', '2019-08-07 11:06:25', '0');
 INSERT INTO `sys_menu` VALUES (2200, '字典管理', NULL, 'dict', 2000, 'icon-navicon-zdgl', 'views/admin/dict/index', 2, '0', '0', '2017-11-29 11:30:52', '2018-09-28 09:01:47', '0');
 INSERT INTO `sys_menu` VALUES (2201, '字典删除', 'sys_dict_del', NULL, 2200, NULL, NULL, NULL, '0', '1', '2017-11-29 11:30:11', '2018-09-28 09:09:10', '0');
 INSERT INTO `sys_menu` VALUES (2202, '字典新增', 'sys_dict_add', NULL, 2200, NULL, NULL, NULL, '0', '1', '2018-05-11 22:34:55', '2018-09-28 09:09:12', '0');
@@ -1128,13 +1238,16 @@ INSERT INTO `sys_menu` VALUES (2400, '终端管理', '', 'client', 2000, 'icon-s
 INSERT INTO `sys_menu` VALUES (2500, '令牌管理', NULL, 'token', 2000, 'icon-denglvlingpai', 'views/admin/token/index', 5, '0', '0', '2019-07-03 16:03:28', '2019-07-03 16:04:02', '0');
 INSERT INTO `sys_menu` VALUES (2501, '令牌删除', 'sys_token_del', NULL, 2500, NULL, NULL, 1, '0', '1', '2019-07-03 17:36:20', '2019-07-03 17:41:56', '0');
 INSERT INTO `sys_menu` VALUES (2600, '代码生成', '', 'gen', 2000, 'icon-weibiaoti46', 'views/gen/index', 7, '0', '0', '2019-07-05 13:59:32', '2019-07-05 13:59:54', '0');
+INSERT INTO `sys_menu` VALUES (2700, 'Quartz 管理', NULL, 'quartz', 2000, 'icon-message', 'views/admin/quartz/index', 6, '0', '0', '2019-07-30 12:54:35', '2019-07-30 12:54:52', '0');
 INSERT INTO `sys_menu` VALUES (2800, '消息管理', NULL, 'message', 2000, 'icon-message', 'views/admin/message/index', 4, '0', '0', '2019-06-10 15:31:38', '2019-06-10 15:32:04', '0');
 INSERT INTO `sys_menu` VALUES (2801, '消息新增', 'sys_message_add', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:01', NULL, '0');
 INSERT INTO `sys_menu` VALUES (2802, '消息删除', 'sys_message_del', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:21', '2019-06-24 10:54:51', '0');
 INSERT INTO `sys_menu` VALUES (2803, '消息修改', 'sys_message_edit', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:34', '2019-06-24 10:54:58', '0');
 INSERT INTO `sys_menu` VALUES (2900, '支付管理', NULL, 'pay', 2000, 'icon-zhifu', 'views/admin/pay/index', 6, '0', '0', '2019-06-25 13:42:28', '2019-06-25 13:42:47', '0');
 INSERT INTO `sys_menu` VALUES (3000, '系统监控', NULL, '/daemon', -1, 'icon-msnui-supervise', 'Layout', 2, '0', '0', '2018-07-27 01:13:21', '2018-09-28 08:53:24', '0');
+INSERT INTO `sys_menu` VALUES (3100, '服务监控', NULL, 'http://127.0.0.1:9876', 3000, 'icon-fuwuqi', '', 1, '0', '0', '2019-08-07 13:42:47', '2019-08-07 13:43:45', '0');
 INSERT INTO `sys_menu` VALUES (3200, '接口文档', NULL, 'http://localhost:8081/doc.html', 3000, 'icon-wendang', NULL, 2, '0', '0', '2018-06-26 10:50:32', '2018-09-28 09:05:16', '0');
+INSERT INTO `sys_menu` VALUES (3300, '链路追踪', NULL, 'http://localhost:9411', 3000, 'icon-icon-p_mrpjinduzhuizong', NULL, 2, '0', '0', '2019-08-07 16:21:52', '2019-08-07 16:22:35', '0');
 INSERT INTO `sys_menu` VALUES (3600, '任务轨迹', '', 'status-trace-log', 3000, 'icon-guiji', 'views/daemon/status-trace-log/index', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 06:34:52', '0');
 INSERT INTO `sys_menu` VALUES (3601, '删除任务轨迹', 'daemon_status_trace_log_del', NULL, 3600, '1', NULL, 2, '0', '1', '2018-05-15 21:35:18', '2018-11-24 06:37:31', '0');
 INSERT INTO `sys_menu` VALUES (3900, '任务日志', '', 'execution-log', 3000, 'icon-rizhi', 'views/daemon/execution-log/index', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 06:34:52', '0');
@@ -1331,6 +1444,7 @@ INSERT INTO `sys_role_menu` VALUES (1, 1403);
 INSERT INTO `sys_role_menu` VALUES (1, 2000);
 INSERT INTO `sys_role_menu` VALUES (1, 2100);
 INSERT INTO `sys_role_menu` VALUES (1, 2101);
+INSERT INTO `sys_role_menu` VALUES (1, 2110);
 INSERT INTO `sys_role_menu` VALUES (1, 2200);
 INSERT INTO `sys_role_menu` VALUES (1, 2201);
 INSERT INTO `sys_role_menu` VALUES (1, 2202);
@@ -1340,13 +1454,16 @@ INSERT INTO `sys_role_menu` VALUES (1, 2400);
 INSERT INTO `sys_role_menu` VALUES (1, 2500);
 INSERT INTO `sys_role_menu` VALUES (1, 2501);
 INSERT INTO `sys_role_menu` VALUES (1, 2600);
+INSERT INTO `sys_role_menu` VALUES (1, 2700);
 INSERT INTO `sys_role_menu` VALUES (1, 2800);
 INSERT INTO `sys_role_menu` VALUES (1, 2801);
 INSERT INTO `sys_role_menu` VALUES (1, 2802);
 INSERT INTO `sys_role_menu` VALUES (1, 2803);
 INSERT INTO `sys_role_menu` VALUES (1, 2900);
 INSERT INTO `sys_role_menu` VALUES (1, 3000);
+INSERT INTO `sys_role_menu` VALUES (1, 3100);
 INSERT INTO `sys_role_menu` VALUES (1, 3200);
+INSERT INTO `sys_role_menu` VALUES (1, 3300);
 INSERT INTO `sys_role_menu` VALUES (1, 3600);
 INSERT INTO `sys_role_menu` VALUES (1, 3601);
 INSERT INTO `sys_role_menu` VALUES (1, 3900);
@@ -1384,19 +1501,20 @@ CREATE TABLE `sys_route_conf` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `del_flag` char(1) DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='路由配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='路由配置表';
 
 -- ----------------------------
 -- Records of sys_route_conf
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_route_conf` VALUES (1, '工作流管理模块', 'boot-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-activiti', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:25', '0');
-INSERT INTO `sys_route_conf` VALUES (2, '认证中心', 'boot-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://boot-auth', 0, '2019-01-17 16:42:50', '2019-06-28 17:07:40', '0');
-INSERT INTO `sys_route_conf` VALUES (4, '定时任务模块', 'pigx-daemon', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:50', '0');
-INSERT INTO `sys_route_conf` VALUES (5, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-01-17 16:42:50', '2019-06-28 17:11:22', '0');
-INSERT INTO `sys_route_conf` VALUES (6, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://boot-upms', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:03', '0');
-INSERT INTO `sys_route_conf` VALUES (7, '代码生成', 'boot-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-codegen', 0, '2019-01-17 16:42:50', '2019-06-28 17:10:03', '0');
-INSERT INTO `sys_route_conf` VALUES (9, '网盘管理', 'boot-pan', '[{\"args\": {\"_genkey_0\": \"/pan/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pan', 0, '2019-07-10 16:34:21', '2019-07-10 16:34:41', '0');
+INSERT INTO `sys_route_conf` VALUES (19, '工作流管理模块', 'boot-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-activiti', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (20, '认证中心', 'boot-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://boot-auth', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (21, '定时任务模块', 'boot-daemon-elastic-job', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-elastic-job', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (22, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (23, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://boot-upms', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (24, '代码生成', 'boot-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-codegen', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (25, '网盘管理', 'boot-pan', '[{\"args\": {\"_genkey_0\": \"/pan/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pan', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (26, 'Quartz定时任务', 'boot-daemon-quartz', '[{\"args\": {\"_genkey_0\": \"/quartz/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-quartz', 0, '2019-08-07 11:10:07', NULL, '0');
 COMMIT;
 
 -- ----------------------------
@@ -1451,7 +1569,7 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', NULL, '15077923572', '108bb2cc58464125a7fead9a31c88407.jpg', 1, '2018-04-20 07:15:18', '2019-07-16 12:56:51', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', '', '15077923572', '108bb2cc58464125a7fead9a31c88407.jpg', 1, '2018-04-20 07:15:18', '2019-08-06 17:48:56', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
 INSERT INTO `sys_user` VALUES (5, 'test', '$2a$10$8kRPVwZHyMi5Fq89Vf49aeOEtM.pKf5vHou3A4eVTE3q7xsz0B3Zu', NULL, '', 'http://img5.imgtn.bdimg.com/it/u=235810630,594632317&fm=26&gp=0.jpg', 11, '2019-05-23 17:47:13', '2019-06-06 15:07:45', '0', '0', NULL, NULL);
 COMMIT;
 
@@ -1475,6 +1593,48 @@ INSERT INTO `sys_user_role` VALUES (5, 2);
 COMMIT;
 
 -- ----------------------------
+-- Table structure for t_logger
+-- ----------------------------
+DROP TABLE IF EXISTS `t_logger`;
+CREATE TABLE `t_logger` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `group_id` varchar(64) NOT NULL,
+  `unit_id` varchar(32) NOT NULL,
+  `tag` varchar(50) NOT NULL,
+  `content` varchar(1024) NOT NULL,
+  `create_time` varchar(30) NOT NULL,
+  `app_name` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_logger
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_logger` VALUES (1, '3bf28f77812537', '6038a9c52373e8142bd993dd821b7d87', 'Transaction', 'business code error', '2019-08-06 17:47:36 463', 'boot-upms:8087');
+INSERT INTO `t_logger` VALUES (2, '3bf28f77812537', '13101be922098a8def2c79bcd4b16752', 'Transaction', 'business code error', '2019-08-06 17:47:36 651', 'boot-pan:8644');
+INSERT INTO `t_logger` VALUES (3, '3bf2a0d3b12537', '6038a9c52373e8142bd993dd821b7d87', 'Transaction', 'business code error', '2019-08-06 17:49:02 502', 'boot-upms:8087');
+INSERT INTO `t_logger` VALUES (4, '3bf2a0d3b12537', '13101be922098a8def2c79bcd4b16752', 'Transaction', 'business code error', '2019-08-06 17:49:02 575', 'boot-pan:8644');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_tx_exception
+-- ----------------------------
+DROP TABLE IF EXISTS `t_tx_exception`;
+CREATE TABLE `t_tx_exception` (
+  `id` bigint(20) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `ex_state` smallint(6) NOT NULL,
+  `group_id` varchar(60) DEFAULT NULL,
+  `mod_id` varchar(100) DEFAULT NULL,
+  `registrar` smallint(6) NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `transaction_state` int(11) DEFAULT NULL,
+  `unit_id` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Table structure for virtual_address
 -- ----------------------------
 DROP TABLE IF EXISTS `virtual_address`;
@@ -1484,12 +1644,12 @@ CREATE TABLE `virtual_address` (
   `file_name` varchar(255) NOT NULL COMMENT '上传文件名',
   `md5` varchar(255) DEFAULT NULL COMMENT 'MD5',
   `parent_id` bigint(255) NOT NULL DEFAULT '0' COMMENT '父路径',
-  `type` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '文件类型',
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '文件类型',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='虚拟地址表';
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COMMENT='虚拟地址表';
 
 -- ----------------------------
 -- Records of virtual_address
@@ -1500,9 +1660,21 @@ INSERT INTO `virtual_address` VALUES (27, NULL, '视频', NULL, 0, 'folder', '20
 INSERT INTO `virtual_address` VALUES (28, NULL, '音乐', NULL, 0, 'folder', '2019-07-12 12:57:40', '2019-07-12 12:57:40', '0');
 INSERT INTO `virtual_address` VALUES (29, NULL, '图片', NULL, 0, 'folder', '2019-07-12 12:57:48', '2019-07-12 12:57:48', '0');
 INSERT INTO `virtual_address` VALUES (30, NULL, '文档', NULL, 0, 'folder', '2019-07-12 12:57:55', '2019-07-12 12:57:55', '0');
-INSERT INTO `virtual_address` VALUES (57, 'b84bfce4-5851-466f-bf99-de4ac0289f64', 'Apache_Shiro参考手册中文版-converted.docx', 'afa9b6f3da3dd154aa46235d9db2ae21', 0, 'doc', '2019-07-19 14:08:35', '2019-07-19 14:08:35', '0');
-INSERT INTO `virtual_address` VALUES (58, '3b5ce218-8dc3-4f0a-ab52-c98e0795e806', '1294929-20181205144240125-1096993697.gif', '065037c8bec62bd0d836a0a416b1ef45', 0, 'picture', '2019-07-19 17:39:12', '2019-07-19 17:39:12', '0');
-INSERT INTO `virtual_address` VALUES (59, '274980ee-f958-4263-bef6-61e29b42a8e5', 'Netty 入门与实战：仿写微信 IM 即时通讯系统.docx', '7cf93301a3fcbab75f27704df13775cc', 0, 'doc', '2019-07-19 17:41:48', '2019-07-19 17:41:48', '0');
+INSERT INTO `virtual_address` VALUES (60, '4d7390d8-2f31-48e1-9c77-dae7573102b9', 'Apache_Shiro参考手册中文版-converted.docx', 'afa9b6f3da3dd154aa46235d9db2ae21', 0, 'doc', '2019-07-22 11:21:33', '2019-07-22 11:21:33', '0');
+INSERT INTO `virtual_address` VALUES (61, 'ca735c8a-5c5e-49d1-80da-86018459b248', 'order2019030125373483.xls', 'f1e92e38487c76bda23cebd321c34929', 0, 'default', '2019-07-22 14:11:55', '2019-07-22 14:11:55', '0');
+INSERT INTO `virtual_address` VALUES (62, '8d8e4aa8-4f89-4a88-8446-efa0afaf9ae6', '我的二次元不可能这么日常.txt', 'c6c9e828922bf7226d687c2ea7fa2440', 0, 'txt', '2019-07-22 14:13:35', '2019-07-22 14:13:35', '0');
+INSERT INTO `virtual_address` VALUES (63, 'ca735c8a-5c5e-49d1-80da-86018459b248', 'order2019030125373483.xls', 'f1e92e38487c76bda23cebd321c34929', 30, 'default', '2019-07-22 17:46:38', '2019-07-22 17:46:38', '0');
+INSERT INTO `virtual_address` VALUES (64, '895da13f-7c8a-472b-914e-992a666d4fda', 'test20190520.bpmn20.xml', 'd8b5003b02178e6322fe989764af406d', 30, 'default', '2019-07-22 17:47:36', '2019-07-22 17:47:36', '0');
+INSERT INTO `virtual_address` VALUES (65, '8d8e4aa8-4f89-4a88-8446-efa0afaf9ae6', '我的二次元不可能这么日常.txt', 'c6c9e828922bf7226d687c2ea7fa2440', 30, 'txt', '2019-07-22 17:48:04', '2019-07-22 17:48:04', '0');
+INSERT INTO `virtual_address` VALUES (66, '65cfbe51-337d-48ba-a267-2b2ff75b9bf3', '第五周作业.txt', '6bbdee466b4ac2a8a8db8b435179846f', 30, 'txt', '2019-07-22 17:48:56', '2019-07-22 17:48:56', '0');
+INSERT INTO `virtual_address` VALUES (67, '8d8e4aa8-4f89-4a88-8446-efa0afaf9ae6', '我的二次元不可能这么日常[6946761582].txt', 'c6c9e828922bf7226d687c2ea7fa2440', 30, 'txt', '2019-07-22 17:49:01', '2019-07-22 17:49:01', '0');
+INSERT INTO `virtual_address` VALUES (68, '7d3fe577-27fa-4814-8aec-237287e1b6ab', '大型电商分布式系统实践+-+第二课.pdf', 'd60c0cebd6b9d6ba2e8b87054ca7cf25', 30, 'pdf', '2019-07-22 17:49:10', '2019-07-22 17:49:10', '0');
+INSERT INTO `virtual_address` VALUES (69, 'fa8360cd-4167-42b6-80dd-97b30b309764', '1294929-20181205144240125-1096993697.gif', '065037c8bec62bd0d836a0a416b1ef45', 30, 'picture', '2019-07-22 17:49:25', '2019-07-22 17:49:25', '0');
+INSERT INTO `virtual_address` VALUES (70, '2f899be6-c396-43dc-9667-632dfc5fd334', '1.jpg', 'de036dcd7a0ecef75148a2c3150e676f', 29, 'picture', '2019-07-23 09:26:34', '2019-07-23 09:26:34', '0');
+INSERT INTO `virtual_address` VALUES (71, '0c8353b8-39f3-412b-b602-5ff568a813fd', '2.jpg', '0683f16d0fb52740a0e864b0567e48de', 29, 'picture', '2019-07-23 09:26:35', '2019-07-23 09:26:35', '0');
+INSERT INTO `virtual_address` VALUES (72, '1fbfdbd3-6b89-4f4e-a7af-d4f5757d2810', 'MybatisCodeHelperNew-2.7.1-IDEA173-IDEA192.zip', '53f8b69bec9030a75db42d401273fb72', 26, 'compress_file', '2019-07-23 11:19:17', '2019-07-23 11:19:17', '0');
+INSERT INTO `virtual_address` VALUES (73, 'cafd2d38-d7c3-44bd-bce9-70a05a8adbd7', '23.下一代微服务安全架构.mp4', '6f1e317d6d4787b70ee7459e32339d6a', 26, 'video', '2019-07-23 11:22:40', '2019-07-23 11:22:40', '0');
+INSERT INTO `virtual_address` VALUES (74, 'a436932d-8b98-47ef-be01-217f63fe5a3e', 'ideaIU-2019.1.2.dmg', 'ab9b561e2046cd192b89d80daaad1860', 26, 'default', '2019-07-23 11:23:31', '2019-07-23 11:23:31', '0');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

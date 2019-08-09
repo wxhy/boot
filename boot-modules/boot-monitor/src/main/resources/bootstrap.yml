@@ -1,0 +1,17 @@
+server:
+  port: 9876
+
+spring:
+  application:
+    name: boot-monitor
+  cloud:
+    nacos:
+      discovery:
+        server-addr: boot-nacos:8848
+        namespace: @nacosNamespace@
+      config:
+        namespace: @nacosNamespace@
+        shared-dataids: application.yml
+        refreshable-dataids: application.yml
+        file-extension: yml
+        server-addr: boot-nacos:8848

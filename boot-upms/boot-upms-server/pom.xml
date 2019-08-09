@@ -81,11 +81,6 @@
             <artifactId>boot-common-swagger</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.study</groupId>
-            <artifactId>boot-common-transaction</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
     </dependencies>
 

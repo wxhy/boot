@@ -1,0 +1,31 @@
+filebeat:
+  inputs:
+    - type: log
+      paths:
+        - ~/IdeaProjects/boot/logs/boot-upms/*.log
+      multiline:
+        pattern: ^\d{4}
+        negate: true
+        match: after
+      fields:
+        doc_type: boot-upms
+    - type: log
+      paths:
+        - ~/IdeaProjects/boot/logs/boot-activiti/*.log
+      multiline:
+        pattern: ^\d{4}
+        negate: true
+        match: after
+      fields:
+        doc_type: boot-activiti
+    - type: log
+      paths:
+        - ~/IdeaProjects/boot/logs/boot-gateway/*.log
+      multiline:
+        pattern: ^\d{4}
+        negate: true
+        match: after
+      fields:
+        doc_type: boot-gateway
+output.logstash: # 输出地址
+  hosts: ["192.168.1.187:9886"]
