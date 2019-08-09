@@ -63,37 +63,11 @@
 		</filter>
 	</appender>
 
-	<!-- 为logstash输出的JSON格式的Appender -->
-	<appender name="logstash"
-			  class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>127.0.0.1:9866</destination>
-		<!-- 日志输出编码 -->
-		<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" >
-			<providers>
-				<timestamp>
-					<timeZone>UTC</timeZone>
-				</timestamp>
-				<pattern>
-					<pattern>
-						{
-						"logLevel": "%level",
-						"serviceName": "${springAppName:-}",
-						"pid": "${PID:-}",
-						"thread": "%thread",
-						"class": "%logger{40}",
-						"rest": "%message"
-						}
-					</pattern>
-				</pattern>
-			</providers>
-		</encoder>
-	</appender>
 
 	<!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
 	<root level="INFO">
 		<appender-ref ref="console"/>
 		<appender-ref ref="debug"/>
 		<appender-ref ref="error"/>
-		<appender-ref ref="logstash" />
 	</root>
 </configuration>

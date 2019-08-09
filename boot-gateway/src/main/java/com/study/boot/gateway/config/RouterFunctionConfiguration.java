@@ -11,26 +11,23 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 
 /**
  * 路由配置信息
+ *
  * @author Administrator
  */
 @Configuration
 @AllArgsConstructor
 public class RouterFunctionConfiguration {
 
-    private final HystrixFallbackHandler hystrixFallbackHandler;
     private final ImageCodeHandler imageCodeHandler;
     private final SwaggerResourceHandler swaggerResourceHandler;
     private final SwaggerSecurityHandler swaggerSecurityHandler;
     private final SwaggerUiHandler swaggerUiHandler;
 
     @Bean
-    public RouterFunction  routerFunction(){
+    public RouterFunction routerFunction() {
         return RouterFunctions.route(
-                RequestPredicates.path("/fallback")
-                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),hystrixFallbackHandler)
-                .andRoute(RequestPredicates.GET("/code")
-                                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN))
-                        ,imageCodeHandler)
+                RequestPredicates.path("/code")
+                        .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), imageCodeHandler)
                 .andRoute(RequestPredicates.GET("/swagger-resources")
                         .and(RequestPredicates.accept(MediaType.ALL)), swaggerResourceHandler)
                 .andRoute(RequestPredicates.GET("/swagger-resources/configuration/ui")
