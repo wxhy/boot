@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName(value = "sys_job_log")
+@EqualsAndHashCode(callSuper = true)
 public class SysJobLog extends Model<SysJobLog> {
     /**
      * 任务日志ID
