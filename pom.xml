@@ -36,7 +36,7 @@
         <curator.version>2.10.0</curator.version>
         <zipkin.version>2.12.9</zipkin.version>
         <txlcn.version>5.0.2.RELEASE</txlcn.version>
-        <nacos.namespace>68c0bdb8-5c07-4f8e-a00c-b3d797ada803</nacos.namespace>
+        <nacos.namespace>23805b54-c4b2-45bb-8655-79decb76927a</nacos.namespace>
     </properties>
 
     <profiles>

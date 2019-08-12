@@ -51,3 +51,15 @@ alipay:
   signType: RSA2
   charset: utf-8
   paramType: json
+
+
+
+com:
+  alibaba:
+    nacos:
+      config:
+        log:
+          level: warn
+      naming:
+        log:
+          level: warn

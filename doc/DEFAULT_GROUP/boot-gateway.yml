@@ -9,3 +9,16 @@ security:
   encode:
     # 前端密码密钥，必须16位
     key: 'thanks1234567890'
+
+
+
+
+com:
+  alibaba:
+    nacos:
+      config:
+        log:
+          level: warn
+      naming:
+        log:
+          level: warn

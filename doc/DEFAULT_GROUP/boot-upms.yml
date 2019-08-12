@@ -40,3 +40,16 @@ qiniu:
   secretKey: VbTcSVpXEyGkUCo2WEdVnzT3mnqWn0gtnXde9sBU
   bucket: carloseva
   path: http://pupx0cp1o.bkt.clouddn.com/
+
+
+
+
+com:
+  alibaba:
+    nacos:
+      config:
+        log:
+          level: warn
+      naming:
+        log:
+          level: warn

@@ -1,6 +1,6 @@
 package com.study.boot.common.config;
 
-import org.springframework.cloud.alibaba.sentinel.annotation.SentinelRestTemplate;
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

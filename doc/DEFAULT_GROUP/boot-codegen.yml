@@ -14,3 +14,13 @@ security:
       client-id: test
       client-secret: test
       scope: server
+
+com:
+  alibaba:
+    nacos:
+      config:
+        log:
+          level: warn
+      naming:
+        log:
+          level: warn

@@ -27,3 +27,14 @@ security:
 
 flowable:
   check-process-definitions: false
+
+
+com:
+  alibaba:
+    nacos:
+      config:
+        log:
+          level: warn
+      naming:
+        log:
+          level: warn
