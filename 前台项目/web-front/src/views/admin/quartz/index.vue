@@ -25,13 +25,13 @@
           >{{scope.row.$jobExecuteStatus}}</el-tag>
         </template>
         <template slot-scope="scope" slot="cronExpressionForm">
+         <div class="cron">
           <el-popover v-model="cronPopover">
-            <vueCron
+            <cron
               @change="changeCron"
               @close="cronPopover=false"
-              :data="quartz_job.cronExpression"
               i18n="cn"
-            ></vueCron>
+            ></cron>
             <el-input
               slot="reference"
               @click="cronPopover=true"
@@ -39,6 +39,7 @@
               placeholder="请输入定时策略"
             ></el-input>
           </el-popover>
+         </div>
         </template>
 
         <template slot="menuLeft">
@@ -115,9 +116,11 @@ import {
 } from "@/api/admin/quartz";
 import { tableOption, logTableOption } from "@/const/crud/admin/quartz";
 import { mapGetters } from "vuex";
+import { cron } from 'vue-cron'
 
 export default {
   name: "quartz",
+  components: { cron },
   data() {
     return {
       tableData: [],

@@ -3,6 +3,9 @@ package com.study.boot.gateway.filter;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.Mode;
+import cn.hutool.crypto.Padding;
+import cn.hutool.crypto.symmetric.AES;
 import cn.hutool.http.HttpUtil;
 import com.study.boot.common.constants.SecurityConstants;
 import lombok.SneakyThrows;
@@ -15,10 +18,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
-import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 
@@ -38,12 +41,11 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 
     @SneakyThrows
     private static String decryptAES(String data, String pass) {
-        Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
-        SecretKeySpec keyspec = new SecretKeySpec(pass.getBytes(), KEY_ALGORITHM);
-        IvParameterSpec ivspec = new IvParameterSpec(pass.getBytes());
-        cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
-        byte[] result = cipher.doFinal(Base64.decode(data.getBytes(CharsetUtil.UTF_8)));
-        return new String(result, CharsetUtil.UTF_8);
+        AES aes = new AES(Mode.CBC, Padding.NoPadding,
+                new SecretKeySpec(pass.getBytes(), KEY_ALGORITHM),
+                new IvParameterSpec(pass.getBytes()));
+        byte[] result = aes.decrypt(Base64.decode(data.getBytes(StandardCharsets.UTF_8)));
+        return new String(result, StandardCharsets.UTF_8);
     }
 
     @Override

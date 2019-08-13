@@ -1,25 +1,10 @@
-/*
- *    Copyright (c) 2018-2025, lengleng All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright
- * notice, this list of conditions and the following disclaimer in the
- * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- * Author: lengleng (wangiegie@gmail.com)
- */
+
 import { getDetails } from '@/api/admin/user'
 
 var validateUsername = (rule, value, callback) => {
   getDetails(value).then(response => {
     if (window.boxType === 'edit') callback()
-    let result = response.data.data
+    const result = response.data.data
     if (result !== null) {
       callback(new Error('用户名已经存在'))
     } else {
@@ -31,6 +16,7 @@ export const tableOption = {
   border: true,
   index: true,
   indexLabel: '序号',
+  stripe: true,
   menuAlign: 'center',
   editBtn: false,
   delBtn: false,
@@ -43,13 +29,13 @@ export const tableOption = {
     span: 24,
     hide: true,
     editDisabled: true,
-    addVisdiplay: false
+    addDisplay: false
   }, {
     fixed: true,
     label: '用户名',
     prop: 'username',
     editDisabled: true,
-    solt: true,
+    slot: true,
     search: true,
     span: 24,
     rules: [{
@@ -80,35 +66,34 @@ export const tableOption = {
   }, {
     label: '所属部门',
     prop: 'deptId',
+    formslot: true,
+    slot: true,
     span: 24,
     hide: true,
-    slot:true,
-    formslot:true,
-    typeslot:true,
     rules: [{
       required: true,
       message: '请选择部门',
-      trigger: 'blur'
+      trigger: 'change'
     }]
   }, {
     label: '手机号',
     prop: 'phone',
-    type: 'phone',
+    type: 'tel',
     value: '',
     span: 24,
     rules: [{
-      min: 6,
-      max: 20,
+      min: 11,
+      max: 11,
       message: '长度在 11 个字符',
       trigger: 'blur'
     }]
   }, {
     label: '角色',
     prop: 'role',
+    formslot: true,
+    slot: true,
+    overHidden: true,
     span: 24,
-    slot:true,
-    formslot:true,
-    typeslot:true,
     rules: [{
       required: true,
       message: '请选择角色',
@@ -118,7 +103,7 @@ export const tableOption = {
     label: '状态',
     prop: 'lockFlag',
     type: 'select',
-    slot:true,
+    slot: true,
     span: 24,
     rules: [{
       required: true,
@@ -140,7 +125,7 @@ export const tableOption = {
     format: 'yyyy-MM-dd HH:mm',
     valueFormat: 'yyyy-MM-dd HH:mm:ss',
     editDisabled: true,
-    addVisdiplay: false,
+    addDisplay: false,
     span: 24
   }]
 }

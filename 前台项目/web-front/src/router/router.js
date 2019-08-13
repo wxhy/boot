@@ -1,10 +1,12 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageRouter from './page/'
 import ViewsRouter from './views/'
 import AvueRouter from './avue-router'
 import Store from '../store/'
-let Router = new VueRouter({
-  scrollBehavior (to, from, savedPosition) {
+Vue.use(VueRouter)
+const Router = new VueRouter({
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {

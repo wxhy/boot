@@ -1,5 +1,6 @@
 import { validatenull } from './validate'
 import request from '@/router/axios'
+import * as CryptoJS from 'crypto-js'
 
 // 表单序列化
 export const serialize = data => {
@@ -305,6 +306,25 @@ export const openWindow = (url, title, w, h) => {
     newWindow.focus()
   }
 }
+
+export function getQueryString(url, paraName) {
+  const arrObj = url.split('?')
+  if (arrObj.length > 1) {
+    const arrPara = arrObj[1].split('&')
+    let arr
+    for (let i = 0; i < arrPara.length; i++) {
+      arr = arrPara[i].split('=')
+      // eslint-disable-next-line eqeqeq
+      if (arr != null && arr[0] == paraName) {
+        return arr[1]
+      }
+    }
+    return ''
+  } else {
+    return ''
+  }
+}
+
 
 /**
  *  <img> <a> src 处理

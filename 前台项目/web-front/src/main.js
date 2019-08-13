@@ -5,7 +5,6 @@ import axios from './router/axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
 import uploader from 'vue-simple-uploader'
-import VueCron from 'vue-cron'
 import App from './App'
 import './permission' // 权限
 import './error' // 日志
@@ -15,12 +14,12 @@ import { loadStyle } from './util/util'
 import * as urls from '@/config/env'
 import { iconfontUrl, iconfontVersion } from '@/config/env'
 import * as filters from './filters' // 全局filter
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
 import './styles/common.scss'
 
-// 引入avue的包
-import Avue from '@smallwei/avue';
-// 引入avue的样式文件
-import '@smallwei/avue/lib/index.css';
 import basicContainer from './components/basic-container/main'
 // 插件 json 展示
 import vueJsonTreeView from 'vue-json-tree-view'
@@ -29,11 +28,6 @@ import AvueEditor from './components/AvueEditor'
 //用户抽屉选择
 import AvueUserSelect from './components/UserSelect'
 
-import { validatenull } from '@/util/validate'
-
-Vue.prototype.validatenull = validatenull
-
-Vue.use(Avue, { menuType: 'text' })
 
 Vue.use(router)
 
@@ -41,11 +35,20 @@ Vue.use(vueJsonTreeView)
 
 Vue.use(VueAxios, axios)
 
+Vue.use(ElementUI,{
+  size: 'medium',
+  menuType: 'text'
+})
+
+Vue.use(window.AVUE, {
+  size: 'medium',
+  menuType: 'text'
+})
+
+
 Vue.use(VueLazyload)
 
 Vue.use(uploader)
-
-Vue.use(VueCron)
 
 
 // 注册富文本框容器
