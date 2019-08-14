@@ -3,8 +3,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
-    username: root
-    password: 123456
+    username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+    password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 1
@@ -38,8 +38,8 @@ oss:
 qiniu:
   accessKey: 3QwcYlLnnsmKAb_y2thYWhMthLnLJE4BhgEg5CMP
   secretKey: VbTcSVpXEyGkUCo2WEdVnzT3mnqWn0gtnXde9sBU
-  bucket: carloseva
-  path: http://pupx0cp1o.bkt.clouddn.com/
+  bucket: ceshieva
+  path: http://pw625v2wl.bkt.clouddn.com/
 
 
 

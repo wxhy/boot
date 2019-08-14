@@ -3,8 +3,8 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://boot-mysql:3306/boot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
+    username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+    password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
     hikari:
       auto-commit: false
       connection-timeout: 30000

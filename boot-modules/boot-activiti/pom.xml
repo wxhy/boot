@@ -96,5 +96,23 @@
                 <version>${dockerfile.plugin.version}</version>
             </plugin>
         </plugins>
+
+        <!--配置打包时字体文件不被maven拷贝，导致字体文件破坏-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.woff</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.woff</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>
