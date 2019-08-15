@@ -20,13 +20,6 @@ module.exports = {
   // 配置转发代理
   devServer: {
     proxy: {
-      '/oss': {
-        target: 'http://localhost:9000',
-        ws: true,
-        pathRewrite: {
-          '^/oss': '/oss'
-        }
-      },
       '/quartz': {
         target: url,
         ws: true,

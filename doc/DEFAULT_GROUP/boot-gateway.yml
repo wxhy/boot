@@ -11,14 +11,3 @@ security:
     key: 'thanks1234567890'
 
 
-
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

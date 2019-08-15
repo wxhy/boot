@@ -98,37 +98,26 @@ security:
 swagger:
   title: PigX Swagger API
   description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
-#  host: http://boot-gateway:8081
-  version: 1.0
-  license: Powered By PigX
-  licenseUrl: https://pig4cloud.com/
-  terms-of-service-url: https://pig4cloud.com/
+  host: http://127.0.0.1:8081
+  version: 2.0
+  license: Powered By Boot
+  licenseUrl: http://www.group.com/
+  terms-of-service-url: http://www.group.com/
   contact:
-    name: 冷冷
+    name: Boot
     email: wangiegie@gmail.com
-    url: https://pig4cloud.com/about.html
+    url: http://www.group.com/
   authorization:
-    name: pigX OAuth
+    name:  OAuth
     auth-regex: ^.*$
     authorization-scope-list:
       - scope: server
         description: server all
   token-url-list:
-    - http://boot-auth:3300/auth/oauth/token
+    - http://boot-gateway:8081/auth/oauth/token
 
 ##  Minio 文件系统
 minio:
   url: http://boot-minio:9000
   accessKey: admin
   secretKey: 12345678
-
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

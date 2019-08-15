@@ -53,13 +53,3 @@ alipay:
   paramType: json
 
 
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

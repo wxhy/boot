@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Administrator
  */
-@FeignClient(value = ServiceNameConstants.UMPS_SERVICE)
+@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.UMPS_SERVICE)
 public interface RemoteUserService {
 
 
@@ -35,7 +35,8 @@ public interface RemoteUserService {
 
 
     /**
-     *  通过社交账号或手机号查询用户、角色信息
+     * 通过社交账号或手机号查询用户、角色信息
+     *
      * @param inStr type@code
      * @param from
      * @return
@@ -55,12 +56,11 @@ public interface RemoteUserService {
 
     /**
      * 获取路由
+     *
      * @return
      */
     @GetMapping("/route")
     WebResponse<List<SysRouteConf>> routes();
 
 
-    @GetMapping("/user/lcn")
-    WebResponse testLcn();
 }

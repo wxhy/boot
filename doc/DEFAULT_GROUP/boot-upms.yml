@@ -42,14 +42,3 @@ qiniu:
   path: http://pw625v2wl.bkt.clouddn.com/
 
 
-
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

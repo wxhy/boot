@@ -1,10 +1,10 @@
 package com.study.boot.pan;
 
+import com.study.boot.common.auth.annoation.EnableBootFeignClients;
 import com.study.boot.common.auth.annoation.EnableBootResourceServer;
 import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author Administrator
@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringCloudApplication
 @EnableBootSwagger
 @EnableBootResourceServer
-@EnableFeignClients(basePackages = {"com.study.boot"})
+@EnableBootFeignClients
 public class BootPanApplication {
 
     public static void main(String[] args) {

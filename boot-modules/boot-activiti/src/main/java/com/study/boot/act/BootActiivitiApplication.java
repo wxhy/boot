@@ -1,10 +1,10 @@
 package com.study.boot.act;
 
+import com.study.boot.common.auth.annoation.EnableBootFeignClients;
 import com.study.boot.common.auth.annoation.EnableBootResourceServer;
 import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author Carlos
@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @date 2019/5/28 19:32
  */
 @SpringCloudApplication
-@EnableFeignClients(basePackages ={"com.study.boot"})
+@EnableBootFeignClients
 @EnableBootResourceServer
 @EnableBootSwagger
 public class BootActiivitiApplication {

@@ -26,7 +26,9 @@ export default [
       'icon-liuliang',
       'icon-fuwuqi',
       'icon-jiankong',
-      'icon-icon-p_mrpjinduzhuizong'
+      'icon-icon-p_mrpjinduzhuizong',
+      'icon-icon_workfile_line',
+      'icon-wangpan'
 
    
     ]

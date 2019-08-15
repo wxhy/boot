@@ -3,6 +3,8 @@ server:
 
 
 spring:
+  profiles:
+    active: dev
   application:
     name: boot-auth
   cloud:
@@ -16,8 +18,7 @@ spring:
         refreshable-dataids: application.yml
         file-extension: yml
         server-addr: boot-nacos:8848
-  main:
-    allow-bean-definition-overriding: true
+
 
 
 

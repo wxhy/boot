@@ -1,12 +1,12 @@
 package com.study.boot.daemon.quartz;
 
 
+import com.study.boot.common.auth.annoation.EnableBootFeignClients;
 import com.study.boot.common.auth.annoation.EnableBootResourceServer;
 import com.study.boot.common.swagger.annoation.EnableBootSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author carlos
@@ -15,7 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableBootResourceServer
 @EnableBootSwagger
-@EnableFeignClients(basePackages = {"com.study.boot"})
+@EnableBootFeignClients
 public class BootDaemonQuartzApplication {
 
 

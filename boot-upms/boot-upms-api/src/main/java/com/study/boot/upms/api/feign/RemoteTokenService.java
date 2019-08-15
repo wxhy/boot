@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author Administrator
  */
-@FeignClient(value = ServiceNameConstants.AUTH_SERVICE)
+@FeignClient(contextId = "remoteTokenService", value = ServiceNameConstants.AUTH_SERVICE)
 public interface RemoteTokenService {
 
     /**

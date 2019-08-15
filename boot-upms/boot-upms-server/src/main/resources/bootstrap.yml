@@ -12,7 +12,6 @@ spring:
       config:
         namespace: @nacosNamespace@
         shared-dataids: application.yml
-        refreshable-dataids: application.yml
         file-extension: yml
         server-addr: boot-nacos:8848
   main:

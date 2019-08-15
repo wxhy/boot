@@ -15,14 +15,7 @@
         @selection-change="selectionChange"
         @row-del="rowDel"
       >
-        <template slot-scope="scope" slot="url">
-          <img
-            :id="scope.row.fkey"
-            :src="handleImg(scope.row.fkey,scope.row.fkey)"
-            @click="openPreview(scope.row)"
-            class="imgStyle"
-          />
-        </template>
+       
         <template slot="menuLeft">
           <el-button
             class="filter-item"
@@ -32,14 +25,6 @@
             icon="el-icon-upload"
           >上传</el-button>
           <el-button class="filter-item" @click="handleDelBatch" size="small" type="danger">批量删除</el-button>
-        </template>
-        <template slot-scope="scope" slot="menu">
-          <el-button
-            type="text"
-            icon="el-icon-delete"
-            size="mini"
-            @click="handleDel(scope.row,scope.index)"
-          >删除</el-button>
         </template>
       </avue-crud>
     </basic-container>
@@ -123,9 +108,6 @@ export default {
         this.page.total = response.data.data.total;
         this.tableLoading = false;
       });
-    },
-    handleDel(row, index) {
-      this.$refs.crud.rowDel(row, index);
     },
     selectionChange(val) {
       this.selections = val;

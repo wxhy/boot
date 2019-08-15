@@ -37,14 +37,3 @@ security:
         - /actuator/**
         - /v2/api-docs
 
-
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

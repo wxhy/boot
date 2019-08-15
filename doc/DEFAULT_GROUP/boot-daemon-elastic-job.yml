@@ -53,13 +53,3 @@ spring:
           completed-timeout-milliseconds: 10000
 
 
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

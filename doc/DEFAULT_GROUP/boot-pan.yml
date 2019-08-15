@@ -20,14 +20,3 @@ security:
         - /virtualaddress/download/*
 
 
-
-
-com:
-  alibaba:
-    nacos:
-      config:
-        log:
-          level: warn
-      naming:
-        log:
-          level: warn

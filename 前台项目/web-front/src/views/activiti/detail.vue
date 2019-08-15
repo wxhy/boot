@@ -37,7 +37,7 @@
     methods: {
       breaks() {
         this.$router.$avueRouter.closeTag();
-        this.$router.push({path: '/activti/activiti'})
+        this.$router.push({path: '/activti/index'})
       }
     }
   }

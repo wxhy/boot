@@ -11,10 +11,11 @@ export const tableOption = {
   showClomnuBtn: true,
   searchSize: 'mini',
   selection: true,
+  labelWidth:150,
   addBtn: false,
   editBtn: false,
-  delBtn: false,
-  viewBtn: false,
+  delBtn: true,
+  viewBtn: true,
   props: {
     label: 'label',
     value: 'value'
@@ -27,10 +28,6 @@ export const tableOption = {
     label: '存储文件名',
     prop: 'fkey',
     search: true
-  }, {
-    label: '缩略图(点击预览)',
-    slot: true,
-    prop: 'url'
   }, {
     label: '文件类型',
     prop: 'type'
@@ -50,5 +47,14 @@ export const tableOption = {
     type: 'datetime',
     format: 'yyyy-MM-dd HH:mm',
     valueFormat: 'yyyy-MM-dd HH:mm:ss'
+  }, {
+    label: '缩略图(点击预览)',
+    type: 'upload',
+    imgWidth: 100,
+    imgFullscreen: true,
+    editDisplay: false,
+    addDisplay: false,
+    listType: 'picture-img',
+    prop: 'url'
   }]
 }

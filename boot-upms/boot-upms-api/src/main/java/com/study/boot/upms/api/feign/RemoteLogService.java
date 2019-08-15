@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestHeader;
 /**
  * @author Administrator
  */
-@FeignClient(value = ServiceNameConstants.UMPS_SERVICE)
+@FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.UMPS_SERVICE)
 @FunctionalInterface
 public interface RemoteLogService {
 
 
     /**
      * 保存日志
+     *
      * @param sysLog
      * @param from
      * @return

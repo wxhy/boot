@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SwaggerProvider implements SwaggerResourcesProvider {
 
-    private static final String API_URI = "/v2/api-docs";
+    public static final String API_URI = "/v2/api-docs";
     private final RouteDefinitionRepository routeDefinitionRepository;
 
     @Override
@@ -49,6 +49,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
         swaggerResource.setSwaggerVersion("2.0");
+        System.out.println(location);
         return swaggerResource;
     }
 }

@@ -5,6 +5,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -27,6 +28,7 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 @EnableAutoConfiguration
+@ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
 public class SwaggerAutoConfiguration {
 
     /**
@@ -65,8 +67,8 @@ public class SwaggerAutoConfiguration {
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
                 .paths(Predicates.and(Predicates.not(Predicates.or(excludePath)), Predicates.or(basePath)))
                 .build()
-//                .securitySchemes(Collections.singletonList(securitySchema()))
-//                .securityContexts(Collections.singletonList(securityContext()))
+                .securitySchemes(Collections.singletonList(securitySchema()))
+                .securityContexts(Collections.singletonList(securityContext()))
                 .pathMapping("/");
     }
 
@@ -100,7 +102,10 @@ public class SwaggerAutoConfiguration {
 
     private OAuth securitySchema() {
         ArrayList<AuthorizationScope> authorizationScopeList = new ArrayList<>();
-        swaggerProperties().getAuthorization().getAuthorizationScopeList().forEach(authorizationScope -> authorizationScopeList.add(new AuthorizationScope(authorizationScope.getScope(), authorizationScope.getDescription())));
+        swaggerProperties()
+                .getAuthorization()
+                .getAuthorizationScopeList()
+                .forEach(authorizationScope -> authorizationScopeList.add(new AuthorizationScope(authorizationScope.getScope(), authorizationScope.getDescription())));
         ArrayList<GrantType> grantTypes = new ArrayList<>();
         swaggerProperties().getAuthorization().getTokenUrlList().forEach(tokenUrl -> grantTypes.add(new ResourceOwnerPasswordCredentialsGrant(tokenUrl)));
         return new OAuth(swaggerProperties().getAuthorization().getName(), authorizationScopeList, grantTypes);
