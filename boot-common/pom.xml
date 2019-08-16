@@ -21,6 +21,8 @@
         <module>boot-common-message</module>
         <module>boot-common-transaction</module>
         <module>boot-common-gateway</module>
+        <module>boot-common-datasource</module>
+        <!--        <module>boot-common-datasource</module>-->
     </modules>
 
 

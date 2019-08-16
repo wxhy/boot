@@ -61,7 +61,7 @@ public class MenuController {
      */
     @GetMapping("/tree")
     public WebResponse getTree(){
-        return new WebResponse<>(TreeUtils.buildTree(sysMenuService.list(Wrappers.emptyWrapper()),-1));
+        return new WebResponse<>(TreeUtils.buildTree(sysMenuService.list(Wrappers.<SysMenu>query().orderByAsc(SysMenu.COL_SORT)),-1));
     }
 
     /**

@@ -21,7 +21,6 @@ spring:
     exclude: org.springframework.cloud.gateway.config.GatewayAutoConfiguration,org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration
 
 
-logging:
-  level:
-    com:
-      codingapi: debug
+
+
+

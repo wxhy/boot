@@ -71,4 +71,7 @@ public class SysMenu extends Model<SysMenu> {
      * 0--正常 1--删除
      */
     private String delFlag;
+
+
+    public static final String COL_SORT = "sort";
 }

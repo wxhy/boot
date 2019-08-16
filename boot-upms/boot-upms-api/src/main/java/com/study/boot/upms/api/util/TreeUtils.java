@@ -99,6 +99,7 @@ public class TreeUtils {
             node.setLabel(menu.getName());
             node.setIcon(menu.getIcon());
             node.setKeepAlive(menu.getKeepAlive());
+            node.setSort(menu.getSort());
             trees.add(node);
         }
         return TreeUtils.buildByLoop(trees, root);
