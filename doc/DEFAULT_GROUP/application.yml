@@ -96,19 +96,19 @@ security:
 
 #swagger公共信息
 swagger:
-  title: PigX Swagger API
-  description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
-  host: http://127.0.0.1:8081
+  title:  Swagger API
+  description: Spring Cloud微服务开发脚手架
   version: 2.0
-  license: Powered By Boot
-  licenseUrl: http://www.group.com/
-  terms-of-service-url: http://www.group.com/
+  host: 127.0.0.1:8081
+  license: Powered By
+  licenseUrl: #
+  terms-of-service-url: #
   contact:
-    name: Boot
-    email: wangiegie@gmail.com
-    url: http://www.group.com/
+    name: user
+    email: user@gmail.com
+    url: #
   authorization:
-    name:  OAuth
+    name: oauth
     auth-regex: ^.*$
     authorization-scope-list:
       - scope: server

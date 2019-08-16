@@ -49,7 +49,6 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
         swaggerResource.setSwaggerVersion("2.0");
-        System.out.println(location);
         return swaggerResource;
     }
 }

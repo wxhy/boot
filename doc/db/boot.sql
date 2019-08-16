@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 07/08/2019 17:02:16
+ Date: 16/08/2019 17:36:27
 */
 
 SET NAMES utf8mb4;
@@ -944,7 +944,7 @@ CREATE TABLE `sys_log` (
   KEY `sys_log_request_uri` (`request_uri`) USING BTREE,
   KEY `sys_log_type` (`type`) USING BTREE,
   KEY `sys_log_create_date` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=288 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=337 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='日志表';
 
 -- ----------------------------
 -- Records of sys_log
@@ -1180,6 +1180,55 @@ INSERT INTO `sys_log` VALUES (284, '1', '修改菜单', 'test', 'admin', '2019-0
 INSERT INTO `sys_log` VALUES (285, '1', '添加菜单', 'test', 'admin', '2019-08-07 16:21:53', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'POST', '', '70', '0', NULL);
 INSERT INTO `sys_log` VALUES (286, '1', '修改菜单', 'test', 'admin', '2019-08-07 16:22:35', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/menu', 'PUT', '', '63', '0', NULL);
 INSERT INTO `sys_log` VALUES (287, '1', '更新角色菜单', 'test', 'admin', '2019-08-07 16:22:48', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2110%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3100%2C3200%2C3300%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '263', '0', NULL);
+INSERT INTO `sys_log` VALUES (288, '1', '添加菜单', 'test', 'admin', '2019-08-12 13:30:49', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '66', '0', NULL);
+INSERT INTO `sys_log` VALUES (289, '1', '更新角色菜单', 'test', 'admin', '2019-08-12 13:31:01', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2110%2C2200%2C2201%2C2202%2C2203%2C2300%2C2400%2C2500%2C2501%2C2600%2C2700%2C2800%2C2801%2C2802%2C2803%2C2900%2C3000%2C3100%2C3200%2C3300%2C3400%2C3600%2C3601%2C3900%2C3901%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C5000%2C%5D', '335', '0', NULL);
+INSERT INTO `sys_log` VALUES (290, '1', '修改菜单', 'test', 'admin', '2019-08-12 13:34:14', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '260', '0', NULL);
+INSERT INTO `sys_log` VALUES (291, '1', '删除菜单', 'test', 'admin', '2019-08-13 16:58:31', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/1500', 'DELETE', '', '11', '0', NULL);
+INSERT INTO `sys_log` VALUES (292, '1', '删除菜单', 'test', 'admin', '2019-08-13 16:58:34', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/1501', 'DELETE', '', '158', '0', NULL);
+INSERT INTO `sys_log` VALUES (293, '1', '删除菜单', 'test', 'admin', '2019-08-13 16:58:37', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/1502', 'DELETE', '', '84', '0', NULL);
+INSERT INTO `sys_log` VALUES (294, '1', '删除菜单', 'test', 'admin', '2019-08-13 16:58:40', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/1503', 'DELETE', '', '104', '0', NULL);
+INSERT INTO `sys_log` VALUES (295, '1', '删除菜单', 'test', 'admin', '2019-08-13 16:58:43', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/1500', 'DELETE', '', '108', '0', NULL);
+INSERT INTO `sys_log` VALUES (296, '1', '修改菜单', 'test', 'admin', '2019-08-13 16:59:49', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '96', '0', NULL);
+INSERT INTO `sys_log` VALUES (297, '1', '修改会员个人信息', 'test', 'admin', '2019-08-13 17:00:08', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/user/edit', 'PUT', '', '101', '0', NULL);
+INSERT INTO `sys_log` VALUES (298, '1', '修改会员个人信息', 'test', 'admin', '2019-08-13 17:01:36', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/user/edit', 'PUT', '', '53', '0', NULL);
+INSERT INTO `sys_log` VALUES (299, '1', '修改会员个人信息', 'test', 'admin', '2019-08-13 17:02:45', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/user/edit', 'PUT', '', '66', '0', NULL);
+INSERT INTO `sys_log` VALUES (300, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:05:41', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3700', 'DELETE', '', '129', '0', NULL);
+INSERT INTO `sys_log` VALUES (301, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:07:35', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3300', 'DELETE', '', '94', '0', NULL);
+INSERT INTO `sys_log` VALUES (302, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:07:42', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3400', 'DELETE', '', '91', '0', NULL);
+INSERT INTO `sys_log` VALUES (303, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:07:51', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3500', 'DELETE', '', '93', '0', NULL);
+INSERT INTO `sys_log` VALUES (304, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:07:59', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3620', 'DELETE', '', '82', '0', NULL);
+INSERT INTO `sys_log` VALUES (305, '1', '修改菜单', 'test', 'admin', '2019-08-13 17:34:39', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '73', '0', NULL);
+INSERT INTO `sys_log` VALUES (306, '1', '修改菜单', 'test', 'admin', '2019-08-13 17:35:00', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '6', '0', NULL);
+INSERT INTO `sys_log` VALUES (307, '1', '修改菜单', 'test', 'admin', '2019-08-13 17:36:56', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '63', '0', NULL);
+INSERT INTO `sys_log` VALUES (308, '1', '修改菜单', 'test', 'admin', '2019-08-13 17:37:30', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '61', '0', NULL);
+INSERT INTO `sys_log` VALUES (309, '1', '添加菜单', 'test', 'admin', '2019-08-13 17:41:41', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '80', '0', NULL);
+INSERT INTO `sys_log` VALUES (310, '1', '修改菜单', 'test', 'admin', '2019-08-13 17:45:48', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '51', '0', NULL);
+INSERT INTO `sys_log` VALUES (311, '1', '更新角色菜单', 'test', 'admin', '2019-08-13 17:46:17', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2210%2C2211%2C2212%2C2213%2C2300%2C2400%2C2401%2C2402%2C2403%2C2500%2C2501%2C2502%2C2503%2C2600%2C2601%2C2700%2C2800%2C2810%2C2820%2C2830%2C2840%2C2850%2C2860%2C3000%2C3100%2C3110%2C3200%2C3600%2C3601%2C3630%2C10002%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C%5D', '287', '0', NULL);
+INSERT INTO `sys_log` VALUES (312, '1', '删除菜单', 'test', 'admin', '2019-08-13 17:47:09', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/3110', 'DELETE', '', '105', '0', NULL);
+INSERT INTO `sys_log` VALUES (313, '1', '添加菜单', 'test', 'admin', '2019-08-13 17:48:34', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '68', '0', NULL);
+INSERT INTO `sys_log` VALUES (314, '1', '更新角色菜单', 'test', 'admin', '2019-08-13 17:48:43', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2210%2C2211%2C2212%2C2213%2C2300%2C2400%2C2401%2C2402%2C2403%2C2500%2C2501%2C2502%2C2503%2C2600%2C2601%2C2700%2C2800%2C2810%2C2820%2C2830%2C2840%2C2850%2C2860%2C3000%2C3100%2C3200%2C3600%2C3601%2C3630%2C10002%2C10003%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C%5D', '274', '0', NULL);
+INSERT INTO `sys_log` VALUES (315, '1', '添加菜单', 'test', 'admin', '2019-08-14 15:18:26', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '71', '0', NULL);
+INSERT INTO `sys_log` VALUES (316, '1', '添加菜单', 'test', 'admin', '2019-08-14 15:18:28', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '73', '0', NULL);
+INSERT INTO `sys_log` VALUES (317, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:18:40', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/10004', 'DELETE', '', '175', '0', NULL);
+INSERT INTO `sys_log` VALUES (318, '1', '更新角色菜单', 'test', 'admin', '2019-08-14 15:18:53', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2210%2C2211%2C2212%2C2213%2C2300%2C2400%2C2401%2C2402%2C2403%2C2500%2C2501%2C2502%2C2503%2C2600%2C2601%2C2700%2C2800%2C2810%2C2820%2C2830%2C2840%2C2850%2C2860%2C3000%2C3100%2C3200%2C3600%2C3601%2C3630%2C10002%2C10003%2C10005%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C%5D', '256', '0', NULL);
+INSERT INTO `sys_log` VALUES (319, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:20:40', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/10005', 'DELETE', '', '81', '0', NULL);
+INSERT INTO `sys_log` VALUES (320, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:34:19', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/2501', 'DELETE', '', '97', '0', NULL);
+INSERT INTO `sys_log` VALUES (321, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:34:22', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/2502', 'DELETE', '', '74', '0', NULL);
+INSERT INTO `sys_log` VALUES (322, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:34:28', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/2503', 'DELETE', '', '69', '0', NULL);
+INSERT INTO `sys_log` VALUES (323, '1', '删除菜单', 'test', 'admin', '2019-08-14 15:35:23', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu/2500', 'DELETE', '', '81', '0', NULL);
+INSERT INTO `sys_log` VALUES (324, '1', '添加菜单', 'test', 'admin', '2019-08-14 15:38:20', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '154', '0', NULL);
+INSERT INTO `sys_log` VALUES (325, '1', '修改菜单', 'test', 'admin', '2019-08-14 15:38:54', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '100', '0', NULL);
+INSERT INTO `sys_log` VALUES (326, '1', '更新角色菜单', 'test', 'admin', '2019-08-14 15:39:16', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2210%2C2211%2C2212%2C2213%2C2300%2C2400%2C2401%2C2402%2C2403%2C2600%2C2601%2C2700%2C2800%2C2810%2C2820%2C2830%2C2840%2C2850%2C2860%2C10006%2C3000%2C3100%2C3200%2C3600%2C3601%2C3630%2C10002%2C10003%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C%5D', '266', '0', NULL);
+INSERT INTO `sys_log` VALUES (327, '1', '修改会员个人信息', 'test', 'admin', '2019-08-14 15:48:50', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/user/edit', 'PUT', '', '66', '0', NULL);
+INSERT INTO `sys_log` VALUES (328, '1', '添加菜单', 'test', 'admin', '2019-08-14 16:04:08', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'POST', '', '39', '0', NULL);
+INSERT INTO `sys_log` VALUES (329, '1', '修改菜单', 'test', 'admin', '2019-08-14 16:04:37', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '42', '0', NULL);
+INSERT INTO `sys_log` VALUES (330, '1', '更新角色菜单', 'test', 'admin', '2019-08-14 16:04:45', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/role/menu', 'PUT', 'roleId=%5B1%5D&menuIds=%5B1000%2C1100%2C1101%2C1102%2C1103%2C1200%2C1201%2C1202%2C1203%2C1300%2C1301%2C1302%2C1303%2C1304%2C1400%2C1401%2C1402%2C1403%2C2000%2C2100%2C2101%2C2200%2C2201%2C2202%2C2203%2C2210%2C2211%2C2212%2C2213%2C2300%2C2400%2C2401%2C2402%2C2403%2C2600%2C2601%2C2700%2C2800%2C2810%2C2820%2C2830%2C2840%2C2850%2C2860%2C10006%2C3000%2C3100%2C3200%2C3600%2C3601%2C3630%2C10002%2C10003%2C4000%2C4100%2C4101%2C4200%2C4201%2C4300%2C4301%2C4302%2C4303%2C4400%2C4401%2C10007%2C%5D', '270', '0', NULL);
+INSERT INTO `sys_log` VALUES (331, '1', '修改菜单', 'test', 'admin', '2019-08-14 16:05:49', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '66', '0', NULL);
+INSERT INTO `sys_log` VALUES (332, '1', '修改路由', 'test', 'admin', '2019-08-15 14:20:00', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/route', 'PUT', '', '221', '0', NULL);
+INSERT INTO `sys_log` VALUES (333, '1', '修改菜单', 'test', 'admin', '2019-08-16 13:22:10', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '98', '0', NULL);
+INSERT INTO `sys_log` VALUES (334, '1', '修改菜单', 'test', 'admin', '2019-08-16 13:22:13', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '77', '0', NULL);
+INSERT INTO `sys_log` VALUES (335, '1', '修改菜单', 'test', 'admin', '2019-08-16 13:22:17', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '76', '0', NULL);
+INSERT INTO `sys_log` VALUES (336, '1', '修改菜单', 'test', 'admin', '2019-08-16 13:22:20', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '/menu', 'PUT', '', '131', '0', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1187,83 +1236,91 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu` (
-  `menu_id` int(11) NOT NULL COMMENT '菜单ID',
+  `menu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `name` varchar(32) NOT NULL COMMENT '菜单名称',
   `permission` varchar(32) DEFAULT NULL COMMENT '菜单权限标识',
   `path` varchar(128) DEFAULT NULL COMMENT '前端URL',
   `parent_id` int(11) DEFAULT NULL COMMENT '父菜单ID',
   `icon` varchar(32) DEFAULT NULL COMMENT '图标',
-  `component` varchar(64) DEFAULT NULL COMMENT 'VUE页面',
   `sort` int(11) DEFAULT '1' COMMENT '排序值',
   `keep_alive` char(1) DEFAULT '0' COMMENT '0-开启，1- 关闭',
   `type` char(1) DEFAULT NULL COMMENT '菜单类型 （0菜单 1按钮）',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `del_flag` char(1) DEFAULT '0' COMMENT '逻辑删除标记(0--正常 1--删除)',
-  PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='菜单权限表';
+  PRIMARY KEY (`menu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10008 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='菜单权限表';
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_menu` VALUES (1000, '权限管理', NULL, '/upms', -1, 'icon-quanxianguanli', 'Layout', 0, '0', '0', '2018-09-28 08:29:53', '2018-09-28 08:53:01', '0');
-INSERT INTO `sys_menu` VALUES (1100, '用户管理', NULL, 'user', 1000, 'icon-yonghuguanli', 'views/admin/user/index', 1, '0', '0', '2017-11-02 22:24:37', '2018-09-28 09:00:41', '0');
-INSERT INTO `sys_menu` VALUES (1101, '用户新增', 'sys_user_add', NULL, 1100, NULL, NULL, NULL, '0', '1', '2017-11-08 09:52:09', '2018-09-28 09:06:34', '0');
-INSERT INTO `sys_menu` VALUES (1102, '用户修改', 'sys_user_edit', NULL, 1100, NULL, NULL, NULL, '0', '1', '2017-11-08 09:52:48', '2018-09-28 09:06:37', '0');
-INSERT INTO `sys_menu` VALUES (1103, '用户删除', 'sys_user_del', NULL, 1100, NULL, NULL, NULL, '0', '1', '2017-11-08 09:54:01', '2018-09-28 09:06:42', '0');
-INSERT INTO `sys_menu` VALUES (1200, '菜单管理', NULL, 'menu', 1000, 'icon-caidanguanli', 'views/admin/menu/index', 2, '0', '0', '2017-11-08 09:57:27', '2018-09-28 09:00:45', '0');
-INSERT INTO `sys_menu` VALUES (1201, '菜单新增', 'sys_menu_add', NULL, 1200, NULL, NULL, NULL, '0', '1', '2017-11-08 10:15:53', '2018-09-28 09:07:16', '0');
-INSERT INTO `sys_menu` VALUES (1202, '菜单修改', 'sys_menu_edit', NULL, 1200, NULL, NULL, NULL, '0', '1', '2017-11-08 10:16:23', '2018-09-28 09:07:18', '0');
-INSERT INTO `sys_menu` VALUES (1203, '菜单删除', 'sys_menu_del', NULL, 1200, NULL, NULL, NULL, '0', '1', '2017-11-08 10:16:43', '2018-09-28 09:07:22', '0');
-INSERT INTO `sys_menu` VALUES (1300, '角色管理', NULL, 'role', 1000, 'icon-jiaoseguanli', 'views/admin/role/index', 3, '0', '0', '2017-11-08 10:13:37', '2018-09-28 09:00:48', '0');
-INSERT INTO `sys_menu` VALUES (1301, '角色新增', 'sys_role_add', NULL, 1300, NULL, NULL, NULL, '0', '1', '2017-11-08 10:14:18', '2018-09-28 09:07:46', '0');
-INSERT INTO `sys_menu` VALUES (1302, '角色修改', 'sys_role_edit', NULL, 1300, NULL, NULL, NULL, '0', '1', '2017-11-08 10:14:41', '2018-09-28 09:07:49', '0');
-INSERT INTO `sys_menu` VALUES (1303, '角色删除', 'sys_role_del', NULL, 1300, NULL, NULL, NULL, '0', '1', '2017-11-08 10:14:59', '2018-09-28 09:07:53', '0');
-INSERT INTO `sys_menu` VALUES (1304, '分配权限', 'sys_role_perm', NULL, 1300, NULL, NULL, NULL, '0', '1', '2018-04-20 07:22:55', '2018-09-28 09:13:23', '0');
-INSERT INTO `sys_menu` VALUES (1400, '部门管理', NULL, 'dept', 1000, 'icon-web-icon-', 'views/admin/dept/index', 4, '0', '0', '2018-01-20 13:17:19', '2018-12-09 16:35:12', '0');
-INSERT INTO `sys_menu` VALUES (1401, '部门新增', 'sys_dept_add', NULL, 1400, NULL, NULL, NULL, '0', '1', '2018-01-20 14:56:16', '2018-09-28 09:08:13', '0');
-INSERT INTO `sys_menu` VALUES (1402, '部门修改', 'sys_dept_edit', NULL, 1400, NULL, NULL, NULL, '0', '1', '2018-01-20 14:56:59', '2018-09-28 09:08:16', '0');
-INSERT INTO `sys_menu` VALUES (1403, '部门删除', 'sys_dept_del', NULL, 1400, NULL, NULL, NULL, '0', '1', '2018-01-20 14:57:28', '2018-09-28 09:08:18', '0');
-INSERT INTO `sys_menu` VALUES (2000, '系统管理', NULL, '/admin', -1, 'icon-xitongguanli', 'Layout', 1, '0', '0', '2017-11-07 20:56:00', '2018-09-28 08:53:18', '0');
-INSERT INTO `sys_menu` VALUES (2100, '日志管理', NULL, 'log', 2000, 'icon-rizhiguanli', 'views/admin/log/index', 1, '0', '0', '2017-11-20 14:06:22', '2018-09-28 09:01:52', '0');
-INSERT INTO `sys_menu` VALUES (2101, '日志删除', 'sys_log_del', NULL, 2100, NULL, NULL, NULL, '0', '1', '2017-11-20 20:37:37', '2018-09-28 09:08:44', '0');
-INSERT INTO `sys_menu` VALUES (2110, '动态路由', NULL, 'route', 2000, 'icon-luyou', 'views/admin/route/index', 11, '0', '0', '2019-08-07 11:03:10', '2019-08-07 11:06:25', '0');
-INSERT INTO `sys_menu` VALUES (2200, '字典管理', NULL, 'dict', 2000, 'icon-navicon-zdgl', 'views/admin/dict/index', 2, '0', '0', '2017-11-29 11:30:52', '2018-09-28 09:01:47', '0');
-INSERT INTO `sys_menu` VALUES (2201, '字典删除', 'sys_dict_del', NULL, 2200, NULL, NULL, NULL, '0', '1', '2017-11-29 11:30:11', '2018-09-28 09:09:10', '0');
-INSERT INTO `sys_menu` VALUES (2202, '字典新增', 'sys_dict_add', NULL, 2200, NULL, NULL, NULL, '0', '1', '2018-05-11 22:34:55', '2018-09-28 09:09:12', '0');
-INSERT INTO `sys_menu` VALUES (2203, '字典修改', 'sys_dict_edit', NULL, 2200, NULL, NULL, NULL, '0', '1', '2018-05-11 22:36:03', '2018-09-28 09:09:16', '0');
-INSERT INTO `sys_menu` VALUES (2300, '文件对象存储', NULL, 'oss', 2000, 'icon-icon_workfile_line', 'views/admin/oss/index', 8, '0', '0', '2019-06-18 13:10:36', '2019-06-18 13:12:18', '0');
-INSERT INTO `sys_menu` VALUES (2400, '终端管理', '', 'client', 2000, 'icon-shouji', 'views/admin/client/index', 3, '0', '0', '2018-01-20 13:17:19', '2018-09-28 09:01:43', '0');
-INSERT INTO `sys_menu` VALUES (2500, '令牌管理', NULL, 'token', 2000, 'icon-denglvlingpai', 'views/admin/token/index', 5, '0', '0', '2019-07-03 16:03:28', '2019-07-03 16:04:02', '0');
-INSERT INTO `sys_menu` VALUES (2501, '令牌删除', 'sys_token_del', NULL, 2500, NULL, NULL, 1, '0', '1', '2019-07-03 17:36:20', '2019-07-03 17:41:56', '0');
-INSERT INTO `sys_menu` VALUES (2600, '代码生成', '', 'gen', 2000, 'icon-weibiaoti46', 'views/gen/index', 7, '0', '0', '2019-07-05 13:59:32', '2019-07-05 13:59:54', '0');
-INSERT INTO `sys_menu` VALUES (2700, 'Quartz 管理', NULL, 'quartz', 2000, 'icon-message', 'views/admin/quartz/index', 6, '0', '0', '2019-07-30 12:54:35', '2019-07-30 12:54:52', '0');
-INSERT INTO `sys_menu` VALUES (2800, '消息管理', NULL, 'message', 2000, 'icon-message', 'views/admin/message/index', 4, '0', '0', '2019-06-10 15:31:38', '2019-06-10 15:32:04', '0');
-INSERT INTO `sys_menu` VALUES (2801, '消息新增', 'sys_message_add', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:01', NULL, '0');
-INSERT INTO `sys_menu` VALUES (2802, '消息删除', 'sys_message_del', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:21', '2019-06-24 10:54:51', '0');
-INSERT INTO `sys_menu` VALUES (2803, '消息修改', 'sys_message_edit', NULL, 2800, NULL, NULL, 1, '0', '1', '2019-06-24 10:54:34', '2019-06-24 10:54:58', '0');
-INSERT INTO `sys_menu` VALUES (2900, '支付管理', NULL, 'pay', 2000, 'icon-zhifu', 'views/admin/pay/index', 6, '0', '0', '2019-06-25 13:42:28', '2019-06-25 13:42:47', '0');
-INSERT INTO `sys_menu` VALUES (3000, '系统监控', NULL, '/daemon', -1, 'icon-msnui-supervise', 'Layout', 2, '0', '0', '2018-07-27 01:13:21', '2018-09-28 08:53:24', '0');
-INSERT INTO `sys_menu` VALUES (3100, '服务监控', NULL, 'http://127.0.0.1:9876', 3000, 'icon-fuwuqi', '', 1, '0', '0', '2019-08-07 13:42:47', '2019-08-07 13:43:45', '0');
-INSERT INTO `sys_menu` VALUES (3200, '接口文档', NULL, 'http://localhost:8081/doc.html', 3000, 'icon-wendang', NULL, 2, '0', '0', '2018-06-26 10:50:32', '2018-09-28 09:05:16', '0');
-INSERT INTO `sys_menu` VALUES (3300, '链路追踪', NULL, 'http://localhost:9411', 3000, 'icon-icon-p_mrpjinduzhuizong', NULL, 2, '0', '0', '2019-08-07 16:21:52', '2019-08-07 16:22:35', '0');
-INSERT INTO `sys_menu` VALUES (3600, '任务轨迹', '', 'status-trace-log', 3000, 'icon-guiji', 'views/daemon/status-trace-log/index', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 06:34:52', '0');
-INSERT INTO `sys_menu` VALUES (3601, '删除任务轨迹', 'daemon_status_trace_log_del', NULL, 3600, '1', NULL, 2, '0', '1', '2018-05-15 21:35:18', '2018-11-24 06:37:31', '0');
-INSERT INTO `sys_menu` VALUES (3900, '任务日志', '', 'execution-log', 3000, 'icon-rizhi', 'views/daemon/execution-log/index', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 06:34:52', '0');
-INSERT INTO `sys_menu` VALUES (3901, '删除日志', 'daemon_execution_log_del', NULL, 3900, '1', NULL, 2, '0', '1', '2018-05-15 21:35:18', '2018-11-24 06:39:03', '0');
-INSERT INTO `sys_menu` VALUES (4000, '协同管理', NULL, '/activti', -1, 'icon-kuaisugongzuoliu_o', 'Layout', 3, '0', '0', '2018-09-26 01:38:13', '2018-09-28 08:58:24', '0');
-INSERT INTO `sys_menu` VALUES (4100, '模型管理', NULL, 'activiti', 4000, 'icon-weibiaoti13', 'views/activiti/index', 1, '0', '0', '2018-09-26 01:39:07', '2018-12-09 16:35:16', '0');
-INSERT INTO `sys_menu` VALUES (4101, '模型管理', 'act_model_manage', NULL, 4100, '1', NULL, 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
-INSERT INTO `sys_menu` VALUES (4200, '流程管理', NULL, 'process', 4000, 'icon-liucheng', 'views/activiti/process', 2, '0', '0', '2018-09-26 06:41:05', '2018-11-23 14:25:33', '0');
-INSERT INTO `sys_menu` VALUES (4201, '流程管理', 'act_process_manage', NULL, 4200, '1', NULL, 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
-INSERT INTO `sys_menu` VALUES (4300, '请假管理', '', 'leavebill', 4000, 'icon-qingjia', 'views/activiti/leave', 3, '0', '0', '2018-01-20 13:17:19', '2018-12-09 16:35:20', '0');
-INSERT INTO `sys_menu` VALUES (4301, '请假新增', 'act_leavebill_add', NULL, 4300, '1', NULL, 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
-INSERT INTO `sys_menu` VALUES (4302, '请假修改', 'act_leavebill_edit', NULL, 4300, '1', NULL, 1, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:09', '0');
-INSERT INTO `sys_menu` VALUES (4303, '请假删除', 'act_leavebill_del', NULL, 4300, '1', NULL, 2, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:14', '0');
-INSERT INTO `sys_menu` VALUES (4400, '待办任务', NULL, 'task', 4000, 'icon-renwu', 'views/activiti/task', 4, '0', '0', '2018-09-27 09:52:31', '2018-12-09 16:35:26', '0');
-INSERT INTO `sys_menu` VALUES (4401, '流程管理', 'act_task_manage', NULL, 4400, '1', NULL, 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
-INSERT INTO `sys_menu` VALUES (5000, '网盘管理', NULL, '/pan', -1, 'icon-wangpan', 'views/pan/index', 5, '0', '0', '2019-07-10 09:14:30', '2019-07-10 09:14:42', '0');
+INSERT INTO `sys_menu` VALUES (1000, '权限管理', NULL, '/user', -1, 'icon-quanxianguanli', 0, '0', '0', '2018-09-28 08:29:53', '2018-09-28 08:53:01', '0');
+INSERT INTO `sys_menu` VALUES (1100, '用户管理', NULL, '/admin/user/index', 1000, 'icon-yonghuguanli', 1, '1', '0', '2017-11-02 22:24:37', '2019-06-24 14:36:36', '0');
+INSERT INTO `sys_menu` VALUES (1101, '用户新增', 'sys_user_add', NULL, 1100, NULL, NULL, '0', '1', '2017-11-08 09:52:09', '2018-09-28 09:06:34', '0');
+INSERT INTO `sys_menu` VALUES (1102, '用户修改', 'sys_user_edit', NULL, 1100, NULL, NULL, '0', '1', '2017-11-08 09:52:48', '2018-09-28 09:06:37', '0');
+INSERT INTO `sys_menu` VALUES (1103, '用户删除', 'sys_user_del', NULL, 1100, NULL, NULL, '0', '1', '2017-11-08 09:54:01', '2018-09-28 09:06:42', '0');
+INSERT INTO `sys_menu` VALUES (1200, '菜单管理', NULL, '/admin/menu/index', 1000, 'icon-caidanguanli', 2, '0', '0', '2017-11-08 09:57:27', '2019-06-24 14:42:07', '0');
+INSERT INTO `sys_menu` VALUES (1201, '菜单新增', 'sys_menu_add', NULL, 1200, NULL, NULL, '0', '1', '2017-11-08 10:15:53', '2018-09-28 09:07:16', '0');
+INSERT INTO `sys_menu` VALUES (1202, '菜单修改', 'sys_menu_edit', NULL, 1200, NULL, NULL, '0', '1', '2017-11-08 10:16:23', '2018-09-28 09:07:18', '0');
+INSERT INTO `sys_menu` VALUES (1203, '菜单删除', 'sys_menu_del', NULL, 1200, NULL, NULL, '0', '1', '2017-11-08 10:16:43', '2018-09-28 09:07:22', '0');
+INSERT INTO `sys_menu` VALUES (1300, '角色管理', NULL, '/admin/role/index', 1000, 'icon-jiaoseguanli', 3, '0', '0', '2017-11-08 10:13:37', '2018-09-28 09:00:48', '0');
+INSERT INTO `sys_menu` VALUES (1301, '角色新增', 'sys_role_add', NULL, 1300, NULL, NULL, '0', '1', '2017-11-08 10:14:18', '2018-09-28 09:07:46', '0');
+INSERT INTO `sys_menu` VALUES (1302, '角色修改', 'sys_role_edit', NULL, 1300, NULL, NULL, '0', '1', '2017-11-08 10:14:41', '2018-09-28 09:07:49', '0');
+INSERT INTO `sys_menu` VALUES (1303, '角色删除', 'sys_role_del', NULL, 1300, NULL, NULL, '0', '1', '2017-11-08 10:14:59', '2018-09-28 09:07:53', '0');
+INSERT INTO `sys_menu` VALUES (1304, '分配权限', 'sys_role_perm', NULL, 1300, NULL, NULL, '0', '1', '2018-04-20 07:22:55', '2018-09-28 09:13:23', '0');
+INSERT INTO `sys_menu` VALUES (1400, '部门管理', NULL, '/admin/dept/index', 1000, 'icon-web-icon-', 4, '0', '0', '2018-01-20 13:17:19', '2018-12-09 16:35:12', '0');
+INSERT INTO `sys_menu` VALUES (1401, '部门新增', 'sys_dept_add', NULL, 1400, NULL, NULL, '0', '1', '2018-01-20 14:56:16', '2018-09-28 09:08:13', '0');
+INSERT INTO `sys_menu` VALUES (1402, '部门修改', 'sys_dept_edit', NULL, 1400, NULL, NULL, '0', '1', '2018-01-20 14:56:59', '2018-09-28 09:08:16', '0');
+INSERT INTO `sys_menu` VALUES (1403, '部门删除', 'sys_dept_del', NULL, 1400, NULL, NULL, '0', '1', '2018-01-20 14:57:28', '2018-09-28 09:08:18', '0');
+INSERT INTO `sys_menu` VALUES (2000, '系统管理', NULL, '/admin', -1, 'icon-xitongguanli', 1, '0', '0', '2017-11-07 20:56:00', '2018-09-28 08:53:18', '0');
+INSERT INTO `sys_menu` VALUES (2100, '日志管理', NULL, '/admin/log/index', 2000, 'icon-rizhiguanli', 5, '0', '0', '2017-11-20 14:06:22', '2018-09-28 09:01:52', '0');
+INSERT INTO `sys_menu` VALUES (2101, '日志删除', 'sys_log_del', NULL, 2100, NULL, NULL, '0', '1', '2017-11-20 20:37:37', '2018-09-28 09:08:44', '0');
+INSERT INTO `sys_menu` VALUES (2200, '字典管理', NULL, '/admin/dict/index', 2000, 'icon-navicon-zdgl', 6, '0', '0', '2017-11-29 11:30:52', '2018-09-28 09:01:47', '0');
+INSERT INTO `sys_menu` VALUES (2201, '字典删除', 'sys_dict_del', NULL, 2200, NULL, NULL, '0', '1', '2017-11-29 11:30:11', '2018-09-28 09:09:10', '0');
+INSERT INTO `sys_menu` VALUES (2202, '字典新增', 'sys_dict_add', NULL, 2200, NULL, NULL, '0', '1', '2018-05-11 22:34:55', '2018-09-28 09:09:12', '0');
+INSERT INTO `sys_menu` VALUES (2203, '字典修改', 'sys_dict_edit', NULL, 2200, NULL, NULL, '0', '1', '2018-05-11 22:36:03', '2018-09-28 09:09:16', '0');
+INSERT INTO `sys_menu` VALUES (2210, '参数管理', NULL, '/admin/param/index', 2000, 'icon-canshu', 7, '1', '0', '2019-04-29 22:16:50', '2019-06-24 14:52:00', '0');
+INSERT INTO `sys_menu` VALUES (2211, '参数新增', 'admin_syspublicparam_add', NULL, 2210, NULL, 1, '0', '1', '2019-04-29 22:17:36', NULL, '0');
+INSERT INTO `sys_menu` VALUES (2212, '参数删除', 'admin_syspublicparam_del', NULL, 2210, NULL, 1, '0', '1', '2019-04-29 22:17:55', NULL, '0');
+INSERT INTO `sys_menu` VALUES (2213, '参数编辑', 'admin_syspublicparam_edit', NULL, 2210, NULL, 1, '0', '1', '2019-04-29 22:18:14', '2019-04-29 22:19:25', '0');
+INSERT INTO `sys_menu` VALUES (2300, '代码生成', '', '/gen/index', 2000, 'icon-weibiaoti46', 8, '0', '0', '2018-01-20 13:17:19', '2018-11-24 05:21:01', '0');
+INSERT INTO `sys_menu` VALUES (2400, '终端管理', '', '/admin/client/index', 2000, 'icon-shouji', 9, '0', '0', '2018-01-20 13:17:19', '2018-09-28 09:01:43', '0');
+INSERT INTO `sys_menu` VALUES (2401, '客户端新增', 'sys_client_add', NULL, 2400, '1', NULL, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:10:25', '0');
+INSERT INTO `sys_menu` VALUES (2402, '客户端修改', 'sys_client_edit', NULL, 2400, NULL, NULL, '0', '1', '2018-05-15 21:37:06', '2018-09-28 09:10:27', '0');
+INSERT INTO `sys_menu` VALUES (2403, '客户端删除', 'sys_client_del', NULL, 2400, NULL, NULL, '0', '1', '2018-05-15 21:39:16', '2018-09-28 09:10:30', '0');
+INSERT INTO `sys_menu` VALUES (2600, '令牌管理', NULL, '/admin/token/index', 2000, 'icon-denglvlingpai', 11, '0', '0', '2018-09-04 05:58:41', '2018-09-28 09:01:38', '0');
+INSERT INTO `sys_menu` VALUES (2601, '令牌删除', 'sys_token_del', NULL, 2600, NULL, 1, '0', '1', '2018-09-04 05:59:50', '2018-09-28 09:11:24', '0');
+INSERT INTO `sys_menu` VALUES (2700, '动态路由', NULL, '/admin/route/index', 2000, 'icon-luyou', 12, '0', '0', '2018-09-04 05:58:41', '2019-06-24 15:14:28', '0');
+INSERT INTO `sys_menu` VALUES (2800, 'Quartz管理', '', '/admin/quartz/index', 2000, 'icon-guanwangfangwen', 8, '0', '0', '2018-01-20 13:17:19', '2019-03-25 13:52:14', '0');
+INSERT INTO `sys_menu` VALUES (2810, '任务新增', 'job_sys_job_add', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:23', '0');
+INSERT INTO `sys_menu` VALUES (2820, '任务修改', 'job_sys_job_edit', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:26', '0');
+INSERT INTO `sys_menu` VALUES (2830, '任务删除', 'job_sys_job_del', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:30', '0');
+INSERT INTO `sys_menu` VALUES (2840, '任务暂停', 'job_sys_job_shutdown_job', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:18', '0');
+INSERT INTO `sys_menu` VALUES (2850, '任务开始', 'job_sys_job_start_job', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:35', '0');
+INSERT INTO `sys_menu` VALUES (2860, '任务刷新', 'job_sys_job_refresh_job', NULL, 2800, '1', 0, '0', '1', '2018-05-15 21:35:18', '2019-03-25 11:50:39', '0');
+INSERT INTO `sys_menu` VALUES (3000, '系统监控', NULL, '/daemon', -1, 'icon-msnui-supervise', 2, '0', '0', '2018-07-27 01:13:21', '2018-09-28 08:53:24', '0');
+INSERT INTO `sys_menu` VALUES (3100, '服务监控', NULL, 'http://127.0.0.1:9876', 3000, 'icon-server', 0, '0', '0', '2018-06-26 10:50:32', '2019-05-01 23:54:05', '0');
+INSERT INTO `sys_menu` VALUES (3200, '接口文档', NULL, 'http://127.0.0.1:8081/doc.html', 3000, 'icon-wendang', 1, '0', '0', '2018-06-26 10:50:32', '2019-05-01 23:57:11', '0');
+INSERT INTO `sys_menu` VALUES (3600, '任务轨迹', '', '/daemon/status-trace-log/index', 3000, 'icon-guiji', 5, '0', '0', '2018-01-20 13:17:19', '2019-06-24 15:18:41', '0');
+INSERT INTO `sys_menu` VALUES (3601, '删除轨迹', 'daemon_status_trace_log_del', NULL, 3600, '1', 2, '0', '1', '2018-05-15 21:35:18', '2019-03-30 09:31:06', '0');
+INSERT INTO `sys_menu` VALUES (3630, '任务日志', '', '/daemon/execution-log/index', 3000, 'icon-wendang', 4, '0', '0', '2018-01-20 13:17:19', '2019-06-24 15:19:07', '0');
+INSERT INTO `sys_menu` VALUES (3631, '删除日志', 'daemon_execution_log_del', NULL, 3900, '1', 2, '0', '1', '2018-05-15 21:35:18', '2019-03-30 09:30:45', '0');
+INSERT INTO `sys_menu` VALUES (4000, '协同管理', NULL, '/activti', -1, 'icon-kuaisugongzuoliu_o', 3, '0', '0', '2018-09-26 01:38:13', '2018-09-28 08:58:24', '0');
+INSERT INTO `sys_menu` VALUES (4100, '模型管理', NULL, '/activiti/index', 4000, 'icon-weibiaoti13', 1, '0', '0', '2018-09-26 01:39:07', '2019-06-24 15:20:00', '0');
+INSERT INTO `sys_menu` VALUES (4101, '模型管理', 'act_model_manage', NULL, 4100, '1', 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
+INSERT INTO `sys_menu` VALUES (4200, '流程管理', '/activiti/process', '/activiti/process', 4000, 'icon-liucheng', 2, '0', '0', '2018-09-26 06:41:05', '2019-06-24 08:31:07', '0');
+INSERT INTO `sys_menu` VALUES (4201, '流程管理', 'act_process_manage', NULL, 4200, '1', 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
+INSERT INTO `sys_menu` VALUES (4300, '请假管理', '/activiti/leave', '/activiti/leave', 4000, 'icon-qingjia', 3, '0', '0', '2018-01-20 13:17:19', '2019-06-24 08:31:11', '0');
+INSERT INTO `sys_menu` VALUES (4301, '请假新增', 'act_leavebill_add', NULL, 4300, '1', 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
+INSERT INTO `sys_menu` VALUES (4302, '请假修改', 'act_leavebill_edit', NULL, 4300, '1', 1, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:09', '0');
+INSERT INTO `sys_menu` VALUES (4303, '请假删除', 'act_leavebill_del', NULL, 4300, '1', 2, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:14', '0');
+INSERT INTO `sys_menu` VALUES (4400, '待办任务', '/activiti/task', '/activiti/task', 4000, 'icon-renwu', 4, '0', '0', '2018-09-27 09:52:31', '2019-06-24 08:31:18', '0');
+INSERT INTO `sys_menu` VALUES (4401, '流程管理', 'act_task_manage', NULL, 4400, '1', 0, '0', '1', '2018-05-15 21:35:18', '2018-09-28 09:12:07', '0');
+INSERT INTO `sys_menu` VALUES (10002, 'Sentinel控制台', NULL, 'http://127.0.0.1:8033', 3000, 'icon-fuwuqi', 2, '0', '0', '2019-08-13 17:41:41', '2019-08-13 17:45:47', '0');
+INSERT INTO `sys_menu` VALUES (10003, '链路追踪', NULL, 'http://127.0.0.1:9411', 3000, 'icon-icon-p_mrpjinduzhuizong', 3, '0', '0', '2019-08-13 17:48:34', '2019-08-16 13:22:13', '0');
+INSERT INTO `sys_menu` VALUES (10006, '文件对象存储', NULL, '/admin/oss/index', 2000, 'icon-icon_workfile_line', 2, '0', '0', '2019-08-14 15:38:20', '2019-08-14 15:38:54', '0');
+INSERT INTO `sys_menu` VALUES (10007, '网盘管理', NULL, '/pan', -1, 'icon-wangpan', 5, '0', '0', '2019-08-14 16:04:08', '2019-08-14 16:04:36', '0');
 COMMIT;
 
 -- ----------------------------
@@ -1365,20 +1422,14 @@ CREATE TABLE `sys_oss` (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `delFlag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '删除状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COMMENT='对象存储表';
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8 COMMENT='对象存储表';
 
 -- ----------------------------
 -- Records of sys_oss
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_oss` VALUES (56, '005PKPY2ly8fdwsorhp1fj30e80dojro.jpg', '0303a2fbde0249619cde4d2d652a443f.jpg', 6415, 'image/jpeg', 'admin', '2019-06-18 15:16:32', 'admin', '2019-06-18 15:16:32', '0');
-INSERT INTO `sys_oss` VALUES (57, '005PKPY2ly8fdwsorhp1fj30e80dojro.jpg', 'd66ed1c182ff46c1af7baf7da9741ffa.jpg', 6415, 'image/jpeg', 'admin', '2019-06-24 09:58:44', 'admin', '2019-06-24 09:58:44', '0');
-INSERT INTO `sys_oss` VALUES (58, 'VcZY-htwhfzs0023252.jpg', '28c09cc123e44d278c62b9e4454fe1eb.jpg', 37099, 'image/jpeg', 'admin', '2019-07-04 17:28:04', 'admin', '2019-07-04 17:28:04', '0');
-INSERT INTO `sys_oss` VALUES (71, 'r1EQ-hryfqhm0167597.jpg', '78917049593a4ab3bde515a8ee4a67b5.jpg', 18816, 'image/jpeg', 'admin', '2019-07-12 11:16:13', 'admin', '2019-07-12 11:16:13', '0');
-INSERT INTO `sys_oss` VALUES (72, 'u=1077600724,1890977723&fm=173&app=49&f=JPEG.jpg', '8b7399be1c0f4faea32bf0b7e2da44ae.jpg', 37542, 'image/jpeg', 'admin', '2019-07-12 11:16:13', 'admin', '2019-07-12 11:16:13', '0');
-INSERT INTO `sys_oss` VALUES (73, '1.jpg', '2205705e5367482cbffd25a624d8ddf4.jpg', 37866, 'image/jpeg', 'admin', '2019-07-15 16:25:51', 'admin', '2019-07-15 16:25:51', '0');
-INSERT INTO `sys_oss` VALUES (74, '2.jpg', 'fa212c0e17654f65a5b098a2afbcca78.jpg', 283323, 'image/jpeg', 'admin', '2019-07-16 12:52:51', 'admin', '2019-07-16 12:52:51', '0');
-INSERT INTO `sys_oss` VALUES (75, '1.jpg', '108bb2cc58464125a7fead9a31c88407.jpg', 37866, 'image/jpeg', 'admin', '2019-07-16 12:56:47', 'admin', '2019-07-16 12:56:47', '0');
+INSERT INTO `sys_oss` VALUES (79, '1.jpg', '47dfa508624c4c30a85b17034e97837e.jpg', 37866, 'image/jpeg', 'admin', '2019-08-14 15:48:50', 'admin', '2019-08-14 15:48:50', '0');
+INSERT INTO `sys_oss` VALUES (80, '2e6a16757048513ac299b28c321a93a8.jpeg', '8025290971fc4a8ab3237d16deeb6155.jpeg', 177070, 'image/jpeg', 'admin', '2019-08-14 15:54:11', 'admin', '2019-08-14 15:54:11', '0');
 COMMIT;
 
 -- ----------------------------
@@ -1444,30 +1495,35 @@ INSERT INTO `sys_role_menu` VALUES (1, 1403);
 INSERT INTO `sys_role_menu` VALUES (1, 2000);
 INSERT INTO `sys_role_menu` VALUES (1, 2100);
 INSERT INTO `sys_role_menu` VALUES (1, 2101);
-INSERT INTO `sys_role_menu` VALUES (1, 2110);
 INSERT INTO `sys_role_menu` VALUES (1, 2200);
 INSERT INTO `sys_role_menu` VALUES (1, 2201);
 INSERT INTO `sys_role_menu` VALUES (1, 2202);
 INSERT INTO `sys_role_menu` VALUES (1, 2203);
+INSERT INTO `sys_role_menu` VALUES (1, 2210);
+INSERT INTO `sys_role_menu` VALUES (1, 2211);
+INSERT INTO `sys_role_menu` VALUES (1, 2212);
+INSERT INTO `sys_role_menu` VALUES (1, 2213);
 INSERT INTO `sys_role_menu` VALUES (1, 2300);
 INSERT INTO `sys_role_menu` VALUES (1, 2400);
-INSERT INTO `sys_role_menu` VALUES (1, 2500);
-INSERT INTO `sys_role_menu` VALUES (1, 2501);
+INSERT INTO `sys_role_menu` VALUES (1, 2401);
+INSERT INTO `sys_role_menu` VALUES (1, 2402);
+INSERT INTO `sys_role_menu` VALUES (1, 2403);
 INSERT INTO `sys_role_menu` VALUES (1, 2600);
+INSERT INTO `sys_role_menu` VALUES (1, 2601);
 INSERT INTO `sys_role_menu` VALUES (1, 2700);
 INSERT INTO `sys_role_menu` VALUES (1, 2800);
-INSERT INTO `sys_role_menu` VALUES (1, 2801);
-INSERT INTO `sys_role_menu` VALUES (1, 2802);
-INSERT INTO `sys_role_menu` VALUES (1, 2803);
-INSERT INTO `sys_role_menu` VALUES (1, 2900);
+INSERT INTO `sys_role_menu` VALUES (1, 2810);
+INSERT INTO `sys_role_menu` VALUES (1, 2820);
+INSERT INTO `sys_role_menu` VALUES (1, 2830);
+INSERT INTO `sys_role_menu` VALUES (1, 2840);
+INSERT INTO `sys_role_menu` VALUES (1, 2850);
+INSERT INTO `sys_role_menu` VALUES (1, 2860);
 INSERT INTO `sys_role_menu` VALUES (1, 3000);
 INSERT INTO `sys_role_menu` VALUES (1, 3100);
 INSERT INTO `sys_role_menu` VALUES (1, 3200);
-INSERT INTO `sys_role_menu` VALUES (1, 3300);
 INSERT INTO `sys_role_menu` VALUES (1, 3600);
 INSERT INTO `sys_role_menu` VALUES (1, 3601);
-INSERT INTO `sys_role_menu` VALUES (1, 3900);
-INSERT INTO `sys_role_menu` VALUES (1, 3901);
+INSERT INTO `sys_role_menu` VALUES (1, 3630);
 INSERT INTO `sys_role_menu` VALUES (1, 4000);
 INSERT INTO `sys_role_menu` VALUES (1, 4100);
 INSERT INTO `sys_role_menu` VALUES (1, 4101);
@@ -1479,7 +1535,10 @@ INSERT INTO `sys_role_menu` VALUES (1, 4302);
 INSERT INTO `sys_role_menu` VALUES (1, 4303);
 INSERT INTO `sys_role_menu` VALUES (1, 4400);
 INSERT INTO `sys_role_menu` VALUES (1, 4401);
-INSERT INTO `sys_role_menu` VALUES (1, 5000);
+INSERT INTO `sys_role_menu` VALUES (1, 10002);
+INSERT INTO `sys_role_menu` VALUES (1, 10003);
+INSERT INTO `sys_role_menu` VALUES (1, 10006);
+INSERT INTO `sys_role_menu` VALUES (1, 10007);
 INSERT INTO `sys_role_menu` VALUES (2, 2000);
 INSERT INTO `sys_role_menu` VALUES (2, 2100);
 INSERT INTO `sys_role_menu` VALUES (2, 2101);
@@ -1501,20 +1560,20 @@ CREATE TABLE `sys_route_conf` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `del_flag` char(1) DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='路由配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='路由配置表';
 
 -- ----------------------------
 -- Records of sys_route_conf
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_route_conf` VALUES (19, '工作流管理模块', 'boot-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-activiti', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (20, '认证中心', 'boot-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://boot-auth', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (21, '定时任务模块', 'boot-daemon-elastic-job', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-elastic-job', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (22, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (23, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}, {\"args\": {\"name\": \"default\", \"fallbackUri\": \"forward:/fallback\"}, \"name\": \"Hystrix\"}]', 'lb://boot-upms', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (24, '代码生成', 'boot-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-codegen', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (25, '网盘管理', 'boot-pan', '[{\"args\": {\"_genkey_0\": \"/pan/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pan', 0, '2019-08-07 11:10:07', NULL, '0');
-INSERT INTO `sys_route_conf` VALUES (26, 'Quartz定时任务', 'boot-daemon-quartz', '[{\"args\": {\"_genkey_0\": \"/quartz/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-quartz', 0, '2019-08-07 11:10:07', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (27, '工作流管理模块', 'boot-activiti', '[{\"args\": {\"_genkey_0\": \"/act/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-activiti', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (28, '认证中心', 'boot-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[{\"args\": {}, \"name\": \"ValidateCodeGatewayFilter\"}, {\"args\": {}, \"name\": \"PasswordDecoderFilter\"}]', 'lb://boot-auth', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (29, '定时任务模块', 'boot-daemon-elastic-job', '[{\"args\": {\"_genkey_0\": \"/daemon/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-elastic-job', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (30, '支付模块', 'boot-pay', '[{\"args\": {\"_genkey_0\": \"/pay/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pay', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (31, '通用权限模块', 'boot-upms', '[{\"args\": {\"_genkey_0\": \"/admin/**\"}, \"name\": \"Path\"}]', '[{\"args\": {\"key-resolver\": \"#{@remoteAddrKeyResolver}\", \"redis-rate-limiter.burstCapacity\": \"20\", \"redis-rate-limiter.replenishRate\": \"10\"}, \"name\": \"RequestRateLimiter\"}]', 'lb://boot-upms', 0, '2019-08-15 14:19:59', '2019-08-15 14:28:06', '0');
+INSERT INTO `sys_route_conf` VALUES (32, '代码生成', 'boot-codegen', '[{\"args\": {\"_genkey_0\": \"/gen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-codegen', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (33, '网盘管理', 'boot-pan', '[{\"args\": {\"_genkey_0\": \"/pan/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-pan', 0, '2019-08-15 14:19:59', NULL, '0');
+INSERT INTO `sys_route_conf` VALUES (34, 'Quartz定时任务', 'boot-daemon-quartz', '[{\"args\": {\"_genkey_0\": \"/quartz/**\"}, \"name\": \"Path\"}]', '[]', 'lb://boot-daemon-quartz', 0, '2019-08-15 14:19:59', NULL, '0');
 COMMIT;
 
 -- ----------------------------
@@ -1569,7 +1628,7 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', '', '15077923572', '108bb2cc58464125a7fead9a31c88407.jpg', 1, '2018-04-20 07:15:18', '2019-08-06 17:48:56', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QOfWxxFyAMmEEmnuw9UI/..1s4B4eF/u9PzE2ZaGO.ij9YfmcUy.u', '', '15077923572', '47dfa508624c4c30a85b17034e97837e.jpg', 1, '2018-04-20 07:15:18', '2019-08-14 15:48:50', '0', '0', 'o_0FT0uyg_H1vVy2H0JpSwlVGhWQ', NULL);
 INSERT INTO `sys_user` VALUES (5, 'test', '$2a$10$8kRPVwZHyMi5Fq89Vf49aeOEtM.pKf5vHou3A4eVTE3q7xsz0B3Zu', NULL, '', 'http://img5.imgtn.bdimg.com/it/u=235810630,594632317&fm=26&gp=0.jpg', 11, '2019-05-23 17:47:13', '2019-06-06 15:07:45', '0', '0', NULL, NULL);
 COMMIT;
 

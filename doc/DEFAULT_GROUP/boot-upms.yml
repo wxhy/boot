@@ -1,19 +1,20 @@
 ## 数据库连接池
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
-    username: ENC(y0MVSykTX0iVSqMpaGusFA==)
-    password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      minimum-idle: 1
-      maximum-pool-size: 100
-      auto-commit: true
-      idle-timeout: 30000
-      pool-name: AdvZuulHikariCP
-      max-lifetime: 1800000
-      connection-timeout: 30000
+     datasource:
+      master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+        username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+        password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
+        type: com.zaxxer.hikari.HikariDataSource
+      slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+        username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+        password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
+        type: com.zaxxer.hikari.HikariDataSource
+    
 
 ## security 配置
 security:
