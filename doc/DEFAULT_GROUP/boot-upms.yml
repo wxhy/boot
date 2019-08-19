@@ -4,7 +4,7 @@ spring:
      datasource:
       master:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+        url: jdbc:mysql://47.104.172.27:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
         username: ENC(y0MVSykTX0iVSqMpaGusFA==)
         password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
         type: com.zaxxer.hikari.HikariDataSource

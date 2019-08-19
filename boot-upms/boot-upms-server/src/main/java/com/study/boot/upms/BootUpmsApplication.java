@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 
 /**
- *
  * @author Administrator
  */
 
@@ -18,6 +17,6 @@ import org.springframework.cloud.client.SpringCloudApplication;
 public class BootUpmsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootUpmsApplication.class,args);
+        SpringApplication.run(BootUpmsApplication.class, args);
     }
 }

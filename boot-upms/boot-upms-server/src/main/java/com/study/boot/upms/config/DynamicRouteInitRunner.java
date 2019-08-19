@@ -10,11 +10,8 @@ import com.study.boot.upms.service.SysRouteConfService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
-import org.springframework.cloud.gateway.config.GatewayProperties;
-import org.springframework.cloud.gateway.config.PropertiesRouteDefinitionLocator;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
@@ -32,7 +29,7 @@ import java.net.URI;
 @Slf4j
 @Configuration
 @AllArgsConstructor
-public class DynamicRouteIitRunner {
+public class DynamicRouteInitRunner {
 
     private final RedisTemplate redisTemplate;
     private final SysRouteConfService sysRouteConfService;
@@ -66,13 +63,5 @@ public class DynamicRouteIitRunner {
 
     }
 
-    /**
-     * 配置文件设置为空redis，加载的为准
-     * @return
-     */
-    @Bean
-    public PropertiesRouteDefinitionLocator propertiesRouteDefinitionLocator(){
-        return new PropertiesRouteDefinitionLocator(new GatewayProperties());
-    }
 
 }
