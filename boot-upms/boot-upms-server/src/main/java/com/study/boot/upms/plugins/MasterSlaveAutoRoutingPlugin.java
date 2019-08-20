@@ -21,8 +21,7 @@ import java.util.Properties;
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class,
                 RowBounds.class, ResultHandler.class}),
-        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class,
-                RowBounds.class, ResultHandler.class})
+        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})
 })
 @Slf4j
 public class MasterSlaveAutoRoutingPlugin implements Interceptor {
@@ -32,7 +31,7 @@ public class MasterSlaveAutoRoutingPlugin implements Interceptor {
         Object[] args = invocation.getArgs();
         MappedStatement ms = (MappedStatement) args[0];
         try {
-            DynamicDataSourceContextHolder.add(ms.getSqlCommandType().equals(SqlCommandType.SELECT) ? DataSourceContants.SLAVE : DataSourceContants.MASTER);
+            DynamicDataSourceContextHolder.add(ms.getSqlCommandType().equals(SqlCommandType.SELECT) ? DataSourceContants.SLAVE.getValue() : DataSourceContants.MASTER.getValue());
             return invocation.proceed();
         } finally {
             DynamicDataSourceContextHolder.clear();
