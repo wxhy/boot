@@ -9,7 +9,7 @@ public class JasyptTest {
         BasicTextEncryptor encryptor = new BasicTextEncryptor();
         encryptor.setPassword("boot");
         String username = encryptor.encrypt("root");
-        String password = encryptor.encrypt("123456");
+        String password = encryptor.encrypt("12345678");
         System.out.println(username);
         System.out.println(password);
     }

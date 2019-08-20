@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
+  com.study.boot.common.datasource.DynamicDataSourceAutoConfiguration,\
+  com.study.boot.common.datasource.config.MybatisPlusConfig

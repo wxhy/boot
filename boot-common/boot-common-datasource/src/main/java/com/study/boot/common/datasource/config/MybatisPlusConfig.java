@@ -1,6 +1,6 @@
-package com.study.boot.upms.config;
+package com.study.boot.common.datasource.config;
 
-import com.study.boot.upms.plugins.MasterSlaveAutoRoutingPlugin;
+import com.study.boot.common.datasource.plugins.MasterSlaveAutoRoutingPlugin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
