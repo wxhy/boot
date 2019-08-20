@@ -31,7 +31,7 @@ public class MasterSlaveAutoRoutingPlugin implements Interceptor {
         Object[] args = invocation.getArgs();
         MappedStatement ms = (MappedStatement) args[0];
         try {
-            DynamicDataSourceContextHolder.add(ms.getSqlCommandType().equals(SqlCommandType.SELECT) ? DataSourceContants.SLAVE.getValue() : DataSourceContants.MASTER.getValue());
+            DynamicDataSourceContextHolder.add(ms.getSqlCommandType().equals(SqlCommandType.SELECT) ? DataSourceContants.SLAVE : DataSourceContants.MASTER);
             return invocation.proceed();
         } finally {
             DynamicDataSourceContextHolder.clear();

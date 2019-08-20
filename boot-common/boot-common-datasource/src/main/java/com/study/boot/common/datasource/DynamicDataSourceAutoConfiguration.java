@@ -30,25 +30,35 @@ import java.util.Map;
 public class DynamicDataSourceAutoConfiguration{
     private final Map<Object, Object> dataSourceMap = new HashMap<>(8);
 
-
+    /**
+     * 主库
+     * @return
+     */
     @Bean
     @ConfigurationProperties("spring.dynamic.master")
     public DataSource masterDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
+    /**
+     * 从库
+     * @return
+     */
     @Bean
     @ConfigurationProperties("spring.dynamic.slave")
     public DataSource slaveDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
-
+    /**
+     * 动态数据源
+     * @return
+     */
     @Bean
     @Primary
     public DataSource dynamicDataSource() {
-        dataSourceMap.put(DataSourceContants.MASTER.getValue(), masterDataSource());
-        dataSourceMap.put(DataSourceContants.SLAVE.getValue(), slaveDataSource());
+        dataSourceMap.put(DataSourceContants.MASTER, masterDataSource());
+        dataSourceMap.put(DataSourceContants.SLAVE, slaveDataSource());
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         dynamicDataSource.setDefaultTargetDataSource(masterDataSource());
         dynamicDataSource.setTargetDataSources(dataSourceMap);
