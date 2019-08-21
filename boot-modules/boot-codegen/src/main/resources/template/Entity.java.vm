@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @TableName("${tableName}")
 @EqualsAndHashCode(callSuper = true)
 public class ${className} extends Model<${className}> {
-private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   #foreach ($column in $columns)
   /**
@@ -32,6 +32,11 @@ private static final long serialVersionUID = 1L;
   @TableId
   #end
   private $column.attrType $column.lowerAttrName;
+  #end
+
+
+  #foreach ($column in $columns)
+  public static final String COL_$column.upperAttrName = "$column.lowerAttrName";
   #end
 
 }

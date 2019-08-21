@@ -94,7 +94,7 @@
       },
       gen(form) {
         handleDown(this.formData).then(() => {
-          this.box = true
+          this.box = false;
         })
       }
     }

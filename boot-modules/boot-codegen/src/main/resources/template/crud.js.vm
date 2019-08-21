@@ -9,11 +9,11 @@ export const tableOption = {
     delBtn: false,
     addBtn: false,
     column: [
-        #foreach ($column in $columns)
-            {
-                label: '$column.comments',
-                prop: '$column.lowerAttrName'
-            },
-        #end
+    #foreach ($column in $columns)
+        {
+            label: '$column.comments',
+            prop: '$column.lowerAttrName'
+        },
+    #end
     ]
 }

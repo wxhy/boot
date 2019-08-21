@@ -20,7 +20,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,13 +69,14 @@ public class CustomTokenEndpoint {
         OAuth2AccessToken accessToken = tokenStore.readAccessToken(tokenValue);
         if (accessToken == null || StrUtil.isBlank(accessToken.getValue())) {
             return WebResponse.builder()
-                    .code(CommonConstants.FAIL)
+                    .code(CommonConstants.SUCCESS)
                     .data(Boolean.FALSE)
                     .message("退出失败，token 无效").build();
         }
 
-        OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(accessToken);
         tokenStore.removeAccessToken(accessToken);
+        OAuth2RefreshToken refreshToken = tokenStore.readRefreshToken(tokenValue);
+        tokenStore.removeRefreshToken(refreshToken);
         return new WebResponse<>(Boolean.TRUE);
     }
 

@@ -8,13 +8,17 @@ security:
 
 ## 定时任务
 spring:
-  # 保存定时任务的数据源
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ENC(y0MVSykTX0iVSqMpaGusFA==)
-    password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
-    url: jdbc:mysql://boot-mysql:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+  dynamic:
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://47.104.172.27:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+      username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+      password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
+    slave:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+      username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+      password: ENC(TNa/fF1g0RJ39k80QKSQLPpAr1E8oqPZ)
   elasticjob:
     # 分布式任务协调依赖zookeeper
     zookeeper:

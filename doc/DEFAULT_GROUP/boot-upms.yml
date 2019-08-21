@@ -1,19 +1,16 @@
 ## 数据库连接池
 spring:
-  datasource:
-     datasource:
-      master:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://47.104.172.27:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
-        username: ENC(y0MVSykTX0iVSqMpaGusFA==)
-        password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
-        type: com.zaxxer.hikari.HikariDataSource
-      slave:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
-        username: ENC(y0MVSykTX0iVSqMpaGusFA==)
-        password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
-        type: com.zaxxer.hikari.HikariDataSource
+  dynamic:
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://47.104.172.27:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+      username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+      password: ENC(VMgWiFR16g8bFGkUo0oZ9A==)
+    slave:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/boot?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+      username: ENC(y0MVSykTX0iVSqMpaGusFA==)
+      password: ENC(TNa/fF1g0RJ39k80QKSQLPpAr1E8oqPZ)
     
 
 ## security 配置

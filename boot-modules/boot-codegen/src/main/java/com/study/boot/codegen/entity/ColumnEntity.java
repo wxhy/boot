@@ -32,6 +32,10 @@ public class ColumnEntity {
      */
     private String lowerAttrName;
     /**
+     * 大写名称
+     */
+    private String upperAttrName;
+    /**
      * 属性类型
      */
     private String attrType;
