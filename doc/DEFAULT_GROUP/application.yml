@@ -14,7 +14,7 @@ spring:
           dashboard: localhost:8033
   redis:
     host: boot-redis
-    password:
+    password: ENC(CqoOindCsEf51RXmMuOEYw==)
     timeout: 10000
     database: 0
     lettuce:
