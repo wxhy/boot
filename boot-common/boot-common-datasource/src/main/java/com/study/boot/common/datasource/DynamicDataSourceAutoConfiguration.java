@@ -57,8 +57,8 @@ public class DynamicDataSourceAutoConfiguration{
     @Bean
     @Primary
     public DataSource dynamicDataSource() {
-        dataSourceMap.put(DataSourceContants.MASTER, masterDataSource());
-        dataSourceMap.put(DataSourceContants.SLAVE, slaveDataSource());
+        dataSourceMap.put(DataSourceContants.MASTER.getValue(), masterDataSource());
+        dataSourceMap.put(DataSourceContants.SLAVE.getValue(), slaveDataSource());
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         dynamicDataSource.setDefaultTargetDataSource(masterDataSource());
         dynamicDataSource.setTargetDataSources(dataSourceMap);

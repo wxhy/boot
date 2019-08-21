@@ -10,13 +10,13 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DynamicDataSourceContextHolder {
 
-    private static final ThreadLocal<DataSourceContants> CONTEXT_HOLDER = new ThreadLocal<>();
+    private static final ThreadLocal<String> CONTEXT_HOLDER = new ThreadLocal<>();
 
-    public static void add(DataSourceContants dataSourceContants) {
-        CONTEXT_HOLDER.set(dataSourceContants);
+    public static void add(String dataSourceName) {
+        CONTEXT_HOLDER.set(dataSourceName);
     }
 
-    public static DataSourceContants get() {
+    public static String get() {
         return CONTEXT_HOLDER.get();
     }
 
