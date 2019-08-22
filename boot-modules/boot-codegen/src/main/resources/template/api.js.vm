@@ -23,9 +23,9 @@ export function getObj (id) {
     })
 }
 
-export function delObj (row) {
+export function delObj (id) {
     return request({
-        url: '/${moduleName}/${pathName}/' + row.id,
+        url: '/${moduleName}/${pathName}/' + id,
         method: 'delete'
     })
 }

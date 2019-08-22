@@ -2,7 +2,7 @@
 package com.study.boot.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.study.boot.upms.entity.SysPublicParam;
+import com.study.boot.upms.api.entity.SysPublicParam;
 
 /**
  * 公共参数配置

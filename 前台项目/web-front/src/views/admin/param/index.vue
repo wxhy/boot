@@ -16,19 +16,19 @@
                     <el-button type="primary"
                                @click="handleAdd"
                                size="small"
-                               v-if="permissions.upms_syspublicparam_add">新 增</el-button>
+                               v-if="permissions.admin_syspublicparam_add">新 增</el-button>
                     <br /><br />
                 </template>
                 <template slot-scope="scope"
                           slot="menu">
                     <el-button type="text"
-                               v-if="permissions.upms_syspublicparam_edit"
+                               v-if="permissions.admin_syspublicparam_edit"
                                icon="el-icon-check"
                                size="small"
                                plain
                                @click="handleEdit(scope.row,scope.index)">编辑</el-button>
                     <el-button type="text"
-                               v-if="permissions.upms_syspublicparam_del"
+                               v-if="permissions.admin_syspublicparam_del"
                                icon="el-icon-delete"
                                size="small"
                                plain
@@ -40,11 +40,11 @@
 </template>
 
 <script>
-    import { fetchList, getObj, addObj, putObj, delObj } from '@/api/syspublicparam-api'
-    import { tableOption } from '@/const/crud/syspublicparam'
+    import { fetchList, getObj, addObj, putObj, delObj } from '@/api/admin/param'
+    import { tableOption } from '@/const/crud/admin/param'
     import { mapGetters } from 'vuex'
     export default {
-        name: 'syspublicparam',
+        name: 'publicparam',
         data() {
             return {
                 tableData: [],

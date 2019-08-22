@@ -2,7 +2,7 @@ import request from '@/router/axios'
 
 export function fetchList (query) {
     return request({
-        url: '/upms/syspublicparam/page',
+        url: '/admin/param/page',
         method: 'get',
         params: query
     })
@@ -10,7 +10,7 @@ export function fetchList (query) {
 
 export function addObj (obj) {
     return request({
-        url: '/upms/syspublicparam/',
+        url: '/admin/param/',
         method: 'post',
         data: obj
     })
@@ -18,21 +18,21 @@ export function addObj (obj) {
 
 export function getObj (id) {
     return request({
-        url: '/upms/syspublicparam/' + id,
+        url: '/admin/param/' + id,
         method: 'get'
     })
 }
 
-export function delObj (row) {
+export function delObj (id) {
     return request({
-        url: '/upms/syspublicparam/' + row.id,
+        url: '/admin/param/' + id,
         method: 'delete'
     })
 }
 
 export function putObj (obj) {
     return request({
-        url: '/upms/syspublicparam/',
+        url: '/admin/param/',
         method: 'put',
         data: obj
     })

@@ -1,8 +1,8 @@
 package com.study.boot.upms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.study.boot.upms.api.entity.SysPublicParam;
 import org.apache.ibatis.annotations.Mapper;
-import com.study.boot.upms.entity.SysPublicParam;
 
 /**
  * 公共参数配置

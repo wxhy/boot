@@ -2,9 +2,9 @@ package com.study.boot.upms.web;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.study.boot.common.util.WebResponse;
 import com.study.boot.common.annotation.SysLog;
-import com.study.boot.upms.entity.SysPublicParam;
+import com.study.boot.common.util.WebResponse;
+import com.study.boot.upms.api.entity.SysPublicParam;
 import com.study.boot.upms.service.SysPublicParamService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/syspublicparam")
+@RequestMapping("/param")
 public class SysPublicParamController {
 
   private final  SysPublicParamService sysPublicParamService;

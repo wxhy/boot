@@ -1,3 +1,16 @@
+const DIC = {
+    status: [{
+        label: '正常',
+        value: "0"
+    },
+    {
+        label: '冻结',
+        value: "1"
+    }
+    ]
+}
+
+
 export const tableOption = {
     border: true,
     index: true,
@@ -5,41 +18,41 @@ export const tableOption = {
     stripe: true,
     menuAlign: 'center',
     align: 'center',
+    labelWidth:150,
     editBtn: false,
     delBtn: false,
     addBtn: false,
     column: [
-            {
-            label: '编号',
-            prop: 'publicId'
-        },
-            {
+        {
             label: '公共参数名称',
             prop: 'publicName'
         },
-            {
-            label: '键,英文大写+下划线',
+        {
+            label: '键',
             prop: 'publicKey'
         },
-            {
+        {
             label: '值',
             prop: 'publicValue'
         },
-            {
-            label: '状态：1有效；2无效；',
-            prop: 'status'
+        {
+            label: '状态',
+            prop: 'status',
+            type: 'select',
+            dicData: DIC.status,
         },
-            {
+        {
             label: '创建时间',
+            addDisplay: false,
+            editDisplay: false,
             prop: 'createTime'
         },
-            {
+        {
             label: '修改时间',
+            addDisplay: false,
+            editDisplay: false,
             prop: 'updateTime'
-        },
-            {
-            label: '删除状态：0-正常；1-已删除',
-            prop: 'delFlag'
-        },
-        ]
+        }
+
+    ]
 }

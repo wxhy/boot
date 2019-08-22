@@ -5,7 +5,7 @@
 
 <mapper namespace="com.study.boot.upms.mapper.SysPublicParamMapper">
 
-  <resultMap id="sysPublicParamMap" type="com.study.boot.upms.entity.SysPublicParam">
+  <resultMap id="sysPublicParamMap" type="com.study.boot.upms.api.entity.SysPublicParam">
                   <id property="publicId" column="public_id"/>
                         <result property="publicName" column="public_name"/>
                         <result property="publicKey" column="public_key"/>
